@@ -1,0 +1,25 @@
+HARNESS_START=2026-08-02 16:49:25 +0800
+JOB=118413800 NODES=j01r2n[16-19] NNODES=4 NTASKS=64 CPUS_PER_TASK=2
+HASH_OK|2c8e7c6a3856d60be9de62932ece58b7204f8245e4c20a62e6ceb9c8fc0aea8c|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/o33_clean_rebuild_20260802/run_clean_rebuild_abba.slurm
+HASH_OK|5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+HASH_OK|e64347f3bd44eb69c5c224684306ebeb8898e909ce81a0260c0878650bbd53bb|/public/home/fujiake/fjk/delivery/o33_20260802/clean_builds/118412739/ROMS_CoSiNE15/oceanM
+HASH_OK|081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced|/public/home/fujiake/fjk/delivery/o33_20260802/clean_builds/118412739/ROMS_CoSiNE15/Compilers/Linux-ifort.mk
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/delivery/o33_20260802/clean_builds/118412739/ROMS_CoSiNE15/coll_rules.conf
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118413800_o33_clean_rebuild_abba_sample/A1/input.in
+RUN_START|A1|O33_VALIDATED|2026-08-02 16:49:27 +0800|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+RUN_DONE|A1|O33_VALIDATED|real=127.272|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118413800_o33_clean_rebuild_abba_sample/B1/input.in
+RUN_START|B1|O33_CLEAN_REBUILD|2026-08-02 16:51:34 +0800|/public/home/fujiake/fjk/delivery/o33_20260802/clean_builds/118412739/ROMS_CoSiNE15/oceanM
+RUN_DONE|B1|O33_CLEAN_REBUILD|real=128.125|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118413800_o33_clean_rebuild_abba_sample/B2/input.in
+RUN_START|B2|O33_CLEAN_REBUILD|2026-08-02 16:53:42 +0800|/public/home/fujiake/fjk/delivery/o33_20260802/clean_builds/118412739/ROMS_CoSiNE15/oceanM
+RUN_DONE|B2|O33_CLEAN_REBUILD|real=127.794|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118413800_o33_clean_rebuild_abba_sample/A2/input.in
+RUN_START|A2|O33_VALIDATED|2026-08-02 16:55:50 +0800|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+RUN_DONE|A2|O33_VALIDATED|real=124.979|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+mean_parent_seconds=126.126
+mean_clean_seconds=127.959
+clean_delta_percent=1.4541
+trajectory_consistent=True
+verdict=SOURCE_REBUILD_DIAGNOSTIC_EQUIVALENT
+HARNESS_DONE=2026-08-02 16:57:55 +0800

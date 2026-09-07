@@ -1,0 +1,49 @@
+BUILD_END=2026-08-01 18:14:56 +0800
+ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15
+PARENT_SOURCE_SHA=e1de89f3a01974084a91b09bb6064b7e4ff0d67be8276aee7e8d10ef0dcb743a
+CANDIDATE_SOURCE_SHA=c91c138ec6b912647f7d0c1d616cd6babc4d3250b7ae7c4e43efd61a8313d704
+ARECV_SITES=2735 3073 4931 5212
+3f9aa42af02861d205b85a3b73ae1c72eef13a4875a4b8b5584cc813d7a75b4c  oceanM
+3f9aa42af02861d205b85a3b73ae1c72eef13a4875a4b8b5584cc813d7a75b4c  oceanM.O33_norecvzero
+0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  coll_rules.conf
+05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21  ROMS/External/ocean_SCS_Dongsha60_bio15.in
+081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced  Compilers/Linux-ifort.mk
+219747441f5ec0dbfbeff3cb8b683bfd6eadd014beb7bfd6652cb891bf39d8a8  makefile
+	linux-vdso.so.1 =>  (0x00007ffe41df5000)
+	libnetcdf.so.11 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdf.so.11 (0x00002b3ab9520000)
+	libnetcdff.so.6 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdff.so.6 (0x00002b3ab9896000)
+	libmpi_usempif08.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempif08.so.40 (0x00002b3ab9d69000)
+	libmpi_usempi_ignore_tkr.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempi_ignore_tkr.so.40 (0x00002b3ab9fa1000)
+	libmpi_mpifh.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_mpifh.so.40 (0x00002b3aba1ad000)
+	libmpi.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi.so.40 (0x00002b3aba417000)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b3aba737000)
+	libiomp5.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so (0x00002b3abaa39000)
+	libpthread.so.0 => /usr//lib64/libpthread.so.0 (0x00002b3abaddd000)
+	libc.so.6 => /usr//lib64/libc.so.6 (0x00002b3abaff9000)
+	libgcc_s.so.1 => /usr//lib64/libgcc_s.so.1 (0x00002b3abb3c6000)
+	libdl.so.2 => /usr//lib64/libdl.so.2 (0x00002b3abb5dc000)
+	libhdf5_hl.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5_hl.so.10 (0x00002b3abb7e0000)
+	libhdf5.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5.so.10 (0x00002b3abba07000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b3abbfb8000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b3abc1ce000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b3abc6bb000)
+	libirng.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libirng.so (0x00002b3abd5d9000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b3abd94c000)
+	libifport.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifport.so.5 (0x00002b3abdbb7000)
+	libifcoremt.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifcoremt.so.5 (0x00002b3abdde6000)
+	libopen-rte.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-rte.so.40 (0x00002b3abe176000)
+	libopen-pal.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-pal.so.40 (0x00002b3abe43d000)
+	librt.so.1 => /lib64/librt.so.1 (0x00002b3abe707000)
+	libutil.so.1 => /lib64/libutil.so.1 (0x00002b3abe90f000)
+	libhwloc.so.15 => /opt/hpc/software/mpi/hwloc/lib/libhwloc.so.15 (0x00002b3abeb12000)
+	libudev.so.1 => /lib64/libudev.so.1 (0x00002b3abed5c000)
+	libxml2.so.2 => /lib64/libxml2.so.2 (0x00002b3abef72000)
+	libevent_core-2.0.so.5 => /lib64/libevent_core-2.0.so.5 (0x00002b3abf2dc000)
+	libevent_pthreads-2.0.so.5 => /lib64/libevent_pthreads-2.0.so.5 (0x00002b3abf507000)
+	/lib64/ld-linux-x86-64.so.2 (0x00002b3ab92fc000)
+	libcap.so.2 => /lib64/libcap.so.2 (0x00002b3abf70a000)
+	libdw.so.1 => /lib64/libdw.so.1 (0x00002b3abf90f000)
+	liblzma.so.5 => /lib64/liblzma.so.5 (0x00002b3abfb5e000)
+	libattr.so.1 => /lib64/libattr.so.1 (0x00002b3abfd84000)
+	libelf.so.1 => /lib64/libelf.so.1 (0x00002b3abff89000)
+	libbz2.so.1 => /lib64/libbz2.so.1 (0x00002b3ac01a1000)

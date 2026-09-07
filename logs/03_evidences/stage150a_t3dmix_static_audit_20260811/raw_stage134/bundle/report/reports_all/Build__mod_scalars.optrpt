@@ -1,0 +1,7 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) Fortran Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.3.0 Build 20210609_000000
+
+Compiler options: -I/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/include -I/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib -c -no-heap-arrays -fp-model precise -march=core-avx2 -no-fma -ipo -qopt-report=5 -qopt-report-phase=vec,loop,openmp,ipo -ip -O3 -free

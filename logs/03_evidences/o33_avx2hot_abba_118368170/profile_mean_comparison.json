@@ -1,0 +1,146 @@
+[
+  {
+    "a_mean_rank_seconds": 458.29200000000003,
+    "b_mean_rank_seconds": 453.384,
+    "delta_percent": -1.070932942316256,
+    "delta_rank_seconds": -4.9080000000000155,
+    "grid": 1,
+    "metric": "3D equations predictor step"
+  },
+  {
+    "a_mean_rank_seconds": 199.885,
+    "b_mean_rank_seconds": 200.13850000000002,
+    "delta_percent": 0.12682292318084445,
+    "delta_rank_seconds": 0.2535000000000309,
+    "grid": 1,
+    "metric": "Biological module, source/sink terms"
+  },
+  {
+    "a_mean_rank_seconds": 387.7655,
+    "b_mean_rank_seconds": 375.425,
+    "delta_percent": -3.182464659697669,
+    "delta_rank_seconds": -12.340499999999963,
+    "grid": 1,
+    "metric": "Corrector time-step for tracers"
+  },
+  {
+    "a_mean_rank_seconds": 387.5635,
+    "b_mean_rank_seconds": 471.105,
+    "delta_percent": 21.555564442988068,
+    "delta_rank_seconds": 83.54150000000004,
+    "grid": 1,
+    "metric": "GLS vertical mixing parameterization"
+  },
+  {
+    "a_mean_rank_seconds": 122.56649999999999,
+    "b_mean_rank_seconds": 117.717,
+    "delta_percent": -3.9566276266353304,
+    "delta_rank_seconds": -4.849499999999992,
+    "grid": 1,
+    "metric": "Message Passage: 2D halo exchanges"
+  },
+  {
+    "a_mean_rank_seconds": 180.56799999999998,
+    "b_mean_rank_seconds": 196.6945,
+    "delta_percent": 8.93098444907183,
+    "delta_rank_seconds": 16.12650000000002,
+    "grid": 1,
+    "metric": "Message Passage: 4D halo exchanges"
+  },
+  {
+    "a_mean_rank_seconds": 156.33350000000002,
+    "b_mean_rank_seconds": 148.7135,
+    "delta_percent": -4.874195230069054,
+    "delta_rank_seconds": -7.6200000000000045,
+    "grid": 1,
+    "metric": "Message Passage: point data gathering"
+  },
+  {
+    "a_mean_rank_seconds": 315.0085,
+    "b_mean_rank_seconds": 312.53999999999996,
+    "delta_percent": -0.7836296480888809,
+    "delta_rank_seconds": -2.4685000000000628,
+    "grid": 1,
+    "metric": "Model 2D kernel"
+  },
+  {
+    "a_mean_rank_seconds": 10356.6535,
+    "b_mean_rank_seconds": 10741.8505,
+    "delta_percent": 3.7193191796944842,
+    "delta_rank_seconds": 385.1970000000001,
+    "grid": 1,
+    "metric": "TOTAL"
+  },
+  {
+    "a_mean_rank_seconds": 1357.97,
+    "b_mean_rank_seconds": 1377.0535,
+    "delta_percent": 1.4052961405627487,
+    "delta_rank_seconds": 19.083499999999958,
+    "grid": 2,
+    "metric": "3D equations predictor step"
+  },
+  {
+    "a_mean_rank_seconds": 557.261,
+    "b_mean_rank_seconds": 561.778,
+    "delta_percent": 0.810571706973941,
+    "delta_rank_seconds": 4.517000000000053,
+    "grid": 2,
+    "metric": "Biological module, source/sink terms"
+  },
+  {
+    "a_mean_rank_seconds": 1084.6129999999998,
+    "b_mean_rank_seconds": 1069.971,
+    "delta_percent": -1.3499745992349186,
+    "delta_rank_seconds": -14.641999999999825,
+    "grid": 2,
+    "metric": "Corrector time-step for tracers"
+  },
+  {
+    "a_mean_rank_seconds": 987.7755,
+    "b_mean_rank_seconds": 1213.5745,
+    "delta_percent": 22.859344051355798,
+    "delta_rank_seconds": 225.79899999999998,
+    "grid": 2,
+    "metric": "GLS vertical mixing parameterization"
+  },
+  {
+    "a_mean_rank_seconds": 543.5844999999999,
+    "b_mean_rank_seconds": 535.6855,
+    "delta_percent": -1.4531319417680026,
+    "delta_rank_seconds": -7.898999999999887,
+    "grid": 2,
+    "metric": "Message Passage: 2D halo exchanges"
+  },
+  {
+    "a_mean_rank_seconds": 714.3765000000001,
+    "b_mean_rank_seconds": 748.8885,
+    "delta_percent": 4.831065971515012,
+    "delta_rank_seconds": 34.511999999999944,
+    "grid": 2,
+    "metric": "Message Passage: 4D halo exchanges"
+  },
+  {
+    "a_mean_rank_seconds": 49.9095,
+    "b_mean_rank_seconds": 45.126,
+    "delta_percent": -9.584347669281406,
+    "delta_rank_seconds": -4.783500000000004,
+    "grid": 2,
+    "metric": "Message Passage: point data gathering"
+  },
+  {
+    "a_mean_rank_seconds": 1055.5445,
+    "b_mean_rank_seconds": 1036.7905,
+    "delta_percent": -1.7767133455766106,
+    "delta_rank_seconds": -18.753999999999905,
+    "grid": 2,
+    "metric": "Model 2D kernel"
+  },
+  {
+    "a_mean_rank_seconds": 10356.8015,
+    "b_mean_rank_seconds": 10742.077,
+    "delta_percent": 3.720023986169859,
+    "delta_rank_seconds": 385.27549999999974,
+    "grid": 2,
+    "metric": "TOTAL"
+  }
+]

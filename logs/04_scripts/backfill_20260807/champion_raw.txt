@@ -1,0 +1,169 @@
+﻿############ build_ifort2021.sh full text
+#!/usr/bin/env bash
+set -euo pipefail
+
+# [compiler switch] Intel 2021.3.0 classic ifort on immutable O33 sources.
+# Same Linux-ifort.mk, same flags (-heap-arrays -fp-model precise -ip -O3,
+# -qopenmp on the 5 hot objects). Only the compiler version changes:
+# ifort 2017.5.239 -> 2021.3.0 (oneAPI classic). Trajectory may differ
+# (float codegen changed) 鈥?gate is wall time + official 26/26 separately.
+
+export LC_ALL=C LANG=C
+
+parent=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+candidate_base=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805
+root=$candidate_base/ROMS_CoSiNE15
+logdir=/public/home/fujiake/fjk/agent_tmp/logs/ifort2021_20260805
+
+expected_parent_bin=5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9
+expected_parent_mk=081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced
+ifort21_bin=/public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/bin/intel64
+ifort21_lib=/public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin
+
+fail() { echo "FATAL: $*" >&2; exit 2; }
+hash_of() { sha256sum "$1" | awk '{print $1}'; }
+check_sha() {
+  local expected=$1 path=$2 actual
+  [[ -f "$path" ]] || fail "missing $path"
+  actual=$(hash_of "$path")
+  [[ "$actual" == "$expected" ]] || fail "hash mismatch path=$path expected=$expected actual=$actual"
+  printf 'HASH_OK|%s|%s\n' "$actual" "$path"
+}
+
+case "$candidate_base" in
+  /public/home/fujiake/fjk/agent_tmp/isolated/work/*) ;;
+  *) fail "unsafe candidate_base=$candidate_base" ;;
+esac
+case "$logdir" in
+  /public/home/fujiake/fjk/agent_tmp/logs/*) ;;
+  *) fail "unsafe logdir=$logdir" ;;
+esac
+[[ -d "$parent/Build" ]] || fail "missing immutable parent"
+[[ ! -e "$candidate_base" ]] || fail "candidate already exists: $candidate_base"
+
+mkdir -p "$candidate_base" "$logdir"
+cp -a "$parent" "$root"
+[[ -d "$root/Build" ]] || fail "candidate copy incomplete"
+cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+
+diff -qr "$parent/ROMS" "$root/ROMS" > "$logdir/source_tree.diff" || true
+[[ ! -s "$logdir/source_tree.diff" ]] || {
+  cat "$logdir/source_tree.diff"
+  fail "ROMS/ must be untouched"
+}
+
+check_sha "$expected_parent_mk" "$root/Compilers/Linux-ifort.mk"
+echo "MK_UNCHANGED_OK"
+
+if [[ -e "$root/Inputfiles" || -L "$root/Inputfiles" ]]; then
+  rm -f "$root/Inputfiles"
+fi
+ln -s /public/home/fujiake/Inputfiles "$root/Inputfiles"
+[[ "$(readlink -f "$root/Inputfiles")" == /public/home/fujiake/Inputfiles ]] \
+  || fail "Inputfiles symlink wrong target"
+echo "SYMLINK_OK"
+
+module purge
+module load mathlib/netcdf/4.4.1/intel
+module load mpi/hpcx/2.7.4/intel-2017.5.239
+export PATH=$ifort21_bin:$PATH
+export LD_LIBRARY_PATH=$ifort21_lib:$LD_LIBRARY_PATH
+
+[[ "$(command -v ifort)" == "$ifort21_bin/ifort" ]] \
+  || fail "ifort not resolved to 2021.3.0: $(command -v ifort)"
+ifort --version 2>/dev/null | head -1 > "$logdir/ifort_version.txt"
+grep -q '2021.3.0' "$logdir/ifort_version.txt" || fail "ifort version unexpected"
+cat "$logdir/ifort_version.txt"
+
+cd "$root"
+# Toolchain change: full rebuild required.
+rm -f "$root"/Build/*.o "$root"/Build/*.mod
+set +e
+{ time make -j16; } > "$logdir/build.log" 2>&1
+rc=$?
+set -e
+[[ $rc -eq 0 ]] || { tail -120 "$logdir/build.log"; exit "$rc"; }
+[[ -x oceanM ]] || fail "missing linked oceanM"
+cp -p oceanM oceanM.O33_ifort2021
+[[ "$(hash_of oceanM.O33_ifort2021)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+if ldd oceanM.O33_ifort2021 | grep -q 'not found'; then
+  ldd oceanM.O33_ifort2021
+  fail "unresolved runtime dependency"
+fi
+grep -aE "cd Build.*mpif90.*-ip -O3" "$logdir/build.log" | head -2 \
+  > "$logdir/ifort2021_compile_lines.txt" || true
+cat "$logdir/ifort2021_compile_lines.txt"
+echo "IFORT2021_BUILD_OK hash=$(hash_of oceanM.O33_ifort2021)"
+
+############ ifort2022 / ifort2023 / ifx compiler module lines
+==== build_ifort2022.sh (module/compiler lines)
+19:ifort21_bin=/public/software/compiler/intel/oneapi/oneapi-2022.3.0/compiler/2022.2.0/linux/bin/intel64
+20:ifort21_lib=/public/software/compiler/intel/oneapi/oneapi-2022.3.0/compiler/2022.2.0/linux/compiler/lib/intel64_lin
+65:module purge
+66:module load mathlib/netcdf/4.4.1/intel
+67:module load mpi/hpcx/2.7.4/intel-2017.5.239
+==== build_ifort2023.sh (module/compiler lines)
+19:ifort21_bin=/public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/bin/intel64
+20:ifort21_lib=/public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/compiler/lib/intel64_lin
+65:module purge
+66:module load mathlib/netcdf/4.4.1/intel
+67:module load mpi/hpcx/2.7.4/intel-2017.5.239
+==== build_ifx.sh (module/compiler lines)
+4:# [Stage 111] compiler axis 3: Intel ifx 2023.2.0 (LLVM oneAPI Fortran)
+5:# on immutable O33 sources. New mk Linux-ifx.mk = Linux-ifort.mk minus the
+6:# unsupported '-ip'; mpif90 hardcodes 'ifort', so a shim bin/ifort->ifx
+13:candidate_base=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifx_20260807
+15:logdir=/public/home/fujiake/fjk/agent_tmp/logs/ifx_20260807
+19:ifx_bin=/public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/bin
+20:ifx_lib=/public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/compiler/lib/intel64_lin
+54:sed 's| -ip | |g' "$root/Compilers/Linux-ifort.mk" > "$root/Compilers/Linux-ifx.mk"
+55:[[ "$(hash_of "$root/Compilers/Linux-ifx.mk")" != "$expected_parent_mk" ]] || fail "ifx mk identical to parent (patch failed)"
+56:grep -nE "FFLAGS.*-O3|biology\.o: private" "$root/Compilers/Linux-ifx.mk" | head -4
+67:module purge
+68:module load mathlib/netcdf/4.4.1/intel
+69:module load mpi/hpcx/2.7.4/intel-2017.5.239
+70:export PATH=$ifx_bin:$PATH
+71:export LD_LIBRARY_PATH=/public/software/compiler/gcc-11.2.0/lib64:$ifx_lib:$LD_LIBRARY_PATH
+73:[[ "$(command -v ifx)" == "$ifx_bin/ifx" ]] \
+74:  || fail "ifx not resolved to 2023.2.0: $(command -v ifx)"
+75:ifx --version 2>/dev/null | head -1 > "$logdir/ifx_version.txt"
+76:grep -q '2023.2.0' "$logdir/ifx_version.txt" || fail "ifx version unexpected"
+77:cat "$logdir/ifx_version.txt"
+
+############ ifort2022 full run anomaly: nodes, model.log header, per-timer totals
+real	57m28.841s
+ Node # 31 (pid=   30526) is active.
+ Node # 48 (pid=   27554) is active.
+ Node #  0 (pid=     607) is active.
+ Node # 16 (pid=   30495) is active.
+-- run_metadata --
+stage=o33_ifort2022_full_reproduce
+job=118730406 nodes=j04r2n[14-17]
+free_kb=65495336
+ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+label=ifort2022 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+3d510455e4c191d00cf25f6524ad055c7d9e4f1b522d569d2e7dcb56db12f726  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2022_20260807/ROMS_CoSiNE15/oceanM.O33_ifort2022
+a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+02fd7767c11b2a783a9702f993432413b66a2f8e4f93fbd437c33e12e981973f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/full_validate_ifort2022.slurm
+validation_result=pass
+COMPLETE 2026-08-07T18:00:34+0800
+-- slurm out tail --
+
+############ champion binary hashes now on disk
+  7cd466279e822e4b  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+  5f1a137e42252c9b  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_parent
+  5f1a137e42252c9b  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+
+############ does a delivery archive exist for the ifort2021 champion?
+total 12
+drwx------  3 fujiake mcc2026_final 4096 Aug  2 15:54 .
+drwxr-x--- 21 fujiake mcc2026_final 4096 Aug  2 19:03 ..
+drwx------  4 fujiake mcc2026_final 4096 Aug  3 17:23 o33_20260802
+ssh : bash: line 38: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-f3640a85-f8bd-4efd-bda4-8feaa66ca849.ps1:111 字符: 195
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 38: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

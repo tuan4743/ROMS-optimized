@@ -1,0 +1,5 @@
+mean_parent_seconds=126.126
+mean_clean_seconds=127.959
+clean_delta_percent=1.4541
+trajectory_consistent=True
+verdict=SOURCE_REBUILD_DIAGNOSTIC_EQUIVALENT

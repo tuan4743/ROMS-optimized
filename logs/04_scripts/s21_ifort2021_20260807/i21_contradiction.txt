@@ -1,0 +1,251 @@
+############ all i21* trees
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21d
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21c
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21b
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21
+
+############ FFLAGS of every i21 tree (this is the decisive comparison)
+==== ROMS_CoSiNE15_i21   sha256=5ed92820ea543f77
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+162:               FC := $(shell which ${FC})
+==== ROMS_CoSiNE15_i21b   sha256=aead78d67b6420ab
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+162:               FC := $(shell which ${FC})
+==== ROMS_CoSiNE15_i21c   sha256=9eacada7bdac2782
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays 
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays 
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+162:               FC := $(shell which ${FC})
+==== ROMS_CoSiNE15_i21d   sha256=d2f6c135ed6911ee
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+162:               FC := $(shell which ${FC})
+
+############ our O33 immutable baseline FFLAGS (the configuration that PASSED with 2021)
+26:               FC := ifort
+29:           FFLAGS := -heap-arrays -fp-model precise
+64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+82:               FC := mpif90
+123:               FC := $(shell which ${FC})
+
+############ S21 for reference
+37:           FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -no-fma
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays -march=core-avx2 -no-fma
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+
+############ i21 build/run scripts: which compiler and which base
+==== ROMS_CoSiNE15_i21
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21//sub.sh
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21//make.sh
+  [[sub.sh]]
+19:module purge
+20:module load mathlib/netcdf/4.4.1/intel_classic mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel2020-fortran-parallel compiler/intel/2021.3.0
+79:LOG=log_SCS_Dongsha60_2021_daily_sprint_${SUFFIX}_${TIMESTAMP}_J${SLURM_JOB_ID}.txt
+95:grep -En 'DONE|Blows|ERROR|elapsed time profile, Grid: 02|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Model 2D kernel|Message Passage: 4D halo' "$LOG" | head -30 || true
+101:    grep -En 'Nonlinear model elapsed time profile, Grid: 02|Model 2D kernel|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Message Passage: 2D halo|Message Passage: 3D halo|Message Passage: 4D halo|point data gathering|All percentages are with respect|ROMS/TOMS: DONE' "$LOG" | head -50
+==== ROMS_CoSiNE15_i21b
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21b//make.sh
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21b//sub.sh
+  [[sub.sh]]
+19:module purge
+20:module load mathlib/netcdf/4.4.1/intel_classic mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel2020-fortran-parallel compiler/intel/2021.3.0
+79:LOG=log_SCS_Dongsha60_2021_daily_sprint_${SUFFIX}_${TIMESTAMP}_J${SLURM_JOB_ID}.txt
+95:grep -En 'DONE|Blows|ERROR|elapsed time profile, Grid: 02|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Model 2D kernel|Message Passage: 4D halo' "$LOG" | head -30 || true
+101:    grep -En 'Nonlinear model elapsed time profile, Grid: 02|Model 2D kernel|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Message Passage: 2D halo|Message Passage: 3D halo|Message Passage: 4D halo|point data gathering|All percentages are with respect|ROMS/TOMS: DONE' "$LOG" | head -50
+==== ROMS_CoSiNE15_i21c
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21c//sub.sh
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21c//make.sh
+  [[sub.sh]]
+19:module purge
+20:module load mathlib/netcdf/4.4.1/intel_classic mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel2020-fortran-parallel compiler/intel/2021.3.0
+79:LOG=log_SCS_Dongsha60_2021_daily_sprint_${SUFFIX}_${TIMESTAMP}_J${SLURM_JOB_ID}.txt
+95:grep -En 'DONE|Blows|ERROR|elapsed time profile, Grid: 02|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Model 2D kernel|Message Passage: 4D halo' "$LOG" | head -30 || true
+101:    grep -En 'Nonlinear model elapsed time profile, Grid: 02|Model 2D kernel|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Message Passage: 2D halo|Message Passage: 3D halo|Message Passage: 4D halo|point data gathering|All percentages are with respect|ROMS/TOMS: DONE' "$LOG" | head -50
+==== ROMS_CoSiNE15_i21d
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21d//sub.sh
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_i21d//make.sh
+  [[sub.sh]]
+19:module purge
+20:module load mathlib/netcdf/4.4.1/intel_classic mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel2020-fortran-parallel compiler/intel/2021.3.0
+79:LOG=log_SCS_Dongsha60_2021_daily_sprint_${SUFFIX}_${TIMESTAMP}_J${SLURM_JOB_ID}.txt
+95:grep -En 'DONE|Blows|ERROR|elapsed time profile, Grid: 02|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Model 2D kernel|Message Passage: 4D halo' "$LOG" | head -30 || true
+101:    grep -En 'Nonlinear model elapsed time profile, Grid: 02|Model 2D kernel|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Message Passage: 2D halo|Message Passage: 3D halo|Message Passage: 4D halo|point data gathering|All percentages are with respect|ROMS/TOMS: DONE' "$LOG" | head -50
+
+############ i21 vali results actually recorded
+---- ROMS_CoSiNE15_i21/vali_sprint_1day_118662251.log
+【SCS_avg_0001.nc 所有变量全局RMSE校验】
+temp                 RMSE = 0.000370   阈值≤0.001500   ✅正常
+salt                 RMSE = 0.000041   阈值≤0.001000   ✅正常
+u                    RMSE = 0.000356   阈值≤0.000400   ✅正常
+v                    RMSE = 0.000353   阈值≤0.000400   ✅正常
+zeta                 RMSE = 0.000234   阈值≤0.000500   ✅正常
+NO3                  RMSE = 0.000582   阈值≤0.005000   ✅正常
+NH4                  RMSE = 0.000033   阈值≤0.002000   ✅正常
+---- ROMS_CoSiNE15_i21c/vali_sprint_1day_118662251.log
+【SCS_avg_0001.nc 所有变量全局RMSE校验】
+temp                 RMSE = 0.000370   阈值≤0.001500   ✅正常
+salt                 RMSE = 0.000041   阈值≤0.001000   ✅正常
+u                    RMSE = 0.000356   阈值≤0.000400   ✅正常
+v                    RMSE = 0.000353   阈值≤0.000400   ✅正常
+zeta                 RMSE = 0.000234   阈值≤0.000500   ✅正常
+NO3                  RMSE = 0.000582   阈值≤0.005000   ✅正常
+NH4                  RMSE = 0.000033   阈值≤0.002000   ✅正常
+---- ROMS_CoSiNE15_i21c/vali_sprint_1day_118677482.log
+【SCS_avg_0001.nc 所有变量全局RMSE校验】
+temp                 RMSE = 0.000262   阈值≤0.001500   ✅正常
+salt                 RMSE = 0.000029   阈值≤0.001000   ✅正常
+u                    RMSE = 0.000127   阈值≤0.000400   ✅正常
+v                    RMSE = 0.000129   阈值≤0.000400   ✅正常
+zeta                 RMSE = 0.000033   阈值≤0.000500   ✅正常
+NO3                  RMSE = 0.000274   阈值≤0.005000   ✅正常
+NH4                  RMSE = 0.000020   阈值≤0.002000   ✅正常
+---- ROMS_CoSiNE15_i21d/vali_sprint_1day_118662251.log
+【SCS_avg_0001.nc 所有变量全局RMSE校验】
+temp                 RMSE = 0.000370   阈值≤0.001500   ✅正常
+salt                 RMSE = 0.000041   阈值≤0.001000   ✅正常
+u                    RMSE = 0.000356   阈值≤0.000400   ✅正常
+v                    RMSE = 0.000353   阈值≤0.000400   ✅正常
+zeta                 RMSE = 0.000234   阈值≤0.000500   ✅正常
+NO3                  RMSE = 0.000582   阈值≤0.005000   ✅正常
+NH4                  RMSE = 0.000033   阈值≤0.002000   ✅正常
+
+############ source diff: does S21 differ from O33 in SOURCE, or only in flags?
+  step2d_LF_AM3.h                            IDENTICAL
+  gls_corstep.F                              IDENTICAL
+  mp_exchange.F                              IDENTICAL
+  pre_step3d.F                               IDENTICAL
+-- count of differing files across the whole ROMS source dir --
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_final3day_118346242.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_final3day_118346350.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_1day_118569176.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_1day_118572281.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_3day_118569736.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_3day_118569761.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_3day_118679795.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_3day_118687228.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118565042.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118565877.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118566365.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118567078.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118568458.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118569350.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118570395.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118571671.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118572134.in
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/External: ocean_SCS_Dongsha60_bio15_sprint_samp_118732899.in
+Files /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/Include/globaldefs.h and /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/Include/globaldefs.h differ
+Only in /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/ROMS/Nonlinear: metrics.F
+-- total differing --
+20

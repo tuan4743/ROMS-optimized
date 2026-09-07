@@ -1,0 +1,214 @@
+﻿############ nan top level
+total 129
+-rw-r--r--  1 fujiake mcc2026_final 49536 Aug  7 19:24 README.md
+drwxr-xr-x 28 fujiake mcc2026_final  4096 Aug  7 19:18 sprint
+drwxr-xr-x  4 fujiake mcc2026_final  4096 Aug  7 17:15 speedup
+drwxr-xr-x  5 fujiake mcc2026_final  4096 Aug  7 16:09 baseline
+drwxr-xr-x 19 fujiake mcc2026_final  4096 Aug  6 11:14 ROMS_CoSiNE15
+drwxr-xr-x  7 fujiake mcc2026_final  4096 Aug  4 22:46 backup_v2
+drwxr-xr-x  3 fujiake mcc2026_final  4096 Aug  4 17:16 report_his
+drwxr-xr-x  8 fujiake mcc2026_final  4096 Aug  4 09:32 backup
+drwxr-xr-x  2 fujiake mcc2026_final  4096 Aug  2 14:39 optimize
+-rw-r--r--  1 fujiake mcc2026_final 32953 Aug  1 20:35 slurm-118368357.out
+drwxr-xr-x  2 fujiake mcc2026_final  4096 Jul 30 14:21 Prompt
+drwxr-xr-x  4 fujiake mcc2026_final  4096 Jul 30 14:19 check
+drwxr-xr-x  2 fujiake mcc2026_final  4096 Jul 25 20:09 run
+drwxr-xr-x  5 fujiake mcc2026_final  4096 Jul 25 19:25 mcc_perf
+
+############ sprint dir
+total 12379747
+drwxr-xr-x 15 fujiake mcc2026_final        4096 Aug  7 19:21 ROMS_CoSiNE15_s22b
+-rw-r--r--  1 fujiake mcc2026_final         580 Aug  7 19:18 tmp_pf2.pl
+-rw-r--r--  1 fujiake mcc2026_final         624 Aug  7 19:09 tmp_parrev.pl
+-rw-r--r--  1 fujiake mcc2026_final         622 Aug  7 18:58 tmp_par.pl
+-rw-r--r--  1 fujiake mcc2026_final         771 Aug  7 18:26 tmp_ipo.pl
+-rw-r--r--  1 fujiake mcc2026_final         468 Aug  7 18:25 tmp_omp2.pl
+-rw-r--r--  1 fujiake mcc2026_final         463 Aug  7 18:21 tmp_omp1.pl
+drwxr-xr-x 12 fujiake mcc2026_final        4096 Aug  7 18:20 ROMS_CoSiNE15_s21
+-rw-r--r--  1 fujiake mcc2026_final       28189 Aug  7 14:45 README.md
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  7 09:44 ROMS_CoSiNE15_s20
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  7 09:43 ROMS_CoSiNE15_s22
+drwxr-xr-x  2 fujiake mcc2026_final        4096 Aug  7 02:05 Prompt
+drwxr-xr-x 15 fujiake mcc2026_final        4096 Aug  7 01:14 ROMS_CoSiNE15
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  7 01:14 ROMS_CoSiNE15_s16
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  7 01:13 ROMS_CoSiNE15_s17
+drwxr-xr-x  3 fujiake mcc2026_final        4096 Aug  7 01:13 RT11
+drwxr-xr-x  3 fujiake mcc2026_final        4096 Aug  7 01:12 RT_kmp
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  7 01:11 RT_impi
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  7 01:10 ROMS_CoSiNE15_s19
+-rw-r--r--  1 fujiake mcc2026_final 12375971840 Aug  7 00:57 backup_s19_20260807.tar
+-rw-r--r--  1 fujiake mcc2026_final           0 Aug  6 22:39 REFACTOR_unequal_allocation_feasibility.md
+-rw-r--r--  1 fujiake mcc2026_final   150302720 Aug  6 22:12 backup_s12_20260806.tar
+-rw-r--r--  1 fujiake mcc2026_final   150446080 Aug  6 22:09 backup_s15_20260806.tar
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  6 21:21 ROMS_CoSiNE15_s14
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  6 21:21 ROMS_CoSiNE15_s13
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  6 21:21 ROMS_CoSiNE15_s12
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  6 21:20 ROMS_CoSiNE15_s11
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  6 21:20 ROMS_CoSiNE15_i21d
+drwxr-xr-x 10 fujiake mcc2026_final        4096 Aug  6 21:20 ROMS_CoSiNE15_i21c
+
+############ binaries in the active sprint tree (with mtimes)
+-rwxr-xr-x 1 fujiake mcc2026_final 7504360 Aug  7 19:16 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM
+-rwxr-xr-x 1 fujiake mcc2026_final 7588936 Aug  7 19:04 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s26_step2d_parallel.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7504312 Aug  7 18:41 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s25_ipo.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6731736 Aug  7 14:28 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s24_gls_precdiv.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6766792 Aug  7 10:59 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s22b_fix_sync.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6759720 Aug  7 09:02 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s22b_sync.bak
+
+############ any results / notes / logs in the sprint tree
+total 66175
+-rw-r--r--  1 fujiake mcc2026_final  243313 Aug  7 19:26 log_SCS_Dongsha60_2021_daily_sprint_1day_20260807_191836_J118735123.txt
+drwxr-xr-x  2 fujiake mcc2026_final    4096 Aug  7 19:22 Build
+drwxr-xr-x  2 fujiake mcc2026_final    4096 Aug  7 19:18 output_sprint_1day_118735123
+lrwxr-xr-x  1 fujiake mcc2026_final      31 Aug  7 19:18 Inputfiles -> /public/home/fujiake/Inputfiles
+-rw-r--r--  1 fujiake mcc2026_final    1742 Aug  7 19:18 rankfile.spread_numa16_ccx_2t.17559
+-rw-r--r--  1 fujiake mcc2026_final     154 Aug  7 19:18 slurm-118735123.out
+-rw-r--r--  1 fujiake mcc2026_final       0 Aug  7 19:18 TIMING_sprint_1day_118735123.txt
+-rwxr-xr-x  1 fujiake mcc2026_final 7504360 Aug  7 19:16 oceanM
+-rw-r--r--  1 fujiake mcc2026_final  188319 Aug  7 19:06 log_SCS_Dongsha60_2021_daily_sprint_samp_20260807_190447_J118734523.txt
+-rw-r--r--  1 fujiake mcc2026_final     398 Aug  7 19:06 slurm-118734523.out
+-rw-r--r--  1 fujiake mcc2026_final      45 Aug  7 19:06 TIMING_sprint_samp_118734523.txt
+drwxr-xr-x  2 fujiake mcc2026_final    4096 Aug  7 19:04 output_sprint_samp_118734523
+-rwxr-xr-x  1 fujiake mcc2026_final 7588936 Aug  7 19:04 oceanM.s26_step2d_parallel.bak
+-rw-r--r--  1 fujiake mcc2026_final    3280 Aug  7 18:53 slurm-118733406.out
+-rw-r--r--  1 fujiake mcc2026_final    2573 Aug  7 18:53 vali_sprint_1day_118733406.log
+-rw-r--r--  1 fujiake mcc2026_final      48 Aug  7 18:53 TIMING_sprint_1day_118733406.txt
+-rw-r--r--  1 fujiake mcc2026_final  277843 Aug  7 18:53 log_SCS_Dongsha60_2021_daily_sprint_1day_20260807_184202_J118733406.txt
+drwxr-xr-x  2 fujiake mcc2026_final    4096 Aug  7 18:52 output_sprint_1day_118733406
+-rwxr-xr-x  1 fujiake mcc2026_final 7504312 Aug  7 18:41 oceanM.s25_ipo.bak
+-rw-r--r--  1 fujiake mcc2026_final  188319 Aug  7 18:39 log_SCS_Dongsha60_2021_daily_sprint_samp_20260807_183703_J118733265.txt
+-rw-r--r--  1 fujiake mcc2026_final     398 Aug  7 18:39 slurm-118733265.out
+-rw-r--r--  1 fujiake mcc2026_final      45 Aug  7 18:39 TIMING_sprint_samp_118733265.txt
+drwxr-xr-x  2 fujiake mcc2026_final    4096 Aug  7 18:37 output_sprint_samp_118733265
+-rwxr-xr-x  1 fujiake mcc2026_final    4951 Aug  7 18:25 sub.sh
+-rw-r--r--  1 fujiake mcc2026_final  188312 Aug  7 18:23 log_SCS_Dongsha60_2021_daily_sprint_samp_20260807_182119_J118732907.txt
+-rw-r--r--  1 fujiake mcc2026_final     398 Aug  7 18:23 slurm-118732907.out
+-rw-r--r--  1 fujiake mcc2026_final      45 Aug  7 18:23 TIMING_sprint_samp_118732907.txt
+drwxr-xr-x  2 fujiake mcc2026_final    4096 Aug  7 18:21 output_sprint_samp_118732907
+-rw-r--r--  1 fujiake mcc2026_final    3286 Aug  7 14:40 slurm-118720748.out
+-rw-r--r--  1 fujiake mcc2026_final    2579 Aug  7 14:40 vali_sprint_1day_118720748.log
+-rw-r--r--  1 fujiake mcc2026_final  277836 Aug  7 14:40 log_SCS_Dongsha60_2021_daily_sprint_1day_20260807_142856_J118720748.txt
+-rw-r--r--  1 fujiake mcc2026_final      48 Aug  7 14:40 TIMING_sprint_1day_118720748.txt
+-rwxr-xr-x  1 fujiake mcc2026_final 6731736 Aug  7 14:28 oceanM.s24_gls_precdiv.bak
+-rw-r--r--  1 fujiake mcc2026_final    3280 Aug  7 14:07 slurm-118719108.out
+-rw-r--r--  1 fujiake mcc2026_final    2573 Aug  7 14:07 vali_sprint_1day_118719108.log
+-rw-r--r--  1 fujiake mcc2026_final  277836 Aug  7 14:06 log_SCS_Dongsha60_2021_daily_sprint_1day_20260807_135535_J118719108.txt
+-rw-r--r--  1 fujiake mcc2026_final      48 Aug  7 14:06 TIMING_sprint_1day_118719108.txt
+-rw-r--r--  1 fujiake mcc2026_final  188312 Aug  7 13:49 log_SCS_Dongsha60_2021_daily_sprint_samp_20260807_134750_J118718615.txt
+-rw-r--r--  1 fujiake mcc2026_final     398 Aug  7 13:49 slurm-118718615.out
+
+############ markdown / txt records anywhere under sprint
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S6.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S7.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_sprint_3day_118569761.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S8_link.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S1.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S4.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S2_clean.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S5.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S8_incr.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_sprint_1day_118575598.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S2.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S8.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S8_inc.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S9.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_cmp_118585910.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_cmp_118585911.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S3.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_sprint_3day_118595014.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S5_final2.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_PGO_gen2.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S8_full.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_sprint_1day_118576219.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/vali_sprint_1day_118577382.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/build_S1_v2.log
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15/monitor_cmp.log
+
+############ recent slurm outputs and their headline timings
+---- slurm-118735123.out
+    ('NTIMES=864 4320', 'output_sprint_1day_118735123')
+    [sprint-1day] job=118735123 bin=./oceanM.s25_ipo.bak md5=2fd9885ad5e95d492b623d8cb6683706 OMP=2 KMP=0
+---- slurm-118734523.out
+    ('NTIMES=144 720', 'output_sprint_samp_118734523')
+    [sprint-samp] job=118734523 bin=./oceanM md5=3bfb27ff1ad5f2ec6c1c8bc0c9370125 OMP=2 KMP=0
+    real	2m1.733s
+    2866: ROMS/TOMS: DONE... Friday - August 7, 2026 -  7:06:49 PM
+---- slurm-118733406.out
+    ('NTIMES=864 4320', 'output_sprint_1day_118733406')
+    [sprint-1day] job=118733406 bin=./oceanM md5=2fd9885ad5e95d492b623d8cb6683706 OMP=2 KMP=0
+    real	10m59.424s
+    3912: ROMS/TOMS: DONE... Friday - August 7, 2026 -  6:53:01 PM
+---- slurm-118733265.out
+    ('NTIMES=144 720', 'output_sprint_samp_118733265')
+    [sprint-samp] job=118733265 bin=./oceanM md5=2fd9885ad5e95d492b623d8cb6683706 OMP=2 KMP=0
+    real	1m58.476s
+    2866: ROMS/TOMS: DONE... Friday - August 7, 2026 -  6:39:02 PM
+---- slurm-118732907.out
+    ('NTIMES=144 720', 'output_sprint_samp_118732907')
+    [sprint-samp] job=118732907 bin=./oceanM md5=8e9a894a63c17d3a4d64c6380978016c OMP=1 KMP=0
+    real	2m25.159s
+    2866: ROMS/TOMS: DONE... Friday - August 7, 2026 -  6:23:44 PM
+---- slurm-118720748.out
+    ('NTIMES=864 4320', 'output_sprint_1day_118720748')
+    [sprint-1day] job=118720748 bin=./oceanM md5=49fa3a4905d71ee9e6369c7af2a9dd98 OMP=2 KMP=0
+    real	11m19.398s
+    3912: ROMS/TOMS: DONE... Friday - August 7, 2026 -  2:40:16 PM
+---- slurm-118719108.out
+    ('NTIMES=864 4320', 'output_sprint_1day_118719108')
+    [sprint-1day] job=118719108 bin=./oceanM md5=8e9a894a63c17d3a4d64c6380978016c OMP=2 KMP=0
+    real	11m20.413s
+    3912: ROMS/TOMS: DONE... Friday - August 7, 2026 -  2:06:55 PM
+---- slurm-118718615.out
+    ('NTIMES=144 720', 'output_sprint_samp_118718615')
+    [sprint-samp] job=118718615 bin=./oceanM md5=8e9a894a63c17d3a4d64c6380978016c OMP=2 KMP=0
+    real	2m1.770s
+    2866: ROMS/TOMS: DONE... Friday - August 7, 2026 -  1:49:51 PM
+---- slurm-118718339.out
+    ('NTIMES=144 720', 'output_sprint_samp_118718339')
+    [sprint-samp] job=118718339 bin=./oceanM md5=8e9a894a63c17d3a4d64c6380978016c OMP=2 KMP=0
+    real	1m58.463s
+    2866: ROMS/TOMS: DONE... Friday - August 7, 2026 -  1:44:02 PM
+---- slurm-118718178.out
+    ('NTIMES=144 720', 'output_sprint_samp_118718178')
+    [sprint-samp] job=118718178 bin=./oceanM md5=8e9a894a63c17d3a4d64c6380978016c OMP=2 KMP=0
+    real	2m0.690s
+    2866: ROMS/TOMS: DONE... Friday - August 7, 2026 -  1:36:35 PM
+---- slurm-118717150.out
+    ('NTIMES=144 720', 'output_sprint_samp_118717150')
+    [sprint-samp] job=118717150 bin=./oceanM md5=3b45d7ae1b62e1a805d709e7ecfc4a65 OMP=2 KMP=0
+    real	2m5.404s
+    2950: ROMS/TOMS: DONE... Friday - August 7, 2026 -  1:26:27 PM
+---- slurm-118716141.out
+    ('NTIMES=864 4320', 'output_sprint_1day_118716141')
+    [sprint-1day] job=118716141 bin=./oceanM md5=a6896c2344310d5375760eba7ab33768 OMP=2 KMP=0
+    real	11m16.127s
+    71048: ROMS/TOMS: DONE... Friday - August 7, 2026 - 12:53:52 PM
+
+############ what distinguishes O84 from O33? look for an optimization record
+/public/home/fujiake/nan/backup/docs/O33_optimization_stack.md
+/public/home/fujiake/nan/ROMS_CoSiNE15/Compilers/Linux-ifort.mk.pre_sprint_O84
+/public/home/fujiake/nan/ROMS_CoSiNE15/vali_O84_1day_118542013.log
+/public/home/fujiake/nan/ROMS_CoSiNE15/TIMING_O84_3day_118556090.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/log_SCS_Dongsha60_2021_daily_O84_3day_20260804_204100_J118556090.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/TIMING_O84_samp_118542009.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/TIMING_O84_1day_118542013.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/vali_O84_3day_118556090.log
+/public/home/fujiake/nan/ROMS_CoSiNE15/sub_o84_o33_ctrl_sample.sh
+/public/home/fujiake/nan/ROMS_CoSiNE15/REBUILD_O84.md5
+/public/home/fujiake/nan/ROMS_CoSiNE15/sub_o84_bitexact_sample.sh
+/public/home/fujiake/nan/ROMS_CoSiNE15/log_SCS_Dongsha60_2021_daily_O84_samp_20260804_170022_J118542009.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/g02_hotspot_O84_3day_118556090.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/log_SCS_Dongsha60_2021_daily_O84_1day_20260804_170236_J118542013.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/sub_o84_bitexact_1day.sh
+/public/home/fujiake/nan/ROMS_CoSiNE15/.vali_O84_1day_118542013.py
+/public/home/fujiake/nan/ROMS_CoSiNE15/log_SCS_Dongsha60_2021_daily_O84_O33ctrl_20260804_170025_J118542010.txt
+/public/home/fujiake/nan/ROMS_CoSiNE15/oceanM.O84_bitexact_collect.bak
+/public/home/fujiake/nan/ROMS_CoSiNE15/sub_o84_bitexact_3day.sh
+/public/home/fujiake/nan/ROMS_CoSiNE15/sub_o84_bitexact_build.sh
+ssh : bash: line 36: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-0067d806-c125-4ad9-9007-958d5adddf96.ps1:111 字符: 206
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 36: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

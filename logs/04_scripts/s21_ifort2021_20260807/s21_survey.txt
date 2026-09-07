@@ -1,0 +1,142 @@
+############ candidate S21 trees and sizes
+  ROMS_CoSiNE15_s21              174M  mtime=2026-08-07 18:20:44
+      src-only (ROMS+Compilers+External): 94M
+  ROMS_CoSiNE15_s22b             8.4G  mtime=2026-08-07 19:37:18
+      src-only (ROMS+Compilers+External): 151M
+  ROMS_CoSiNE15_s22              179M  mtime=2026-08-07 09:43:53
+      src-only (ROMS+Compilers+External): 99M
+  ROMS_CoSiNE15_s20              172M  mtime=2026-08-07 09:44:54
+      src-only (ROMS+Compilers+External): 93M
+  ROMS_CoSiNE15_s19              172M  mtime=2026-08-07 01:10:07
+      src-only (ROMS+Compilers+External): 93M
+
+############ which tree is authoritative S21? binaries + md5
+==== ROMS_CoSiNE15_s21
+-rwxr-xr-x 1 fujiake mcc2026_final 7088408 Aug  7 01:29 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/oceanM.s21_global_avx2.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7088408 Aug  7 00:45 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/oceanM
+    md5=6f355bef  oceanM
+    md5=6f355bef  oceanM.s21_global_avx2.bak
+==== ROMS_CoSiNE15_s22b
+-rwxr-xr-x 1 fujiake mcc2026_final 7524792 Aug  7 19:35 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM
+-rwxr-xr-x 1 fujiake mcc2026_final 7524792 Aug  7 19:35 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s27_ipo_prefetch.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7588936 Aug  7 19:04 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s26_step2d_parallel.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7504312 Aug  7 18:41 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s25_ipo.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6731736 Aug  7 14:28 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s24_gls_precdiv.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6766792 Aug  7 10:59 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s22b_fix_sync.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6759720 Aug  7 09:02 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s22b_sync.bak
+    md5=c3ecbcbe  oceanM
+    md5=ff1216e7  oceanM.s22b_fix_sync.bak
+    md5=8c616265  oceanM.s22b_sync.bak
+    md5=49fa3a49  oceanM.s24_gls_precdiv.bak
+    md5=2fd9885a  oceanM.s25_ipo.bak
+    md5=3bfb27ff  oceanM.s26_step2d_parallel.bak
+    md5=c3ecbcbe  oceanM.s27_ipo_prefetch.bak
+
+############ S21 compiler flags (Linux-ifort.mk, non-comment FFLAGS/FC lines)
+==== ROMS_CoSiNE15_s21  sha256=27f0bf68c982004a
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -no-fma
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays -march=core-avx2 -no-fma
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+129:           FFLAGS += -openmp -fpp
+134:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+139:           FFLAGS += -ip -O3
+145:           FFLAGS += -I$(MCT_INCDIR)
+153:           FFLAGS += $(ESMF_F90COMPILEPATHS)
+162:               FC := $(shell which ${FC})
+==== ROMS_CoSiNE15_s22b  sha256=f5adc1e6f32d0e30
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise -ipo -qopt-prefetch=4
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays -march=core-avx2 -no-fma
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+129:           FFLAGS += -openmp -fpp
+134:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+139:           FFLAGS += -ip -O3
+145:           FFLAGS += -I$(MCT_INCDIR)
+153:           FFLAGS += $(ESMF_F90COMPILEPATHS)
+162:               FC := $(shell which ${FC})
+
+############ per-file flag overrides (the S8/S19/S21 stack)
+76:# $(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays -march=core-avx2 -no-fma
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+
+############ is PROFILE on or off in the S21 header? (S12 turned it off)
+==== ROMS_CoSiNE15_s21
+==== ROMS_CoSiNE15_s22b
+
+############ our disk quota / usage
+-- our current agent_tmp usage --
+6.5G	/public/home/fujiake/fjk/agent_tmp
+19K	/public/home/fujiake/fjk/agent_tmp/isolated/work/libimf_bench_20260807
+501M	/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifx_20260807
+517M	/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2022_20260807
+518M	/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_align_20260807
+518M	/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805
+518M	/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2023_20260807
+665M	/public/home/fujiake/fjk/agent_tmp/isolated/work/current
+-- filesystem free --
+Filesystem       Size  Used Avail Use% Mounted on
+ks_p300s_public  380G  304G   77G  80% /public
+
+############ is the teammate job still running? (do not disturb the tree)
+             JOBID PARTITION      NAME           USER           ST       TIME  NODES NODELIST(REASON)

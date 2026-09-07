@@ -1,0 +1,58 @@
+--- a/ROMS/Nonlinear/nesting.F
++++ b/ROMS/Nonlinear/nesting.F
+@@ -3766,6 +3766,7 @@
+ !
+           IF (EWperiodic(rg).or.NSperiodic(rg)) THEN
+ # ifdef SOLVE3D
++            IF (vtype.eq.r2dvar) THEN
+             CALL exchange_r2d_tile (rg, tile,                           &
+      &                              LBiR, UBiR, LBjR, UBjR,             &
+      &                              COUPLING(rg)%Zt_avg1)
+@@ -3790,6 +3791,8 @@
+ 
+ # endif
+ # ifdef SOLVE3D
++            END IF
++            IF (vtype.eq.r3dvar) THEN
+             CALL exchange_u3d_tile (rg, tile,                           &
+      &                              LBiR, UBiR, LBjR, UBjR, 1, N(rg),   &
+      &                              OCEAN(rg)%u(:,:,:,Rindex3d))
+@@ -3801,12 +3804,14 @@
+      &                                LBiR, UBiR, LBjR, UBjR, 1, N(rg), &
+      &                                OCEAN(rg)%t(:,:,:,Rindex3d,itrc))
+             END DO
++            END IF
+ # endif
+           END IF
+ 
+ # ifdef DISTRIBUTE
+ !
+ #  ifdef SOLVE3D
++          IF (vtype.eq.r2dvar) THEN
+           CALL mp_exchange2d (rg, tile, model, 1,                       &
+      &                        LBiR, UBiR, LBjR, UBjR,                   &
+      &                        NghostPoints,                             &
+@@ -3820,6 +3825,7 @@
+      &                        OCEAN(rg)%vbar(:,:,1),                    &
+      &                        OCEAN(rg)%ubar(:,:,2),                    &
+      &                        OCEAN(rg)%vbar(:,:,2))
++          END IF
+ #  else
+           CALL mp_exchange2d (rg, tile, model, 3,                       &
+      &                        LBiR, UBiR, LBjR, UBjR,                   &
+@@ -3830,6 +3836,7 @@
+      &                        OCEAN(rg)%vbar(:,:,Rindex2d))
+ #  endif
+ #  ifdef SOLVE3D
++          IF (vtype.eq.r3dvar) THEN
+           CALL mp_exchange3d (rg, tile, model, 2,                       &
+      &                        LBiR, UBiR, LBjR, UBjR, 1, N(rg),         &
+      &                        NghostPoints,                             &
+@@ -3842,6 +3849,7 @@
+      &                        NghostPoints,                             &
+      &                        EWperiodic(rg), NSperiodic(rg),           &
+      &                        OCEAN(rg)%t(:,:,:,Rindex3d,:))
++          END IF
+ #  endif
+ # endif
+         END IF

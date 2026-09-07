@@ -1,0 +1,136 @@
+############ ifort binaries on disk
+/public/software/compiler/intel/intel-compiler-2017.5.239/bin/intel64/ifort
+/public/software/compiler/intel/intel-compiler-2017.5.239/bin/intel64_mic/ifort
+/public/software/compiler/intel/composer_xe_2015.2.164/bin/intel64/ifort
+/public/software/compiler/intel/composer_xe_2015.2.164/bin/intel64_mic/ifort
+/public/software/compiler/intel/intel-2020/compilers_and_libraries_2020.1.217/bin/ia32/ifort
+/public/software/compiler/intel/intel-2020/compilers_and_libraries_2020.1.217/bin/intel64/ifort
+/public/software/compiler/intel/onepai-2021.3/compiler/2021.3.0/linux/bin/intel64/ifort
+/public/software/compiler/intel/onepai-2021.3/compiler/2021.3.0/linux/bin/ia32/ifort
+/public/software/compiler/intel/oneapi/oneapi-2024.0.1/compiler/2024.0/bin/ifort
+/public/software/compiler/intel/oneapi/oneapi-2024.0.1/compiler/2024.0/bin32/ifort
+/public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/bin/intel64/ifort
+/public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/bin/ia32/ifort
+/public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/bin/ia32/ifort
+/public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/bin/intel64/ifort
+/public/software/compiler/intel/oneapi/oneapi-2022.3.0/compiler/2022.2.0/linux/bin/ia32/ifort
+/public/software/compiler/intel/oneapi/oneapi-2022.3.0/compiler/2022.2.0/linux/bin/intel64/ifort
+/public/software/compiler/intel/onepai-2021.3-beforeupgrade/compiler/2021.3.0/linux/bin/ia32/ifort
+/public/software/compiler/intel/onepai-2021.3-beforeupgrade/compiler/2021.3.0/linux/bin/intel64/ifort
+/public/software/compiler/intel/onepai-2021.3-new1/compiler/2021.3.0/linux/bin/ia32/ifort
+/public/software/compiler/intel/onepai-2021.3-new1/compiler/2021.3.0/linux/bin/intel64/ifort
+oneapi-2021.3.0
+oneapi-2021.3.0-taiyuan.tar.gz
+oneapi-2022.3.0
+oneapi-2022.3.0-kunshan.tar.gz
+oneapi-2023.2.0
+oneapi-2024.0.1
+2021.3.0
+2021.3.0.bak
+
+############ how our earlier ifort2022 build resolved the compiler
+#!/usr/bin/env bash
+set -euo pipefail
+
+# [Stage 111] compiler axis 2: Intel 2022.2.0 classic ifort (2021.3.0 -> 2022.2.0) on immutable O33 sources.
+# Same Linux-ifort.mk, same flags (-heap-arrays -fp-model precise -ip -O3,
+# -qopenmp on the 5 hot objects). Only the compiler version changes:
+# ifort 2021.3.0 -> 2022.2.0 (oneAPI classic). Trajectory may differ
+# (float codegen changed) — gate is wall time + official 26/26 separately.
+
+export LC_ALL=C LANG=C
+
+parent=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+candidate_base=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2022_20260807
+root=$candidate_base/ROMS_CoSiNE15
+logdir=/public/home/fujiake/fjk/agent_tmp/logs/ifort2022_20260807
+
+expected_parent_bin=5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9
+expected_parent_mk=081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced
+ifort21_bin=/public/software/compiler/intel/oneapi/oneapi-2022.3.0/compiler/2022.2.0/linux/bin/intel64
+ifort21_lib=/public/software/compiler/intel/oneapi/oneapi-2022.3.0/compiler/2022.2.0/linux/compiler/lib/intel64_lin
+
+fail() { echo "FATAL: $*" >&2; exit 2; }
+hash_of() { sha256sum "$1" | awk '{print $1}'; }
+check_sha() {
+  local expected=$1 path=$2 actual
+  [[ -f "$path" ]] || fail "missing $path"
+  actual=$(hash_of "$path")
+  [[ "$actual" == "$expected" ]] || fail "hash mismatch path=$path expected=$expected actual=$actual"
+  printf 'HASH_OK|%s|%s\n' "$actual" "$path"
+}
+
+case "$candidate_base" in
+  /public/home/fujiake/fjk/agent_tmp/isolated/work/*) ;;
+  *) fail "unsafe candidate_base=$candidate_base" ;;
+esac
+case "$logdir" in
+  /public/home/fujiake/fjk/agent_tmp/logs/*) ;;
+  *) fail "unsafe logdir=$logdir" ;;
+esac
+[[ -d "$parent/Build" ]] || fail "missing immutable parent"
+
+############ S32 source tarball
+-rw-r--r-- 1 fujiake mcc2026_final 23M Aug  8 02:52 /public/home/fujiake/nan/sprint/backup_S32_src_20260808.tar.gz
+ROMS/
+ROMS/Bin/
+ROMS/Bin/job_normalization.sh
+ROMS/Bin/build.bash
+ROMS/Bin/verify.bash
+ROMS/Bin/copyright.sh
+ROMS/Bin/sfmakedepend
+ROMS/Bin/substitute
+ROMS/Bin/job_r4dvar.sh
+ROMS/Bin/copyright.bash
+ROMS/Bin/job_i4dvar.sh
+ROMS/Bin/job_so_semi.sh
+ROMS/Bin/ws_remove.bash
+ROMS/Bin/.svn/
+ROMS/Bin/.svn/tmp/
+ROMS/Bin/.svn/tmp/prop-base/
+ROMS/Bin/.svn/tmp/text-base/
+ROMS/Bin/.svn/tmp/props/
+ROMS/Bin/.svn/text-base/
+ROMS/Bin/.svn/text-base/submit_is4dvar.bash.svn-base
+ROMS/Bin/.svn/text-base/job_psas_sen.sh.svn-base
+ROMS/Bin/.svn/text-base/check_nc.sh.svn-base
+ROMS/Bin/.svn/text-base/job_i4dvar_sen.sh.svn-base
+ROMS/Bin/.svn/text-base/job_r4dvar_sen.sh.svn-base
+ROMS/Bin/.svn/text-base/submit_i4dvar.sh.svn-base
+
+############ teammate README last 60 lines (base64 later); English keywords
+### 二分完成 + S28 采纳：S25 + t3dmix fast=2（用户拍板保留）
+- S26a（仅 step3d_t fast=2）vali 失败（u=7.2e-5）→ 肇事文件 = step3d_t，整条线中该文件禁用。
+- S26b（仅 t3dmix fast=2）vali 通过：Dongsha u=0.000024（比 S25 的 5.2e-5 余量更大）、
+  SCS u=0.000082（阈值 4e-4 内）；1day 658.7s（与 S25 658.4s 持平，无提速）。
+- 用户决策：精度余量改善也算优化，采纳 t3dmix fast=2 → S28 = S25 + t3dmix fast=2。
+- 二进制 oceanM.s28_t3dmix_fast2.bak（0da2...）；源码 backup_s28_src_20260807.tar.gz。
+- 3day J118739074 运行中（自带 vali 最终确认）。
+### 关键发现：s22b 分支缺失全局 AVX2，S22/S23 对比基线不公平
+- s21 全局 FFLAGS 带 -march=core-avx2 -no-fma；s22/s22b 的 FFLAGS 只有
+  -no-heap-arrays -fp-model precise（仅 step2d 单文件 AVX2）。
+- 因此 S22/S23 的 1day 对比（672.5/676.1 vs S21 664.6）把缺失 AVX2 混入结论，
+  重叠/非阻塞的真实效果需在 S29 基座上重测。
+- S25（-ipo、无全局 AVX2）= 1941.5s 已快于 S21（全局 AVX2、无 -ipo）= 1979.6s，
+  说明 -ipo 单独收益 > 全局 AVX2。
+### S28 判定：t3dmix fast=2 3day 更慢，暂回退
+- S28 3day J118739074 = 1964.0s（慢于 S25 1941.5s +1.2%），vali 过（Dongsha u=2.4e-5 余量好）。
+- 结论：t3dmix fast=2 无提速且 3day 更慢（或为 -ipo 链接非确定性），速度目标下暂不保留；
+  作为精度余量备选记录（backup_s28_src 已存）。
+### S29：S25 + 全局 -march=core-avx2 -no-fma（叠加实验）
+- 改动：全局 FFLAGS 加 -march=core-avx2 -no-fma（位级中性，S21 已验证）。
+- 二进制 oceanM.s29_ipo_avx2.bak（2de9...）；1day J118741016 运行中。
+### S29 判定：全局 AVX2 与 -ipo 不叠动，无增益
+- S29（-ipo + 全局 AVX2 no-fma）1day J118741016 = 661.0s（慢于 S25 658.4s +2.6s，噪声内），
+  vali 过（Dongsha u=5.2e-5，位级中性如预期）。
+- 结论：-ipo 已吸收全局 AVX2 的代码生成收益，两者不叠加；S25（-ipo 单独）仍为 1day 最优。
+- 修正记录：s22b 分支缺全局 AVX2 的发现不影响 S25 结论（S25 无 AVX2 仍最快）。
+### S30 判定：-ipo inline 调参无益，已回滚
+- S30（-ipo + -inline-factor=20 -inline-max-size=4096）1day J118742213 = 662.8s
+  （慢于 S25 658.4s +0.7%），vali 过；采样 117.5s（持平）。已回滚。
+### 最终状态（2026-08-08）
+
+############ does S32 have PROFILE defined?
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/ROMS/Include/cppdefs.h:190:** PROFILE             use if time profiling                                 **
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/ROMS/Include/globaldefs.h:53:/* [O43] Tried #undef PROFILE: sample ~0.995× vs O33 — no wall gain.
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/ROMS/Include/globaldefs.h:55:#undef PROFILE

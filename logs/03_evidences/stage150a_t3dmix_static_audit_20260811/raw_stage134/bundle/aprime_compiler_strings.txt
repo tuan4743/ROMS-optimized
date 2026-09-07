@@ -1,0 +1,17 @@
+Intel(R) Pentium(R) M and compatible Intel processors
+Intel(R) processors with Swing New Instructions support
+Intel(R) processors with MOVBE instructions support
+Intel(R) Core(TM) Duo processors and compatible Intel processors with supplemental Streaming SIMD Extensions 3 (SSSE3) instruction support
+Intel(R) Pentium(R) 4 and compatible Intel processors with Intel(R) Streaming SIMD Extensions 3 (Intel(R) SSE3) instruction support
+Intel(R) Pentium(R) 4 and compatible Intel processors. Enables new optimizations in addition to Intel processor-specific optimizations
+Intel(R) processors with SSE4.2 and POPCNT instructions support
+Please verify that both the operating system and the processor support Intel(R) AVX.
+Please verify that both the operating system and the processor support Intel(R) AVX, F16C and RDRAND instructions.
+Please verify that both the operating system and the processor support Intel(R) AVX2, BMI, LZCNT, HLE, RTM and FMA instructions.
+Please verify that both the operating system and the processor support Intel(R) %s instructions.
+Please verify that your application was built with compatible Intel(R) libirc library
+Use of incompatible or internally inconsistent Intel(R) libirc library
+Compiler system  : 
+Compiler command : 
+Compiler flags   : 
+-no-heap-arrays -fp-model precise -march=core-avx2 -no-fma -ipo -ip -O3 -free -free                                                                             

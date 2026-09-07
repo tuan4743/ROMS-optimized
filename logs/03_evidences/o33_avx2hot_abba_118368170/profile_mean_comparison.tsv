@@ -1,0 +1,19 @@
+grid	metric	a_mean_rank_seconds	b_mean_rank_seconds	delta_rank_seconds	delta_percent
+1	3D equations predictor step	458.292000	453.384000	-4.908000	-1.070933
+1	Biological module, source/sink terms	199.885000	200.138500	0.253500	0.126823
+1	Corrector time-step for tracers	387.765500	375.425000	-12.340500	-3.182465
+1	GLS vertical mixing parameterization	387.563500	471.105000	83.541500	21.555564
+1	Message Passage: 2D halo exchanges	122.566500	117.717000	-4.849500	-3.956628
+1	Message Passage: 4D halo exchanges	180.568000	196.694500	16.126500	8.930984
+1	Message Passage: point data gathering	156.333500	148.713500	-7.620000	-4.874195
+1	Model 2D kernel	315.008500	312.540000	-2.468500	-0.783630
+1	TOTAL	10356.653500	10741.850500	385.197000	3.719319
+2	3D equations predictor step	1357.970000	1377.053500	19.083500	1.405296
+2	Biological module, source/sink terms	557.261000	561.778000	4.517000	0.810572
+2	Corrector time-step for tracers	1084.613000	1069.971000	-14.642000	-1.349975
+2	GLS vertical mixing parameterization	987.775500	1213.574500	225.799000	22.859344
+2	Message Passage: 2D halo exchanges	543.584500	535.685500	-7.899000	-1.453132
+2	Message Passage: 4D halo exchanges	714.376500	748.888500	34.512000	4.831066
+2	Message Passage: point data gathering	49.909500	45.126000	-4.783500	-9.584348
+2	Model 2D kernel	1055.544500	1036.790500	-18.754000	-1.776713
+2	TOTAL	10356.801500	10742.077000	385.275500	3.720024

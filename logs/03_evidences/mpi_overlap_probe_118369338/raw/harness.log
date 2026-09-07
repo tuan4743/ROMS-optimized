@@ -1,0 +1,52 @@
+HARNESS_START=2026-08-01 21:00:59 +0800
+JOB=118369338 NODES=j05r2n[14-17] NNODES=4 NTASKS=64 CPUS_PER_TASK=2
+DISK_AVAILABLE_KB=82001312
+HASH_OK|6855a75a2457247dbdef65a5b0ad7d89d45d263e695e0ebda199ad8ae2bb1a90|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/mpi_overlap_probe_20260801/mpi_overlap_probe.c
+HASH_OK|f7af245b229a5f9141b23a7b7cb92024ca30a8e2ff72d14aa6017379059ad924|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/mpi_overlap_probe_20260801/run_mpi_overlap_probe.slurm
+icc -I/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/include/openmpi -I/opt/hpc/software/mpi/hwloc/include -I/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/include -pthread -L/opt/hpc/software/mpi/hwloc//lib -L/usr//lib64 -Wl,-rpath -Wl,/opt/hpc/software/mpi/hwloc//lib -Wl,-rpath -Wl,/usr//lib64 -Wl,-rpath -Wl,/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib -Wl,--enable-new-dtags -L/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib -lmpi
+icc: command line warning #10159: invalid argument for option '-fp-model'
+	linux-vdso.so.1 =>  (0x00007ffde318f000)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b45ad8aa000)
+	libmpi.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi.so.40 (0x00002b45adbac000)
+	libiomp5.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so (0x00002b45adecc000)
+	libgcc_s.so.1 => /usr//lib64/libgcc_s.so.1 (0x00002b45ae270000)
+	libpthread.so.0 => /usr//lib64/libpthread.so.0 (0x00002b45ae486000)
+	libc.so.6 => /usr//lib64/libc.so.6 (0x00002b45ae6a2000)
+	libdl.so.2 => /usr//lib64/libdl.so.2 (0x00002b45aea6f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00002b45ad686000)
+	libopen-rte.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-rte.so.40 (0x00002b45aec73000)
+	libopen-pal.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-pal.so.40 (0x00002b45aef3a000)
+	librt.so.1 => /lib64/librt.so.1 (0x00002b45af204000)
+	libutil.so.1 => /lib64/libutil.so.1 (0x00002b45af40c000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b45af60f000)
+	libhwloc.so.15 => /opt/hpc/software/mpi/hwloc/lib/libhwloc.so.15 (0x00002b45af825000)
+	libudev.so.1 => /lib64/libudev.so.1 (0x00002b45afa6f000)
+	libxml2.so.2 => /lib64/libxml2.so.2 (0x00002b45afc85000)
+	libevent_core-2.0.so.5 => /lib64/libevent_core-2.0.so.5 (0x00002b45affef000)
+	libevent_pthreads-2.0.so.5 => /lib64/libevent_pthreads-2.0.so.5 (0x00002b45b021a000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b45b041d000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b45b090a000)
+	libirng.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libirng.so (0x00002b45b1828000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b45b1b9b000)
+	libcap.so.2 => /lib64/libcap.so.2 (0x00002b45b1e06000)
+	libdw.so.1 => /lib64/libdw.so.1 (0x00002b45b200b000)
+	liblzma.so.5 => /lib64/liblzma.so.5 (0x00002b45b225a000)
+	libattr.so.1 => /lib64/libattr.so.1 (0x00002b45b2480000)
+	libelf.so.1 => /lib64/libelf.so.1 (0x00002b45b2685000)
+	libbz2.so.1 => /lib64/libbz2.so.1 (0x00002b45b289d000)
+65a85841adbf89b41b6a22b8a30be1b86ccc8d8d27bc68968c6b3a9bf2aa4748  /public/home/fujiake/fjk/agent_tmp/isolated/audits/mpi_overlap_probe_118369338/mpi_overlap_probe
+87d3ce3b9755fa0443ef6823b034605a24c46037f4f6f63d2004748efbff1bb7  /public/home/fujiake/fjk/agent_tmp/isolated/audits/mpi_overlap_probe_118369338/rankfile
+label	message_bytes	work_elements	repetitions	iterations	comm_ms	compute_ms	overlap_ms	saved_ms	overlap_efficiency	serial_to_overlap
+grid02_like	524288	40000	1	96	0.483780	0.080481	0.482584	0.081677	1.014863	1.169249
+grid01_like	720896	75000	1	96	0.666417	0.179383	0.708238	0.137562	0.766866	1.194232
+grid02_like	524288	40000	2	96	0.481736	0.138362	0.498960	0.121138	0.875514	1.242782
+grid01_like	720896	75000	2	96	0.652555	0.226954	0.716027	0.163482	0.720331	1.228318
+grid02_like	524288	40000	4	96	0.480175	0.255506	0.590787	0.144894	0.567085	1.245255
+grid01_like	720896	75000	4	96	0.666220	0.440450	1.482654	-0.375985	-0.853637	0.746411
+grid02_like	524288	40000	8	96	0.478147	0.492394	0.867360	0.103181	0.215794	1.118960
+grid01_like	720896	75000	8	96	0.655193	0.843052	1.290083	0.208162	0.317711	1.161356
+grid02_like rep1 comm_ms=0.483780 compute_ms=0.080481 overlap_ms=0.482584 saved_ms=0.081677 efficiency=1.014863 serial_to_overlap=1.169249
+grid01_like rep1 comm_ms=0.666417 compute_ms=0.179383 overlap_ms=0.708238 saved_ms=0.137562 efficiency=0.766866 serial_to_overlap=1.194232
+REP1_POSITIVE_ON_BOTH=True
+AUDIT_ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/audits/mpi_overlap_probe_118369338
+HARNESS_DONE=2026-08-01 21:01:06 +0800

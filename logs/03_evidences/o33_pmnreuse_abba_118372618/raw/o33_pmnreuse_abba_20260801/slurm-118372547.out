@@ -1,0 +1,13 @@
+HARNESS_START=2026-08-01 22:59:04 +0800
+JOB=118372547 NODES=j05r2n[00-03] NNODES=4 NTASKS=64 CPUS_PER_TASK=2
+DISK_AVAILABLE_KB=79449052
+HASH_OK|012aa6e6c94a3865083ef6dc0634925c4c5f247470fe52bba8cb6fcc8c302709|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/pre_step3d_pmnreuse_20260801/run_pmnreuse_abba.slurm
+HASH_OK|5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM.O33_final
+HASH_OK|eabad62df0006a2d937093e8a78fc19cf7d0f84c0f168bde39cde9f8b18f4f72|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/oceanM.O33_pmnreuse
+HASH_OK|93472d108061604d3f5e764301190b81b909c12f41792931a9059fcfb7e15dfd|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/pre_step3d.F
+HASH_OK|8dfdddc916b0a9e4a6c06720312f7b9d6056bc2976a3874b94820a73a83b3463|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.o
+HASH_OK|081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Compilers/Linux-ifort.mk
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/coll_rules.conf
+HASH_OK|97230e0b0dd4533a4000155bd691c81d243bdc45c24e6ceaeb09ffa6b1bb878a|/public/share/mcc2026_final/vali.py
+FATAL: Inputfiles is not a symlink

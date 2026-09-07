@@ -1,0 +1,40 @@
+HARNESS_START=2026-08-11 15:39:14 +0800
+JOB=118935194 NODES=i17r1n[16-19]
+DISK_AVAILABLE_KB=74558284
+HASH_OK|2f7ed4431d749e8950fba1659dccc71df28ed0be33ab28eb884308447e6c3d79|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/s32_stage146_g1_strip_pipeline_20260811/run_lineage_then_candidate.slurm
+HASH_OK|d9a45dbbc351a3e386a504c87d355f0db2197c6c6bdec2b5eb2b2276b36fe5a2|/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s32_ifort2021_ipo.bak
+HASH_OK|a5b26f194a8e1e25b2f37ebfb168414233ce19a894ae6889b919f83146e71a0e|/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_stage146_g1_strip_pipeline_20260811_build1/Aprime/oceanM.stage146_Aprime
+HASH_OK|5354ce4a3f46a8b764a4728179a7dd62550c46a96b71e5aa25a772d238b99616|/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_stage146_g1_strip_pipeline_20260811_build1/B/oceanM.stage146_B
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_stage146_g1_strip_pipeline_20260811_build1/Aprime/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_stage146_g1_strip_pipeline_20260811_build1/Aprime/coll_rules.conf
+RUN_START|W0|WARMUP_A|2026-08-11 15:39:16 +0800
+RUN_DONE|W0|WARMUP_A|real=106.555|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|A1|FROZEN_A|2026-08-11 15:41:03 +0800
+RUN_DONE|A1|FROZEN_A|real=104.866|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|AP1|REBUILD_APRIME|2026-08-11 15:42:48 +0800
+RUN_DONE|AP1|REBUILD_APRIME|real=104.444|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|AP2|REBUILD_APRIME|2026-08-11 15:44:32 +0800
+RUN_DONE|AP2|REBUILD_APRIME|real=104.407|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|A2|FROZEN_A|2026-08-11 15:46:17 +0800
+RUN_DONE|A2|FROZEN_A|real=102.598|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+mean_A_seconds=103.732
+mean_AP_seconds=104.425
+ap_delta_percent=0.6685
+trajectory_same=True
+lineage_pass=True
+RUN_START|AP3|REBUILD_APRIME|2026-08-11 15:48:00 +0800
+RUN_DONE|AP3|REBUILD_APRIME|real=103.455|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|B1|G1_STRIP|2026-08-11 15:49:43 +0800
+RUN_DONE|B1|G1_STRIP|real=103.170|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|B2|G1_STRIP|2026-08-11 15:51:27 +0800
+RUN_DONE|B2|G1_STRIP|real=103.663|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|AP4|REBUILD_APRIME|2026-08-11 15:53:10 +0800
+RUN_DONE|AP4|REBUILD_APRIME|real=102.993|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+mean_AP_seconds=103.224
+mean_B_seconds=103.416
+gain_percent=-0.1865
+both_B_faster=False
+trajectory_same=True
+verdict=STOP_BRANCH
+HARNESS_DONE=2026-08-11 15:54:54 +0800
+OUTPUT_RETAINED=/public/home/fujiake/fjk/mcc_runs/118935194_s146_g1_gate

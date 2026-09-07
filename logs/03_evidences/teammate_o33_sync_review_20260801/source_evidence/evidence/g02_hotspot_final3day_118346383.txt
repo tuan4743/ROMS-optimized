@@ -1,0 +1,18 @@
+=== O33 final 3day G02 hotspot job=118346383 ===
+6627:  Model 2D kernel ..................................      5603.134  ( 3.1277 %)
+6632:  Biological module, source/sink terms .............      3571.913  ( 1.9939 %)
+6633:  GLS vertical mixing parameterization .............      6854.521  ( 3.8263 %)
+6635:  3D equations predictor step ......................      8158.833  ( 4.5543 %)
+6641:  Corrector time-step for tracers ..................      6869.545  ( 3.8346 %)
+6646:  Message Passage: 2D halo exchanges ...............      2123.110  ( 1.1851 %)
+6648:  Message Passage: 4D halo exchanges ...............      3165.996  ( 1.7673 %)
+6660: Nonlinear model elapsed time profile, Grid: 02
+6670:  Model 2D kernel ..................................     18910.552  (10.5560 %)
+6675:  Biological module, source/sink terms .............     10013.454  ( 5.5896 %)
+6676:  GLS vertical mixing parameterization .............     17717.017  ( 9.8898 %)
+6678:  3D equations predictor step ......................     24392.018  (13.6158 %)
+6684:  Corrector time-step for tracers ..................     19596.678  (10.9390 %)
+6689:  Message Passage: 2D halo exchanges ...............     10134.729  ( 5.6573 %)
+6691:  Message Passage: 4D halo exchanges ...............     12844.396  ( 7.1699 %)
+6721: ROMS/TOMS: DONE... Saturday - August 1, 2026 - 11:37:37 AM
+6723:real	35m42.793s

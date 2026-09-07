@@ -1,0 +1,56 @@
+Failed to open /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so, continuing without symbols
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 12K of event 'cpu-clock:u'
+# Event count (approx.): 128333332050
+#
+# Overhead  Symbol                                                                            Shared Object          
+# ........  ................................................................................  .......................
+#
+    14.99%  [.] pre_step3d_mod_mp_pre_step3d_tile_                                            oceanM.S32_parent      
+    13.10%  [.] step3d_t_mod_mp_step3d_t_tile_                                                oceanM.S32_parent      
+     8.60%  [.] uct_dc_mlx5_iface_progress                                                    libuct_ib.so.0.0.0     
+     6.80%  [.] __libm_pow_e7                                                                 oceanM.S32_parent      
+     6.16%  [.] biology_mod_mp_biology_tile_                                                  oceanM.S32_parent      
+     5.56%  [.] mp_exchange_mod_mp_mp_exchange4d_                                             oceanM.S32_parent      
+     5.22%  [.] gls_corstep_mod_mp_gls_corstep_tile_                                          oceanM.S32_parent      
+     5.11%  [.] t3dmix_mod_mp_t3dmix4_tile_                                                   oceanM.S32_parent      
+     4.47%  [.] step2d_mod_mp_step2d_tile_                                                    oceanM.S32_parent      
+     2.11%  [.] nesting_mod_mp_get_contact3d_                                                 oceanM.S32_parent      
+     2.08%  [.] set_avg_mod_mp_set_avg_tile_                                                  oceanM.S32_parent      
+     1.83%  [.] __libm_exp_e7                                                                 oceanM.S32_parent      
+     1.70%  [.] ucp_worker_progress                                                           libucp.so.0.0.0        
+     1.59%  [.] nesting_mod_mp_put_refine3d_                                                  oceanM.S32_parent      
+     1.51%  [.] uct_mm_iface_progress                                                         libuct.so.0.0.0        
+     1.16%  [.] step3d_uv_mod_mp_step3d_uv_tile_                                              oceanM.S32_parent      
+     1.07%  [.] rhs3d_mod_mp_rhs3d_tile_                                                      oceanM.S32_parent      
+     1.02%  [.] nesting_mod_mp_collect_bry_fluxes_                                            oceanM.S32_parent      
+     0.87%  [.] prsgrd_mod_mp_prsgrd_                                                         oceanM.S32_parent      
+     0.87%  [.] rho_eos_mod_mp_rho_eos_tile_                                                  oceanM.S32_parent      
+     0.86%  [.] mp_exchange_mod_mp_mp_exchange3d_                                             oceanM.S32_parent      
+     0.78%  [.] __powr8i4                                                                     oceanM.S32_parent      
+     0.74%  [.] __memcpy_sse2                                                                 libc-2.17.so           
+     0.68%  [.] mca_pml_ucx_send                                                              mca_pml_ucx.so         
+     0.64%  [.] opal_progress                                                                 libopen-pal.so.40.20.4 
+     0.62%  [.] uv3dmix_mod_mp_uv3dmix2_                                                      oceanM.S32_parent      
+     0.61%  [.] opal_timer_linux_get_cycles_sys_timer                                         libopen-pal.so.40.20.4 
+     0.58%  [.] ompi_coll_libnbc_progress                                                     mca_coll_libnbc.so     
+     0.57%  [.] __memset_x86_64                                                               libc-2.17.so           
+     0.56%  [.] mp_exchange_mod_mp_mp_exchange2d_                                             oceanM.S32_parent      
+     0.54%  [.] hmixing_mod_mp_hmixing_                                                       oceanM.S32_parent      
+     0.52%  [.] nesting_mod_mp_fine2coarse3d_..1                                              oceanM.S32_parent      
+     0.50%  [.] gls_prestep_mod_mp_gls_prestep_tile_                                          oceanM.S32_parent      
+     0.41%  [.] omega_mod_mp_omega_                                                           oceanM.S32_parent      
+     0.39%  [.] wetdry_mod_mp_wetdry_mask_tile_                                               oceanM.S32_parent      
+     0.37%  [.] wvelocity_mod_mp_wvelocity_tile_                                              oceanM.S32_parent      
+     0.36%  [.] biology_mod_mp_co2_flux_                                                      oceanM.S32_parent      
+     0.35%  [.] lmd_swfrac_tile_                                                              oceanM.S32_parent      
+     0.27%  [.] set_ngfld_                                                                    oceanM.S32_parent      
+
+
+#
+# (Tip: Sample related events with: perf record -e '{cycles,instructions}:S')
+#

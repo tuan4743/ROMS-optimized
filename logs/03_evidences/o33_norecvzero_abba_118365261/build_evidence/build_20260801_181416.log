@@ -1,0 +1,219 @@
+BUILD_START=2026-08-01 18:14:16 +0800
+HOST=j05r2n14
+ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15
+PARENT=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+makefile:235: INCLUDING FILE Build/make_macros.mk WHICH CONTAINS APPLICATION-DEPENDENT MAKE DEFINITIONS
+/usr/bin/cpp -P -traditional -DMPI -DLINUX -DX86_64 -DIFORT -D'ROOT_DIR="/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15"' -DBYE24BIO15 -D'HEADER="bye24bio15.h"' -D'ROMS_HEADER="bye24bio15.h"' -DNestedGrids= -D'ANALYTICAL_DIR="/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15/ROMS/Functionals"' -D'SVN_REV="目录  未版本控制"' -IROMS/Include -IROMS/Nonlinear -IROMS/Nonlinear/Biology -IROMS/Nonlinear/Sediment -IROMS/Utility -IROMS/Drivers -IROMS/Functionals -IMaster -ICompilers -D'HEADER_DIR="/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15/ROMS/Include"'  ROMS/Utility/distribute.F > Build/distribute.f90
+ROMS/Bin/cpp_clean Build/distribute.f90
+rm -f -r /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15/make_macros.mk
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 distribute.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 mod_netcdf.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 state_dotprod.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 white_noise.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 regrid.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 extract_sta.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 read_couplepar.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 grid_coords.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 state_product.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wpoints.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nesting.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 stiffness.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 timers.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 roms_export.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 roms_import.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 obc_volcons.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 vwalk_floats.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 ocean_coupler.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 step_floats.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fread2d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 mod_fourdvar.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fread2d_bry.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fread3d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fread3d_bry.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fwrite2d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fwrite3d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fwrite2d_bry.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fwrite3d_bry.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_var.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 mod_sources.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_floats.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fread4d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_cycle.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 set_contact.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_dim.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_ngfld.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 nf_fwrite4d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 rpcg_lanczos.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 inp_par.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 obs_initial.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 close_io.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 mod_tides.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 random_ic.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 lbc.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 back_cost.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_error.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 inquire.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_varcoords.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_ngfldr.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_gst.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_2dfldr.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 obs_write.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_ini.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_gst.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 checkvars.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_state.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 array_modes.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_aug_imp.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 check_multifile.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 ini_lanczos.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 ini_adjust.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_dai.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_wetdry.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 -free analytical.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 metrics.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_3dfldr.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_station.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 step3d_uv_org.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wetdry.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 -qopenmp -no-heap-arrays -free biology.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 -qopenmp -no-heap-arrays pre_step3d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 output.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 step3d_uv.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_data.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_idata.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 mod_arrays.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 obs_depth.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 dotproduct.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 posterior.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 normalization.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 comp_Jb0.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_hessian.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_mod.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_gst.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 packing.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_norm.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_lanczos.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_info.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 read_asspar.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_diags.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 stats_modobs.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 obs_cost.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 obs_read.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_ini.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 zeta_balance.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 rep_matrix.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 read_phypar.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 congrad.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 inner2state.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 frc_weak.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 omega.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_info.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_2dfld.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_diags.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_rst.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_station.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_evolved.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_impulse.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_tides.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 time_corr.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_3dfld.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 cgradient.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_floats.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_his.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_rst.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 posterior_var.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_avg.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_nudgcoef.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_impulse.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 set_masks.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_tides.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_quick.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_avg.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_dai.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 convolve.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_error.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 propagator.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 def_hessian.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 set_tides.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 diag.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 step2d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 set_data.f90
+ar r Build/libANA.a Build/analytical.o
+ranlib Build/libANA.a
+ar r Build/libMODS.a Build/mod_mixing.o Build/mod_sedbed.o Build/mod_storage.o Build/mod_sources.o Build/mod_scalars.o Build/mod_fourdvar.o Build/mod_arrays.o Build/mod_eclight.o Build/mod_strings.o Build/mod_tides.o Build/mod_grid.o Build/mod_boundary.o Build/mod_sediment.o Build/mod_parallel.o Build/mod_ocean.o Build/mod_ncparam.o Build/mod_nesting.o Build/mod_average.o Build/mod_forces.o Build/mod_eoscoef.o Build/mod_behavior.o Build/mod_bbl.o Build/mod_kinds.o Build/mod_stepping.o Build/mod_biology.o Build/mod_diags.o Build/mod_iounits.o Build/mod_param.o Build/mod_coupler.o Build/mod_netcdf.o Build/mod_clima.o Build/mod_floats.o Build/mod_coupling.o
+ranlib Build/libMODS.a
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_his.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 wrt_quick.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 ocean_control.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 set_avg.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 abort.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 esmf_roms.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 master.f90
+ar r Build/libNLM_bio.a Build/biology.o Build/biology_floats.o
+ranlib Build/libNLM_bio.a
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 get_grid.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 -qopenmp -no-heap-arrays step3d_t.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 initial.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 rhs3d.f90
+ar r Build/libUTIL.a Build/set_2dfld.o Build/nf_fread2d.o Build/obs_depth.o Build/checkerror.o Build/dotproduct.o Build/set_2dfldr.o Build/posterior.o Build/normalization.o Build/set_3dfld.o Build/nf_fwrite2d_bry.o Build/sqlq.o Build/checkdefs.o Build/comp_Jb0.o Build/wrt_hessian.o Build/get_bounds.o Build/read_fltpar.o Build/read_sedpar.o Build/nf_fwrite3d_bry.o Build/def_mod.o Build/def_gst.o Build/packing.o Build/nf_fwrite3d.o Build/regrid.o Build/def_norm.o Build/def_lanczos.o Build/state_scale.o Build/wrt_info.o Build/extract_sta.o Build/wrt_floats.o Build/uv_rotate.o Build/read_asspar.o Build/obs_k2z.o Build/nf_fread3d_bry.o Build/wrt_diags.o Build/nf_fread4d.o Build/get_cycle.o Build/stats_modobs.o Build/checkadj.o Build/obs_cost.o Build/nf_fwrite2d.o Build/read_biopar.o Build/obs_read.o Build/def_ini.o Build/zeta_balance.o Build/rep_matrix.o Build/ludcmp.o Build/distribute.o Build/set_contact.o Build/read_phypar.o Build/congrad.o Build/inner2state.o Build/frc_weak.o Build/def_dim.o Build/round.o Build/state_initialize.o Build/ntimestep.o Build/get_ngfld.o Build/state_addition.o Build/wrt_his.o Build/nf_fread3d.o Build/def_info.o Build/get_2dfld.o Build/read_fltbiopar.o Build/def_diags.o Build/extract_obs.o Build/wrt_rst.o Build/set_ngfldr.o Build/shapiro.o Build/rpcg_lanczos.o Build/inp_par.o Build/set_ngfld.o Build/def_station.o Build/obs_initial.o Build/wrt_evolved.o Build/set_diags.o Build/wrt_impulse.o Build/set_3dfldr.o Build/read_couplepar.o Build/close_io.o Build/wrt_tides.o Build/wrt_quick.o Build/grid_coords.o Build/sum_grad.o Build/time_corr.o Build/strings.o Build/ran_state.o Build/get_3dfld.o Build/set_weights.o Build/lubksb.o Build/erf.o Build/cgradient.o Build/state_product.o Build/def_floats.o Build/random_ic.o Build/def_his.o Build/lbc.o Build/vorticity.o Build/state_copy.o Build/back_cost.o Build/mp_routines.o Build/set_scoord.o Build/def_rst.o Build/posterior_var.o Build/wrt_avg.o Build/dateclock.o Build/wpoints.o Build/get_nudgcoef.o Build/wrt_error.o Build/inquire.o Build/def_var.o Build/read_stapar.o Build/def_impulse.o Build/get_varcoords.o Build/set_masks.o Build/def_tides.o Build/get_ngfldr.o Build/def_quick.o Build/lanc_resid.o Build/wrt_gst.o Build/ini_hmixcoef.o Build/get_2dfldr.o Build/nrutil.o Build/get_grid.o Build/obs_write.o Build/wrt_ini.o Build/get_gst.o Build/ran1.o Build/checkvars.o Build/get_state.o Build/stiffness.o Build/interpolate.o Build/sum_imp.o Build/array_modes.o Build/wrt_aug_imp.o Build/gasdev.o Build/timers.o Build/check_multifile.o Build/ini_lanczos.o Build/ini_adjust.o Build/def_avg.o Build/mp_exchange.o Build/nf_fwrite4d.o Build/def_dai.o Build/white_noise.o Build/convolve.o Build/def_error.o Build/cost_grad.o Build/wrt_dai.o Build/get_wetdry.o Build/abort.o Build/state_dotprod.o Build/metrics.o Build/def_hessian.o Build/get_3dfldr.o Build/wrt_station.o Build/nf_fread2d_bry.o
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 main2d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 main3d.f90
+ranlib Build/libUTIL.a
+ar r Build/libNLM.a Build/step3d_t.o Build/obc_adjust.o Build/gls_prestep.o Build/set_tides.o Build/bc_2d.o Build/conv_3d.o Build/lmd_bkpp.o Build/nesting.o Build/bvf_mix.o Build/lmd_skpp.o Build/step3d_uv_org.o Build/uv3dmix.o Build/zetabc.o Build/bc_bry2d.o Build/conv_2d.o Build/main2d.o Build/exchange_3d.o Build/bulk_flux.o Build/wvelocity.o Build/u2dbc_im.o Build/v2dbc_im.o Build/lmd_vmix.o Build/interp_floats.o Build/frc_adjust.o Build/lmd_swfrac.o Build/conv_bry2d.o Build/step_floats.o Build/main3d.o Build/set_depth.o Build/tkebc_im.o Build/v3dbc_im.o Build/my25_corstep.o Build/conv_bry3d.o Build/bc_bry3d.o Build/hmixing.o Build/u3dbc_im.o Build/step2d.o Build/output.o Build/diag.o Build/t3dbc_im.o Build/omega.o Build/wetdry.o Build/set_massflux.o Build/exchange_2d.o Build/bbl.o Build/step3d_uv.o Build/set_avg.o Build/initial.o Build/get_data.o Build/prsgrd.o Build/obc_volcons.o Build/rho_eos.o Build/set_zeta.o Build/t3dmix.o Build/radiation_stress.o Build/forcing.o Build/rhs3d.o Build/set_data.o Build/get_idata.o Build/pre_step3d.o Build/my25_prestep.o Build/ini_fields.o Build/vwalk_floats.o Build/mpdata_adiff.o Build/gls_corstep.o Build/bc_3d.o Build/set_vbc.o
+ranlib Build/libNLM.a
+/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -heap-arrays -fp-model precise -ip -O3 -qopenmp Build/roms_import.o Build/propagator.o Build/master.o Build/roms_export.o Build/ocean_coupler.o Build/esmf_roms.o Build/ocean_control.o -o oceanM Build/libUTIL.a Build/libNLM.a Build/libNLM_bio.a Build/libNLM_sed.a Build/libANA.a Build/libUTIL.a Build/libMODS.a -L/public/software/mathlib/netcdf/4.4.1/intel/lib -lnetcdf -lnetcdff
+
+real	0m38.548s
+user	2m54.805s
+sys	0m9.799s
+MAKE_RC=0
+BUILD_END=2026-08-01 18:14:56 +0800
+ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_norecvzero_abba_20260801/ROMS_CoSiNE15
+PARENT_SOURCE_SHA=e1de89f3a01974084a91b09bb6064b7e4ff0d67be8276aee7e8d10ef0dcb743a
+CANDIDATE_SOURCE_SHA=c91c138ec6b912647f7d0c1d616cd6babc4d3250b7ae7c4e43efd61a8313d704
+ARECV_SITES=2735 3073 4931 5212
+3f9aa42af02861d205b85a3b73ae1c72eef13a4875a4b8b5584cc813d7a75b4c  oceanM
+3f9aa42af02861d205b85a3b73ae1c72eef13a4875a4b8b5584cc813d7a75b4c  oceanM.O33_norecvzero
+0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  coll_rules.conf
+05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21  ROMS/External/ocean_SCS_Dongsha60_bio15.in
+081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced  Compilers/Linux-ifort.mk
+219747441f5ec0dbfbeff3cb8b683bfd6eadd014beb7bfd6652cb891bf39d8a8  makefile
+	linux-vdso.so.1 =>  (0x00007ffe41df5000)
+	libnetcdf.so.11 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdf.so.11 (0x00002b3ab9520000)
+	libnetcdff.so.6 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdff.so.6 (0x00002b3ab9896000)
+	libmpi_usempif08.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempif08.so.40 (0x00002b3ab9d69000)
+	libmpi_usempi_ignore_tkr.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempi_ignore_tkr.so.40 (0x00002b3ab9fa1000)
+	libmpi_mpifh.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_mpifh.so.40 (0x00002b3aba1ad000)
+	libmpi.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi.so.40 (0x00002b3aba417000)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b3aba737000)
+	libiomp5.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so (0x00002b3abaa39000)
+	libpthread.so.0 => /usr//lib64/libpthread.so.0 (0x00002b3abaddd000)
+	libc.so.6 => /usr//lib64/libc.so.6 (0x00002b3abaff9000)
+	libgcc_s.so.1 => /usr//lib64/libgcc_s.so.1 (0x00002b3abb3c6000)
+	libdl.so.2 => /usr//lib64/libdl.so.2 (0x00002b3abb5dc000)
+	libhdf5_hl.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5_hl.so.10 (0x00002b3abb7e0000)
+	libhdf5.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5.so.10 (0x00002b3abba07000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b3abbfb8000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b3abc1ce000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b3abc6bb000)
+	libirng.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libirng.so (0x00002b3abd5d9000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b3abd94c000)
+	libifport.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifport.so.5 (0x00002b3abdbb7000)
+	libifcoremt.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifcoremt.so.5 (0x00002b3abdde6000)
+	libopen-rte.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-rte.so.40 (0x00002b3abe176000)
+	libopen-pal.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-pal.so.40 (0x00002b3abe43d000)
+	librt.so.1 => /lib64/librt.so.1 (0x00002b3abe707000)
+	libutil.so.1 => /lib64/libutil.so.1 (0x00002b3abe90f000)
+	libhwloc.so.15 => /opt/hpc/software/mpi/hwloc/lib/libhwloc.so.15 (0x00002b3abeb12000)
+	libudev.so.1 => /lib64/libudev.so.1 (0x00002b3abed5c000)
+	libxml2.so.2 => /lib64/libxml2.so.2 (0x00002b3abef72000)
+	libevent_core-2.0.so.5 => /lib64/libevent_core-2.0.so.5 (0x00002b3abf2dc000)
+	libevent_pthreads-2.0.so.5 => /lib64/libevent_pthreads-2.0.so.5 (0x00002b3abf507000)
+	/lib64/ld-linux-x86-64.so.2 (0x00002b3ab92fc000)
+	libcap.so.2 => /lib64/libcap.so.2 (0x00002b3abf70a000)
+	libdw.so.1 => /lib64/libdw.so.1 (0x00002b3abf90f000)
+	liblzma.so.5 => /lib64/liblzma.so.5 (0x00002b3abfb5e000)
+	libattr.so.1 => /lib64/libattr.so.1 (0x00002b3abfd84000)
+	libelf.so.1 => /lib64/libelf.so.1 (0x00002b3abff89000)
+	libbz2.so.1 => /lib64/libbz2.so.1 (0x00002b3ac01a1000)
+BUILD_OK

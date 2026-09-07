@@ -1,0 +1,18 @@
+O33_final backup manifest
+=========================
+
+Included in ROMS_CoSiNE15/:
+  - Full ROMS / Compilers / Master / User / Lib / Data / Projects / Atmosphere sources
+  - makefile, make.sh, make_macros.mk, coll_rules.conf
+  - Build/ object archive (for reference; rebuild with make.sh if needed)
+  - oceanM + oceanM.O33_final (identical; MD5 in ../VERSION.txt)
+  - .mcc_opt/staging/ key pre-patch sources (O43–O46 rollback refs)
+
+NOT included (by design):
+  - Historical output_* NetCDF trees (multi-GB)
+  - Sample/3day logs from development tree
+  - Alternate oceanM.O* experiment binaries
+  - Inputfiles payload (symlink only → /public/home/fujiake/Inputfiles)
+
+Scripts:
+  scripts/sub_final_3day.sh  — formal 3-day + auto vali → results/

@@ -1,0 +1,93 @@
+﻿############ scontrol
+JobName=sprint_O84
+RunTime=00:06:53
+ReqNodeList=(null)
+ExcNodeList=(null)
+NodeList=j01r2n[12-15]
+NumNodes=4
+Command=/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/sub.sh
+WorkDir=/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b
+StdOut=/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/slurm-118735123.out
+
+############ submit script
+cmd=/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/sub.sh
+-- header / purpose --
+#!/bin/bash
+# sprint 閫氱敤鎻愪氦鑴氭湰 鈥?O84 鐖舵湰璧风偣
+# 鐢ㄦ硶: ./sub.sh [sample|half|1day|3day] [binary_name]
+#   sample (榛樿): NTIMES=144/720  (~2-3 min, 绛涢€夌敤)
+#   half:          NTIMES=432/2160  (~5-7 min, 鍗婂ぉ纭)
+#   1day:          NTIMES=864/4320  (~12 min, vali 闂ㄦ)
+#   3day:          NTIMES=2592/12960 (~36 min, 姝ｅ紡鎴愮哗)
+# binary_name 榛樿 ./oceanM锛涘彲鎸囧畾 ./oceanM.O84_final 绛?#SBATCH -p kshcexclu06
+#SBATCH -N 4
+#SBATCH -n 64
+#SBATCH --exclusive
+#SBATCH -J sprint_O84
+#SBATCH -t 03:00:00
+
+set -euo pipefail
+ulimit -s unlimited
+ulimit -l unlimited
+module purge
+module load mathlib/netcdf/4.4.1/intel mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+
+cd /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b
+
+MODE=${1:-sample}
+BIN=${2:-./oceanM}
+RULES=$PWD/coll_rules.conf
+[[ -x "$BIN" && -f "$RULES" ]] || { echo "missing $BIN or $RULES"; exit 1; }
+
+case "$MODE" in
+  sample) NTIMES_VAL="144 720"    ; SUFFIX="samp"   ; WALL="00:30:00" ;;
+  half)   NTIMES_VAL="432 2160"   ; SUFFIX="half"   ; WALL="01:00:00" ;;
+  1day)   NTIMES_VAL="864 4320"   ; SUFFIX="1day"   ; WALL="01:30:00" ;;
+  3day)   NTIMES_VAL="2592 12960" ; SUFFIX="3day"   ; WALL="03:00:00" ;;
+  *) echo "unknown mode: $MODE"; exit 1 ;;
+esac
+
+# O84 + O33+O29 杩愯鏃堕厤缃?export OMPI_MCA_coll_hcoll_enable=0
+export OMP_NUM_THREADS=2
+export OMP_PROC_BIND=close
+
+############ live stdout tail
+out=/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/slurm-118735123.out
+('NTIMES=864 4320', 'output_sprint_1day_118735123')
+[sprint-1day] job=118735123 bin=./oceanM.s25_ipo.bak md5=2fd9885ad5e95d492b623d8cb6683706 OMP=2 KMP=0
+
+############ newest script dirs (what the other session has been building)
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/align_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifx_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifort2023_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifort2022_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/r3_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/libimf_bench_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_align_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifx_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2023_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2022_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/
+/public/home/fujiake/fjk/agent_tmp/isolated/work/current/
+/public/home/fujiake/fjk/mcc_runs/118733013_o33_align_abba_sample/
+/public/home/fujiake/fjk/mcc_runs/118732307_o33_ifx_abba_sample/
+/public/home/fujiake/fjk/mcc_runs/118731902_o33_ifx_abba_sample/
+/public/home/fujiake/fjk/mcc_runs/118730406_o33_ifort2022_full_64x2/
+/public/home/fujiake/fjk/mcc_runs/118729426_o33_ifort2023_abba_sample/
+/public/home/fujiake/fjk/mcc_runs/118616644_o33_hotteams_full_64x2/
+
+############ any O84 / sprint notes
+/public/home/fujiake/fjk/agent_tmp/logs/align_20260807/
+/public/home/fujiake/fjk/agent_tmp/logs/ifx_20260807/
+/public/home/fujiake/fjk/agent_tmp/logs/ifort2023_20260807/
+/public/home/fujiake/fjk/agent_tmp/logs/cand_20260806/
+/public/home/fujiake/fjk/agent_tmp/logs/ifort2022_20260807/
+/public/home/fujiake/fjk/agent_tmp/logs/r3_20260806/
+ssh : bash: line 33: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-8fcd19df-363f-470b-8d76-de86555beace.ps1:111 字符: 198
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 33: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

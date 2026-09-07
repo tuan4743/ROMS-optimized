@@ -1,0 +1,6 @@
+mean_A_seconds=126.436
+mean_B_seconds=125.021
+gain_percent=1.1195
+both_B_faster=False
+trajectory_consistent=True
+verdict=STOP_BRANCH

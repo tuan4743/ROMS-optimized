@@ -1,0 +1,10 @@
+# Stage 82 Read Summary — O33 v4 full-input source package
+
+- Date: 2026-08-03 +0800. Task: execute the Stage-67b prepared `package_o33_source_v4_full.sh` to promote the source archive from diagnostic (v3) to full-scoring-input (v4).
+- Script (local and remote): `04_提交准备/O33_交付清单_20260802/package_o33_source_v4_full.sh`, SHA-256 `18288668cf4a2ad83e1e4fcfaad450afbf7299d0985012cce6dc014f0484734e` (post-fix revision; see below).
+- Inputs: v3 archive `ROMS_CoSiNE15_O33_source_20260802_v3.tar.gz` SHA `3a1a0b30...de284` (match verified); full input `ocean_full_64_8x8.in` SHA `a3e8a5db...79a8` (match verified).
+- Raw result: first run (tag `manual_20260803_165751`) ended `FATAL: excluded content found: 2`. Second run (tag `manual_20260803_170424`) printed `PACKAGE_COMPLETE v4=/public/home/fujiake/fjk/delivery/o33_20260802/ROMS_CoSiNE15_O33_source_20260802_v4_full.tar.gz`.
+- Output artifact: v4 SHA-256 `b0e146e0f20abeef4bb3335761155e820bd829468614734aab604427ba28da6c`; 8828 entries; `gzip -t` OK; `excluded_count=0`; archived parameter file hash equals `a3e8a5db...79a8`; NTIMES=2592,12960; NtileI/J=8 8; manifest `v4.manifest.txt` written with v3/input/staging/critical-file hashes.
+- Failure analysis: v3 shipped legacy example `Projects/bye24/` containing a prebuilt `oceanM` (8,072,088 B) and a `Build` script. The v4 exclusion gate correctly rejected them; the fix excluded exactly those two entries at tar time (the gate pattern was not weakened).
+- Limitations: this is packaging/provenance work, not a model run. No timing, DONE marker, NetCDF, RMSE or scoring claim is made or implied. The compiled binary is unaffected by a runtime-only `.in` replacement, so no rebuild/rerun is needed solely for this packaging.
+- Output deletion status: no model output was deleted. One failed-run staging dir (469M) and its in-progress tar were renamed/removed within the private delivery root; failed tar retained as `ROMS_CoSiNE15_O33_source_20260802_v4_full.tar.gz.gatefail_20260803_165757` (+ contents listing) as gate evidence. Teammate queue jobs observed only, untouched.

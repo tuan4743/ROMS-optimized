@@ -1,0 +1,22 @@
+ Nonlinear model elapsed time profile, Grid: 01
+  Model 2D kernel ..................................       309.928  ( 3.0436 %)
+  Biological module, source/sink terms .............       199.882  ( 1.9629 %)
+  GLS vertical mixing parameterization .............       383.140  ( 3.7626 %)
+  3D equations predictor step ......................       458.432  ( 4.5020 %)
+  Corrector time-step for tracers ..................       378.587  ( 3.7179 %)
+ Nonlinear model message Passage profile, Grid: 01
+  Message Passage: 2D halo exchanges ...............       117.119  ( 1.1502 %)
+  Message Passage: 4D halo exchanges ...............       178.307  ( 1.7511 %)
+  Message Passage: point data gathering ............       139.416  ( 1.3691 %)
+ All percentages are with respect to total time =        10182.809
+ Nonlinear model elapsed time profile, Grid: 02
+  Model 2D kernel ..................................      1037.867  (10.1923 %)
+  Biological module, source/sink terms .............       559.337  ( 5.4929 %)
+  GLS vertical mixing parameterization .............       981.870  ( 9.6423 %)
+  3D equations predictor step ......................      1358.774  (13.3437 %)
+  Corrector time-step for tracers ..................      1068.594  (10.4940 %)
+ Nonlinear model message Passage profile, Grid: 02
+  Message Passage: 2D halo exchanges ...............       519.532  ( 5.1020 %)
+  Message Passage: 4D halo exchanges ...............       712.865  ( 7.0006 %)
+  Message Passage: point data gathering ............        39.662  ( 0.3895 %)
+ All percentages are with respect to total time =        10182.906

@@ -1,0 +1,392 @@
+########## A1
+ Node   # 30 CPU:     163.315
+ Node   #  1 CPU:     162.527
+ Node   # 15 CPU:     160.160
+ Node   # 11 CPU:     163.553
+ Node   #  7 CPU:     159.141
+ Node   #  9 CPU:     162.954
+ Node   # 12 CPU:     163.144
+ Node   #  6 CPU:     162.443
+ Node   #  4 CPU:     162.582
+ Node   #  2 CPU:     163.173
+ Node   #  8 CPU:     161.764
+ Node   # 10 CPU:     163.474
+ Total:             10396.664
+
+ Nonlinear model elapsed time profile, Grid: 01
+
+  Allocation and array initialization ..............        10.579  ( 0.1018 %)
+  Ocean state initialization .......................         8.363  ( 0.0804 %)
+  Reading of input data ............................       183.356  ( 1.7636 %)
+  Processing of input data .........................        37.234  ( 0.3581 %)
+  Processing of output time averaged data ..........        45.944  ( 0.4419 %)
+  Computation of vertical boundary conditions ......         1.473  ( 0.0142 %)
+  Computation of global information integrals ......         1.130  ( 0.0109 %)
+  Writing of output data ...........................         0.033  ( 0.0003 %)
+  Model 2D kernel ..................................       313.104  ( 3.0116 %)
+  Tidal forcing ....................................        30.322  ( 0.2917 %)
+  2D/3D coupling, vertical metrics .................        37.280  ( 0.3586 %)
+  Omega vertical velocity ..........................        16.137  ( 0.1552 %)
+  Equation of state for seawater ...................        33.416  ( 0.3214 %)
+  Biological module, source/sink terms .............       197.787  ( 1.9024 %)
+  GLS vertical mixing parameterization .............       385.445  ( 3.7074 %)
+  3D equations right-side terms ....................        52.299  ( 0.5030 %)
+  3D equations predictor step ......................       450.952  ( 4.3375 %)
+  Pressure gradient ................................        22.474  ( 0.2162 %)
+  Biharmonic mixing of tracers, S-surfaces .........       133.546  ( 1.2845 %)
+  Biharmonic mixing of tracers, geopotentials ......        34.353  ( 0.3304 %)
+  Harmonic stress tensor, S-surfaces ...............        14.121  ( 0.1358 %)
+  Corrector time-step for 3D momentum ..............        53.430  ( 0.5139 %)
+  Corrector time-step for tracers ..................       379.709  ( 3.6522 %)
+                                              Total:      2442.486   23.4930
+
+ Nonlinear model message Passage profile, Grid: 01
+
+  Message Passage: 2D halo exchanges ...............       122.307  ( 1.1764 %)
+  Message Passage: 3D halo exchanges ...............        79.285  ( 0.7626 %)
+  Message Passage: 4D halo exchanges ...............       177.157  ( 1.7040 %)
+  Message Passage: data broadcast ..................       249.180  ( 2.3967 %)
+  Message Passage: data reduction ..................         0.434  ( 0.0042 %)
+  Message Passage: data scattering..................       267.144  ( 2.5695 %)
+  Message Passage: boundary data gathering .........         6.781  ( 0.0652 %)
+  Message Passage: point data gathering ............       148.846  ( 1.4317 %)
+                                              Total:      1051.134   10.1103
+
+ All percentages are with respect to total time =        10396.664
+
+
+ Nonlinear model elapsed time profile, Grid: 02
+
+  Allocation and array initialization ..............        10.579  ( 0.1018 %)
+  Ocean state initialization .......................         7.714  ( 0.0742 %)
+  Reading of input data ............................        21.482  ( 0.2066 %)
+  Processing of input data .........................       109.082  ( 1.0492 %)
+  Processing of output time averaged data ..........       129.214  ( 1.2429 %)
+  Computation of vertical boundary conditions ......         3.715  ( 0.0357 %)
+  Computation of global information integrals ......         1.037  ( 0.0100 %)
+  Writing of output data ...........................         0.170  ( 0.0016 %)
+  Model 2D kernel ..................................      1038.312  ( 9.9871 %)
+  Tidal forcing ....................................         0.216  ( 0.0021 %)
+  2D/3D coupling, vertical metrics .................        62.112  ( 0.5974 %)
+  Omega vertical velocity ..........................        43.939  ( 0.4226 %)
+  Equation of state for seawater ...................        89.981  ( 0.8655 %)
+  Biological module, source/sink terms .............       553.214  ( 5.3212 %)
+  GLS vertical mixing parameterization .............       983.523  ( 9.4602 %)
+  3D equations right-side terms ....................       134.327  ( 1.2920 %)
+  3D equations predictor step ......................      1340.174  (12.8906 %)
+  Pressure gradient ................................        59.948  ( 0.5766 %)
+  Biharmonic mixing of tracers, S-surfaces .........       355.655  ( 3.4209 %)
+  Biharmonic mixing of tracers, geopotentials ......        90.322  ( 0.8688 %)
+  Harmonic stress tensor, S-surfaces ...............        36.154  ( 0.3478 %)
+  Corrector time-step for 3D momentum ..............       142.167  ( 1.3675 %)
+  Corrector time-step for tracers ..................      1061.505  (10.2102 %)
+                                              Total:      6274.541   60.3525
+
+ Nonlinear model message Passage profile, Grid: 02
+
+  Message Passage: 2D halo exchanges ...............       520.311  ( 5.0047 %)
+  Message Passage: 3D halo exchanges ...............       251.683  ( 2.4208 %)
+  Message Passage: 4D halo exchanges ...............       704.510  ( 6.7764 %)
+  Message Passage: data broadcast ..................        92.076  ( 0.8856 %)
+  Message Passage: data reduction ..................       125.493  ( 1.2071 %)
+  Message Passage: data scattering..................        92.208  ( 0.8869 %)
+  Message Passage: point data gathering ............        46.432  ( 0.4466 %)
+                                              Total:      1832.713   17.6282
+
+ All percentages are with respect to total time =        10396.483
+
+
+########## B1
+ Node   #  2 CPU:     166.083
+ Node   # 10 CPU:     166.302
+ Node   # 14 CPU:     165.593
+ Node   #  8 CPU:     164.166
+ Node   #  5 CPU:     165.790
+ Node   #  7 CPU:     161.985
+ Node   #  1 CPU:     165.399
+ Node   # 13 CPU:     166.206
+ Node   #  3 CPU:     165.366
+ Node   # 11 CPU:     166.140
+ Node   #  9 CPU:     165.583
+ Node   # 12 CPU:     166.070
+ Total:             10577.514
+
+ Nonlinear model elapsed time profile, Grid: 01
+
+  Allocation and array initialization ..............        10.501  ( 0.0993 %)
+  Ocean state initialization .......................         8.219  ( 0.0777 %)
+  Reading of input data ............................       124.831  ( 1.1802 %)
+  Processing of input data .........................        35.938  ( 0.3398 %)
+  Processing of output time averaged data ..........        46.532  ( 0.4399 %)
+  Computation of vertical boundary conditions ......         1.316  ( 0.0124 %)
+  Computation of global information integrals ......         1.072  ( 0.0101 %)
+  Writing of output data ...........................         0.031  ( 0.0003 %)
+  Model 2D kernel ..................................       304.169  ( 2.8756 %)
+  Tidal forcing ....................................        29.888  ( 0.2826 %)
+  2D/3D coupling, vertical metrics .................        39.519  ( 0.3736 %)
+  Omega vertical velocity ..........................        18.529  ( 0.1752 %)
+  Equation of state for seawater ...................        34.190  ( 0.3232 %)
+  Biological module, source/sink terms .............       198.183  ( 1.8736 %)
+  GLS vertical mixing parameterization .............       461.048  ( 4.3588 %)
+  3D equations right-side terms ....................        53.584  ( 0.5066 %)
+  3D equations predictor step ......................       452.712  ( 4.2799 %)
+  Pressure gradient ................................        22.272  ( 0.2106 %)
+  Biharmonic mixing of tracers, S-surfaces .........       133.748  ( 1.2645 %)
+  Biharmonic mixing of tracers, geopotentials ......        36.550  ( 0.3455 %)
+  Harmonic stress tensor, S-surfaces ...............        14.244  ( 0.1347 %)
+  Corrector time-step for 3D momentum ..............        62.010  ( 0.5862 %)
+  Corrector time-step for tracers ..................       367.827  ( 3.4774 %)
+                                              Total:      2456.914   23.2277
+
+ Nonlinear model message Passage profile, Grid: 01
+
+  Message Passage: 2D halo exchanges ...............       111.045  ( 1.0498 %)
+  Message Passage: 3D halo exchanges ...............        93.657  ( 0.8854 %)
+  Message Passage: 4D halo exchanges ...............       188.781  ( 1.7847 %)
+  Message Passage: data broadcast ..................       131.188  ( 1.2403 %)
+  Message Passage: data reduction ..................         0.391  ( 0.0037 %)
+  Message Passage: data scattering..................       267.917  ( 2.5329 %)
+  Message Passage: boundary data gathering .........         6.354  ( 0.0601 %)
+  Message Passage: point data gathering ............       128.481  ( 1.2147 %)
+                                              Total:       927.814    8.7716
+
+ All percentages are with respect to total time =        10577.514
+
+
+ Nonlinear model elapsed time profile, Grid: 02
+
+  Allocation and array initialization ..............        10.501  ( 0.0993 %)
+  Ocean state initialization .......................         7.648  ( 0.0723 %)
+  Reading of input data ............................        14.516  ( 0.1372 %)
+  Processing of input data .........................       109.030  ( 1.0308 %)
+  Processing of output time averaged data ..........       129.082  ( 1.2203 %)
+  Computation of vertical boundary conditions ......         4.016  ( 0.0380 %)
+  Computation of global information integrals ......         1.138  ( 0.0108 %)
+  Writing of output data ...........................         0.160  ( 0.0015 %)
+  Model 2D kernel ..................................      1017.333  ( 9.6178 %)
+  Tidal forcing ....................................         0.284  ( 0.0027 %)
+  2D/3D coupling, vertical metrics .................        66.464  ( 0.6283 %)
+  Omega vertical velocity ..........................        50.617  ( 0.4785 %)
+  Equation of state for seawater ...................        95.082  ( 0.8989 %)
+  Biological module, source/sink terms .............       557.257  ( 5.2683 %)
+  GLS vertical mixing parameterization .............      1178.273  (11.1393 %)
+  3D equations right-side terms ....................       138.177  ( 1.3063 %)
+  3D equations predictor step ......................      1360.583  (12.8629 %)
+  Pressure gradient ................................        59.762  ( 0.5650 %)
+  Biharmonic mixing of tracers, S-surfaces .........       355.988  ( 3.3655 %)
+  Biharmonic mixing of tracers, geopotentials ......        95.110  ( 0.8992 %)
+  Harmonic stress tensor, S-surfaces ...............        36.237  ( 0.3426 %)
+  Corrector time-step for 3D momentum ..............       161.782  ( 1.5295 %)
+  Corrector time-step for tracers ..................      1054.234  ( 9.9667 %)
+                                              Total:      6503.275   61.4815
+
+ Nonlinear model message Passage profile, Grid: 02
+
+  Message Passage: 2D halo exchanges ...............       502.824  ( 4.7537 %)
+  Message Passage: 3D halo exchanges ...............       303.342  ( 2.8678 %)
+  Message Passage: 4D halo exchanges ...............       741.903  ( 7.0139 %)
+  Message Passage: data broadcast ..................        57.966  ( 0.5480 %)
+  Message Passage: data reduction ..................       125.343  ( 1.1850 %)
+  Message Passage: data scattering..................        92.358  ( 0.8731 %)
+  Message Passage: point data gathering ............        32.740  ( 0.3095 %)
+                                              Total:      1856.476   17.5510
+
+ All percentages are with respect to total time =        10577.614
+
+
+########## B2
+ Node   # 13 CPU:     166.562
+ Node   # 14 CPU:     166.035
+ Node   #  6 CPU:     165.645
+ Node   #  2 CPU:     166.153
+ Node   #  4 CPU:     166.323
+ Node   #  5 CPU:     166.068
+ Node   #  9 CPU:     165.989
+ Node   #  8 CPU:     164.589
+ Node   # 15 CPU:     163.163
+ Node   #  3 CPU:     166.070
+ Node   #  7 CPU:     162.300
+ Node   # 11 CPU:     166.299
+ Total:             10598.500
+
+ Nonlinear model elapsed time profile, Grid: 01
+
+  Allocation and array initialization ..............        10.442  ( 0.0985 %)
+  Ocean state initialization .......................         8.075  ( 0.0762 %)
+  Reading of input data ............................        96.026  ( 0.9060 %)
+  Processing of input data .........................        35.832  ( 0.3381 %)
+  Processing of output time averaged data ..........        45.808  ( 0.4322 %)
+  Computation of vertical boundary conditions ......         1.317  ( 0.0124 %)
+  Computation of global information integrals ......         1.055  ( 0.0100 %)
+  Writing of output data ...........................         0.031  ( 0.0003 %)
+  Model 2D kernel ..................................       306.153  ( 2.8886 %)
+  Tidal forcing ....................................        29.770  ( 0.2809 %)
+  2D/3D coupling, vertical metrics .................        39.761  ( 0.3752 %)
+  Omega vertical velocity ..........................        18.668  ( 0.1761 %)
+  Equation of state for seawater ...................        34.176  ( 0.3225 %)
+  Biological module, source/sink terms .............       197.965  ( 1.8679 %)
+  GLS vertical mixing parameterization .............       466.380  ( 4.4004 %)
+  3D equations right-side terms ....................        53.591  ( 0.5056 %)
+  3D equations predictor step ......................       453.055  ( 4.2747 %)
+  Pressure gradient ................................        22.291  ( 0.2103 %)
+  Biharmonic mixing of tracers, S-surfaces .........       133.465  ( 1.2593 %)
+  Biharmonic mixing of tracers, geopotentials ......        36.388  ( 0.3433 %)
+  Harmonic stress tensor, S-surfaces ...............        14.241  ( 0.1344 %)
+  Corrector time-step for 3D momentum ..............        62.378  ( 0.5886 %)
+  Corrector time-step for tracers ..................       376.745  ( 3.5547 %)
+                                              Total:      2443.615   23.0562
+
+ Nonlinear model message Passage profile, Grid: 01
+
+  Message Passage: 2D halo exchanges ...............       113.894  ( 1.0746 %)
+  Message Passage: 3D halo exchanges ...............        96.905  ( 0.9143 %)
+  Message Passage: 4D halo exchanges ...............       191.143  ( 1.8035 %)
+  Message Passage: data broadcast ..................       111.854  ( 1.0554 %)
+  Message Passage: data reduction ..................         0.370  ( 0.0035 %)
+  Message Passage: data scattering..................       266.945  ( 2.5187 %)
+  Message Passage: boundary data gathering .........         6.207  ( 0.0586 %)
+  Message Passage: point data gathering ............       123.649  ( 1.1667 %)
+                                              Total:       910.968    8.5953
+
+ All percentages are with respect to total time =        10598.500
+
+
+ Nonlinear model elapsed time profile, Grid: 02
+
+  Allocation and array initialization ..............        10.443  ( 0.0985 %)
+  Ocean state initialization .......................         7.389  ( 0.0697 %)
+  Reading of input data ............................         8.032  ( 0.0758 %)
+  Processing of input data .........................       152.464  ( 1.4385 %)
+  Processing of output time averaged data ..........       129.067  ( 1.2178 %)
+  Computation of vertical boundary conditions ......         4.283  ( 0.0404 %)
+  Computation of global information integrals ......         1.153  ( 0.0109 %)
+  Writing of output data ...........................         0.161  ( 0.0015 %)
+  Model 2D kernel ..................................      1019.912  ( 9.6230 %)
+  Tidal forcing ....................................         0.283  ( 0.0027 %)
+  2D/3D coupling, vertical metrics .................        66.686  ( 0.6292 %)
+  Omega vertical velocity ..........................        50.853  ( 0.4798 %)
+  Equation of state for seawater ...................        96.363  ( 0.9092 %)
+  Biological module, source/sink terms .............       556.033  ( 5.2462 %)
+  GLS vertical mixing parameterization .............      1171.033  (11.0488 %)
+  3D equations right-side terms ....................       138.047  ( 1.3025 %)
+  3D equations predictor step ......................      1357.423  (12.8074 %)
+  Pressure gradient ................................        59.807  ( 0.5643 %)
+  Biharmonic mixing of tracers, S-surfaces .........       355.821  ( 3.3572 %)
+  Biharmonic mixing of tracers, geopotentials ......        95.181  ( 0.8980 %)
+  Harmonic stress tensor, S-surfaces ...............        36.250  ( 0.3420 %)
+  Corrector time-step for 3D momentum ..............       162.014  ( 1.5286 %)
+  Corrector time-step for tracers ..................      1047.789  ( 9.8860 %)
+                                              Total:      6526.488   61.5780
+
+ Nonlinear model message Passage profile, Grid: 02
+
+  Message Passage: 2D halo exchanges ...............       549.890  ( 5.1883 %)
+  Message Passage: 3D halo exchanges ...............       298.683  ( 2.8181 %)
+  Message Passage: 4D halo exchanges ...............       736.247  ( 6.9466 %)
+  Message Passage: data broadcast ..................        25.374  ( 0.2394 %)
+  Message Passage: data reduction ..................       121.919  ( 1.1503 %)
+  Message Passage: data scattering..................        91.611  ( 0.8644 %)
+  Message Passage: point data gathering ............        41.433  ( 0.3909 %)
+                                              Total:      1865.157   17.5979
+
+ All percentages are with respect to total time =        10598.730
+
+
+########## A2
+ Node   #  9 CPU:     159.012
+ Node   # 14 CPU:     158.455
+ Node   # 13 CPU:     159.406
+ Node   #  4 CPU:     158.926
+ Node   #  6 CPU:     158.331
+ Node   # 11 CPU:     159.228
+ Node   #  7 CPU:     155.336
+ Node   # 12 CPU:     159.421
+ Node   #  8 CPU:     157.633
+ Node   # 15 CPU:     156.153
+ Node   #  2 CPU:     159.110
+ Node   # 10 CPU:     159.537
+ Total:             10138.025
+
+ Nonlinear model elapsed time profile, Grid: 01
+
+  Allocation and array initialization ..............        10.481  ( 0.1034 %)
+  Ocean state initialization .......................         8.636  ( 0.0852 %)
+  Reading of input data ............................        86.087  ( 0.8491 %)
+  Processing of input data .........................        36.915  ( 0.3641 %)
+  Processing of output time averaged data ..........        46.011  ( 0.4538 %)
+  Computation of vertical boundary conditions ......         1.389  ( 0.0137 %)
+  Computation of global information integrals ......         1.094  ( 0.0108 %)
+  Writing of output data ...........................         0.033  ( 0.0003 %)
+  Model 2D kernel ..................................       305.542  ( 3.0138 %)
+  Tidal forcing ....................................        29.877  ( 0.2947 %)
+  2D/3D coupling, vertical metrics .................        37.129  ( 0.3662 %)
+  Omega vertical velocity ..........................        16.151  ( 0.1593 %)
+  Equation of state for seawater ...................        32.996  ( 0.3255 %)
+  Biological module, source/sink terms .............       197.622  ( 1.9493 %)
+  GLS vertical mixing parameterization .............       381.338  ( 3.7615 %)
+  3D equations right-side terms ....................        52.272  ( 0.5156 %)
+  3D equations predictor step ......................       450.720  ( 4.4458 %)
+  Pressure gradient ................................        22.284  ( 0.2198 %)
+  Biharmonic mixing of tracers, S-surfaces .........       133.831  ( 1.3201 %)
+  Biharmonic mixing of tracers, geopotentials ......        34.369  ( 0.3390 %)
+  Harmonic stress tensor, S-surfaces ...............        14.127  ( 0.1393 %)
+  Corrector time-step for 3D momentum ..............        53.453  ( 0.5273 %)
+  Corrector time-step for tracers ..................       371.661  ( 3.6660 %)
+                                              Total:      2324.019   22.9238
+
+ Nonlinear model message Passage profile, Grid: 01
+
+  Message Passage: 2D halo exchanges ...............       114.398  ( 1.1284 %)
+  Message Passage: 3D halo exchanges ...............        76.149  ( 0.7511 %)
+  Message Passage: 4D halo exchanges ...............       175.313  ( 1.7293 %)
+  Message Passage: data broadcast ..................       104.854  ( 1.0343 %)
+  Message Passage: data reduction ..................         0.382  ( 0.0038 %)
+  Message Passage: data scattering..................       267.950  ( 2.6430 %)
+  Message Passage: boundary data gathering .........         6.307  ( 0.0622 %)
+  Message Passage: point data gathering ............       130.407  ( 1.2863 %)
+                                              Total:       875.760    8.6384
+
+ All percentages are with respect to total time =        10138.025
+
+
+ Nonlinear model elapsed time profile, Grid: 02
+
+  Allocation and array initialization ..............        10.481  ( 0.1034 %)
+  Ocean state initialization .......................         8.014  ( 0.0790 %)
+  Reading of input data ............................        15.729  ( 0.1551 %)
+  Processing of input data .........................       110.447  ( 1.0894 %)
+  Processing of output time averaged data ..........       129.011  ( 1.2725 %)
+  Computation of vertical boundary conditions ......         3.672  ( 0.0362 %)
+  Computation of global information integrals ......         1.108  ( 0.0109 %)
+  Writing of output data ...........................         0.168  ( 0.0017 %)
+  Model 2D kernel ..................................      1030.016  (10.1597 %)
+  Tidal forcing ....................................         0.216  ( 0.0021 %)
+  2D/3D coupling, vertical metrics .................        62.015  ( 0.6117 %)
+  Omega vertical velocity ..........................        44.055  ( 0.4345 %)
+  Equation of state for seawater ...................        89.728  ( 0.8850 %)
+  Biological module, source/sink terms .............       552.730  ( 5.4520 %)
+  GLS vertical mixing parameterization .............       974.689  ( 9.6140 %)
+  3D equations right-side terms ....................       134.304  ( 1.3247 %)
+  3D equations predictor step ......................      1336.497  (13.1828 %)
+  Pressure gradient ................................        60.108  ( 0.5929 %)
+  Biharmonic mixing of tracers, S-surfaces .........       355.760  ( 3.5091 %)
+  Biharmonic mixing of tracers, geopotentials ......        90.408  ( 0.8918 %)
+  Harmonic stress tensor, S-surfaces ...............        36.142  ( 0.3565 %)
+  Corrector time-step for 3D momentum ..............       142.094  ( 1.4016 %)
+  Corrector time-step for tracers ..................      1046.020  (10.3176 %)
+                                              Total:      6233.411   61.4844
+
+ Nonlinear model message Passage profile, Grid: 02
+
+  Message Passage: 2D halo exchanges ...............       513.978  ( 5.0697 %)
+  Message Passage: 3D halo exchanges ...............       247.061  ( 2.4369 %)
+  Message Passage: 4D halo exchanges ...............       699.708  ( 6.9017 %)
+  Message Passage: data broadcast ..................        35.987  ( 0.3550 %)
+  Message Passage: data reduction ..................       124.636  ( 1.2294 %)
+  Message Passage: data scattering..................        91.995  ( 0.9074 %)
+  Message Passage: point data gathering ............        38.187  ( 0.3767 %)
+                                              Total:      1751.554   17.2768
+
+ All percentages are with respect to total time =        10138.203
+
+

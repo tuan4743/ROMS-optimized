@@ -1,0 +1,115 @@
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+            remark #15388: vectorization support: reference t(i,j,k,3,itrc) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(501,15) ]
+            remark #15389: vectorization support: reference at (501:31) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(501,31) ]
+            remark #15388: vectorization support: reference t(i,j,k,3,itrc) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(502,32) ]
+            remark #15389: vectorization support: reference at (503:32) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,32) ]
+            remark #15389: vectorization support: reference at (503:43) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,43) ]
+            remark #15388: vectorization support: reference at (503:51) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,51) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 2
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.359
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 2 
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15450: unmasked unaligned unit stride loads: 3 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 14 
+            remark #15477: vector cost: 8.000 
+            remark #15478: estimated potential speedup: 1.710 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+         <Alternate Alignment Vectorized Loop>
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+         <Remainder loop for vectorization>
+            remark #15388: vectorization support: reference t(i,j,k,3,itrc) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(501,15) ]
+            remark #15389: vectorization support: reference at (501:31) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(501,31) ]
+            remark #15388: vectorization support: reference t(i,j,k,3,itrc) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(502,32) ]
+            remark #15389: vectorization support: reference at (503:32) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,32) ]
+            remark #15389: vectorization support: reference at (503:43) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,43) ]
+            remark #15389: vectorization support: reference at (503:51) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,51) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.759
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(499,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+            remark #15389: vectorization support: reference at (501:31) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(501,31) ]
+            remark #15389: vectorization support: reference at (503:32) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,32) ]
+            remark #15388: vectorization support: reference at (503:43) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,43) ]
+            remark #15388: vectorization support: reference at (503:51) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(503,51) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15329: vectorization support: non-unit strided store was emulated for the variable <t(i,j,k,3,itrc)>, stride is unknown to compiler   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(501,15) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,3,itrc)>, stride is unknown to compiler   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(502,32) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.300
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 2 
+            remark #15450: unmasked unaligned unit stride loads: 2 
+            remark #15452: unmasked strided loads: 1 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 14 
+            remark #15477: vector cost: 10.000 
+            remark #15478: estimated potential speedup: 1.380 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+         <Alternate Alignment Vectorized Loop>
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(500,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(521,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(523,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(525,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(526,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(526,13)
+            remark #15389: vectorization support: reference z_r(i,j,k+1) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(527,27) ]
+            remark #15389: vectorization support: reference z_r(i,j,k) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(527,40) ]
+            remark #15388: vectorization support: reference at (528:15) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(528,15) ]
+            remark #15389: vectorization support: reference akt(i,j,k,ltrc) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(528,32) ]
+            remark #15389: vectorization support: reference t(i,j,k+1,nstp,itrc) has unaligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(529,24) ]
+            remark #15388: vectorization support: reference t(i,j,k,nstp,itrc) has aligned access   [ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90(530,24) ]
+            remark #15381: vectorization support: unaligned access used inside loop body

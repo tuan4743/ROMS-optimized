@@ -1,0 +1,52 @@
+STAGE134_BEGIN 2026-08-09T16:06:38+0800
+JOB=118821410 HOST=j01r2n00 WORK=/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_s134_optrpt_r2_20260809/ROMS_CoSiNE15 AUDIT=/public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809
+615ee7173c015eccc13ae8e3b193092d396817ae4a18648b3d7b55a517087d3e  /public/home/fujiake/nan/sprint/backup_S32_src_20260808.tar.gz
+d9a45dbbc351a3e386a504c87d355f0db2197c6c6bdec2b5eb2b2276b36fe5a2  /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s32_ifort2021_ipo.bak
+e5635f7c6d738f1998ecbdaa2ee50748c5cd613d28f7989adaedb6f39b119859  /opt/gridview/slurm/spool_slurmd/job118821410/slurm_script
+e6bb15f37b70a5b8bd48674efae35ffd1d20dfccfd07d97761b6407f14f3914a  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/s32_s134_optrpt_20260809/report_flags.patch
+Currently Loaded Modulefiles:
+compiler/intel/2021.3.0
+mpi/hpcx/2.7.4/intel-2017.5.239
+mathlib/netcdf/4.4.1/intel
+mathlib/hdf5/1.8.20/intel
+ifort (IFORT) 2021.3.0 20210609
+Copyright (C) 1985-2021 Intel Corporation.  All rights reserved.
+
+ifort -I/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/include -I/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib -L/opt/hpc/software/mpi/hwloc//lib -L/usr//lib64 -Wl,-rpath -Wl,/opt/hpc/software/mpi/hwloc//lib -Wl,-rpath -Wl,/usr//lib64 -Wl,-rpath -Wl,/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib -Wl,--enable-new-dtags -L/opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi
+ROMS/Nonlinear/Biology/bio_UMAINE15.h
+ROMS/Nonlinear/Biology/biology.F
+ROMS/Nonlinear/gls_corstep.F
+ROMS/Nonlinear/pre_step3d.F
+ROMS/Nonlinear/step2d.F
+ROMS/Nonlinear/step2d_LF_AM3.h
+ROMS/Nonlinear/step3d_t.F
+ROMS/Nonlinear/t3dmix.F
+ROMS/Nonlinear/t3dmix4_s.h
+APRIME_BUILD_BEGIN 2026-08-09T16:06:46+0800
+APRIME_BUILD_END 2026-08-09T16:12:15+0800
+2e80a9b1050f697f2eee14dd6b2a84cf0df315b810421053080e9a95ade361c8  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/oceanM.Aprime
+9236f2fdbbb45f4cca33032a1063c3a20e0f3fadeb0328aba3353b7d030bd80f  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/objects/biology.o
+64b9a2d3880aff66bee4c1a78377b9cbebddccdafbd609580f8f9c3f6b8576e8  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/objects/gls_corstep.o
+6b561ff4456d5c8ff0e61629d4f6e6c927a9e17120b261527009347ff879b801  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/objects/pre_step3d.o
+efe03ba9648186d8b98255b88c6e3f07c37afc30f1f762c9b0f756b1270ea356  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/objects/step2d.o
+0958a74fd4786da1d0763446021d78c3a7ddfccce208edad56df73d4b3a56fd6  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/objects/step3d_t.o
+27407e79a3ba24a4b300b7a44ad7ee0dcce920209546426f14a4f071cd847275  /public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809/aprime/objects/t3dmix.o
+checking file Compilers/Linux-ifort.mk
+Hunk #1 succeeded at 35 with fuzz 1 (offset 1 line).
+patching file Compilers/Linux-ifort.mk
+Hunk #1 succeeded at 35 with fuzz 1 (offset 1 line).
+REPORT_BUILD_BEGIN 2026-08-09T16:12:15+0800
+REPORT_BUILD_END 2026-08-09T16:18:17+0800
+REPORT_COUNT=273
+artifact|byte_identical
+oceanM|no
+pre_step3d.o|no
+step3d_t.o|no
+gls_corstep.o|no
+step2d.o|no
+biology.o|no
+t3dmix.o|no
+linked_disassembly_identical=no
+372M	/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_s134_optrpt_r2_20260809
+308M	/public/home/fujiake/fjk/agent_tmp/isolated/audits/s32_s134_optrpt_r2_20260809
+STAGE134_DONE 2026-08-09T16:18:34+0800

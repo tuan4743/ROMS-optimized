@@ -1,0 +1,3 @@
+09972ba7107b5e540d5647296f9b1a3ffad012df3d6069b275dc74d10a4737a3  Compilers/Linux-ifort.mk
+cff809697cd40659a1681c9bd22ae1ce5a9ea713fed3a9c80cbae547272d2491  oceanM.s47_candidate
+6608595f5495410d12c68cdc427f68b0  oceanM.s47_candidate

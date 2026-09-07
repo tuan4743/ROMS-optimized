@@ -1,0 +1,10 @@
+source	source_line	report_line	remark
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	370	714	remark #15344: loop was not vectorized: vector dependence prevents vectorization
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	370	715	remark #15346: vector dependence: assumed FLOW dependence between at (377:19) and sources_(:,is,k,itrc) (380:19)
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	370	716	remark #15346: vector dependence: assumed ANTI dependence between sources_(:,is,k,itrc) (380:19) and at (377:19)
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	470	1059	remark #15344: loop was not vectorized: vector dependence prevents vectorization
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	470	1060	remark #15346: vector dependence: assumed OUTPUT dependence between at (477:19) and at (477:19)
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	470	1061	remark #15346: vector dependence: assumed OUTPUT dependence between at (477:19) and at (477:19)
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	476	1064	remark #15344: loop was not vectorized: vector dependence prevents vectorization
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	476	1065	remark #15346: vector dependence: assumed FLOW dependence between at (477:19) and sources_(ng,is,k) (477:19)
+/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90	476	1066	remark #15346: vector dependence: assumed ANTI dependence between sources_(ng,is,k) (477:19) and at (477:19)

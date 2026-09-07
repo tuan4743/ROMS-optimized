@@ -1,0 +1,8 @@
+ Nonlinear model elapsed time profile, Grid: 01
+  Message Passage: 2D halo exchanges ...............       123.355  ( 1.1827 %)
+  Message Passage: 4D halo exchanges ...............       181.226  ( 1.7376 %)
+ All percentages are with respect to total time =        10429.708
+ Nonlinear model elapsed time profile, Grid: 02
+  Message Passage: 2D halo exchanges ...............       545.673  ( 5.2318 %)
+  Message Passage: 4D halo exchanges ...............       720.569  ( 6.9087 %)
+ All percentages are with respect to total time =        10429.891

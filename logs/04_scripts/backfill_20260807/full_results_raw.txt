@@ -1,0 +1,884 @@
+﻿================ 118405320_o33_full_reproduce_64x2
+  mtime: 2026-08-02 14:34:59
+  model.log: /public/home/fujiake/fjk/mcc_runs/118405320_o33_full_reproduce_64x2/logs/model.log
+     All percentages are with respect to total time =       178516.604
+     All percentages are with respect to total time =       178516.326
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11758.930    6.5870
+                                                  Total:    114762.107   64.2866
+                                                  Total:     31341.330   17.5566
+    tail| 
+    tail|  ROMS/TOMS: DONE... Sunday - August 2, 2026 -  3:10:35 PM
+    tail| 
+    tail| real	35m36.310s
+    tail| user	710m38.955s
+    tail| sys	32m52.130s
+  --- validation ---
+    validated_output_sha256.txt
+    vali_result.txt
+    vali_time.txt
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000035   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000019   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.001974   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001130   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+    [[validated_output_sha256.txt]] PASS=0 FAIL=0
+    [[vali_time.txt]] PASS=0 FAIL=0
+  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j01r2n00 slot=0,1
+      rank 1=j01r2n00 slot=2,3
+      rank 2=j01r2n00 slot=8,9
+      rank 3=j01r2n00 slot=10,11
+      rank 4=j01r2n00 slot=16,17
+      rank 5=j01r2n00 slot=18,19
+      rank 6=j01r2n00 slot=24,25
+      rank 7=j01r2n00 slot=26,27
+      rank 8=j01r2n00 slot=4,5
+      rank 9=j01r2n00 slot=6,7
+      rank 10=j01r2n00 slot=12,13
+      rank 11=j01r2n00 slot=14,15
+      rank 12=j01r2n00 slot=20,21
+      rank 13=j01r2n00 slot=22,23
+      rank 14=j01r2n00 slot=28,29
+      rank 15=j01r2n00 slot=30,31
+      rank 16=j01r2n01 slot=0,1
+      rank 17=j01r2n01 slot=2,3
+      rank 18=j01r2n01 slot=8,9
+      rank 19=j01r2n01 slot=10,11
+      rank 20=j01r2n01 slot=16,17
+      rank 21=j01r2n01 slot=18,19
+      rank 22=j01r2n01 slot=24,25
+      rank 23=j01r2n01 slot=26,27
+      rank 24=j01r2n01 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_full_reproduce
+      job=118405320 nodes=j01r2n[00-03]
+      free_kb=58788848
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      edf60e58410212b7632c907b836ae84e3aa998463d8947c9db29f6f7b9207e45  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/o33_full_reproduce_20260802/run_full_validate.slurm
+      validation_result=pass
+      COMPLETE 2026-08-02T15:11:01+0800
+================ 118616644_o33_hotteams_full_64x2
+  mtime: 2026-08-07 16:43:23
+  model.log: /public/home/fujiake/fjk/mcc_runs/118616644_o33_hotteams_full_64x2/logs/model.log
+     All percentages are with respect to total time =       176758.021
+     All percentages are with respect to total time =       176758.196
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11409.887    6.4551
+                                                  Total:    113096.397   63.9837
+                                                  Total:     30348.147   17.1693
+    tail| 
+    tail|  ROMS/TOMS: DONE... Wednesday - August 5, 2026 -  5:27:00 PM
+    tail| 
+    tail| real	35m9.183s
+    tail| user	704m46.380s
+    tail| sys	31m45.205s
+  --- validation ---
+    validated_output_sha256.txt
+    vali_result.txt
+    vali_time.txt
+    [[vali_time.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000035   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000019   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.001974   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001130   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+    [[validated_output_sha256.txt]] PASS=0 FAIL=0
+  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j04r2n08 slot=0,1
+      rank 1=j04r2n08 slot=2,3
+      rank 2=j04r2n08 slot=8,9
+      rank 3=j04r2n08 slot=10,11
+      rank 4=j04r2n08 slot=16,17
+      rank 5=j04r2n08 slot=18,19
+      rank 6=j04r2n08 slot=24,25
+      rank 7=j04r2n08 slot=26,27
+      rank 8=j04r2n08 slot=4,5
+      rank 9=j04r2n08 slot=6,7
+      rank 10=j04r2n08 slot=12,13
+      rank 11=j04r2n08 slot=14,15
+      rank 12=j04r2n08 slot=20,21
+      rank 13=j04r2n08 slot=22,23
+      rank 14=j04r2n08 slot=28,29
+      rank 15=j04r2n08 slot=30,31
+      rank 16=j04r2n09 slot=0,1
+      rank 17=j04r2n09 slot=2,3
+      rank 18=j04r2n09 slot=8,9
+      rank 19=j04r2n09 slot=10,11
+      rank 20=j04r2n09 slot=16,17
+      rank 21=j04r2n09 slot=18,19
+      rank 22=j04r2n09 slot=24,25
+      rank 23=j04r2n09 slot=26,27
+      rank 24=j04r2n09 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_hotteams_full_reproduce
+      job=118616644 nodes=j04r2n[08-11]
+      free_kb=69360944
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+      5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      8d82cf6c30b8811ac3bdf566953a59d6d88ccb21462d3c1b7061fc4bc8cb350f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/hotteams_20260805/run_hotteams_full_validate.slurm
+      validation_result=pass
+      COMPLETE 2026-08-05T17:27:24+0800
+================ 118662236_o33_ifort2021_full_64x2
+  mtime: 2026-08-06 13:32:14
+  model.log: /public/home/fujiake/fjk/mcc_runs/118662236_o33_ifort2021_full_64x2/logs/model.log
+     All percentages are with respect to total time =       171051.352
+     All percentages are with respect to total time =       171051.873
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11323.421    6.6199
+                                                  Total:    108649.713   63.5186
+                                                  Total:     31323.264   18.3121
+    tail| 
+    tail|  ROMS/TOMS: DONE... Thursday - August 6, 2026 -  2:05:54 PM
+    tail| 
+    tail| real	33m39.809s
+    tail| user	681m45.444s
+    tail| sys	31m0.747s
+  --- validation ---
+    validated_output_sha256.txt
+    vali_result.txt
+    vali_time.txt
+    [[vali_time.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000035   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000019   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.001974   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001130   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+    [[validated_output_sha256.txt]] PASS=0 FAIL=0
+  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j01r2n02 slot=0,1
+      rank 1=j01r2n02 slot=2,3
+      rank 2=j01r2n02 slot=8,9
+      rank 3=j01r2n02 slot=10,11
+      rank 4=j01r2n02 slot=16,17
+      rank 5=j01r2n02 slot=18,19
+      rank 6=j01r2n02 slot=24,25
+      rank 7=j01r2n02 slot=26,27
+      rank 8=j01r2n02 slot=4,5
+      rank 9=j01r2n02 slot=6,7
+      rank 10=j01r2n02 slot=12,13
+      rank 11=j01r2n02 slot=14,15
+      rank 12=j01r2n02 slot=20,21
+      rank 13=j01r2n02 slot=22,23
+      rank 14=j01r2n02 slot=28,29
+      rank 15=j01r2n02 slot=30,31
+      rank 16=j01r2n03 slot=0,1
+      rank 17=j01r2n03 slot=2,3
+      rank 18=j01r2n03 slot=8,9
+      rank 19=j01r2n03 slot=10,11
+      rank 20=j01r2n03 slot=16,17
+      rank 21=j01r2n03 slot=18,19
+      rank 22=j01r2n03 slot=24,25
+      rank 23=j01r2n03 slot=26,27
+      rank 24=j01r2n03 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_ifort2021_full_reproduce
+      job=118662236 nodes=j01r2n[02-05]
+      free_kb=54318192
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      compiler=ifort2021 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+      5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      896f4de311d008d5146e0603c2e751112f02081fe25afe116a2a29bead248ce8  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifort2021_20260805/run_ifort2021_full_validate.slurm
+      validation_result=pass
+      COMPLETE 2026-08-06T14:06:21+0800
+================ 118663696_o33_gcc731_full_64x2
+  mtime: 2026-08-07 16:43:23
+  model.log: /public/home/fujiake/fjk/mcc_runs/118663696_o33_gcc731_full_64x2/logs/model.log
+     All percentages are with respect to total time =       179638.520
+     All percentages are with respect to total time =       179638.624
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11648.837    6.4846
+                                                  Total:    113960.564   63.4388
+                                                  Total:     29969.742   16.6834
+    tail| 
+    tail|  ROMS/TOMS: DONE... Thursday - August 6, 2026 -  2:43:50 PM
+    tail| 
+    tail| real	34m19.171s
+    tail| user	727m3.135s
+    tail| sys	20m15.568s
+  --- validation ---
+    vali_result.txt
+    vali_time.txt
+    [[vali_time.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000039   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000021   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.002125   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001232   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細鑷冲皯涓€缁勬枃浠跺瓨鍦ㄥ彉閲廟MSE瓒呴檺锛屼紭鍖栫粨鏋滃瓨鍦ㄥ紓甯?  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=i17r1n00 slot=0,1
+      rank 1=i17r1n00 slot=2,3
+      rank 2=i17r1n00 slot=8,9
+      rank 3=i17r1n00 slot=10,11
+      rank 4=i17r1n00 slot=16,17
+      rank 5=i17r1n00 slot=18,19
+      rank 6=i17r1n00 slot=24,25
+      rank 7=i17r1n00 slot=26,27
+      rank 8=i17r1n00 slot=4,5
+      rank 9=i17r1n00 slot=6,7
+      rank 10=i17r1n00 slot=12,13
+      rank 11=i17r1n00 slot=14,15
+      rank 12=i17r1n00 slot=20,21
+      rank 13=i17r1n00 slot=22,23
+      rank 14=i17r1n00 slot=28,29
+      rank 15=i17r1n00 slot=30,31
+      rank 16=i17r1n01 slot=0,1
+      rank 17=i17r1n01 slot=2,3
+      rank 18=i17r1n01 slot=8,9
+      rank 19=i17r1n01 slot=10,11
+      rank 20=i17r1n01 slot=16,17
+      rank 21=i17r1n01 slot=18,19
+      rank 22=i17r1n01 slot=24,25
+      rank 23=i17r1n01 slot=26,27
+      rank 24=i17r1n01 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_gcc731_full_reproduce
+      job=118663696 nodes=i17r1n[00-03]
+      free_kb=50518728
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      compiler=gcc731 kmp_hot_teams_max_parallel=2
+      5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      e1af0ab93e21868ea600114fa646c5be34b9caaf75e20d16992b632140a83d9a  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/gcc731_20260805/run_gcc731_full_validate.slurm
+================ 118714595_o33_hpcx211_full_64x2
+  mtime: 2026-08-07 16:43:23
+  model.log: /public/home/fujiake/fjk/mcc_runs/118714595_o33_hpcx211_full_64x2/logs/model.log
+     All percentages are with respect to total time =       170719.759
+     All percentages are with respect to total time =       170717.666
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11061.209    6.4792
+                                                  Total:    108657.084   63.6472
+                                                  Total:     31608.129   18.5149
+    tail| 
+    tail|  ROMS/TOMS: DONE... Friday - August 7, 2026 - 12:24:46 PM
+    tail| 
+    tail| real	33m39.174s
+    tail| user	679m39.460s
+    tail| sys	31m52.494s
+  --- validation ---
+    validated_output_sha256.txt
+    vali_result.txt
+    vali_time.txt
+    [[validated_output_sha256.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000035   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000019   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.001974   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001130   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+    [[vali_time.txt]] PASS=0 FAIL=0
+  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j01r2n00 slot=0,1
+      rank 1=j01r2n00 slot=2,3
+      rank 2=j01r2n00 slot=8,9
+      rank 3=j01r2n00 slot=10,11
+      rank 4=j01r2n00 slot=16,17
+      rank 5=j01r2n00 slot=18,19
+      rank 6=j01r2n00 slot=24,25
+      rank 7=j01r2n00 slot=26,27
+      rank 8=j01r2n00 slot=4,5
+      rank 9=j01r2n00 slot=6,7
+      rank 10=j01r2n00 slot=12,13
+      rank 11=j01r2n00 slot=14,15
+      rank 12=j01r2n00 slot=20,21
+      rank 13=j01r2n00 slot=22,23
+      rank 14=j01r2n00 slot=28,29
+      rank 15=j01r2n00 slot=30,31
+      rank 16=j01r2n01 slot=0,1
+      rank 17=j01r2n01 slot=2,3
+      rank 18=j01r2n01 slot=8,9
+      rank 19=j01r2n01 slot=10,11
+      rank 20=j01r2n01 slot=16,17
+      rank 21=j01r2n01 slot=18,19
+      rank 22=j01r2n01 slot=24,25
+      rank 23=j01r2n01 slot=26,27
+      rank 24=j01r2n01 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_hpcx211_full_reproduce
+      job=118714595 nodes=j01r2n[00-03]
+      free_kb=42557456
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      label=hpcx211 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+      7cd466279e822e4b807e9c0920000f9cb97e1f407538329f3c54b91e01dd9ff4  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      02fd7767c11b2a783a9702f993432413b66a2f8e4f93fbd437c33e12e981973f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/full_validate_hpcx211.slurm
+      validation_result=pass
+      COMPLETE 2026-08-07T12:25:05+0800
+================ 118716467_o33_fast2_2021_full_64x2
+  mtime: 2026-08-07 16:43:23
+  model.log: /public/home/fujiake/fjk/mcc_runs/118716467_o33_fast2_2021_full_64x2/logs/model.log
+     All percentages are with respect to total time =       159354.431
+     All percentages are with respect to total time =       159354.090
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11558.038    7.2530
+                                                  Total:     99770.622   62.6094
+                                                  Total:     31301.721   19.6429
+    tail| 
+    tail|  ROMS/TOMS: DONE... Friday - August 7, 2026 -  1:24:07 PM
+    tail| 
+    tail| real	32m8.081s
+    tail| user	632m9.291s
+    tail| sys	31m39.926s
+  --- validation ---
+    vali_result.txt
+    vali_time.txt
+    [[vali_time.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000040   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000021   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.002149   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001241   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細鑷冲皯涓€缁勬枃浠跺瓨鍦ㄥ彉閲廟MSE瓒呴檺锛屼紭鍖栫粨鏋滃瓨鍦ㄥ紓甯?  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j01r2n12 slot=0,1
+      rank 1=j01r2n12 slot=2,3
+      rank 2=j01r2n12 slot=8,9
+      rank 3=j01r2n12 slot=10,11
+      rank 4=j01r2n12 slot=16,17
+      rank 5=j01r2n12 slot=18,19
+      rank 6=j01r2n12 slot=24,25
+      rank 7=j01r2n12 slot=26,27
+      rank 8=j01r2n12 slot=4,5
+      rank 9=j01r2n12 slot=6,7
+      rank 10=j01r2n12 slot=12,13
+      rank 11=j01r2n12 slot=14,15
+      rank 12=j01r2n12 slot=20,21
+      rank 13=j01r2n12 slot=22,23
+      rank 14=j01r2n12 slot=28,29
+      rank 15=j01r2n12 slot=30,31
+      rank 16=j01r2n13 slot=0,1
+      rank 17=j01r2n13 slot=2,3
+      rank 18=j01r2n13 slot=8,9
+      rank 19=j01r2n13 slot=10,11
+      rank 20=j01r2n13 slot=16,17
+      rank 21=j01r2n13 slot=18,19
+      rank 22=j01r2n13 slot=24,25
+      rank 23=j01r2n13 slot=26,27
+      rank 24=j01r2n13 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_fast2_2021_full_reproduce
+      job=118716467 nodes=j01r2n[12-15]
+      free_kb=32101976
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      label=fast2_2021 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+      a1e19c4c40b443dfd429becd43d8c2559d5b931c0e7abd2664dc9d481ccacd7c  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_fast2_2021_20260806/ROMS_CoSiNE15/oceanM.O33_fast2_2021
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      02fd7767c11b2a783a9702f993432413b66a2f8e4f93fbd437c33e12e981973f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/full_validate_fast2_2021.slurm
+================ 118720373_o33_biofast_2021_full_64x2
+  mtime: 2026-08-07 16:43:23
+  model.log: /public/home/fujiake/fjk/mcc_runs/118720373_o33_biofast_2021_full_64x2/logs/model.log
+     All percentages are with respect to total time =       170395.896
+     All percentages are with respect to total time =       170396.078
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     11842.329    6.9499
+                                                  Total:    107417.308   63.0398
+                                                  Total:     33559.905   19.6952
+    tail| 
+    tail|  ROMS/TOMS: DONE... Friday - August 7, 2026 -  2:56:37 PM
+    tail| 
+    tail| real	33m53.079s
+    tail| user	676m50.402s
+    tail| sys	33m22.626s
+  --- validation ---
+    validated_output_sha256.txt
+    vali_result.txt
+    vali_time.txt
+    [[vali_time.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000035   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000019   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.001974   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001130   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+    [[validated_output_sha256.txt]] PASS=0 FAIL=0
+  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j05r2n14 slot=0,1
+      rank 1=j05r2n14 slot=2,3
+      rank 2=j05r2n14 slot=8,9
+      rank 3=j05r2n14 slot=10,11
+      rank 4=j05r2n14 slot=16,17
+      rank 5=j05r2n14 slot=18,19
+      rank 6=j05r2n14 slot=24,25
+      rank 7=j05r2n14 slot=26,27
+      rank 8=j05r2n14 slot=4,5
+      rank 9=j05r2n14 slot=6,7
+      rank 10=j05r2n14 slot=12,13
+      rank 11=j05r2n14 slot=14,15
+      rank 12=j05r2n14 slot=20,21
+      rank 13=j05r2n14 slot=22,23
+      rank 14=j05r2n14 slot=28,29
+      rank 15=j05r2n14 slot=30,31
+      rank 16=j05r2n15 slot=0,1
+      rank 17=j05r2n15 slot=2,3
+      rank 18=j05r2n15 slot=8,9
+      rank 19=j05r2n15 slot=10,11
+      rank 20=j05r2n15 slot=16,17
+      rank 21=j05r2n15 slot=18,19
+      rank 22=j05r2n15 slot=24,25
+      rank 23=j05r2n15 slot=26,27
+      rank 24=j05r2n15 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_biofast_2021_full_reproduce
+      job=118720373 nodes=j05r2n[14-17]
+      free_kb=14436736
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      label=biofast_2021 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+      1f33a685c003a4d04b8d47ad75e5768da774016fd2e3f80b4e8a63002e6130b8  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_biofast_2021_20260806/ROMS_CoSiNE15/oceanM.O33_biofast_2021
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      02fd7767c11b2a783a9702f993432413b66a2f8e4f93fbd437c33e12e981973f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/full_validate_biofast_2021.slurm
+      validation_result=pass
+      COMPLETE 2026-08-07T14:56:55+0800
+================ 118730406_o33_ifort2022_full_64x2
+  mtime: 2026-08-07 17:02:43
+  model.log: /public/home/fujiake/fjk/mcc_runs/118730406_o33_ifort2022_full_64x2/logs/model.log
+     All percentages are with respect to total time =       271185.031
+     All percentages are with respect to total time =       271178.668
+     ROMS/TOMS - Output NetCDF summary for Grid 01:
+     ROMS/TOMS - Output NetCDF summary for Grid 02:
+     Elapsed CPU time (seconds):
+                                                  Total:     37237.438   13.7314
+                                                  Total:    171270.589   63.1578
+                                                  Total:     80618.785   29.7290
+    tail| 
+    tail|  ROMS/TOMS: DONE... Friday - August 7, 2026 -  6:00:11 PM
+    tail| 
+    tail| real	57m28.841s
+    tail| user	1185m21.268s
+    tail| sys	53m38.004s
+  --- validation ---
+    validated_output_sha256.txt
+    vali_result.txt
+    vali_time.txt
+    [[vali_time.txt]] PASS=0 FAIL=0
+    [[vali_result.txt]] PASS=0 FAIL=0
+      diatom               RMSE = 0.000035   闃堝€尖墹0.000300   鉁呮甯?      microzooplankton     RMSE = 0.000003   闃堝€尖墹0.000200   鉁呮甯?      detritus             RMSE = 0.000019   闃堝€尖墹0.000300   鉁呮甯?      oxygen               RMSE = 0.001974   闃堝€尖墹0.008000   鉁呮甯?      TIC                  RMSE = 0.001130   闃堝€尖墹0.008000   鉁呮甯?      鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+    [[validated_output_sha256.txt]] PASS=0 FAIL=0
+  --- metadata ---
+    ocean_SCS_Dongsha60_bio15.in
+    output_manifest.txt
+    rankfile
+    run_metadata.txt
+    [[ocean_SCS_Dongsha60_bio15.in]]
+      !
+      !  ROMS/TOMS Standard Input parameters.
+      !
+      !svn $Id: ocean_bye24_sgw72_bio13.in 844 2018-06-96 15:22:25Z MENG Qicheng $
+      !========================================================= Hernan G. Arango ===
+      !  Copyright (c) 2002-2014 The ROMS/TOMS Group                                !
+      !    Licensed under a MIT/X style license                                     !
+      !    See License_ROMS.txt                                                     !
+      !==============================================================================
+      !                                                                             !
+      ! Input parameters can be entered in ANY order, provided that the parameter   !
+      ! KEYWORD (usually, upper case) is typed correctly followed by "="  or "=="   !
+      ! symbols. Any comment lines are allowed and must begin with an exclamation   !
+      ! mark (!) in column one.  Comments may  appear to the right of a parameter   !
+      ! specification to improve documentation.  Comments will be ignored  during   !
+      ! reading.  Blank lines are also allowed and ignored. Continuation lines in   !
+      ! a parameter specification are allowed and must be preceded by a backslash   !
+      ! (\).  In some instances, more than one value is required for a parameter.   !
+      ! If fewer values are provided, the  last value  is assigned for the entire   !
+      ! parameter array.  The multiplication symbol (*),  without blank spaces in   !
+      ! between, is allowed for a parameter specification.  For example, in a two   !
+      ! grids nested application:                                                   !
+      !                                                                             !
+      !    AKT_BAK == 2*1.0d-6  2*5.0d-6              ! m2/s                        !
+      !                                                                             !
+    [[output_manifest.txt]]
+      Dongsha60_avg_0001.nc|176265400
+      Dongsha60_avg_0002.nc|176265400
+      Dongsha60_avg_0003.nc|176265400
+      Dongsha60_his_0001.nc|185160840
+      Dongsha60_his_0002.nc|185160840
+      Dongsha60_his_0003.nc|185160840
+      Dongsha60_his_0004.nc|185160840
+      Dongsha60_rst.nc|1723697544
+      SCS_avg_0001.nc|356554744
+      SCS_avg_0002.nc|356554744
+      SCS_avg_0003.nc|356554744
+      SCS_his_0001.nc|374548632
+      SCS_his_0002.nc|374548632
+      SCS_his_0003.nc|374548632
+      SCS_his_0004.nc|374548632
+      SCS_rst.nc|3487198056
+    [[rankfile]]
+      rank 0=j04r2n14 slot=0,1
+      rank 1=j04r2n14 slot=2,3
+      rank 2=j04r2n14 slot=8,9
+      rank 3=j04r2n14 slot=10,11
+      rank 4=j04r2n14 slot=16,17
+      rank 5=j04r2n14 slot=18,19
+      rank 6=j04r2n14 slot=24,25
+      rank 7=j04r2n14 slot=26,27
+      rank 8=j04r2n14 slot=4,5
+      rank 9=j04r2n14 slot=6,7
+      rank 10=j04r2n14 slot=12,13
+      rank 11=j04r2n14 slot=14,15
+      rank 12=j04r2n14 slot=20,21
+      rank 13=j04r2n14 slot=22,23
+      rank 14=j04r2n14 slot=28,29
+      rank 15=j04r2n14 slot=30,31
+      rank 16=j04r2n15 slot=0,1
+      rank 17=j04r2n15 slot=2,3
+      rank 18=j04r2n15 slot=8,9
+      rank 19=j04r2n15 slot=10,11
+      rank 20=j04r2n15 slot=16,17
+      rank 21=j04r2n15 slot=18,19
+      rank 22=j04r2n15 slot=24,25
+      rank 23=j04r2n15 slot=26,27
+      rank 24=j04r2n15 slot=4,5
+    [[run_metadata.txt]]
+      stage=o33_ifort2022_full_reproduce
+      job=118730406 nodes=j04r2n[14-17]
+      free_kb=65495336
+      ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+      label=ifort2022 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+      3d510455e4c191d00cf25f6524ad055c7d9e4f1b522d569d2e7dcb56db12f726  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2022_20260807/ROMS_CoSiNE15/oceanM.O33_ifort2022
+      a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+      0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+      02fd7767c11b2a783a9702f993432413b66a2f8e4f93fbd437c33e12e981973f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/full_validate_ifort2022.slurm
+      validation_result=pass
+      COMPLETE 2026-08-07T18:00:34+0800
+ssh : bash: line 52: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-cc873bd1-fb23-4fe9-9f45-79bb921027d1.ps1:111 字符: 201
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 52: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

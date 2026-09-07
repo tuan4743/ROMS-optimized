@@ -1,0 +1,289 @@
+﻿############ nan/README.md  (head)
+# ROMS-CoSiNE 浼樺寲鏃ュ織锛坣an锛?
+## 涓婁笅鏂囨仮澶嶉『搴忥紙寮哄埗锛?
+1. `Prompt/Prompt.txt` + `Prompt/mcc.md`
+2. `Prompt/STANDING_ORDERS.md`锛堝璇濊ˉ鍏?+ 鏂囩尞鍏ュ彛锛?3. 鏈?README锛堝疄楠岃褰曪級+ 闇€瑕佹椂 `report_his/literature_notes_20260730.md`銆乣check/README.md`
+
+## 绾﹀畾
+
+- 宸ヤ綔鐩綍锛氫粎 `/public/home/fujiake/nan/` 鍙啓
+- 璁℃椂鍙ｅ緞锛歚time` 鐨?**real**锛涙渶缁堟垚缁╃敤 `2592 12960`锛? 澶╋級
+- **杩愯妗ｄ綅锛?026-07-30 鐢ㄦ埛纭锛?*锛?  - **鏃ュ父閲囨牱绛?*锛歚NTIMES == 144 720`锛堢害 1/3 鍗婂ぉ锛寏6鈥? min锛夆€斺€斿垽鏂/璐熶紭鍖?  - **鍗婂ぉ纭**锛歚432 2160`鈥斺€旈噰鏍锋槑鏄惧姞閫熷悗鍐嶈窇
+  - **涓€澶?vali**锛歚864 4320`
+  - **姝ｅ紡鎴愮哗**锛歚2592 12960`
+- 缂栬瘧锛氱櫥褰曡妭鐐?`make -j64`锛涗紭鍖栦緷鎹互 `check/` 璁＄畻鑺傜偣鎺㈡祴涓哄噯
+- 鍔犻€熸瘮蹇呴』鍚屾。瀵规瘮锛涙湁鏁堜紭鍖栬锛?  - 鐩稿涓婁竴姝ュ姞閫熸瘮 = `T_prev / T_curr`
+  - 鐩稿 baseline 绱鍔犻€熸瘮 = `T_baseline / T_curr`
+- 绮惧害锛歚vali.py` 鍏ㄩ€氳繃鍗冲彲锛屼笉棰濆鎶犺宸?- **褰撳墠姝ｇ‘鎬?鎬ц兘鐖讹紙2026-07-31锛?*锛?*O33** + **O29** KMP=0锛涙嫇鎵?**64脳2 / 8脳8**锛涗簩杩涘埗 `oceanM.O33_noheap.bak`
+  - 鍗婂ぉ **364.34 s**锛堢浉瀵?baseline 1200 s 鈫?**3.29脳**锛?  - 涓€澶?**725.47 s**锛寁ali 鍏ㄩ€氳繃
+  - **姝ｅ紡 3 澶?* `118307015`锛?*2129.85 s锛?5m29.9s锛?*锛岀浉瀵?baseline 6606 s 鈫?**3.10脳**锛泇ali **鍏ㄩ儴閫氳繃**锛圖ongsha **u=0.000052**锛?- **O34鈥揙42 鍧囨嫆**锛泃racer 鍑犱綍/閫氶噺缂撳瓨绾垮叧闂?- **O43鈥揙46 鍧囨嫆**锛涘鐩橈細`report_his/retrospective_O43_O46_and_plan.md`
+- **O47 鎷掑閽?0.966脳**锛坴ali 杩囷級锛氳 `report_his/O47_owner_packed_ortho.md`
+- **O48 铻嶅悎鍐插埡**锛歄33 + biology CSE锛坒eng/lsd/zya锛夛紱涓€澶?`118368357` **739.18 s锛?.981脳锛?*锛寁ali **鍏ㄨ繃** u=0.000052锛?*澧欓挓涓嶆檵鍗?*锛岀埗鏈粛 O33銆傝 `report_his/O48_fusion_sprint.md`
+- **O49 鎷?*锛欳ountM hoist + t3dmix CSE锛涢噰鏍?ABBA `118459962` 鍧囧€?**0.989脳**锛?29.7鈫?31.2 s锛夛紱婧愮爜宸插洖婊氾紝鐖舵湰浠?O33銆傝 `report_his/O49_compute_side.md`
+- **璁垮瓨浼樺寲鏂囩尞锛?026-08-03锛?*锛歊oofline / ROMS銆屽唴瀛樻毚鏀裤€? stencil fusion / 娴锋磱娣峰悎绮惧害 鈫?缁撹鐩?**鍑?DRAM 寰€杩?*锛涗紭鍏?B4/B5 闆舵嫹璐濊瀺鍚堛€傝 `report_his/literature_membound_20260803.md`
+- **O50 璁℃椂鍩哄缓**锛歚pre_step3d`/`step3d_t`/`step2d` 鐙珛澧欓挓 鈫?`kernel_timing*.out`锛涗簩杩涘埗 `oceanM.O50_kernel_timer.bak`锛堥潪鎬ц兘鏅嬪崌锛夈€傝 `report_his/O50_kernel_timer.md`
+- **O50 閲囨牱+姹囩紪锛?026-08-03锛?*锛歫ob `118472939` real 135 s锛汫02 MAX 浠?**step2d** 鏈€澶э紱asm 鏄剧ず step2d 浠?`for_allocate`脳21/娆¤€屼笁鏍告棤 libm銆備笅涓€鍒€浼樺厛 **step2d `-no-heap-arrays`**銆傝 `report_his/asm_hotspots_O50_20260803.md`
+- **O51 鎷?*锛歚step2d -no-heap-arrays`锛涢噰鏍?`118473431` real **135.43 s锛?.997脳 vs O50锛?*锛汫02 step2d MAX 1.038脳 浣嗗閽熸棤杩囬棬锛沵akefile 宸插洖婊氥€傝 `report_his/O51_step2d_noheap.md`
+- **O52 鎷?*锛歚pre_step3d` T_LOOP1 j-strip锛圔4锛夛紱閲囨牱 `118474523` real **135.71 s锛?.995脳 vs O50锛?*锛汫02 pre MAX **0.897脳锛堝彉鎱級**锛涙簮鐮佸凡鍥炴粴銆傝 `report_his/O52_pre_jstrip.md`
+- **O53 鎷?*锛歚step3d_t` `dpmn` 2D 鎻愬崌锛圔5锛夛紱閲囨牱 `118475196` real **138.88 s锛?.972脳 vs O50锛?*锛泂tep3d_t MAX 浠?1.018脳锛涙簮鐮佸凡鍥炴粴銆傝 `report_his/O53_dpmn.md`
+- **O55**锛氶噰鏍?ABBA **1.043脳 vs O50**锛涗竴澶?`118477718` real **733.7 s**锛孌ongsha **u=0.000074 鉂?* 鈫?**涓嶆檵鍗?*銆傝 `report_his/O55_step2d_combo.md`
+- **O56**锛氬啀鍙?AVX/bio CSE锛岄噰鏍?**0.995脳 vs O55** 鈫?鎷掞紱宸插洖婊氥€傝 `report_his/O56_combo.md`
+- **O57 鎷?*锛氬垹姝讳唬鐮?oHz锛涢噰鏍?0.57脳锛圔uild 娣峰叆 O50 timer锛屼笉鍙俊锛夛紱宸蹭粠 `backup/` 鍥炲榻愭簮鐮?+ `oceanM`鈫怬33銆傝 `report_his/O57_skip_ohz.md`
+- **O57b 鎷?*锛氬共鍑€閲嶅仛 oHz 瀹堝崼锛坄make clean` 鍏ㄩ噺閲嶇紪锛夛紱ABBA `118480564/568/570/574` 鍧囧€?**0.970脳**锛?27.7鈫?31.6 s锛夛紱婧愮爜+`oceanM` 宸插洖婊?O33銆傝 `report_his/O57b_skip_ohz.md`
+- **O58 鎷?*锛歚get_persisted2d` 鍙粍瑁?Ac(1)锛?鈫?锛夛紱ABBA `118483130/136/141/146` 鍧囧€?**1.012脳**锛?31.9鈫?30.3 s锛夛紱鏈繃闂紝宸插洖婊氥€傝 `report_his/O58_persist1.md`
+- **O59 鎷?*锛欴U+DV persisted 鎵撳寘涓€娆?Allreduce + Ac(1)锛汚BBA `118484947/948/951/955` 鍧囧€?**0.985脳**锛?28.7鈫?30.6 s锛夛紱宸插洖婊氥€傝 `report_his/O59_duv_pack.md`
+- **O60 鎷掞紙鍚归锛?*锛氬紑鏀鹃」澶ц瀺鍚堬紙A1+O58+B4/B5/B6+C7锛夛紱ABBA `118485930/931` 鍧?`Blows up`锛涘凡浠?`.mcc_opt/staging/O60/` 鏁村寘鍥炴粴銆傝 `report_his/O60_fusion.md`
+- **O61 鎷?*锛歡et_refine tracer `contact3d` 鎵归噺鍖栵紙NT鈫? 娆?sparse锛夛紱ABBA `118486932/934/937/938` 鍧囧€?**0.956脳**锛?26.8鈫?32.7 s锛屾湭鍚归锛夛紱宸插洖婊氥€傝 `report_his/O61_tbatch.md`
+- **O62 鎷?*锛歡et_refine tracer `contact3d` NBC 娴佹按绾匡紙extract鈭ost锛夛紱ABBA `118492473/475/478/480` 鍧囧€?**0.983脳**锛?27.3鈫?29.4 s锛孌ONE锛夛紱宸插洖婊氥€傝 `report_his/O62_nbc.md` 鈥斺€?**nesting contact tracer 绾垮叧闂?*
+- **O63 鎷?*锛欱3 nesting donor/receiver 浜插拰 rankfile锛堟棤婧愮爜锛夛紱ABBA `118493759/772/780/791` 鍧囧€?**0.990脳**锛?27.1鈫?28.4 s锛夛紱榛樿缁戞牳涓嶅彉銆傝 `report_his/O63_b3.md` 鈥斺€?**B3 浜插拰 rankfile 绾垮叧闂?*
+- **O64 鎷?*锛欳1 step2d zeta `mp_exchange2d` begin/end 閲嶅彔锛汚BBA `118495763/766/771/773` 鍧囧€?**0.971脳**锛?27.2鈫?31.0 s锛孌ONE锛夛紱宸插洖婊氥€傝 `report_his/O64_c1.md` 鈥斺€?**C1 zeta 閲嶅彔绾垮叧闂?*
+- **O65 鎷?*锛欱2 `COLLECT_ALLGATHER`锛涚浉瀵?O33 閲囨牱 **0.970脳**锛?28.9鈫?32.9 s锛夛紱宸插洖婊氥€傝 `report_his/O65_b2.md` 鈥斺€?**B2 瀹忔壂鍏抽棴**
+- **O66 鎷?*锛欱4 `pre_step3d` Huh/Hvh锛涢噰鏍?`118497339/341` 鈫?**0.996脳**锛?30.5鈫?31.0 s锛夛紱宸插洖婊氥€傝 `report_his/O66_b4.md`
+- **O67 鎷?*锛歂EMO 寮?`rzeta` 鎵╁湀+璺宠繃 MPI锛沗118498029/030` 鈫?**0.978脳**锛?27.8鈫?30.7 s锛夛紱宸插洖婊氥€傝 `report_his/O67_xhalo.md` 鈥斺€?**step2d/rzeta 鍗曞満璺宠繃绾垮叧闂?*
+- **O68 鎷?*锛氬鏍?NEMO 姝ｅ帇閫氫俊澶у寘锛堢爫涓 rzeta+zeta锛屾鏈?flush锛夛紱`118498374/378` 鈫?**0.977脳**锛?28.1鈫?31.1 s锛夛紱G02 2D halo 绾?鈭?0% 浣嗗閽熸參锛涘凡鍥炴粴銆傝 `report_his/O68_nemo_fs.md` 鈥斺€?**step2d 姝ｅ帇 mid-step 2D 鎸爫绾垮叧闂?*
+- **O69 鎷掞紙鏂瑰悜涓€锛?*锛氬叏灞€ `-march=core-avx2 -no-fma`锛沗118522472/468` 鈫?**0.974脳**锛?28.1鈫?31.5 s锛夛紱ymm 杩涖€乿fmadd=0锛涘凡鍥炴粴銆傝 `report_his/O69_march_nofma.md` 鈥斺€?**鍏ㄥ眬 AVX2 绾垮叧闂?*
+- **O70/O70b 鎷掞紙鏂瑰悜鍏級**锛歚put_zcopy` 0.978脳锛涘己鍒?`THRESH=1M/inf`锛坄118522704/706`锛夆啋 **0.978脳/0.977脳**锛涘凡鍏抽棴 UCX_RNDV 绾裤€傝 `report_his/O70_ucx_rndv.md`
+- **O71 鎷掞紙鏂瑰悜涓?b锛?*锛氬悎骞?`step2d` 鐩搁偦 3+2 `mp_exchange2d`锛沗118522932/930` 鈫?**1.012脳**锛?32.9鈫?31.4 s锛夛紱G02 2D halo 鈭?3% 浣嗗閽熸湭杩囬棬锛涘凡鍥炴粴銆傝 `report_his/O71_merge2d.md`
+- **O72 璇婃柇瀹屾垚锛堟柟鍚戝洓锛?*锛歜arrier-before-comm锛?D/3D/4D AVG 绛夊緟鍚堣 **~13% 澧欓挓**锛?D MAX 10.2 s锛夛紱assemble鈮?锛?*璐熻浇鍊炬枩瀹為敜** 鈫?閫氫俊鍗忚鍒€闄嶄紭鍏堬紝杞煡鎱?rank銆傝 `report_his/O72_ibar.md`
+- **O73 璇婃柇瀹屾垚**锛欸02 鍏ㄦ箍銆佷簲鏍?spread 浠?**2.3%**锛汫01 闄嗗湴鏋佷笉鍧?+ contact 楂樺害闆嗕腑锛汷72 鍊炬枩涓诲洜鏇村儚 **nesting/浜旀牳澶栬矾寰?*锛岄潪 G02 绠楁牳銆傝 `report_his/O73_rank_census.md`
+- **鎷撴墤澶囧繕**锛歚kshcexclu06` 4 NUMA脳8 鏍搞€?脳mlx5@200锛堟瘡 NUMA 涓€鍗★級锛涜 `report_his/topology_kshcexclu06.md`
+- **O74 璇婃柇瀹屾垚**锛歯esting per-rank 璁℃椂锛?*G02 nestSUM spread 浠?3.3%**锛宑ontact 閲?rank 36/54 闈?nesting 鐡堕锛汫01 ngetD spread 64% 浣嗕粎鍗犲閽?~3%銆侽72 wait 闇€鍙︽媶 halo/鍒拌揪銆傝 `report_his/O74_nest_timer.md`
+- **O75 璇婃柇瀹屾垚**锛歨alo **local AVG 21.7 s** vs **wait 8.0 s**锛?D local鈮?4 s 鏈€澶э紱WAIT spread 128%銆傝 `report_his/O75_halo_timer.md`
+- **O76 鎷?*锛歚mp_exchange -no-heap-arrays`锛沴ocal 浠?鈭?%锛屽閽?**1.025脳** vs O75 diag锛堟湭杩囬棬锛夛紱宸插洖婊氥€傝 `report_his/O76_mpx_noheap.md` 鈥斺€?**halo no-heap 绾垮叧闂?*锛?D local 涓诲洜鏄?pack 璁垮瓨
+- **O77 鎷?*锛欸LS `3d+4d`鈫掑崟娆?5 鍦?`mp_exchange3d`锛涘悓鎵?O33 **127.7 s** vs O77 **129.5 s锛?.986脳锛?*锛?D PROFILE 鍑犱箮涓嶅姩銆傝 `report_his/O77_gls_bundle.md` 鈥斺€?**GLS halo 鍚堝苟绾垮叧闂?*锛涗笅涓€鍒€椤诲姩 tracer `mp_exchange4d(NT)`
+- **O78 鎷?*锛歚mp_exchange4d` 鎸佷箙缂撳啿 + NS 杩炵画娈?pack锛涘悓绐?O33 **130.4 s** vs O78 **135.0 s锛?.966脳锛?*锛?D PROFILE +8%銆傝 `report_his/O78_mpx4d_persist.md` 鈥斺€?**4D 缂撳啿/娈?pack 绾垮叧闂?*
+- **O79 鎷?*锛歚mp_exchange4d` NS pack 涓?EW 椋炶閲嶅彔 + 瑙掔偣鍒锋柊锛涘悓绐?O33 **129.0 s** vs O79 **131.8 s锛?.979脳锛?*锛?D +11%銆傝 `report_his/O79_mpx4d_overlap.md` 鈥斺€?**4D 闃舵閲嶅彔绾垮叧闂?*
+- **O80 鎷?*锛歵racer `mp_exchange4d` `Nghost=2`锛堝叏灞€浠?3锛夛紱鍚岀獥 O33 **126.2 s** vs O80 **129.3 s锛?.976脳锛?*锛?D 鈮堜笉鍙樸€傝 `report_his/O80_nghost2.md` 鈥斺€?**闄?Nghost 绾垮叧闂?*
+- **O81 鎷?*锛歚mp_exchange4d` A-pack OpenMP锛涘悓绐?O33 **124.3 s** vs O81 **129.8 s锛?.958脳锛?*锛?D +9%銆傝 `report_his/O81_mpx4d_omp.md` 鈥斺€?**4D pack OMP 绾垮叧闂?*锛沨alo pack 寰粨鏋勭嚎鏆傚叧锛屼笅涓€鍒€杞畻鏍?鍚屾绋?- **閲囨牱绾緥锛?026-08-03锛?*锛?*涓嶅啀 ABBA**锛涙棩甯?`144/720` 鐩稿鐖舵湰 real 椤?*鏄庢樉**鍔犻€熷啀杩涘崐澶?涓€澶?- **銆屾牳蹇鎱€?*锛歚report_his/kernel_vs_wall_O51_O54.md`
+- feng 鏂瑰悜璇撅細`report_his/feng_experiments_lessons_20260801.md`
+
+
+
+- **O26** `db2d_v2_nb34` 閲囨牱 **162.84 s**锛坴s O25 150.01 鈫?**0.92脳**锛夊凡鍥炴粴锛?*O26b** 浠?nb34 閲囨牱杩涜涓?- Baseline锛堟棤鎻掓々鍙ｅ緞锛孭rompt 缁欏畾锛夛細
+  - 4N脳64锛屽崐澶?鈮?**20 min**锛?200 s锛夆啋 閲囨牱妗ｇ矖绠楁寜姣斾緥 鈮?**400 s**锛?200脳144/432锛夛紝浠呬綔鍙傝€冿紝浠ュ疄娴嬩负鍑?  - 4N脳64锛屽畬鏁?3 澶?鈮?**1h50min**锛?600 s锛?- 绛夊緟浣滀笟鏃跺苟琛岋細鏀逛笅涓€椤规簮鐮?/ 璇荤儹鐐?/ 缂栬瘧 / 鍐?README锛?*涓旀棤鍏充綔涓氬彲鍚屾椂 sbatch**锛堢嫭绔嬭緭鍑虹洰褰曪級锛屼笉绌虹瓑銆佷笉涓茶绌鸿浆
+
+## 浼樺寲鍊欓€夋竻鍗曪紙寰呴€愰」灏濊瘯锛?
+1. 缂栬瘧鏃楁爣锛歚-no-heap-arrays` + `-march=core-avx2` + align/prefetch锛屽幓鎺?release `-g`
+2. 閫氫俊锛歚MPI_IN_PLACE`锛坉istribute.F锛夆€斺€斿巻鍙?O1 鎬濊矾锛岀嫭绔嬮噸娴?3. 宓屽 Allreduce 鎵归噺鍖栵紙鎹綅鐐?鎹㈠疄鐜帮紝閬垮厤涓庨槦鍙嬫暣娈甸噸鍙狅級
+4. NtileI/J 脳 鑺傜偣鏍告暟鎵弿锛堚墹4 鑺傜偣銆佲墹128 鏍革級
+5. MPI 缁戝畾 / UCX / coll 瑙勫垯锛堟簮鐮佷笉鍔級
+6. 璁＄畻鏍搁璁＄畻 / 鍚戦噺鍖栧弸濂芥敼鍐欙紙biology / pre_step3d / gls 绛夛紝涓嶅叧鐢熸€侊級
+
+## 瀹為獙璁板綍
+
+### Baseline 鍙傝€?
+| 瀛楁 | 鍊?|
+|------|-----|
+| 鏃ユ湡 | 2026-07-25锛堟棩蹇?`log_..._20260725_205123.txt`锛屽惈 PMPI 鍋忔參锛涘畼鏂瑰彛寰?1h50min锛?|
+| 閰嶇疆 | 4N脳64锛孨tile 8脳8锛屽畬鏁?3 澶?|
+| real | ~6600 s锛? 澶╋級/ ~1200 s锛堝崐澶╋紝Prompt锛?|
+| 缁撹 | 璧风偣锛屾棤婧愮爜浼樺寲 |
+
+---
+
+锛堝悗缁瘡鏉℃湁鏁堜紭鍖栨寜涓嬪垪妯℃澘杩藉姞锛涙棤鏁堜篃璁帮紝鍔犻€熸瘮鍙啓 N/A锛?
+```
+### Ox锛氭爣棰?- 鏃ユ湡锛?- 鏀瑰姩鏂囦欢:琛屽彿锛?- 鏀逛簡浠€涔堬細
+- 棰勬湡鏀剁泭锛?- 鐭窇閰嶇疆涓?real 鑰楁椂锛?- 鐩稿涓婁竴姝ュ姞閫熸瘮锛?- 鐩稿 baseline 绱鍔犻€熸瘮锛?- vali 鏄惁閫氳繃锛?- 缁撹锛氫繚鐣?鍥炴粴
+```
+
+### O1锛氱紪璇戞棗鏍?
+- 鏃ユ湡锛?026-07-30
+- 鏀瑰姩鏂囦欢:琛屽彿锛歚Compilers/Linux-ifort.mk` ~27鈥?8銆亊83鈥?6
+- 鏀逛簡浠€涔堬細
+
+############ nan/README.md  (tail = most recent entries)
+- **缁撹锛氭帴鍙?*锛涘綋鍓嶆纭€?鎬ц兘鐖?= O33 + O29 杩愯鏃?
+### O34 / O34b锛歎CX 杩愯鏃讹紙閽堝 perf UCX ~9%锛夆€?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涗簩杩涘埗浠?`oceanM.O33_noheap.bak`锛涙棤婧愮爜鏀瑰姩
+- **O34** `UCX_IB_MLX5_DEVX=no` `118303380`锛?*133.51 s**锛坴s O33 ABBA 127.57 鈫?**0.956脳**锛?- **O34b** `UCX_NUM_PPN=16` `118303381`锛?*135.29 s**锛坴s O33 鈫?**0.943脳**锛?- **缁撹锛氬洖婊?涓嶉噰鐢?*锛涙湰闆嗙兢 UCX 榛樿閫夋嫨宸插濂斤紝鍕垮己琛?DEVX/PPN
+
+### O35锛欸LS O14 mathreuse 鍙?O33锛堥拡瀵?pow ~8.7%锛夆€?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛沗gls_corstep.F` 缂撳瓨閲嶅 `**` + OMP PRIVATE
+- 澶囦唤锛歚gls_corstep.pre_O35_mathreuse.F`锛涗簩杩涘埗 `oceanM.O35_mathreuse.bak`锛堜粎瀛樻。锛?- **閲囨牱** `118303452`锛?*136.39 s**锛坴s O33 ABBA 127.57 鈫?**0.935脳**锛?- **缁撹锛氬洖婊?*锛涘凡鎭㈠ `gls_corstep.pre_O35_mathreuse.F`锛宍oceanM` 鈫?O33锛涗笌 O14/O32 涓€鑷粹€斺€斾綅绾?CSE 鍦ㄥ綋鍓嶆爤涓婃棤澧欓挓鏀剁泭
+- 璇︾粏褰掑洜锛歚report_his/failure_analysis_O34_O35.md`
+
+### O36锛?2 MPI 脳 4 OMP + Ntile 4脳8锛堟崲鎷撴墤锛夆€?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涗簩杩涘埗 O33锛沗.in` 浠呮敼 Ntile `4脳8`锛汷MP=4锛汣CX 4t rankfile
+- **閲囨牱** `118304295`锛?*145.79 s**锛涘悓鎵?O33 `118304298`锛?*130.39 s** 鈫?**0.894脳**
+- PROFILE锛欸02 MPI/r 鐣ラ檷锛?0.1鈫?7.1锛夛紝浣嗚绠?r 澶у锛?00.7鈫?56.9锛夆€?tile 鍙樺ぇ锛孫MP4 琛ヤ笉鍥?- **缁撹锛氬洖婊?*锛涚淮鎸?64脳2/8脳8锛涜瑙?`failure_analysis_O34_O35.md` 搂5
+
+### O37锛欸CC 7.3.1 + znver1 + ffp-contract=off + 浜旂儹鐐?OMP 鈥?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涙簮鐮佸悓 O33锛沗Linux-gfortran.mk` 閫夋嫨鎬?OMP + `-ffp-contract=off`
+- 澶囦唤锛歚oceanM.O37_gcc_omp.bak`锛沗Build.ifort_O33/`
+- **閲囨牱** `118304756`锛?*131.44 s**锛涘悓鎵?O33 `118304777`锛?*132.66 s** 鈫?**1.009脳**锛堝櫔澹帮級
+- PROFILE锛圙02 rank-sum锛夛細`step2d` **1.41脳**銆丟LS **1.06脳**銆乸redictor **1.02脳**锛涗絾 `step3d_t` **0.89脳** 鍚冩帀鏀剁泭锛涜绠楀悎璁♀増鎸佸钩锛孧PI 鐣ュソ
+- **缁撹锛氬洖婊?*锛汷33 ifort 鏍堜笂 GCC 鏃犲噣澧欓挓浼樺娍锛坒eng E060 鏄浉瀵规洿寮?ifort 鐖讹級銆備笉璺戝崐澶?vali锛涚埗浠?O33
+
+### O38锛氫簲鐑偣 `-qopt-prefetch=3 -unroll-aggressive`锛堟墦 step3d_t/pre_step3d锛夆€?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涗粎缂栬瘧鏃楁爣锛涙棤婧愮爜/鐗╃悊鏀瑰姩
+- 澶囦唤锛歚Linux-ifort.pre_O38_prefetch.mk`锛沗oceanM.O38_prefetch.bak`锛堝瓨妗ｏ級
+- **閲囨牱** `118305130`锛?*130.81 s**锛涘悓鎵?O33 `118305131`锛?*127.21 s** 鈫?**0.972脳**
+- PROFILE锛歱redictor/`step3d_t`/GLS **瀹屽叏鎸佸钩**锛堢洰鏍囪鏈檷锛夛紱MPI 鐣ュ樊灞炲櫔澹?- **缁撹锛氬洖婊?*锛涘凡鎭㈠ ifort.mk 涓?`oceanM`鈫怬33銆俻refetch/unroll 鎵撲笉涓湰鏍堣瀛樻牳
+- 璇︾粏褰掑洜锛歚report_his/prefetch_failure_O38.md`锛圠1 宸插懡涓紱鐡堕鏄法 itrc 閲嶅娴侊紝涓嶆槸婕忛鍙栵級
+
+### O39锛歚step3d_t` 鍨傜洿鎵╂暎 FC/BC/CF 瀵?`itrc>NAT` 澶嶇敤 鈥?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涙簮鐮佷綅绾х瓑浠峰彉鎹紙姹傝В鍏紡涓嶅彉锛?- 澶囦唤锛歚step3d_t.pre_O39_vdifreuse.F`锛沗oceanM.O39_vdifreuse.bak`锛堝瓨妗ｏ級
+- **ABBA 閲囨牱**锛歄33 132.47 / O39 129.99 / O39 131.41 / O33 128.17 鈫?鍧囧€?**0.997脳**
+- PROFILE锛欸02 Corrector tracers **~1.055脳**锛堢洰鏍囪鏈夋敹鐩婏級锛涗絾 GLS **~0.82脳** 寮傚父鎶崌锛汣ompute Total 鏈檷
+- **缁撹锛氬洖婊?*锛涙簮鐮佹仮澶嶏紝`oceanM`鈫怬33銆傚崟鐐圭煩闃靛鐢ㄤ笉澶熸姮澧欓挓锛涗笅涓€姝ラ渶鏇村ぇ绮掑害璺?tracer 铻嶅悎
+- 璇︾粏褰掑洜锛歚report_his/failure_analysis_O39.md`
+
+### O40锛歚step3d_t` 鍨傜洿娈?`Wj`/`oDz`/`Hzj` 涓€娆¤杞?+ O39 澶嶇敤 鈥?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涗綅绾х瓑浠凤紱澶囦唤 `step3d_t.pre_O40_geomcache.F`锛沗oceanM.O40_geomcache.bak`
+- **閲囨牱**锛歄40 131.80 / 132.22锛涘悓鎵?O33 133.77 / 128.24 鈫?鍧囧€?**0.992脳**
+- PROFILE锛欳orrector **~1.07脳**锛堢暐浼樹簬 O39锛夛紱GLS 鍐嶆 ~0.82脳锛涘閽熸棤澧炵泭
+- **缁撹锛氬洖婊?*锛沗step3d_t` 鍨傜洿缂撳瓨绾垮叧闂€備笅涓€鍒€鏀规墦 `pre_step3d` 鎴栨按骞抽€氶噺缂撳瓨
+- 璇︾粏褰掑洜锛歚report_his/failure_analysis_O40.md`
+
+### O41锛歚pre_step3d` pnpm 涓婃彁 + 鏄惧紡鎵╂暎 oDz/GEOM 澶嶇敤 鈥?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涘浠?`pre_step3d.pre_O41_predgeom.F`锛沗oceanM.O41_predgeom.bak`
+- **閲囨牱** `118306491/492`锛?30.37 / 128.97 s锛泇s 杩戞棩 O33 鍧囧€?129.97 鈫?**1.002脳**
+- **姹℃煋**锛欱uild 涓?`step3d_t` 浠嶄负 O40 瀵硅薄锛屼簩杩涘埗瀹炰负 O40+O41锛涘彔鍔犲悗澧欓挓浠嶁増1
+- **缁撹锛氬洖婊?*锛涘凡閲嶇紪骞插噣瀵硅薄锛涘叧闂?tracer 鍑犱綍缂撳瓨绾裤€傜邯寰嬶細鍥炴粴鍚庡繀椤诲垹 `Build/*.f90/*.o` 鍐嶇紪
+- 璇︾粏褰掑洜锛歚report_his/failure_analysis_O41.md`
+
+### O33 姝ｅ紡 3 澶?+ vali锛堟垚缁╁彛寰勶級
+
+- 鏃ユ湡锛?026-07-31锛涗綔涓?`118307015` / `nan_O33_3day`锛涜剼鏈?`sub_o33_noheap_3day.sh`
+- 閰嶇疆锛歚oceanM.O33_noheap.bak`锛孨TIMES **2592/12960**锛?4脳2锛孨tile 8脳8锛孠MP_BLOCKTIME=0锛宑oll_rules
+- **real = 35m29.853s锛?129.85 s锛?*
+  - 鐩稿 baseline 01:50:06锛?606 s锛夛細`6606/2129.85 = 3.10脳`
+  - 鐩稿鍗婂ぉ澶栨帹锛?64.34脳6鈮?186 s锛夌暐蹇紙鍚?I/O 宸紓锛?- 杈撳嚭锛歚output_O33_3day_118307015/`锛涙棩蹇?`vali_O33_3day_118307015.log`
+- **vali锛歋CS + Dongsha 鍏ㄩ儴閫氳繃**锛汥ongsha **u RMSE=0.000052**锛堚墹0.000060锛?
+### O42锛歚step3d_t` 姘村钩 `Huon/Hvom` 鎸夊眰缂撳瓨 鈥?鍥炴粴
+
+- 鏃ユ湡锛?026-07-31锛涘浠?`step3d_t.pre_O42_huoncache.F`锛沗oceanM.O42_huoncache.bak`
+- **閲囨牱** `118306884/885`锛?29.94 / 130.31 s 鈫?vs O33 鍧囧€?**0.999脳**
+- Corrector 涓?O33 鎸佸钩锛堟棤鍨傜洿缂撳瓨娣峰叆锛夛紱鎷疯礉鎴愭湰鎶垫秷 3D 閲嶈
+- **缁撹锛氬洖婊?*锛泃racer 鍑犱綍/閫氶噺缂撳瓨绾挎暣浣撳叧闂?- 璇︾粏褰掑洜锛歚report_his/failure_analysis_O42.md`
+
+### O43锛歚#undef PROFILE`锛堟寮忚鏃跺叧 ROMS 璁℃椂鎻掓々锛夆€?鏃犲閽熸敹鐩?
+- 鏃ユ湡锛?026-08-01锛涗緷鎹?Prompt 搂9 + `report_his/bottleneck_O33_3day.md`
+- 鏀瑰姩锛歚ROMS/Include/globaldefs.h`锛歚#define PROFILE` 鈫?`#undef PROFILE`
+- 澶囦唤锛歚.mcc_opt/staging/globaldefs.pre_O43_noprof.h`锛涗簩杩涘埗 `oceanM.O43_noprof.bak`
+- **閲囨牱** `118342307`锛?*131.234 s**锛沗118342321`锛?*130.737 s**锛涘潎鍊?**130.99 s**
+- vs 杩戞棩 O33 甯﹀潎鍊?~130.3 s 鈫?**~0.995脳**锛堝櫔澹板唴锛涢棬妲?1.02脳 鏈揪锛?- **缁撹锛氬閽熷亣璁炬嫆缁?*锛涙€ц兘/姝ｇ‘鎬х埗浠?**O33+O29**锛涙簮鐮佸凡鎭㈠ `#define PROFILE`
+- 褰掑洜锛氬尯鍩熻鏃跺紑閿€鐩稿 G02 绠楁牳/鍚屾鍙拷鐣ワ紱瑙?`report_his/failure_analysis_O43.md`
+- **鐢ㄦ埛婢勬竻锛?026-08-01锛?*锛氬綋鍓嶉樁娈典负渚夸簬姣忔璺戝畬鐢?PROFILE 鍒嗘瀽鐑偣锛?*涓嶅叧 PROFILE**锛涜揪鐞嗘兂鐩爣鍚庡啀鍏炽€侽43 涓嶅緱鍐嶈瑙ｈ鎴愩€屽繀椤婚暱鏈熷叧 PROFILE銆?
+### O44锛歚pre_step3d` R2鈥揜4 鍗?PARALLEL + `NOWAIT` 鈥?鍥炴粴
+
+- 鏃ユ湡锛?026-08-01锛?*閲囨牱** `118345096`锛?*135.302 s**锛沗118345097`锛?*132.489 s** 鈫?vs O33 **~0.973脳**
+- G02锛欸LS % 鍗囥€乸redictor 鏃犵ǔ闄嶏紱瑙?`report_his/failure_analysis_O44.md`
+- **缁撹锛氬洖婊?*锛涙簮鐮佲啇`pre_step3d.pre_O44_nowait.F`锛汷MP nowait/铻嶅悎绾垮叧闂?
+### O45锛氫簲鐑偣 `-qoverride-limits`锛圗047a #25464锛夆€?鍥炴粴
+
+- 鏃ユ湡锛?026-08-01锛?*閲囨牱** `118345360`锛?*132.006 s**锛沗118345361`锛?*131.497 s** 鈫?vs O33 **~0.989脳**
+- G02 绠楁牳鏃犵ǔ闄嶏紙GLS/predictor 浠嶉珮锛夛紱缂栬瘧鍣ㄦ椂闄愯烦杩囩殑浼樺寲瀵规湰鏍堟棤澧欓挓鏀剁泭
+- **缁撹锛氬洖婊?*锛沗Linux-ifort.mk`鈫恅pre_O45_override`锛沗oceanM`鈫怬33
+
+### O46锛歚step3d_t` oHz + 姘村钩 K_LOOP 鍗?PARALLEL + `NOWAIT` 鈥?鎷掑閽燂紙婧愮爜宸插洖婊氳嚦 O33锛?
+- 璇﹁ `report_his/failure_analysis_O46.md` / 澶嶇洏鏂囷紱`step3d_t.F` 涓?`pre_O46` 涓€鑷达紝鐖舵湰浠嶄负 O33銆?
+### O48锛氫笁闃熻瀺鍚堬紙biology `exp` CSE + `cffik` hoist锛夆€?绮惧害杩囥€佸閽熶笉鏅嬪崌
+
+- 鏃ユ湡锛?026-08-01锛沯ob **`118368357`**
+- 铻嶅悎锛歠eng 鍏夌収 exp CSE + lsd/zya `cffik` 澶栨彁锛汷33 宓屽/OMP/KMP/coll 鏍堜笉鍙樸€俵sd銆屾彁绮惧害銆? Intel `-fp-model precise`锛堝凡鏈夛級/ GCC fpstrict锛堜笉閫傜敤鏈爤锛?- **涓€澶?real = 12m19.184s锛?39.18 s锛?*锛泇s O33 725.47 鈫?**0.981脳**
+- **vali 鍏ㄩ€氳繃**锛汥ongsha **u=0.000052**
+- 浜岃繘鍒讹細`oceanM.O48_fusion.bak`锛涢粯璁?`oceanM` 浠嶄负 O33锛涜妗?`report_his/O48_fusion_sprint.md`
+
+### O47锛歰wner-packed 瀹¤ + `get_composite` 鎴愬 `mp_assemble2`锛堟浜わ級鈥?鎷掑閽?
+- 鏃ユ湡锛?026-08-01
+- 鍒嗘敮锛歚nan/O47_owner_packed_ortho`
+- **瀹¤**锛歠eng owner-packed / sparse `get_contact3d` / fluxsum **宸插湪 O10鈥揙11鈥揙33**锛沺acked 浠嶇敤 `mp_sum`锛圓llreduce锛夛紝鐪?P2P 鍦?contact3d銆傚師鏍烽噸绉绘涓虹┖鎿嶄綔銆?- **姝ｄ氦鏀瑰姩锛堝凡鍥炴粴锛?*锛歚get_contact2d_extract` + `get_composite` (u,v) 鈫?`mp_assemble2`锛涘紓浜庡凡鎷?O17/O18
+- **涓€澶?* `118354585`锛?*real = 12m30.734s锛?50.73 s锛?*锛泇s O33 725.47 s 鈫?**0.966脳**
+- **vali**锛坄vali_O47_1day_118354585.log`锛夛細**鍏ㄩ€氳繃**锛汥ongsha **u=0.000052**
+- **缁撹锛氭嫆缁濆閽熷苟鍥炴粴** `nesting.F`鈫恅pre_O47`锛沗oceanM`鈫怬33锛涘鏌?`oceanM.O47_composite_batch.bak`
+- 璇︽。锛歚report_his/O47_owner_packed_ortho.md`锛沜ontact2d 鎵撳寘/绋€鐤忕嚎 **鍏抽棴**
+
+### E046ctrl锛氱函 feng E046 浜岃繘鍒朵竴澶╁鐓?
+- 鏃ユ湡锛?026-07-30
+- 鐩殑锛氭媶鍥犫€斺€斿悓涓€濂?nan 鎻愪氦鑴氭湰/缁戞牳/HCOLL=0 涓嬶紝绾?E046 鏄惁杩?vali
+- 浜岃繘鍒讹細`oceanM.feng_E046_refflags.bak`锛堣嚜 feng `E046_ifort_scatter3d_hier_reference_flags` 鎷峰叆 nan锛?- 鑴氭湰锛歚sub_e046ctrl_1day.sh`锛涜緭鍑?`output_E046ctrl_118212518/`
+- 浣滀笟锛歚118212518` / `nan_E046ctrl_1d`锛?*real = 18m47.486s锛?127.49 s锛?*
+- vali锛坄vali_E046ctrl_1day.log`锛夛細**鍏ㄩ€氳繃**锛汥ongsha **u=0.000052**锛堜笌 O11 鐩稿悓鎵撳嵃锛?- 鐩稿 O11 涓€澶?1128.24 s锛氬熀鏈寔骞筹紙`1128.24/1127.49 鈮?1.001脳`锛?- 缁撹锛歄11 宸茶繃绾垮悗锛?*鎷嗗洜浣垮懡缁撴潫**锛涗粛鏈変环鍊间綔瀵圭収鈥斺€旇鏄?(1) nan 鑴氭湰/鐜涓?feng E046 涓€鑷村彲杩囩嚎锛?2) O11 鐩稿绾?E046 **鍑犱箮鏃犻澶栧閽熶唬浠?*锛?3) O10c 澶辫触纭睘婕忔帴 collect锛岄潪鐜闂
+
+############ O84 scored timings
+---- TIMING_O84_1day_118542013.txt
+
+real	12m20.927s
+user	244m2.120s
+sys	14m1.136s
+---- TIMING_O84_3day_118556090.txt
+
+real	36m29.941s
+user	722m44.777s
+sys	44m15.321s
+---- TIMING_O84_O33ctrl_118542010.txt
+
+real	2m7.706s
+user	40m57.405s
+sys	2m8.174s
+---- TIMING_O84_samp_118542009.txt
+
+real	2m13.242s
+user	42m20.329s
+sys	2m46.299s
+---- O84 3day validation verdict
+
+================================================================================
+銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+Dongsha60鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+
+############ sprint TIMING files (all)
+TIMING_sprint_1day_118735123.txt             
+TIMING_sprint_samp_118734523.txt              real	2m1.733s user	40m23.640s sys	1m44.895s 
+TIMING_sprint_1day_118733406.txt              real	10m59.424s user	225m38.779s sys	5m52.136s 
+TIMING_sprint_samp_118733265.txt              real	1m58.476s user	39m8.370s sys	1m12.568s 
+TIMING_sprint_samp_118732907.txt              real	2m25.159s user	36m57.065s sys	1m9.649s 
+TIMING_sprint_1day_118720748.txt              real	11m19.398s user	234m38.259s sys	5m46.387s 
+TIMING_sprint_1day_118719108.txt              real	11m20.413s user	234m50.036s sys	5m50.898s 
+TIMING_sprint_samp_118718615.txt              real	2m1.770s user	40m36.220s sys	1m10.714s 
+TIMING_sprint_samp_118718339.txt              real	1m58.463s user	39m53.571s sys	1m10.753s 
+TIMING_sprint_samp_118718178.txt              real	2m0.690s user	40m27.534s sys	1m11.094s 
+TIMING_sprint_samp_118717150.txt              real	2m5.404s user	40m56.514s sys	1m53.949s 
+TIMING_sprint_1day_118716141.txt              real	11m16.127s user	233m21.157s sys	5m55.165s 
+TIMING_sprint_samp_118715867.txt              real	2m2.006s user	40m43.347s sys	1m11.765s 
+TIMING_sprint_samp_118714810.txt              real	2m6.232s user	41m46.646s sys	1m11.425s 
+TIMING_sprint_samp_118714646.txt              real	2m1.061s user	40m19.349s sys	1m10.858s 
+TIMING_sprint_samp_118714409.txt              real	1m56.967s user	39m30.947s sys	1m10.831s 
+TIMING_sprint_samp_118713544.txt              real	2m3.714s user	41m5.544s sys	1m10.705s 
+TIMING_sprint_1day_118712439.txt              real	11m12.492s user	232m59.912s sys	5m43.347s 
+TIMING_sprint_samp_118712215.txt              real	1m58.750s user	40m0.589s sys	1m10.855s 
+TIMING_sprint_samp_118712039.txt              real	2m0.212s user	40m17.652s sys	1m12.501s 
+
+############ latest sprint validation verdicts
+---- vali_sprint_1day_118733406.log
+================================================================================
+銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+Dongsha60鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+---- vali_sprint_1day_118720748.log
+================================================================================
+銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+Dongsha60鏂囦欢鏁翠綋鐘舵€? 瀛樺湪瓒呴檺鍙橀噺
+鏈€缁堝垽瀹氾細鑷冲皯涓€缁勬枃浠跺瓨鍦ㄥ彉閲廟MSE瓒呴檺锛屼紭鍖栫粨鏋滃瓨鍦ㄥ紓甯?---- vali_sprint_1day_118719108.log
+================================================================================
+銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+Dongsha60鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+---- vali_sprint_1day_118716141.log
+================================================================================
+銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+Dongsha60鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+鏈€缁堝垽瀹氾細涓ょ粍鏂囦欢鎵€鏈夊彉閲廟MSE鍧囧湪闃堝€艰寖鍥村唴锛屼紭鍖栫粨鏋滄棤寮傚父
+ssh : bash: line 31: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-579a69e7-c693-4234-bdf6-f1bd8bd10280.ps1:7 字符: 206
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 31: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

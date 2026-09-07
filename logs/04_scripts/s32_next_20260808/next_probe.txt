@@ -1,0 +1,19 @@
+############ gcc modules / libstdc++ with GLIBCXX_3.4.21
+no_21 /usr/lib64/libstdc++.so.6
+OK_GLIBCXX21 /public/software/compiler/gnu/gcc-12.2.0/lib64/libstdc++.so.6
+
+############ ifort 2023 path
+2023.2.0
+latest
+
+############ SUBMIT vs S32 parent: size/strings compile stamp
+229524
+ifort                                                                           
+-no-heap-arrays -fp-model precise -march=core-avx2 -no-fma -ipo -ip -O3 -free -free                                                                             
+ipo_out.f
+mod_biology_mp_ipo4__
+__STRLITPACK_2021.20.93
+
+############ teammate 3day job progress
+             JOBID PARTITION      NAME           USER           ST       TIME  NODES NODELIST(REASON)
+         118766756 kshcexclu06    sprint_O84     fujiake         R       9:35      4 j01r2n[00-03]

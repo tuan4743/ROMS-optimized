@@ -1,0 +1,8 @@
+# Stage 82 Profiling / Evidence — O33 v4 source package
+
+- Timing scope: packaging is a single tar/gzip operation on the login node; no timed model scope, no repeated-run statistics, and no performance claim.
+- Archive metrics: v4 has 8828 entries vs v3's 8830; the two-entry difference is exactly the removed `Projects/bye24/Build` and `Projects/bye24/oceanM`. This confirms the exclusion change is minimal and precisely targeted.
+- Content verification: `gzip -t` passes; TOC has zero matches for the exclusion regex `\/(Build|\.mcc_opt|output|\.git)(\/|$)|\/oceanM($|\.)|\/Inputfiles\/`; archived `ocean_SCS_Dongsha60_bio15.in` SHA-256 equals the validated full input `a3e8a5db...79a8`; NTIMES/NtileI/NtileJ greps passed inside the script before repacking.
+- Manifest records: `source_v3=...v3.tar.gz` + sha, `full_input=ocean_full_64_8x8.in` + sha, `staging_retained=package_stage_v4_manual_20260803_170424`, `excluded_count=0`, `entries=8828`, plus critical-file hashes (makefile, Linux-ifort.mk, coll_rules.conf).
+- Resource/lifecycle: no model, source tree, compiler, runtime, input tree or job was modified. One failed staging dir and in-progress tar were cleaned within the private delivery root after renaming the failed tar to a `.gatefail_*` evidence name; the earlier v1 failure artifact `.tmp.failed_20260802_155824` was left untouched.
+- Observations vs hypotheses: observed — v3 contained two legacy prebuilt artifacts; hypothesis (not needed for this stage) that the active build is unaffected because `Projects/bye24/` is an example project outside the compiled path. The staged clean-build (Stage 65/66) already proved the archive builds; only the runtime-only `.in` differs in v4.

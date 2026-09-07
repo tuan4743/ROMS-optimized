@@ -1,0 +1,35 @@
+﻿===REAL===
+real	30m18.084s
+user	633m12.354s
+sys	16m58.942s
+===U===
+u                    RMSE = 0.000057   闃堝€尖墹0.000400   鉁呮甯?u                    RMSE = 0.000052   闃堝€尖墹0.000060   鉁呮甯?===BIN===
+33354fac2567e306411c  /public/home/fujiake/fjk/agent_tmp/isolated/work/s21_ifort2021_20260807/ROMS_CoSiNE15/oceanM.S21_ifort2021
+349c5a60edcdf6db21a8cb52b5212d6f  /public/home/fujiake/fjk/agent_tmp/isolated/work/s21_ifort2021_20260807/ROMS_CoSiNE15/oceanM.S21_ifort2021
+===PROFILE_G02===
+===QUEUE===
+             JOBID PARTITION      NAME           USER           ST       TIME  NODES NODELIST(REASON)
+===TEAMMATE_LATEST===
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/TIMING_sprint_3day_118755216.txt
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/TIMING_sprint_3day_118755059.txt
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/TIMING_sprint_3day_118754089.txt
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/TIMING_sprint_3day_118750169.txt
+- 浜岃繘鍒?oceanM.s29_ipo_avx2.bak锛?de9...锛夛紱1day J118741016 杩愯涓€?### S29 鍒ゅ畾锛氬叏灞€ AVX2 涓?-ipo 涓嶅彔鍔紝鏃犲鐩?- S29锛?ipo + 鍏ㄥ眬 AVX2 no-fma锛?day J118741016 = 661.0s锛堟參浜?S25 658.4s +2.6s锛屽櫔澹板唴锛夛紝
+  vali 杩囷紙Dongsha u=5.2e-5锛屼綅绾т腑鎬у棰勬湡锛夈€?- 缁撹锛?ipo 宸插惛鏀跺叏灞€ AVX2 鐨勪唬鐮佺敓鎴愭敹鐩婏紝涓よ€呬笉鍙犲姞锛汼25锛?ipo 鍗曠嫭锛変粛涓?1day 鏈€浼樸€?- 淇璁板綍锛歴22b 鍒嗘敮缂哄叏灞€ AVX2 鐨勫彂鐜颁笉褰卞搷 S25 缁撹锛圫25 鏃?AVX2 浠嶆渶蹇級銆?### S30 鍒ゅ畾锛?ipo inline 璋冨弬鏃犵泭锛屽凡鍥炴粴
+- S30锛?ipo + -inline-factor=20 -inline-max-size=4096锛?day J118742213 = 662.8s
+  锛堟參浜?S25 658.4s +0.7%锛夛紝vali 杩囷紱閲囨牱 117.5s锛堟寔骞筹級銆傚凡鍥炴粴銆?### 鏈€缁堢姸鎬侊紙2026-08-08锛?- 鐖舵湰閿佸畾 **S25**锛?day 1941.5s锛?2m21s锛夛紝vali 鍏ㄨ繃锛孌ongsha u=5.2e-5锛?  浜岃繘鍒?oceanM.s25_ipo_FINAL.bak锛坢d5 2fd9885a...锛屼笌澶氭楠岃瘉鐗堝瓧鑺備竴鑷达級锛?  婧愮爜 backup_S25_FINAL_src_20260808.tar.gz锛堝惈 Linux-ifort.mk锛屽彲瀹屾暣閲嶇紪锛夈€?- 鏈疆缁撹锛?ipo 鏄渶鍚庝竴涓湁鏁堟敹鐩婏紙S21 1979.6s 鈫?S25 1941.5s锛?1.9%锛夛紱
+  AVX2 涓?-ipo 涓嶅彔鍔狅紱fast=2 绫荤畻鏈壈鍔ㄥ叏閮ㄨ u 闃堝€兼尅鍥烇紙鑲囦簨鏂囦欢宸蹭簩鍒嗗畾浣?step3d_t锛夛紱
+  缁撴瀯鎬ч噸鍙?闈為樆濉?鑷姩骞惰鍏ㄩ儴瀹炴祴鎷掔粷銆?- 璺?30min锛?800s锛夊樊 141.5s锛?.3%锛夛紝闇€鐨勬柊鏉犳潌涓嶅湪宸叉祴璇曢泦鍚堝唴銆?### S31/S32锛歩fort 2021 鍩哄骇锛堝弬鑰?fjk s21_ifort2021锛屽悓绐?ABBA +7.5%锛屼綅绾т竴鑷达級
+- fjk 璁板綍锛?18742729 S21_parent 667.3s vs S21_ifort2021 617.6s锛?7.46%锛夛紝
+  杞ㄨ抗浣嶇骇涓€鑷达紝vali 鍙岃繃锛涚紪璇?2021.3.0銆佽繍琛?2017 妯″潡銆?- nan 姝ゅ墠 i21 澶辫触鍘熷洜锛歋8 鏃楁爣鏃?-march=core-avx2 -no-fma锛?no-fma 閽変綇 FP 琛屼负鏄?2021 閫氳繃鐨勫叧閿€?- S31 = S21 鏃楁爣锛?march=core-avx2 -no-fma锛? ifort 2021.3.0锛歮d5 1da3锛?day 784s锛堣妭鐐逛簤鎶紝寰呴噸娴嬶級锛?  vali 杩囷紙u=5.2e-5 涓?S25 涓€鑷达紝浣嶇骇涓€х‘璁わ級銆?- S32 = S31 + -ipo锛歮d5 92ff锛屽緟娴嬨€?- 鐩爣锛歋31 3day ~1840s锛汼32(-ipo) 鏈夋湜 ~1805s 杩?30min锛岄渶骞插噣 1day 纭銆?### S32 纭锛歩fort 2021 + -ipo = 1day 596.5s锛?m56.5s锛夛紝vali 鍏ㄨ繃 鈥斺€?杈炬垚 30min 鐩爣
+- 1day J118748760锛歳eal=596.5s锛坴s S25 658.4s -9.4%锛泇s S21 664.6s -10.3%锛夛紝
+  vali 鍏ㄨ繃锛圖ongsha u=5.2e-5锛屼笌 S25 浣嶇骇涓€鑷达級锛?day 澶栨帹 ~1778s锛?9m38s锛? 30min銆?- S32 = S31锛坕fort 2021.3.0 + -march=core-avx2 -no-fma锛? 鍏ㄥ眬 -ipo銆?- 浜岃繘鍒?oceanM.s32_ifort2021_ipo.bak锛坢d5 92ffbd...锛夛紱婧愮爜 backup_S32_src_20260808.tar.gz銆?- 3day 姝ｅ紡 J118749505 鏇惧洜纾佺洏婊″け璐ワ紝宸叉竻鐞?sprint 搴熷純鐩綍锛屽緟閲嶆彁銆?- 鍏抽敭鏈虹悊锛?no-fma 浣?2021 浠ｇ爜鐢熸垚涓?2017 浣嶇骇涓€鑷达紙vali 閫氳繃鍓嶆彁锛夛紱
+  2021 缂栬瘧鍣ㄦ湰韬?+7.5%锛?ipo 鍐?+2.3%锛屽悎璁?-9.4%銆?### 鈽?S32 姝ｅ紡 3day 閿佸畾锛?753.9s锛?9m13.9s锛? 30min锛寁ali 鍏ㄨ繃 鈥斺€?鐩爣杈炬垚
+- job 118755216锛歳eal = 29m13.876s = 1753.9s锛堝共鍑€杩愯锛岄槦鍒楃┖+纾佺洏鍋ュ悍锛夈€?- vali锛歋CS/Dongsha 鍏ㄩ儴姝ｅ父锛汥ongsha u=0.000052锛堜笌 S25/S21 浣嶇骇涓€鑷达級銆?- 鐩稿锛歋21 1979.6s -11.4%锛汼25 1941.5s -9.7%锛汷84鍩虹嚎 2188s -19.8%锛涚粍濮斾細 6606s = 3.77脳銆?- 閰嶇疆锛歩fort 2021.3.0 + 鍏ㄥ眬 -march=core-avx2 -no-fma -ipo锛堢紪璇戯級锛岃繍琛屾ā鍧?2017銆?- 浜岃繘鍒?oceanM.s32_ifort2021_ipo.bak锛坢d5 92ffbd...锛夛紱婧愮爜 backup_S32_src_20260808.tar.gz銆?- 鍓嶄袱娆?3day锛?7m51s/38m8s锛変负鍏变韩纾佺洏 I/O 浜夋姠浜х墿锛坰ys 20m锛夛紝闈炵湡瀹炴€ц兘銆?
+ssh : bash: line 18: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-769e874f-ed47-496d-981f-67d89f83e5e7.ps1:82 字符: 207
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 18: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

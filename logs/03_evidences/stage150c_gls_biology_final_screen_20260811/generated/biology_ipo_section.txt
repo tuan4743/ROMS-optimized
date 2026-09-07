@@ -1,0 +1,1412 @@
+﻿Begin optimization report for: BIOLOGY_MOD::BIOLOGY_TILE
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (BIOLOGY_MOD::BIOLOGY_TILE) [152/490=31.0%] biology.f90(158,18)
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) _alloca
+  -> EXTERN: (158,18) __getsp_inlined
+  -> EXTERN: (552,29) exp
+  -> EXTERN: (559,61) exp
+  -> EXTERN: (579,10) exp
+  -> EXTERN: (635,9) exp
+  -> EXTERN: (654,22) exp
+  -> EXTERN: (699,13) exp
+  -> EXTERN: (711,22) exp
+  -> (1078,10) BIOLOGY_MOD::O2_FLUX (isz = 204) (sz = 241)
+     [[ Inlining would exceed -inline-max-size value (241>230) <1>]]
+  -> (1106,12) BIOLOGY_MOD::CO2_FLUX (isz = 1047) (sz = 1092)
+     [[ Inlining would exceed -inline-max-size value (1092>230) <1>]]
+  -> EXTERN: (1258,5) __resetsp_inlined
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at biology.f90(352,7)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at biology.f90(377,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at biology.f90(378,9)
+      remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(379,11) ]
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(379,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(379,11)
+         remark #15389: vectorization support: reference at (380:13) has unaligned access   [ biology.f90(380,13) ]
+         remark #15388: vectorization support: reference at (381:13) has aligned access   [ biology.f90(381,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ biology.f90(380,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ biology.f90(381,32) ]
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.060
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 33 
+         remark #15477: vector cost: 13.500 
+         remark #15478: estimated potential speedup: 2.300 
+         remark #15486: divides: 1 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(379,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (380:13) has unaligned access   [ biology.f90(380,13) ]
+         remark #15389: vectorization support: reference at (381:13) has unaligned access   [ biology.f90(381,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.286
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(379,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(384,9)
+      remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(385,11) ]
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(385,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(385,11)
+         remark #15388: vectorization support: reference at (386:13) has aligned access   [ biology.f90(386,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ biology.f90(386,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k+1)>, stride is unknown to compiler   [ biology.f90(386,44) ]
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.042
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 32 
+         remark #15477: vector cost: 15.000 
+         remark #15478: estimated potential speedup: 2.030 
+         remark #15486: divides: 1 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(385,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (386:13) has unaligned access   [ biology.f90(386,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.210
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(385,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(389,9)
+      remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(390,11) ]
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(390,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at biology.f90(390,11)
+         remark #15388: vectorization support: reference at (391:13) has aligned access   [ biology.f90(391,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k-1)>, stride is unknown to compiler   [ biology.f90(391,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ biology.f90(391,46) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k+1)>, stride is unknown to compiler   [ biology.f90(391,56) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.056
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 3 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 35 
+         remark #15477: vector cost: 22.500 
+         remark #15478: estimated potential speedup: 1.540 
+         remark #15486: divides: 1 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(390,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (391:13) has unaligned access   [ biology.f90(391,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.271
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(390,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(402,9)
+      remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+      remark #25452: Original Order found to be proper, but by a close margin
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(404,11)
+         remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(405,13) ]
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at biology.f90(405,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at biology.f90(405,13)
+            remark #15388: vectorization support: reference at (406:15) has aligned access   [ biology.f90(406,15) ]
+            remark #15389: vectorization support: reference at (407:15) has unaligned access   [ biology.f90(407,15) ]
+            remark #15388: vectorization support: reference at (407:15) has aligned access   [ biology.f90(407,15) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nstp,indx)>, stride is unknown to compiler   [ biology.f90(406,37) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.130
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 1 
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15452: unmasked strided loads: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 12 
+            remark #15477: vector cost: 6.250 
+            remark #15478: estimated potential speedup: 1.830 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at biology.f90(405,13)
+         <Remainder loop for vectorization>
+            remark #15389: vectorization support: reference at (406:15) has unaligned access   [ biology.f90(406,15) ]
+            remark #15389: vectorization support: reference at (407:15) has unaligned access   [ biology.f90(407,15) ]
+            remark #15389: vectorization support: reference at (407:15) has unaligned access   [ biology.f90(407,15) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.679
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 1 
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15452: unmasked strided loads: 2 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 17 
+            remark #15477: vector cost: 10.000 
+            remark #15478: estimated potential speedup: 1.670 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at biology.f90(405,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(412,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Peeled loop for vectorization, Multiversioned v1>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15388: vectorization support: reference at (438:13) has aligned access   [ biology.f90(438,13) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,ioxyg) has unaligned access   [ biology.f90(438,36) ]
+         remark #15389: vectorization support: reference at (440:13) has unaligned access   [ biology.f90(440,13) ]
+         remark #15388: vectorization support: reference at (440:13) has aligned access   [ biology.f90(440,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.364
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 12 
+         remark #15477: vector cost: 2.750 
+         remark #15478: estimated potential speedup: 3.780 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Remainder loop for vectorization, Multiversioned v1>
+         remark #15389: vectorization support: reference at (438:13) has unaligned access   [ biology.f90(438,13) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,ioxyg) has unaligned access   [ biology.f90(438,36) ]
+         remark #15389: vectorization support: reference at (440:13) has unaligned access   [ biology.f90(440,13) ]
+         remark #15389: vectorization support: reference at (440:13) has unaligned access   [ biology.f90(440,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.571
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Remainder loop for vectorization, Multiversioned v1>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Peeled loop for vectorization, Multiversioned v2>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Multiversioned v2>
+         remark #15388: vectorization support: reference at (438:13) has aligned access   [ biology.f90(438,13) ]
+         remark #15389: vectorization support: reference at (440:13) has unaligned access   [ biology.f90(440,13) ]
+         remark #15388: vectorization support: reference at (440:13) has aligned access   [ biology.f90(440,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nstp,ioxyg)>, stride is unknown to compiler   [ biology.f90(438,36) ]
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.130
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 12 
+         remark #15477: vector cost: 6.250 
+         remark #15478: estimated potential speedup: 1.830 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(413,11)
+      <Remainder loop for vectorization, Multiversioned v2>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(448,9)
+      remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(449,11) ]
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(449,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(449,11)
+         remark #15388: vectorization support: reference at (450:13) has aligned access   [ biology.f90(450,13) ]
+         remark #15389: vectorization support: reference at (450:36) has unaligned access   [ biology.f90(450,36) ]
+         remark #15388: vectorization support: reference at (451:13) has aligned access   [ biology.f90(451,13) ]
+         remark #15388: vectorization support: reference at (451:36) has aligned access   [ biology.f90(451,36) ]
+         remark #15389: vectorization support: reference at (452:13) has unaligned access   [ biology.f90(452,13) ]
+         remark #15388: vectorization support: reference at (452:13) has aligned access   [ biology.f90(452,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 2 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 21 
+         remark #15477: vector cost: 4.000 
+         remark #15478: estimated potential speedup: 4.430 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(449,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (450:13) has unaligned access   [ biology.f90(450,13) ]
+         remark #15389: vectorization support: reference at (450:36) has unaligned access   [ biology.f90(450,36) ]
+         remark #15389: vectorization support: reference at (451:13) has unaligned access   [ biology.f90(451,13) ]
+         remark #15389: vectorization support: reference at (451:36) has unaligned access   [ biology.f90(451,36) ]
+         remark #15389: vectorization support: reference at (452:13) has unaligned access   [ biology.f90(452,13) ]
+         remark #15389: vectorization support: reference at (452:13) has unaligned access   [ biology.f90(452,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.190
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(449,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(455,9)
+      remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(456,11) ]
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(456,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(456,11)
+         remark #15389: vectorization support: reference at (457:15) has unaligned access   [ biology.f90(457,15) ]
+         remark #15388: vectorization support: reference at (457:38) has aligned access   [ biology.f90(457,38) ]
+         remark #15388: vectorization support: reference at (458:15) has aligned access   [ biology.f90(458,15) ]
+         remark #15389: vectorization support: reference at (458:15) has unaligned access   [ biology.f90(458,15) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.364
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 12 
+         remark #15477: vector cost: 2.750 
+         remark #15478: estimated potential speedup: 3.780 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(456,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (457:15) has unaligned access   [ biology.f90(457,15) ]
+         remark #15389: vectorization support: reference at (457:38) has unaligned access   [ biology.f90(457,38) ]
+         remark #15389: vectorization support: reference at (458:15) has unaligned access   [ biology.f90(458,15) ]
+         remark #15389: vectorization support: reference at (458:15) has unaligned access   [ biology.f90(458,15) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.571
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(456,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(464,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Peeled loop for vectorization, Multiversioned v1>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15389: vectorization support: reference at (468:13) has unaligned access   [ biology.f90(468,13) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,itemp) has unaligned access   [ biology.f90(468,13) ]
+         remark #15389: vectorization support: reference at (469:13) has unaligned access   [ biology.f90(469,13) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,isalt) has unaligned access   [ biology.f90(469,13) ]
+         remark #15388: vectorization support: reference at (480:11) has aligned access   [ biology.f90(480,11) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,itic_) has unaligned access   [ biology.f90(480,30) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.347
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 3 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 16 
+         remark #15477: vector cost: 4.500 
+         remark #15478: estimated potential speedup: 3.170 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Remainder loop for vectorization, Multiversioned v1>
+         remark #15389: vectorization support: reference at (468:13) has unaligned access   [ biology.f90(468,13) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,itemp) has unaligned access   [ biology.f90(468,13) ]
+         remark #15389: vectorization support: reference at (469:13) has unaligned access   [ biology.f90(469,13) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,isalt) has unaligned access   [ biology.f90(469,13) ]
+         remark #15389: vectorization support: reference at (480:11) has unaligned access   [ biology.f90(480,11) ]
+         remark #15389: vectorization support: reference t(i,j,k,nstp,itic_) has unaligned access   [ biology.f90(480,30) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.400
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Remainder loop for vectorization, Multiversioned v1>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Peeled loop for vectorization, Multiversioned v2>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Multiversioned v2>
+         remark #15389: vectorization support: reference at (468:13) has unaligned access   [ biology.f90(468,13) ]
+         remark #15389: vectorization support: reference at (469:13) has unaligned access   [ biology.f90(469,13) ]
+         remark #15388: vectorization support: reference at (480:11) has aligned access   [ biology.f90(480,11) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nstp,itemp)>, stride is unknown to compiler   [ biology.f90(468,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nstp,isalt)>, stride is unknown to compiler   [ biology.f90(469,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nstp,itic_)>, stride is unknown to compiler   [ biology.f90(480,30) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.174
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15452: unmasked strided loads: 3 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 16 
+         remark #15477: vector cost: 11.500 
+         remark #15478: estimated potential speedup: 1.370 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(465,11)
+      <Remainder loop for vectorization, Multiversioned v2>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(487,9)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at biology.f90(487,9)
+      remark #15388: vectorization support: reference at (488:11) has aligned access   [ biology.f90(488,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <srflx(i,j)>, stride is unknown to compiler   [ biology.f90(488,33) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.393
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15452: unmasked strided loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 10 
+      remark #15477: vector cost: 3.500 
+      remark #15478: estimated potential speedup: 2.750 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at biology.f90(487,9)
+   <Remainder loop for vectorization>
+      remark #15389: vectorization support: reference at (488:11) has unaligned access   [ biology.f90(488,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 1.400
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15452: unmasked strided loads: 2 
+      remark #15453: unmasked strided stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 17 
+      remark #15477: vector cost: 10.000 
+      remark #15478: estimated potential speedup: 1.670 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at biology.f90(487,9)
+   <Remainder loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at biology.f90(501,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(547,5)
+         remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+         remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation : ( 1 2 ) --> ( 2 1 ) 
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization
+         remark #15346: vector dependence: assumed FLOW dependence between at (548:7) and at (553:9)
+         remark #15346: vector dependence: assumed ANTI dependence between at (553:9) and at (548:7)
+
+         LOOP BEGIN at biology.f90(550,7)
+         <Predicate Optimized v1>
+            remark #25427: Loop Statements Reordered
+            remark #25422: Invariant Condition at line 558 hoisted out of this loop
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between at (552:9) and at (552:9)
+            remark #15346: vector dependence: assumed ANTI dependence between at (552:9) and at (552:9)
+         LOOP END
+
+         LOOP BEGIN at biology.f90(550,7)
+         <Predicate Optimized v2>
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between at (552:9) and at (552:9)
+            remark #15346: vector dependence: assumed ANTI dependence between at (552:9) and at (552:9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at biology.f90(572,8)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at biology.f90(573,11)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at biology.f90(573,11)
+            remark #15389: vectorization support: reference at (579:24) has unaligned access   [ biology.f90(579,24) ]
+            remark #15389: vectorization support: reference at (635:23) has unaligned access   [ biology.f90(635,23) ]
+            remark #15389: vectorization support: reference at (638:15) has unaligned access   [ biology.f90(638,15) ]
+            remark #15389: vectorization support: reference at (639:21) has unaligned access   [ biology.f90(639,21) ]
+            remark #15389: vectorization support: reference at (640:21) has unaligned access   [ biology.f90(640,21) ]
+            remark #15389: vectorization support: reference at (641:14) has unaligned access   [ biology.f90(641,14) ]
+            remark #15389: vectorization support: reference at (645:9) has unaligned access   [ biology.f90(645,9) ]
+            remark #15389: vectorization support: reference at (645:37) has unaligned access   [ biology.f90(645,37) ]
+            remark #15389: vectorization support: reference at (654:27) has unaligned access   [ biology.f90(654,27) ]
+            remark #15389: vectorization support: reference at (654:36) has unaligned access   [ biology.f90(654,36) ]
+            remark #15389: vectorization support: reference at (660:20) has unaligned access   [ biology.f90(660,20) ]
+            remark #15389: vectorization support: reference at (699:27) has unaligned access   [ biology.f90(699,27) ]
+            remark #15389: vectorization support: reference at (700:18) has unaligned access   [ biology.f90(700,18) ]
+            remark #15389: vectorization support: reference at (702:18) has unaligned access   [ biology.f90(702,18) ]
+            remark #15389: vectorization support: reference at (703:21) has unaligned access   [ biology.f90(703,21) ]
+            remark #15389: vectorization support: reference at (704:14) has unaligned access   [ biology.f90(704,14) ]
+            remark #15389: vectorization support: reference at (708:15) has unaligned access   [ biology.f90(708,15) ]
+            remark #15389: vectorization support: reference at (708:44) has unaligned access   [ biology.f90(708,44) ]
+            remark #15389: vectorization support: reference at (709:14) has unaligned access   [ biology.f90(709,14) ]
+            remark #15389: vectorization support: reference at (709:42) has unaligned access   [ biology.f90(709,42) ]
+            remark #15389: vectorization support: reference at (710:14) has unaligned access   [ biology.f90(710,14) ]
+            remark #15389: vectorization support: reference at (710:42) has unaligned access   [ biology.f90(710,42) ]
+            remark #15389: vectorization support: reference at (711:27) has unaligned access   [ biology.f90(711,27) ]
+            remark #15389: vectorization support: reference at (711:36) has unaligned access   [ biology.f90(711,36) ]
+            remark #15389: vectorization support: reference at (717:19) has unaligned access   [ biology.f90(717,19) ]
+            remark #15389: vectorization support: reference at (735:24) has unaligned access   [ biology.f90(735,24) ]
+            remark #15389: vectorization support: reference at (736:24) has unaligned access   [ biology.f90(736,24) ]
+            remark #15389: vectorization support: reference at (737:24) has unaligned access   [ biology.f90(737,24) ]
+            remark #15389: vectorization support: reference at (738:24) has unaligned access   [ biology.f90(738,24) ]
+            remark #15389: vectorization support: reference at (756:26) has unaligned access   [ biology.f90(756,26) ]
+            remark #15389: vectorization support: reference at (757:26) has unaligned access   [ biology.f90(757,26) ]
+            remark #15389: vectorization support: reference at (758:23) has unaligned access   [ biology.f90(758,23) ]
+            remark #15389: vectorization support: reference at (759:23) has unaligned access   [ biology.f90(759,23) ]
+            remark #15389: vectorization support: reference at (769:28) has unaligned access   [ biology.f90(769,28) ]
+            remark #15389: vectorization support: reference at (769:43) has unaligned access   [ biology.f90(769,43) ]
+            remark #15389: vectorization support: reference at (805:29) has unaligned access   [ biology.f90(805,29) ]
+            remark #15389: vectorization support: reference at (809:39) has unaligned access   [ biology.f90(809,39) ]
+            remark #15389: vectorization support: reference at (816:20) has unaligned access   [ biology.f90(816,20) ]
+            remark #15389: vectorization support: reference at (833:22) has unaligned access   [ biology.f90(833,22) ]
+            remark #15389: vectorization support: reference at (838:26) has unaligned access   [ biology.f90(838,26) ]
+            remark #15389: vectorization support: reference at (838:41) has unaligned access   [ biology.f90(838,41) ]
+            remark #15389: vectorization support: reference at (840:31) has unaligned access   [ biology.f90(840,31) ]
+            remark #15389: vectorization support: reference at (848:19) has unaligned access   [ biology.f90(848,19) ]
+            remark #15389: vectorization support: reference at (848:42) has unaligned access   [ biology.f90(848,42) ]
+            remark #15389: vectorization support: reference at (850:26) has unaligned access   [ biology.f90(850,26) ]
+            remark #15389: vectorization support: reference at (851:19) has unaligned access   [ biology.f90(851,19) ]
+            remark #15389: vectorization support: reference at (851:34) has unaligned access   [ biology.f90(851,34) ]
+            remark #15389: vectorization support: reference at (853:16) has unaligned access   [ biology.f90(853,16) ]
+            remark #15389: vectorization support: reference at (853:31) has unaligned access   [ biology.f90(853,31) ]
+            remark #15389: vectorization support: reference at (855:24) has unaligned access   [ biology.f90(855,24) ]
+            remark #15389: vectorization support: reference at (855:39) has unaligned access   [ biology.f90(855,39) ]
+            remark #15389: vectorization support: reference at (862:33) has unaligned access   [ biology.f90(862,33) ]
+            remark #15389: vectorization support: reference at (862:48) has unaligned access   [ biology.f90(862,48) ]
+            remark #15389: vectorization support: reference at (864:15) has unaligned access   [ biology.f90(864,15) ]
+            remark #15389: vectorization support: reference at (865:33) has unaligned access   [ biology.f90(865,33) ]
+            remark #15389: vectorization support: reference at (865:48) has unaligned access   [ biology.f90(865,48) ]
+            remark #15389: vectorization support: reference at (867:16) has unaligned access   [ biology.f90(867,16) ]
+            remark #15389: vectorization support: reference at (868:32) has unaligned access   [ biology.f90(868,32) ]
+            remark #15389: vectorization support: reference at (868:47) has unaligned access   [ biology.f90(868,47) ]
+            remark #15389: vectorization support: reference at (870:16) has unaligned access   [ biology.f90(870,16) ]
+            remark #15389: vectorization support: reference at (1018:5) has unaligned access   [ biology.f90(1018,5) ]
+            remark #15389: vectorization support: reference at (1018:20) has unaligned access   [ biology.f90(1018,20) ]
+            remark #15389: vectorization support: reference at (1019:2) has unaligned access   [ biology.f90(1019,2) ]
+            remark #15389: vectorization support: reference at (1019:17) has unaligned access   [ biology.f90(1019,17) ]
+            remark #15389: vectorization support: reference at (1020:2) has unaligned access   [ biology.f90(1020,2) ]
+            remark #15389: vectorization support: reference at (1020:17) has unaligned access   [ biology.f90(1020,17) ]
+            remark #15389: vectorization support: reference at (1021:2) has unaligned access   [ biology.f90(1021,2) ]
+            remark #15389: vectorization support: reference at (1021:17) has unaligned access   [ biology.f90(1021,17) ]
+            remark #15389: vectorization support: reference at (1022:2) has unaligned access   [ biology.f90(1022,2) ]
+            remark #15389: vectorization support: reference at (1022:17) has unaligned access   [ biology.f90(1022,17) ]
+            remark #15389: vectorization support: reference at (1023:2) has unaligned access   [ biology.f90(1023,2) ]
+            remark #15389: vectorization support: reference at (1023:17) has unaligned access   [ biology.f90(1023,17) ]
+            remark #15389: vectorization support: reference at (1024:2) has unaligned access   [ biology.f90(1024,2) ]
+            remark #15389: vectorization support: reference at (1024:17) has unaligned access   [ biology.f90(1024,17) ]
+            remark #15389: vectorization support: reference at (1025:2) has unaligned access   [ biology.f90(1025,2) ]
+            remark #15389: vectorization support: reference at (1025:17) has unaligned access   [ biology.f90(1025,17) ]
+            remark #15389: vectorization support: reference at (1026:2) has unaligned access   [ biology.f90(1026,2) ]
+            remark #15389: vectorization support: reference at (1026:17) has unaligned access   [ biology.f90(1026,17) ]
+            remark #15389: vectorization support: reference at (1027:2) has unaligned access   [ biology.f90(1027,2) ]
+            remark #15389: vectorization support: reference at (1027:17) has unaligned access   [ biology.f90(1027,17) ]
+            remark #15389: vectorization support: reference at (1028:2) has unaligned access   [ biology.f90(1028,2) ]
+            remark #15389: vectorization support: reference at (1028:17) has unaligned access   [ biology.f90(1028,17) ]
+            remark #15389: vectorization support: reference at (1029:2) has unaligned access   [ biology.f90(1029,2) ]
+            remark #15389: vectorization support: reference at (1029:17) has unaligned access   [ biology.f90(1029,17) ]
+            remark #15389: vectorization support: reference at (1030:2) has unaligned access   [ biology.f90(1030,2) ]
+            remark #15389: vectorization support: reference at (1030:17) has unaligned access   [ biology.f90(1030,17) ]
+            remark #15389: vectorization support: reference at (1036:5) has unaligned access   [ biology.f90(1036,5) ]
+            remark #15389: vectorization support: reference at (1036:20) has unaligned access   [ biology.f90(1036,20) ]
+            remark #15389: vectorization support: reference at (1037:5) has unaligned access   [ biology.f90(1037,5) ]
+            remark #15389: vectorization support: reference at (1037:20) has unaligned access   [ biology.f90(1037,20) ]
+            remark #15389: vectorization support: reference at (594:16) has unaligned access   [ biology.f90(594,16) ]
+            remark #15389: vectorization support: reference at (594:32) has unaligned access   [ biology.f90(594,32) ]
+            remark #15389: vectorization support: reference at (597:16) has unaligned access   [ biology.f90(597,16) ]
+            remark #15389: vectorization support: reference at (597:32) has unaligned access   [ biology.f90(597,32) ]
+            remark #15389: vectorization support: reference at (823:27) has unaligned access   [ biology.f90(823,27) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.083
+            remark #15525: call to function 'exp' is serialized   [ biology.f90(579,10) ]
+            remark #15525: call to function 'exp' is serialized   [ biology.f90(635,9) ]
+            remark #15525: call to function 'exp' is serialized   [ biology.f90(654,22) ]
+            remark #15525: call to function 'exp' is serialized   [ biology.f90(699,13) ]
+            remark #15525: call to function 'exp' is serialized   [ biology.f90(711,22) ]
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 17 
+            remark #15451: unmasked unaligned unit stride stores: 15 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 1846 
+            remark #15477: vector cost: 1013.750 
+            remark #15478: estimated potential speedup: 1.790 
+            remark #15485: serialized function calls: 5
+            remark #15486: divides: 16 
+            remark #15488: --- end vector cost summary ---
+            remark #15489: --- begin vector function matching report ---
+            remark #15490: Function call: exp with simdlen=4, actual parameter types: (vector)   [ biology.f90(579,10) ]
+            remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ biology.f90(579,10) ]
+            remark #15490: Function call: exp with simdlen=4, actual parameter types: (vector)   [ biology.f90(635,9) ]
+            remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ biology.f90(635,9) ]
+            remark #15490: Function call: exp with simdlen=4, actual parameter types: (vector)   [ biology.f90(654,22) ]
+            remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ biology.f90(654,22) ]
+            remark #15490: Function call: exp with simdlen=4, actual parameter types: (vector)   [ biology.f90(699,13) ]
+            remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ biology.f90(699,13) ]
+            remark #15490: Function call: exp with simdlen=4, actual parameter types: (vector)   [ biology.f90(711,22) ]
+            remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ biology.f90(711,22) ]
+            remark #15493: --- end vector function matching report ---
+         LOOP END
+
+         LOOP BEGIN at biology.f90(573,11)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1047,5)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1047,5)
+         remark #15389: vectorization support: reference at (1070:11) has unaligned access   [ biology.f90(1070,11) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <sustr(i,j)>, stride is unknown to compiler   [ biology.f90(1057,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <sustr(i+1,j)>, stride is unknown to compiler   [ biology.f90(1057,44) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <svstr(i,j)>, stride is unknown to compiler   [ biology.f90(1059,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <svstr(i,j+1)>, stride is unknown to compiler   [ biology.f90(1059,44) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.234
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 68 
+         remark #15477: vector cost: 32.000 
+         remark #15478: estimated potential speedup: 2.100 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1047,5)
+      <Remainder loop for vectorization>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1089,5)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1089,5)
+         remark #15388: vectorization support: reference at (1090:4) has aligned access   [ biology.f90(1090,4) ]
+         remark #15388: vectorization support: reference at (1090:19) has aligned access   [ biology.f90(1090,19) ]
+         remark #15389: vectorization support: reference at (1090:41) has unaligned access   [ biology.f90(1090,41) ]
+         remark #15389: vectorization support: reference at (1090:50) has unaligned access   [ biology.f90(1090,50) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.386
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 2.750 
+         remark #15478: estimated potential speedup: 3.500 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1089,5)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (1090:4) has unaligned access   [ biology.f90(1090,4) ]
+         remark #15389: vectorization support: reference at (1090:19) has unaligned access   [ biology.f90(1090,19) ]
+         remark #15389: vectorization support: reference at (1090:41) has unaligned access   [ biology.f90(1090,41) ]
+         remark #15389: vectorization support: reference at (1090:50) has unaligned access   [ biology.f90(1090,50) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.643
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1089,5)
+      <Remainder loop for vectorization>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1100,6)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1100,6)
+         remark #25045: Fused Loops: ( 1100 1101 1102 1103 1104 1105 )
+
+         remark #15389: vectorization support: reference at (1100:6) has unaligned access
+         remark #15389: vectorization support: reference at (1100:6) has unaligned access
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access   [ biology.f90(1101,6) ]
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access   [ biology.f90(1101,6) ]
+         remark #15389: vectorization support: reference at (1102:6) has unaligned access   [ biology.f90(1102,6) ]
+         remark #15389: vectorization support: reference at (1102:6) has unaligned access   [ biology.f90(1102,6) ]
+         remark #15389: vectorization support: reference at (1103:6) has unaligned access   [ biology.f90(1103,6) ]
+         remark #15389: vectorization support: reference at (1103:6) has unaligned access   [ biology.f90(1103,6) ]
+         remark #15389: vectorization support: reference at (1104:6) has unaligned access   [ biology.f90(1104,6) ]
+         remark #15389: vectorization support: reference at (1104:6) has unaligned access   [ biology.f90(1104,6) ]
+         remark #15389: vectorization support: reference at (1105:6) has unaligned access   [ biology.f90(1105,6) ]
+         remark #15389: vectorization support: reference at (1105:6) has unaligned access   [ biology.f90(1105,6) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.756
+         remark #15301: FUSED LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 4 
+         remark #15451: unmasked unaligned unit stride stores: 6 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 52 
+         remark #15477: vector cost: 10.250 
+         remark #15478: estimated potential speedup: 4.760 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1101,6)
+         remark #25046: Loop lost in Fusion 
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1102,6)
+         remark #25046: Loop lost in Fusion 
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1103,6)
+         remark #25046: Loop lost in Fusion 
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1104,6)
+         remark #25046: Loop lost in Fusion 
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1105,6)
+         remark #25046: Loop lost in Fusion 
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1100,6)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (1100:6) has unaligned access
+         remark #15389: vectorization support: reference at (1100:6) has unaligned access
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access   [ biology.f90(1101,6) ]
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access   [ biology.f90(1101,6) ]
+         remark #15389: vectorization support: reference at (1102:6) has unaligned access   [ biology.f90(1102,6) ]
+         remark #15389: vectorization support: reference at (1102:6) has unaligned access   [ biology.f90(1102,6) ]
+         remark #15389: vectorization support: reference at (1103:6) has unaligned access   [ biology.f90(1103,6) ]
+         remark #15389: vectorization support: reference at (1103:6) has unaligned access   [ biology.f90(1103,6) ]
+         remark #15389: vectorization support: reference at (1104:6) has unaligned access   [ biology.f90(1104,6) ]
+         remark #15389: vectorization support: reference at (1104:6) has unaligned access   [ biology.f90(1104,6) ]
+         remark #15389: vectorization support: reference at (1105:6) has unaligned access   [ biology.f90(1105,6) ]
+         remark #15389: vectorization support: reference at (1105:6) has unaligned access   [ biology.f90(1105,6) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.714
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1100,6)
+      <Remainder loop for vectorization>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1101,6)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1101,6)
+         remark #25045: Fused Loops: ( 1101 1103 )
+
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access
+         remark #15388: vectorization support: reference at (1103:6) has aligned access   [ biology.f90(1103,6) ]
+         remark #15388: vectorization support: reference at (1103:6) has aligned access   [ biology.f90(1103,6) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.308
+         remark #15301: FUSED LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 3.250 
+         remark #15478: estimated potential speedup: 4.410 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1103,6)
+         remark #25046: Loop lost in Fusion 
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1101,6)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access
+         remark #15389: vectorization support: reference at (1101:6) has unaligned access
+         remark #15389: vectorization support: reference at (1103:6) has unaligned access   [ biology.f90(1103,6) ]
+         remark #15389: vectorization support: reference at (1103:6) has unaligned access   [ biology.f90(1103,6) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.375
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1101,6)
+      <Remainder loop for vectorization>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1119,5)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1119,5)
+         remark #15388: vectorization support: reference at (1120:4) has aligned access   [ biology.f90(1120,4) ]
+         remark #15388: vectorization support: reference at (1120:19) has aligned access   [ biology.f90(1120,19) ]
+         remark #15389: vectorization support: reference at (1120:41) has unaligned access   [ biology.f90(1120,41) ]
+         remark #15389: vectorization support: reference at (1120:51) has unaligned access   [ biology.f90(1120,51) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.386
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 2.750 
+         remark #15478: estimated potential speedup: 3.500 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1119,5)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (1120:4) has unaligned access   [ biology.f90(1120,4) ]
+         remark #15389: vectorization support: reference at (1120:19) has unaligned access   [ biology.f90(1120,19) ]
+         remark #15389: vectorization support: reference at (1120:41) has unaligned access   [ biology.f90(1120,41) ]
+         remark #15389: vectorization support: reference at (1120:51) has unaligned access   [ biology.f90(1120,51) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.643
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1119,5)
+      <Remainder loop for vectorization>
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1138,5)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at biology.f90(1138,5)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at biology.f90(1139,8)
+               remark #25399: memcopy generated
+               remark #15542: loop was not vectorized: inner loop was already vectorized
+
+               LOOP BEGIN at biology.f90(1139,8)
+                  remark #15389: vectorization support: reference at (1140:11) has unaligned access   [ biology.f90(1140,11) ]
+                  remark #15389: vectorization support: reference at (1140:11) has unaligned access   [ biology.f90(1140,11) ]
+                  remark #15381: vectorization support: unaligned access used inside loop body
+                  remark #15305: vectorization support: vector length 4
+                  remark #15309: vectorization support: normalized vectorization overhead 1.000
+                  remark #15300: LOOP WAS VECTORIZED
+                  remark #15450: unmasked unaligned unit stride loads: 1 
+                  remark #15451: unmasked unaligned unit stride stores: 1 
+                  remark #15475: --- begin vector cost summary ---
+                  remark #15476: scalar cost: 4 
+                  remark #15477: vector cost: 1.500 
+                  remark #15478: estimated potential speedup: 2.000 
+                  remark #15488: --- end vector cost summary ---
+                  remark #25015: Estimate of max trip count of loop=3
+               LOOP END
+
+               LOOP BEGIN at biology.f90(1139,8)
+               <Remainder loop for vectorization>
+                  remark #25015: Estimate of max trip count of loop=12
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1144,5)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at biology.f90(1145,8)
+            <Peeled loop for vectorization>
+               remark #25015: Estimate of max trip count of loop=3
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1145,8)
+               remark #15388: vectorization support: reference at (1146:11) has aligned access   [ biology.f90(1146,11) ]
+               remark #15389: vectorization support: reference at (1146:20) has unaligned access   [ biology.f90(1146,20) ]
+               remark #15389: vectorization support: reference at (1146:30) has unaligned access   [ biology.f90(1146,30) ]
+               remark #15389: vectorization support: reference at (1146:39) has unaligned access   [ biology.f90(1146,39) ]
+               remark #15381: vectorization support: unaligned access used inside loop body
+               remark #15305: vectorization support: vector length 4
+               remark #15399: vectorization support: unroll factor set to 4
+               remark #15309: vectorization support: normalized vectorization overhead 0.475
+               remark #15300: LOOP WAS VECTORIZED
+               remark #15442: entire loop may be executed in remainder
+               remark #15449: unmasked aligned unit stride stores: 1 
+               remark #15450: unmasked unaligned unit stride loads: 3 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 9 
+               remark #15477: vector cost: 2.500 
+               remark #15478: estimated potential speedup: 3.180 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1145,8)
+            <Remainder loop for vectorization>
+               remark #15389: vectorization support: reference at (1146:11) has unaligned access   [ biology.f90(1146,11) ]
+               remark #15389: vectorization support: reference at (1146:20) has unaligned access   [ biology.f90(1146,20) ]
+               remark #15389: vectorization support: reference at (1146:30) has unaligned access   [ biology.f90(1146,30) ]
+               remark #15389: vectorization support: reference at (1146:39) has unaligned access   [ biology.f90(1146,39) ]
+               remark #15381: vectorization support: unaligned access used inside loop body
+               remark #15305: vectorization support: vector length 4
+               remark #15309: vectorization support: normalized vectorization overhead 1.833
+               remark #15301: REMAINDER LOOP WAS VECTORIZED
+               remark #15442: entire loop may be executed in remainder
+               remark #15448: unmasked aligned unit stride loads: 1 
+               remark #15450: unmasked unaligned unit stride loads: 1 
+               remark #15452: unmasked strided loads: 2 
+               remark #15453: unmasked strided stores: 1 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 17 
+               remark #15477: vector cost: 10.000 
+               remark #15478: estimated potential speedup: 1.670 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1145,8)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1150,5)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at biology.f90(1151,9)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between at (1157:14) and at (1161:15)
+               remark #15346: vector dependence: assumed OUTPUT dependence between at (1161:15) and at (1157:14)
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1164,8)
+            <Peeled loop for vectorization>
+               remark #25015: Estimate of max trip count of loop=1
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1164,8)
+               remark #15388: vectorization support: reference at (1165:42) has aligned access   [ biology.f90(1165,42) ]
+               remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (1165:7)>, stride is unknown to compiler   [ biology.f90(1165,7) ]
+               remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (1165:21)>, stride is unknown to compiler   [ biology.f90(1165,21) ]
+               remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (1166:7)>, stride is unknown to compiler   [ biology.f90(1166,7) ]
+               remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (1166:25)>, stride is unknown to compiler   [ biology.f90(1166,25) ]
+               remark #15305: vectorization support: vector length 2
+               remark #15399: vectorization support: unroll factor set to 4
+               remark #15309: vectorization support: normalized vectorization overhead 0.156
+               remark #15300: LOOP WAS VECTORIZED
+               remark #15442: entire loop may be executed in remainder
+               remark #15448: unmasked aligned unit stride loads: 1 
+               remark #15452: unmasked strided loads: 2 
+               remark #15453: unmasked strided stores: 2 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 17 
+               remark #15477: vector cost: 12.000 
+               remark #15478: estimated potential speedup: 1.400 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1164,8)
+            <Remainder loop for vectorization>
+               remark #15389: vectorization support: reference at (1165:42) has unaligned access   [ biology.f90(1165,42) ]
+               remark #15381: vectorization support: unaligned access used inside loop body
+               remark #15305: vectorization support: vector length 2
+               remark #15309: vectorization support: normalized vectorization overhead 0.692
+               remark #15301: REMAINDER LOOP WAS VECTORIZED
+               remark #15442: entire loop may be executed in remainder
+               remark #15448: unmasked aligned unit stride loads: 1 
+               remark #15450: unmasked unaligned unit stride loads: 1 
+               remark #15452: unmasked strided loads: 2 
+               remark #15453: unmasked strided stores: 1 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 17 
+               remark #15477: vector cost: 10.000 
+               remark #15478: estimated potential speedup: 1.670 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+
+            LOOP BEGIN at biology.f90(1164,8)
+            <Remainder loop for vectorization>
+            LOOP END
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1184,10)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at biology.f90(1185,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1185,13)
+            remark #15389: vectorization support: reference at (1186:15) has unaligned access   [ biology.f90(1186,15) ]
+            remark #15389: vectorization support: reference at (1186:34) has unaligned access   [ biology.f90(1186,34) ]
+            remark #15389: vectorization support: reference at (1187:15) has unaligned access   [ biology.f90(1187,15) ]
+            remark #15389: vectorization support: reference at (1187:34) has unaligned access   [ biology.f90(1187,34) ]
+            remark #15389: vectorization support: reference at (1188:15) has unaligned access   [ biology.f90(1188,15) ]
+            remark #15389: vectorization support: reference at (1188:34) has unaligned access   [ biology.f90(1188,34) ]
+            remark #15389: vectorization support: reference at (1189:15) has unaligned access   [ biology.f90(1189,15) ]
+            remark #15389: vectorization support: reference at (1189:34) has unaligned access   [ biology.f90(1189,34) ]
+            remark #15389: vectorization support: reference at (1190:15) has unaligned access   [ biology.f90(1190,15) ]
+            remark #15389: vectorization support: reference at (1190:34) has unaligned access   [ biology.f90(1190,34) ]
+            remark #15389: vectorization support: reference at (1191:15) has unaligned access   [ biology.f90(1191,15) ]
+            remark #15389: vectorization support: reference at (1191:34) has unaligned access   [ biology.f90(1191,34) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.889
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 6 
+            remark #15451: unmasked unaligned unit stride stores: 6 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 52 
+            remark #15477: vector cost: 11.250 
+            remark #15478: estimated potential speedup: 4.350 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1185,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(1236,7)
+      remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(1237,9) ]
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(1237,9)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1237,9)
+         remark #15389: vectorization support: reference at (1238:13) has unaligned access   [ biology.f90(1238,13) ]
+         remark #15389: vectorization support: reference at (1238:32) has unaligned access   [ biology.f90(1238,32) ]
+         remark #15389: vectorization support: reference at (1239:13) has unaligned access   [ biology.f90(1239,13) ]
+         remark #15389: vectorization support: reference at (1239:32) has unaligned access   [ biology.f90(1239,32) ]
+         remark #15388: vectorization support: reference at (1240:13) has aligned access   [ biology.f90(1240,13) ]
+         remark #15388: vectorization support: reference at (1240:32) has aligned access   [ biology.f90(1240,32) ]
+         remark #15388: vectorization support: reference at (1241:13) has aligned access   [ biology.f90(1241,13) ]
+         remark #15388: vectorization support: reference at (1241:32) has aligned access   [ biology.f90(1241,32) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.190
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 2 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 35 
+         remark #15477: vector cost: 6.250 
+         remark #15478: estimated potential speedup: 4.680 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1237,9)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference at (1238:13) has unaligned access   [ biology.f90(1238,13) ]
+         remark #15389: vectorization support: reference at (1238:32) has unaligned access   [ biology.f90(1238,32) ]
+         remark #15389: vectorization support: reference at (1239:13) has unaligned access   [ biology.f90(1239,13) ]
+         remark #15389: vectorization support: reference at (1239:32) has unaligned access   [ biology.f90(1239,32) ]
+         remark #15389: vectorization support: reference at (1240:13) has unaligned access   [ biology.f90(1240,13) ]
+         remark #15389: vectorization support: reference at (1240:32) has unaligned access   [ biology.f90(1240,32) ]
+         remark #15389: vectorization support: reference at (1241:13) has unaligned access   [ biology.f90(1241,13) ]
+         remark #15389: vectorization support: reference at (1241:32) has unaligned access   [ biology.f90(1241,32) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.933
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 17 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.670 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at biology.f90(1237,9)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at biology.f90(1246,9)
+      remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+      remark #25452: Original Order found to be proper, but by a close margin
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at biology.f90(1248,11)
+         remark #25084: Preprocess Loopnests: Moving Out Store    [ biology.f90(1249,13) ]
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at biology.f90(1249,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1249,13)
+            remark #15389: vectorization support: reference at (1251:20) has unaligned access   [ biology.f90(1251,20) ]
+            remark #15388: vectorization support: reference at (1251:34) has aligned access   [ biology.f90(1251,34) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15329: vectorization support: non-unit strided store was emulated for the variable <t(i,j,k,nnew,indx)>, stride is unknown to compiler   [ biology.f90(1250,15) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nnew,indx)>, stride is unknown to compiler   [ biology.f90(1250,38) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ biology.f90(1251,55) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.213
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 1 
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15452: unmasked strided loads: 2 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 17 
+            remark #15477: vector cost: 10.000 
+            remark #15478: estimated potential speedup: 1.670 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1249,13)
+         <Remainder loop for vectorization>
+            remark #15389: vectorization support: reference at (1251:20) has unaligned access   [ biology.f90(1251,20) ]
+            remark #15389: vectorization support: reference at (1251:34) has unaligned access   [ biology.f90(1251,34) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.909
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 1 
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15452: unmasked strided loads: 2 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 17 
+            remark #15477: vector cost: 10.000 
+            remark #15478: estimated potential speedup: 1.670 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at biology.f90(1249,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+Fusion of IFs performed in biology_mod_mp_biology_tile_ at line 1100
+
+Fusion of IFs performed in biology_mod_mp_biology_tile_ at line 1104
+
+Fusion of IFs performed in biology_mod_mp_biology_tile_ at line 1100
+===========================================================================
+

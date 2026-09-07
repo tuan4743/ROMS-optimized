@@ -1,0 +1,41 @@
+--- /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/pre_step3d.F	2026-08-01 09:15:31.000000000 +0800
++++ /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/pre_step3d.F	2026-08-01 22:45:39.000000000 +0800
+@@ -293,6 +293,7 @@
+       real(r8), dimension(IminS:ImaxS,0:N(ng)) :: CF
+       real(r8), dimension(IminS:ImaxS,0:N(ng)) :: DC
+       real(r8), dimension(IminS:ImaxS,0:N(ng)) :: FC
++      real(r8), dimension(IminS:ImaxS) :: pmn_dt
+ 
+ # ifdef SOLAR_SOURCE
+       real(r8), dimension(IminS:ImaxS,JminS:JmaxS,0:N(ng)) :: swdk
+@@ -594,13 +595,17 @@
+ !  load it into private array DC (1/m). Notice pipelined J-loop.
+ !
+ !$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+-!$OMP& PRIVATE(j,i,k,itrc,is,Isrc,Jsrc,cff,cff1,cff2,cff3,CF,DC,FC)
++!$OMP& PRIVATE(j,i,k,itrc,is,Isrc,Jsrc,cff,cff1,cff2,cff3,CF,DC,FC,   &
++!$OMP&         pmn_dt)
+       J_LOOP1 : DO j=Jstr,Jend
+         IF (iic(ng).eq.ntfirst(ng)) THEN
+           cff=0.5_r8*dt(ng)
+         ELSE
+           cff=(1.0_r8-Gamma)*dt(ng)
+         END IF
++        DO i=Istr,Iend
++          pmn_dt(i)=cff*pm(i,j)*pn(i,j)
++        END DO
+         DO k=1,N(ng)
+           DO i=Istr,Iend
+             DC(i,k)=1.0_r8/(Hz(i,j,k)-                                  &
+@@ -811,10 +816,9 @@
+           END IF
+           DO k=1,N(ng)
+             DO i=Istr,Iend
+-              cff1=cff*pm(i,j)*pn(i,j)
+               t(i,j,k,3,itrc)=DC(i,k)*                                  &
+      &                        (t(i,j,k,3,itrc)-                         &
+-     &                         cff1*(FC(i,k)-FC(i,k-1)))
++     &                         pmn_dt(i)*(FC(i,k)-FC(i,k-1)))
+             END DO
+           END DO
+         END DO T_LOOP2

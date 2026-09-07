@@ -1,0 +1,78 @@
+[j05r2n15:29948] MCW rank 16 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]]: [B/B/./././././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 17 bound to socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]]: [././B/B/./././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 18 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]]: [././././././././B/B/./././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 19 bound to socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]]: [././././././././././B/B/./././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 20 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]]: [././././././././././././././././B/B/./././././././././././././.]
+[j05r2n15:29948] MCW rank 21 bound to socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]]: [././././././././././././././././././B/B/./././././././././././.]
+[j05r2n15:29948] MCW rank 22 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]]: [././././././././././././././././././././././././B/B/./././././.]
+[j05r2n15:29948] MCW rank 23 bound to socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]]: [././././././././././././././././././././././././././B/B/./././.]
+[j05r2n15:29948] MCW rank 24 bound to socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]]: [././././B/B/./././././././././././././././././././././././././.]
+[j05r2n14:09155] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]]: [B/B/./././././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 25 bound to socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [././././././B/B/./././././././././././././././././././././././.]
+[j05r2n14:09155] MCW rank 1 bound to socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]]: [././B/B/./././././././././././././././././././././././././././.]
+[j05r2n16:26617] MCW rank 32 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]]: [B/B/./././././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 26 bound to socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]]: [././././././././././././B/B/./././././././././././././././././.]
+[j05r2n14:09155] MCW rank 2 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]]: [././././././././B/B/./././././././././././././././././././././.]
+[j05r2n16:26617] MCW rank 33 bound to socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]]: [././B/B/./././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 27 bound to socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././././././././B/B/./././././././././././././././.]
+[j05r2n14:09155] MCW rank 3 bound to socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]]: [././././././././././B/B/./././././././././././././././././././.]
+[j05r2n16:26617] MCW rank 34 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]]: [././././././././B/B/./././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 28 bound to socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]]: [././././././././././././././././././././B/B/./././././././././.]
+[j05r2n14:09155] MCW rank 4 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]]: [././././././././././././././././B/B/./././././././././././././.]
+[j05r2n16:26617] MCW rank 35 bound to socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]]: [././././././././././B/B/./././././././././././././././././././.]
+[j05r2n17:18096] MCW rank 48 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]]: [B/B/./././././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 29 bound to socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././././././././B/B/./././././././.]
+[j05r2n14:09155] MCW rank 5 bound to socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]]: [././././././././././././././././././B/B/./././././././././././.]
+[j05r2n16:26617] MCW rank 36 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]]: [././././././././././././././././B/B/./././././././././././././.]
+[j05r2n17:18096] MCW rank 49 bound to socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]]: [././B/B/./././././././././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 30 bound to socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]]: [././././././././././././././././././././././././././././B/B/./.]
+[j05r2n14:09155] MCW rank 6 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]]: [././././././././././././././././././././././././B/B/./././././.]
+[j05r2n16:26617] MCW rank 37 bound to socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]]: [././././././././././././././././././B/B/./././././././././././.]
+[j05r2n17:18096] MCW rank 50 bound to socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]]: [././././././././B/B/./././././././././././././././././././././.]
+[j05r2n15:29948] MCW rank 31 bound to socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././././././././B/B]
+[j05r2n14:09155] MCW rank 7 bound to socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]]: [././././././././././././././././././././././././././B/B/./././.]
+[j05r2n16:26617] MCW rank 38 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]]: [././././././././././././././././././././././././B/B/./././././.]
+[j05r2n17:18096] MCW rank 51 bound to socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]]: [././././././././././B/B/./././././././././././././././././././.]
+[j05r2n14:09155] MCW rank 8 bound to socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]]: [././././B/B/./././././././././././././././././././././././././.]
+[j05r2n16:26617] MCW rank 39 bound to socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]]: [././././././././././././././././././././././././././B/B/./././.]
+[j05r2n17:18096] MCW rank 52 bound to socket 0[core 16[hwt 0]], socket 0[core 17[hwt 0]]: [././././././././././././././././B/B/./././././././././././././.]
+[j05r2n14:09155] MCW rank 9 bound to socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [././././././B/B/./././././././././././././././././././././././.]
+[j05r2n16:26617] MCW rank 40 bound to socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]]: [././././B/B/./././././././././././././././././././././././././.]
+[j05r2n17:18096] MCW rank 53 bound to socket 0[core 18[hwt 0]], socket 0[core 19[hwt 0]]: [././././././././././././././././././B/B/./././././././././././.]
+[j05r2n14:09155] MCW rank 10 bound to socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]]: [././././././././././././B/B/./././././././././././././././././.]
+[j05r2n16:26617] MCW rank 41 bound to socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [././././././B/B/./././././././././././././././././././././././.]
+[j05r2n17:18096] MCW rank 54 bound to socket 0[core 24[hwt 0]], socket 0[core 25[hwt 0]]: [././././././././././././././././././././././././B/B/./././././.]
+[j05r2n14:09155] MCW rank 11 bound to socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././././././././B/B/./././././././././././././././.]
+[j05r2n16:26617] MCW rank 42 bound to socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]]: [././././././././././././B/B/./././././././././././././././././.]
+[j05r2n17:18096] MCW rank 55 bound to socket 0[core 26[hwt 0]], socket 0[core 27[hwt 0]]: [././././././././././././././././././././././././././B/B/./././.]
+[j05r2n14:09155] MCW rank 12 bound to socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]]: [././././././././././././././././././././B/B/./././././././././.]
+[j05r2n16:26617] MCW rank 43 bound to socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././././././././B/B/./././././././././././././././.]
+[j05r2n17:18096] MCW rank 56 bound to socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]]: [././././B/B/./././././././././././././././././././././././././.]
+[j05r2n14:09155] MCW rank 13 bound to socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././././././././B/B/./././././././.]
+[j05r2n16:26617] MCW rank 44 bound to socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]]: [././././././././././././././././././././B/B/./././././././././.]
+[j05r2n17:18096] MCW rank 57 bound to socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]]: [././././././B/B/./././././././././././././././././././././././.]
+[j05r2n14:09155] MCW rank 14 bound to socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]]: [././././././././././././././././././././././././././././B/B/./.]
+[j05r2n16:26617] MCW rank 45 bound to socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././././././././B/B/./././././././.]
+[j05r2n17:18096] MCW rank 58 bound to socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]]: [././././././././././././B/B/./././././././././././././././././.]
+[j05r2n14:09155] MCW rank 15 bound to socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././././././././B/B]
+[j05r2n16:26617] MCW rank 46 bound to socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]]: [././././././././././././././././././././././././././././B/B/./.]
+[j05r2n17:18096] MCW rank 59 bound to socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [././././././././././././././B/B/./././././././././././././././.]
+[j05r2n16:26617] MCW rank 47 bound to socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././././././././B/B]
+[j05r2n17:18096] MCW rank 60 bound to socket 0[core 20[hwt 0]], socket 0[core 21[hwt 0]]: [././././././././././././././././././././B/B/./././././././././.]
+[j05r2n17:18096] MCW rank 61 bound to socket 0[core 22[hwt 0]], socket 0[core 23[hwt 0]]: [././././././././././././././././././././././B/B/./././././././.]
+[j05r2n17:18096] MCW rank 62 bound to socket 0[core 28[hwt 0]], socket 0[core 29[hwt 0]]: [././././././././././././././././././././././././././././B/B/./.]
+[j05r2n17:18096] MCW rank 63 bound to socket 0[core 30[hwt 0]], socket 0[core 31[hwt 0]]: [././././././././././././././././././././././././././././././B/B]
+label	message_bytes	work_elements	repetitions	iterations	comm_ms	compute_ms	overlap_ms	saved_ms	overlap_efficiency	serial_to_overlap
+grid02_like	524288	40000	1	96	0.483780	0.080481	0.482584	0.081677	1.014863	1.169249
+grid01_like	720896	75000	1	96	0.666417	0.179383	0.708238	0.137562	0.766866	1.194232
+grid02_like	524288	40000	2	96	0.481736	0.138362	0.498960	0.121138	0.875514	1.242782
+grid01_like	720896	75000	2	96	0.652555	0.226954	0.716027	0.163482	0.720331	1.228318
+grid02_like	524288	40000	4	96	0.480175	0.255506	0.590787	0.144894	0.567085	1.245255
+grid01_like	720896	75000	4	96	0.666220	0.440450	1.482654	-0.375985	-0.853637	0.746411
+grid02_like	524288	40000	8	96	0.478147	0.492394	0.867360	0.103181	0.215794	1.118960
+grid01_like	720896	75000	8	96	0.655193	0.843052	1.290083	0.208162	0.317711	1.161356
+PROBE_SINK=9.9397254818244239e-293
+
+real	0m5.172s
+user	0m0.030s
+sys	0m0.084s

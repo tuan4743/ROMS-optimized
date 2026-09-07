@@ -1,0 +1,4 @@
+core_archive=/public/home/fujiake/nan/sprint/backup_S32_src_20260808.tar.gz
+core_archive_sha256=615ee7173c015eccc13ae8e3b193092d396817ae4a18648b3d7b55a517087d3e
+master_source=/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/Master
+master_active_manifest_sha256=5dc8b9cf4d069d9ec14b23554adce75609d919cbdad609fdb916e3037745a3f1

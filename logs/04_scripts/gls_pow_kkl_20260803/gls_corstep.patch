@@ -1,0 +1,64 @@
+--- /tmp/opencode/gls_corstep_orig.F	2026-08-03 08:17:19.165328496 -0400
++++ /tmp/opencode/gls_corstep_cand.F	2026-08-03 08:17:49.749320433 -0400
+@@ -214,6 +214,7 @@
+ 
+       real(r8) :: Gh, Gm, Kprod, Ls_unlmt, Ls_lmt, Pprod, Sh, Sm
+       real(r8) :: cff, cff1, cff2, cff3
++      real(r8) :: cff_g, cff_g_inv, cff_t, cff_t15
+       real(r8) :: cmu_fac1, cmu_fac2, cmu_fac3, cmu_fac4
+       real(r8) :: gls_c3, gls_exp1, gls_fac1, gls_fac2, gls_fac3
+       real(r8) :: gls_fac4, gls_fac5, gls_fac6, ql, sqrt2, strat2
+@@ -753,7 +754,17 @@
+             IF (Lmy25) THEN
+ !
+ !  Parabolic wall function,  L = ds db / (ds + db).
+-!
++!  K-kl identities: gls_p=0, gls_m=1, gls_n=1 give gls_exp1=1.0,
++!  tke_exp1=1.0 and tke_exp2=1.5, so x**gls_exp1=x, x**(-1)=1/x and
++!  x**1.5=x*SQRT(x); general pow stays as fallback for other closures.
++!
++              cff_g=gls(i,j,k,nstp)
++              cff_t=1.0_r8/tke(i,j,k,nstp)
++              cff_g_inv=1.0_r8/cff_g
++              cff_t15=tke(i,j,k,nstp)*SQRT(tke(i,j,k,nstp))
++!!
++!!  Parabolic wall function,  L = ds db / (ds + db).
++!!
+ !!            wall_fac=1.0_r8+gls_E2/(vonKar*vonKar)*                   &
+ !!   &                 (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*          &
+ !!   &                  tke(i,j,k,nstp)**(-tke_exp1)*                   &
+@@ -777,26 +788,24 @@
+ !!
+ !! Parabolic wall function + free surface correction
+ !
+-            wall_fac=1.0_r8+gls_E2/(vonKar*vonKar)*                     &
+-     &                (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*           &
+-     &                 tke(i,j,k,nstp)**(-tke_exp1)*                    &
++              wall_fac=1.0_r8+gls_E2/(vonKar*vonKar)*                   &
++     &                (cff_g*cmu_fac1*cff_t*                            &
+      &                 (1.0_r8/ (z_w(i,j,k)-z_w(i,j,0))))**2+           &
+      &                0.25_r8/(vonKar*vonKar)*                          &
+-     &                (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*           &
+-     &                 tke(i,j,k,nstp)**(-tke_exp1)*                    &
++     &                (cff_g*cmu_fac1*cff_t*                            &
+      &                 (1.0_r8/ (z_w(i,j,N(ng))-z_w(i,j,k))))**2
++            ELSE
++              cff_g_inv=gls(i,j,k,nstp)**(-gls_exp1)
++              cff_t15=tke(i,j,k,nstp)**tke_exp2
+             END IF
+ !
+-            BCK(i,k)=cff*(1.0_r8+dt(ng)*                                &
+-     &                    gls(i,j,k,nstp)**(-gls_exp1)*cmu_fac2*        &
+-     &                    tke(i,j,k,nstp)**( tke_exp2)+                 &
++            BCK(i,k)=cff*(1.0_r8+dt(ng)*cff_g_inv*cmu_fac2*cff_t15+     &
+      &                    dt(ng)*(1.0_r8-cff1)*strat2*                  &
+      &                    (Akt(i,j,k,itemp)-Akt_bak(itemp,ng))/         &
+      &                    tke(i,j,k,nstp))-                             &
+      &                    FCK(i,k)-FCK(i,k+1)
+             BCP(i,k)=cff*(1.0_r8+dt(ng)*gls_c2(ng)*wall_fac*            &
+-     &                    gls(i,j,k,nstp)**(-gls_exp1)*cmu_fac2*        &
+-     &                    tke(i,j,k,nstp)**( tke_exp2)+                 &
++     &                    cff_g_inv*cmu_fac2*cff_t15+                   &
+      &                    dt(ng)*(1.0_r8-cff2)*gls_c3*strat2*           &
+      &                    (Akt(i,j,k,itemp)-Akt_bak(itemp,ng))/         &
+      &                    tke(i,j,k,nstp))-                             &

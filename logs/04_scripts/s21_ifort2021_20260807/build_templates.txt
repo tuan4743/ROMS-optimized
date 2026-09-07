@@ -1,0 +1,238 @@
+############ OUR validated 2021 build script (O33 champion provenance)
+#!/usr/bin/env bash
+set -euo pipefail
+
+# [compiler switch] Intel 2021.3.0 classic ifort on immutable O33 sources.
+# Same Linux-ifort.mk, same flags (-heap-arrays -fp-model precise -ip -O3,
+# -qopenmp on the 5 hot objects). Only the compiler version changes:
+# ifort 2017.5.239 -> 2021.3.0 (oneAPI classic). Trajectory may differ
+# (float codegen changed) — gate is wall time + official 26/26 separately.
+
+export LC_ALL=C LANG=C
+
+parent=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+candidate_base=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805
+root=$candidate_base/ROMS_CoSiNE15
+logdir=/public/home/fujiake/fjk/agent_tmp/logs/ifort2021_20260805
+
+expected_parent_bin=5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9
+expected_parent_mk=081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced
+ifort21_bin=/public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/bin/intel64
+ifort21_lib=/public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin
+
+fail() { echo "FATAL: $*" >&2; exit 2; }
+hash_of() { sha256sum "$1" | awk '{print $1}'; }
+check_sha() {
+  local expected=$1 path=$2 actual
+  [[ -f "$path" ]] || fail "missing $path"
+  actual=$(hash_of "$path")
+  [[ "$actual" == "$expected" ]] || fail "hash mismatch path=$path expected=$expected actual=$actual"
+  printf 'HASH_OK|%s|%s\n' "$actual" "$path"
+}
+
+case "$candidate_base" in
+  /public/home/fujiake/fjk/agent_tmp/isolated/work/*) ;;
+  *) fail "unsafe candidate_base=$candidate_base" ;;
+esac
+case "$logdir" in
+  /public/home/fujiake/fjk/agent_tmp/logs/*) ;;
+  *) fail "unsafe logdir=$logdir" ;;
+esac
+[[ -d "$parent/Build" ]] || fail "missing immutable parent"
+[[ ! -e "$candidate_base" ]] || fail "candidate already exists: $candidate_base"
+
+mkdir -p "$candidate_base" "$logdir"
+cp -a "$parent" "$root"
+[[ -d "$root/Build" ]] || fail "candidate copy incomplete"
+cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+
+diff -qr "$parent/ROMS" "$root/ROMS" > "$logdir/source_tree.diff" || true
+[[ ! -s "$logdir/source_tree.diff" ]] || {
+  cat "$logdir/source_tree.diff"
+  fail "ROMS/ must be untouched"
+}
+
+check_sha "$expected_parent_mk" "$root/Compilers/Linux-ifort.mk"
+echo "MK_UNCHANGED_OK"
+
+if [[ -e "$root/Inputfiles" || -L "$root/Inputfiles" ]]; then
+  rm -f "$root/Inputfiles"
+fi
+ln -s /public/home/fujiake/Inputfiles "$root/Inputfiles"
+[[ "$(readlink -f "$root/Inputfiles")" == /public/home/fujiake/Inputfiles ]] \
+  || fail "Inputfiles symlink wrong target"
+echo "SYMLINK_OK"
+
+module purge
+module load mathlib/netcdf/4.4.1/intel
+module load mpi/hpcx/2.7.4/intel-2017.5.239
+export PATH=$ifort21_bin:$PATH
+export LD_LIBRARY_PATH=$ifort21_lib:$LD_LIBRARY_PATH
+
+[[ "$(command -v ifort)" == "$ifort21_bin/ifort" ]] \
+  || fail "ifort not resolved to 2021.3.0: $(command -v ifort)"
+ifort --version 2>/dev/null | head -1 > "$logdir/ifort_version.txt"
+grep -q '2021.3.0' "$logdir/ifort_version.txt" || fail "ifort version unexpected"
+cat "$logdir/ifort_version.txt"
+
+cd "$root"
+# Toolchain change: full rebuild required.
+rm -f "$root"/Build/*.o "$root"/Build/*.mod
+set +e
+{ time make -j16; } > "$logdir/build.log" 2>&1
+rc=$?
+set -e
+[[ $rc -eq 0 ]] || { tail -120 "$logdir/build.log"; exit "$rc"; }
+[[ -x oceanM ]] || fail "missing linked oceanM"
+cp -p oceanM oceanM.O33_ifort2021
+[[ "$(hash_of oceanM.O33_ifort2021)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+if ldd oceanM.O33_ifort2021 | grep -q 'not found'; then
+  ldd oceanM.O33_ifort2021
+  fail "unresolved runtime dependency"
+fi
+grep -aE "cd Build.*mpif90.*-ip -O3" "$logdir/build.log" | head -2 \
+  > "$logdir/ifort2021_compile_lines.txt" || true
+cat "$logdir/ifort2021_compile_lines.txt"
+echo "IFORT2021_BUILD_OK hash=$(hash_of oceanM.O33_ifort2021)"
+
+############ teammate S21 make.sh
+#! /bin/bash
+set -euo pipefail
+trap 'echo "\[脚本发生错误！退出行号：$LINENO\]"' ERR
+pwd
+module load   mathlib/netcdf/4.4.1/intel  mpi/hpcx/2.7.4/intel-2017.5.239  mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239 
+make clean
+make -j64
+echo "编译成功！"
+############ teammate s22b sub.sh (run harness we must mirror)
+#!/bin/bash
+# sprint 通用提交脚本 — O84 父本起点
+# 用法: ./sub.sh [sample|half|1day|3day] [binary_name]
+#   sample (默认): NTIMES=144/720  (~2-3 min, 筛选用)
+#   half:          NTIMES=432/2160  (~5-7 min, 半天确认)
+#   1day:          NTIMES=864/4320  (~12 min, vali 门槛)
+#   3day:          NTIMES=2592/12960 (~36 min, 正式成绩)
+# binary_name 默认 ./oceanM；可指定 ./oceanM.O84_final 等
+#SBATCH -p kshcexclu06
+#SBATCH -N 4
+#SBATCH -n 64
+#SBATCH --exclusive
+#SBATCH -J sprint_O84
+#SBATCH -t 03:00:00
+
+set -euo pipefail
+ulimit -s unlimited
+ulimit -l unlimited
+module purge
+module load mathlib/netcdf/4.4.1/intel mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+
+cd /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b
+
+MODE=${1:-sample}
+BIN=${2:-./oceanM}
+RULES=$PWD/coll_rules.conf
+[[ -x "$BIN" && -f "$RULES" ]] || { echo "missing $BIN or $RULES"; exit 1; }
+
+case "$MODE" in
+  sample) NTIMES_VAL="144 720"    ; SUFFIX="samp"   ; WALL="00:30:00" ;;
+  half)   NTIMES_VAL="432 2160"   ; SUFFIX="half"   ; WALL="01:00:00" ;;
+  1day)   NTIMES_VAL="864 4320"   ; SUFFIX="1day"   ; WALL="01:30:00" ;;
+  3day)   NTIMES_VAL="2592 12960" ; SUFFIX="3day"   ; WALL="03:00:00" ;;
+  *) echo "unknown mode: $MODE"; exit 1 ;;
+esac
+
+# O84 + O33+O29 运行时配置
+export OMPI_MCA_coll_hcoll_enable=0
+export OMP_NUM_THREADS=2
+export OMP_PROC_BIND=close
+export OMP_PLACES=cores
+export OMP_STACKSIZE=1G
+export KMP_BLOCKTIME=0
+export KMP_HOT_TEAMS=1
+export KMP_HOT_TEAMS_MAX_PARALLEL=2
+
+# CCX 双核绑：每 rank 占相邻 2 核，16 rank/节点 × 4 节点 = 64 rank
+RANKFILE=$PWD/rankfile.spread_numa16_ccx_2t.$$
+rm -f "$RANKFILE"
+NODES=($(scontrol show hostnames "$SLURM_JOB_NODELIST"))
+PAIRS=(0,1 2,3 8,9 10,11 16,17 18,19 24,25 26,27 4,5 6,7 12,13 14,15 20,21 22,23 28,29 30,31)
+rank=0
+for node in "${NODES[@]}"; do
+  for pair in "${PAIRS[@]}"; do
+    echo "rank ${rank}=${node} slot=${pair}" >> "$RANKFILE"
+    rank=$((rank+1))
+  done
+done
+[[ "$rank" -eq 64 ]] || { echo "rank=$rank != 64"; exit 1; }
+
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+BIN_TAG=$(basename "$BIN" | sed 's/^oceanM//; s/^\.//; s/^/O84/; s/_final//')
+OUTDIR=output_sprint_${SUFFIX}_${SLURM_JOB_ID}
+mkdir -p "$OUTDIR"
+
+IN_BASE=ROMS/External/ocean_SCS_Dongsha60_bio15.in
+IN_JOB=ROMS/External/ocean_SCS_Dongsha60_bio15_sprint_${SUFFIX}_${SLURM_JOB_ID}.in
+cp -f "$IN_BASE" "$IN_JOB"
+python - "$IN_JOB" "$OUTDIR" "$NTIMES_VAL" "$SUFFIX" <<'PY'
+import re,sys
+path,outdir,nt,suffix=sys.argv[1:5]
+text=open(path).read()
+text,_=re.subn(r'(?m)^(\s*NTIMES\s*==\s*).*$', r'\g<1>'+nt+'!  ! sprint '+suffix, text, count=1)
+open(path,'w').write(text.replace('output/', outdir.rstrip('/')+'/'))
+print('NTIMES='+nt, outdir)
+PY
+ln -sfn /public/home/fujiake/Inputfiles Inputfiles
+
+LOG=log_SCS_Dongsha60_2021_daily_sprint_${SUFFIX}_${TIMESTAMP}_J${SLURM_JOB_ID}.txt
+TIMING=TIMING_sprint_${SUFFIX}_${SLURM_JOB_ID}.txt
+BIN_MD5=$(md5sum "$BIN" | awk '{print $1}')
+echo "[sprint-${SUFFIX}] job=$SLURM_JOB_ID bin=$BIN md5=$BIN_MD5 OMP=$OMP_NUM_THREADS KMP=$KMP_BLOCKTIME"
+
+set +e
+{ time mpirun -np 64 --rankfile "$RANKFILE" --report-bindings \
+  -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+  --mca coll_hcoll_enable 0 \
+  --mca coll_tuned_use_dynamic_rules 1 \
+  --mca coll_tuned_dynamic_rules_filename "$RULES" \
+  "$BIN" "$IN_JOB" > "$LOG" 2>&1 ; } 2> "$TIMING"
+RC=$?
+set -e
+
+echo "[sprint-${SUFFIX}] RC=$RC"; cat "$TIMING" || true
+grep -En 'DONE|Blows|ERROR|elapsed time profile, Grid: 02|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Model 2D kernel|Message Passage: 4D halo' "$LOG" | head -30 || true
+
+# 落盘 G02 热点摘要
+if grep -Eq 'elapsed time profile, Grid: 02' "$LOG"; then
+  {
+    echo "=== sprint ${SUFFIX} G02 hotspot job=$SLURM_JOB_ID bin_md5=$BIN_MD5 ==="
+    grep -En 'Nonlinear model elapsed time profile, Grid: 02|Model 2D kernel|GLS vertical|3D equations predictor|Corrector time-step for tracers|Biological module|Message Passage: 2D halo|Message Passage: 3D halo|Message Passage: 4D halo|point data gathering|All percentages are with respect|ROMS/TOMS: DONE' "$LOG" | head -50
+  } > "g02_hotspot_sprint_${SUFFIX}_${SLURM_JOB_ID}.txt"
+  echo "[sprint-${SUFFIX}] wrote g02_hotspot_sprint_${SUFFIX}_${SLURM_JOB_ID}.txt"
+fi
+
+# vali（仅 1day/3day 跑精度检验）
+if [[ $RC -eq 0 && "$MODE" =~ ^(1day|3day)$ ]]; then
+  PY=/public/share/mcc2026_final/miniforge3/envs/vali/bin/python
+  VALI=$PWD/.vali_sprint_${SUFFIX}_${SLURM_JOB_ID}.py
+  cp -f vali.py "$VALI"
+  ABS_OUT="$PWD/$OUTDIR/"
+  sed -i "s|dir_test = .*|dir_test = '${ABS_OUT}'|" "$VALI"
+  echo "[sprint-${SUFFIX}] vali on $ABS_OUT"
+  ls -lh "$OUTDIR"/SCS_avg_0001.nc "$OUTDIR"/Dongsha60_avg_0001.nc 2>&1 || true
+  "$PY" "$VALI" 2>&1 | tee "vali_sprint_${SUFFIX}_${SLURM_JOB_ID}.log"
+  rm -f "$VALI"
+fi
+
+rm -f "$RANKFILE" "$IN_JOB"
+echo "[sprint-${SUFFIX}] log=$LOG timing=$TIMING"
+exit $RC
+
+############ i21 make.sh (how they built with 2021) 
+#! /bin/bash
+set -euo pipefail
+trap 'echo "\[脚本发生错误！退出行号：$LINENO\]"' ERR
+pwd
+module load   mathlib/netcdf/4.4.1/intel  mpi/hpcx/2.7.4/intel-2017.5.239  mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239 
+make clean
+make -j64
+echo "编译成功！"

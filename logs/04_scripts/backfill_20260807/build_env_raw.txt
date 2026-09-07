@@ -1,0 +1,619 @@
+﻿############ script dirs after Aug 4
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/align_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifx_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifort2023_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifort2022_20260807/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/r3_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/biofast_2021_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/fast2_2021_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/fimf_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/hpcx211_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/ifort2021_20260805/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/gcc731_20260805/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/s2dfuse_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/biofast_20260806/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/o2_20260805/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/fast2_20260805/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/hotteams_20260805/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/g2d_20260804/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/skew_20260804/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/omp4_20260804/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/gls_pow_kkl_20260803/
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/vdiff_invdz_20260803/
+
+############ candidate build/run scripts: module + FFLAGS + mpirun
+==== ifort2021
+  [[ifort2021_20260805/build_ifort2021.sh]]
+    cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_ifort2021
+    [[ "$(hash_of oceanM.O33_ifort2021)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_ifort2021 | grep -q 'not found'; then
+      ldd oceanM.O33_ifort2021
+    echo "IFORT2021_BUILD_OK hash=$(hash_of oceanM.O33_ifort2021)"
+  [[ifort2021_20260805/build_ifort2021.slurm]]
+  [[ifort2021_20260805/run_ifort2021_abba.slurm]]
+    # source), both legs with KMP_HOT_TEAMS=1 (the Stage-100 winner runtime).
+    a_bin=$parent/oceanM.O33_final
+    b_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+  [[ifort2021_20260805/run_ifort2021_perf.slurm]]
+    # as the A-B-B-A winner 118610383): 4n/64x2, 144/720, KMP_HOT_TEAMS=1.
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+      time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+        -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+        -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== gcc731
+  [[run_EXP-0001_f0_original_gcc731_4n64_full.slurm]]
+    BIN=$WS/builds/original_gcc731_noomp/oceanM
+    ln -s "$BIN" "$RUN_DIR/oceanM"
+    module purge
+    module load compiler/devtoolset/7.3.1 \
+      mpi/hpcx/2.7.4-gcc-7.3.1
+    export OMP_NUM_THREADS=1
+      module list 2>&1
+      sha256sum oceanM metadata/ocean_SCS_Dongsha60_bio15.in "$RANKFILE"
+      /usr/bin/time -p mpirun -np 64 --rankfile "$RANKFILE" --report-bindings \
+        ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in
+  [[run_EXP-0003_f0confirm_gcc731_4n64_full.slurm]]
+    BIN=$WS/builds/original_gcc731_noomp/oceanM
+    ln -s "$BIN" "$RUN_DIR/oceanM"
+    module purge
+    module load compiler/devtoolset/7.3.1 \
+      mpi/hpcx/2.7.4-gcc-7.3.1
+    export OMP_NUM_THREADS=1
+      module list 2>&1
+      sha256sum oceanM metadata/ocean_SCS_Dongsha60_bio15.in "$RANKFILE"
+      /usr/bin/time -p mpirun -np 64 --rankfile "$RANKFILE" --report-bindings \
+        ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in
+  [[run_EXP-0006_norecvzero_gcc731_4n64_full.slurm]]
+    BIN=$WS/builds/norecvzero_gcc731_noomp/bin/oceanM
+    ln -s "$BIN" "$RUN_DIR/oceanM"
+    module purge
+    module load compiler/devtoolset/7.3.1 \
+      mpi/hpcx/2.7.4-gcc-7.3.1
+    export OMP_NUM_THREADS=1
+      module list 2>&1
+      sha256sum oceanM metadata/ocean_SCS_Dongsha60_bio15.in "$RANKFILE"
+      /usr/bin/time -p mpirun -np 64 --rankfile "$RANKFILE" --report-bindings \
+        ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in
+  [[run_EXP-0005_hcoll_gcc731_4n64_full.slurm]]
+    BIN=$WS/builds/original_gcc731_noomp/oceanM
+    ln -s "$BIN" "$RUN_DIR/oceanM"
+    module purge
+    module load compiler/devtoolset/7.3.1 \
+      mpi/hpcx/2.7.4-gcc-7.3.1
+    export OMP_NUM_THREADS=1
+      module list 2>&1
+      sha256sum oceanM metadata/ocean_SCS_Dongsha60_bio15.in "$RANKFILE"
+      /usr/bin/time -p mpirun -np 64 --rankfile "$RANKFILE" --report-bindings \
+        ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in
+==== hpcx211
+  [[hpcx211_20260806/run_hpcx211_abba.slurm]]
+    #SBATCH -J fjk_HPCX211_ABBA
+    #SBATCH -o /public/home/fujiake/fjk/agent_tmp/logs/hpcx211_20260806/slurm-%j.out
+    #SBATCH -e /public/home/fujiake/fjk/agent_tmp/logs/hpcx211_20260806/slurm-%j.err
+    # A = champion + hpcx 2.7.4 (validated env), B = champion + hpcx 2.11.0.
+    bin=$root/oceanM.O33_ifort2021
+    script_source=/public/home/fujiake/fjk/agent_tmp/isolated/scripts/hpcx211_20260806/run_hpcx211_abba.slurm
+    run_root=/public/home/fujiake/fjk/mcc_runs/${SLURM_JOB_ID}_o33_hpcx211_abba_sample
+    log_root=/public/home/fujiake/fjk/agent_tmp/logs/hpcx211_20260806
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+  [[cand_20260806/full_validate_hpcx211.slurm]]
+    # Env: CAND_BIN (absolute binary path), EXPECTED_BIN_SHA, LABEL (e.g. hpcx211),
+    # EXPECTED_SCRIPT_SHA, MOD_HPCX (default 2.7.4), and optional CAND_ROOT (ROMS/ dir to symlink; default = bin dir).
+    MOD_HPCX="${MOD_HPCX:-2.7.4}"
+    ln -s "$CAND_BIN" "$run_root/oceanM"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel "mpi/hpcx/$MOD_HPCX/intel-2017.5.239" mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+    export OMPI_MCA_coll_hcoll_enable=0 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_STACKSIZE=256M KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+    { time mpirun -np 64 --rankfile "$rankfile" --report-bindings -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL --mca coll_hcoll_enable 0 --mca coll_tuned_use_dynamic_rules 1 --mca coll_tuned_dynamic_rules_filename "$rules" ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in; } > logs/model.log 2>&1
+==== fast2_2021
+  [[cand_20260806/full_validate_fast2_2021.slurm]]
+    # Env: CAND_BIN (absolute binary path), EXPECTED_BIN_SHA, LABEL (e.g. hpcx211),
+    # EXPECTED_SCRIPT_SHA, MOD_HPCX (default 2.7.4), and optional CAND_ROOT (ROMS/ dir to symlink; default = bin dir).
+    MOD_HPCX="${MOD_HPCX:-2.7.4}"
+    ln -s "$CAND_BIN" "$run_root/oceanM"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel "mpi/hpcx/$MOD_HPCX/intel-2017.5.239" mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+    export OMPI_MCA_coll_hcoll_enable=0 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_STACKSIZE=256M KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+    { time mpirun -np 64 --rankfile "$rankfile" --report-bindings -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL --mca coll_hcoll_enable 0 --mca coll_tuned_use_dynamic_rules 1 --mca coll_tuned_dynamic_rules_filename "$rules" ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in; } > logs/model.log 2>&1
+  [[fast2_2021_20260806/run_fast2_2021_abba.slurm]]
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=$root/oceanM.O33_fast2_2021
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+  [[fast2_2021_20260806/build_fast2_2021.sh]]
+    sed -i -e 's|^$(SCRATCH_DIR)/biology\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast|' \
+           -e 's|^$(SCRATCH_DIR)/gls_corstep\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast|' \
+    grep -nE '^\$\(SCRATCH_DIR\)/(biology|gls_corstep)\.o: private FFLAGS' "$root/Compilers/Linux-ifort.mk"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_fast2_2021
+    [[ "$(hash_of oceanM.O33_fast2_2021)" != "$champion_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_fast2_2021 | grep -q 'not found'; then
+      ldd oceanM.O33_fast2_2021
+    echo "FAST2_2021_BUILD_OK hash=$(hash_of oceanM.O33_fast2_2021)"
+  [[fast2_2021_20260806/build_fast2_2021.slurm]]
+==== biofast_2021
+  [[cand_20260806/full_validate_biofast_2021.slurm]]
+    # Env: CAND_BIN (absolute binary path), EXPECTED_BIN_SHA, LABEL (e.g. hpcx211),
+    # EXPECTED_SCRIPT_SHA, MOD_HPCX (default 2.7.4), and optional CAND_ROOT (ROMS/ dir to symlink; default = bin dir).
+    MOD_HPCX="${MOD_HPCX:-2.7.4}"
+    ln -s "$CAND_BIN" "$run_root/oceanM"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel "mpi/hpcx/$MOD_HPCX/intel-2017.5.239" mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+    export OMPI_MCA_coll_hcoll_enable=0 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_STACKSIZE=256M KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+    { time mpirun -np 64 --rankfile "$rankfile" --report-bindings -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL --mca coll_hcoll_enable 0 --mca coll_tuned_use_dynamic_rules 1 --mca coll_tuned_dynamic_rules_filename "$rules" ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in; } > logs/model.log 2>&1
+  [[biofast_2021_20260806/build_biofast_2021.sh]]
+    sed -i -e 's|^$(SCRATCH_DIR)/biology\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast|' \
+    grep -nE '^\$\(SCRATCH_DIR\)/(biology|gls_corstep)\.o: private FFLAGS' "$root/Compilers/Linux-ifort.mk"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_biofast_2021
+    [[ "$(hash_of oceanM.O33_biofast_2021)" != "$champion_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_biofast_2021 | grep -q 'not found'; then
+      ldd oceanM.O33_biofast_2021
+    echo "BIOFAST_2021_BUILD_OK hash=$(hash_of oceanM.O33_biofast_2021)"
+  [[biofast_2021_20260806/build_biofast_2021.slurm]]
+  [[biofast_2021_20260806/run_biofast_2021_abba.slurm]]
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=$root/oceanM.O33_biofast_2021
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== ifort2022
+  [[cand_20260806/full_validate_ifort2022.slurm]]
+    # Env: CAND_BIN (absolute binary path), EXPECTED_BIN_SHA, LABEL (e.g. hpcx211),
+    # EXPECTED_SCRIPT_SHA, MOD_HPCX (default 2.7.4), and optional CAND_ROOT (ROMS/ dir to symlink; default = bin dir).
+    MOD_HPCX="${MOD_HPCX:-2.7.4}"
+    ln -s "$CAND_BIN" "$run_root/oceanM"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel "mpi/hpcx/$MOD_HPCX/intel-2017.5.239" mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+    export OMPI_MCA_coll_hcoll_enable=0 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_STACKSIZE=256M KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+    { time mpirun -np 64 --rankfile "$rankfile" --report-bindings -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL --mca coll_hcoll_enable 0 --mca coll_tuned_use_dynamic_rules 1 --mca coll_tuned_dynamic_rules_filename "$rules" ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in; } > logs/model.log 2>&1
+  [[ifort2022_20260807/build_ifort2022.sh]]
+    cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_ifort2022
+    [[ "$(hash_of oceanM.O33_ifort2022)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_ifort2022 | grep -q 'not found'; then
+      ldd oceanM.O33_ifort2022
+    echo "IFORT2022_BUILD_OK hash=$(hash_of oceanM.O33_ifort2022)"
+  [[ifort2022_20260807/build_ifort2022.slurm]]
+  [[ifort2022_20260807/run_ifort2022_abba.slurm]]
+    # source), both legs with KMP_HOT_TEAMS=1 (the Stage-100 winner runtime).
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2022_20260807/ROMS_CoSiNE15/oceanM.O33_ifort2022
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== ifort2023
+  [[ifort2023_20260807/build_ifort2023.slurm]]
+  [[ifort2023_20260807/run_ifort2023_abba.slurm]]
+    # source), both legs with KMP_HOT_TEAMS=1 (the Stage-100 winner runtime).
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2023_20260807/ROMS_CoSiNE15/oceanM.O33_ifort2023
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+  [[ifort2023_20260807/build_ifort2023.sh]]
+    cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_ifort2023
+    [[ "$(hash_of oceanM.O33_ifort2023)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_ifort2023 | grep -q 'not found'; then
+      ldd oceanM.O33_ifort2023
+    echo "IFORT2023_BUILD_OK hash=$(hash_of oceanM.O33_ifort2023)"
+==== ifx
+  [[ifx_20260807/build_ifx.sh]]
+    grep -nE "FFLAGS.*-O3|biology\.o: private" "$root/Compilers/Linux-ifx.mk" | head -4
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_ifx
+    [[ "$(hash_of oceanM.O33_ifx)" != "$champion_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_ifx | grep -q 'not found'; then
+      ldd oceanM.O33_ifx
+    echo "IFX_BUILD_OK hash=$(hash_of oceanM.O33_ifx)"
+  [[ifx_20260807/build_ifx.slurm]]
+  [[ifx_20260807/run_ifx_abba.slurm]]
+    # source), both legs with KMP_HOT_TEAMS=1 (the Stage-100 winner runtime).
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifx_20260807/ROMS_CoSiNE15/oceanM.O33_ifx
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== align
+  [[align_20260807/build_align.sh]]
+    cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+    sed -i -e 's|^$(SCRATCH_DIR)/biology\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte|' \
+           -e 's|^$(SCRATCH_DIR)/pre_step3d\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte|' \
+           -e 's|^$(SCRATCH_DIR)/step3d_t\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte|' \
+           -e 's|^$(SCRATCH_DIR)/t3dmix\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte|' \
+           -e 's|^$(SCRATCH_DIR)/gls_corstep\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte|' \
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_align
+    [[ "$(hash_of oceanM.O33_align)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_align | grep -q 'not found'; then
+      ldd oceanM.O33_align
+    echo "ALIGN_BUILD_OK hash=$(hash_of oceanM.O33_align)"
+  [[align_20260807/build_align.slurm]]
+  [[align_20260807/run_align_abba.slurm]]
+    # source), both legs with KMP_HOT_TEAMS=1 (the Stage-100 winner runtime).
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_align_20260807/ROMS_CoSiNE15/oceanM.O33_align
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== hotteams
+  [[hotteams_20260805/run_hotteams_abba.slurm]]
+    # [Stage 97] KMP_HOT_TEAMS runtime-only A-B-B-A on the immutable O33 binary.
+    # A = O33 + current runtime (no HOT_TEAMS); B = same O33 binary + KMP_HOT_TEAMS=1
+    # + KMP_HOT_TEAMS_MAX_PARALLEL=2.  Zero code, zero rebuild, single causal axis:
+    a_bin=$parent/oceanM.O33_final
+    b_bin=$parent/oceanM.O33_final
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+        export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        unset KMP_HOT_TEAMS KMP_HOT_TEAMS_MAX_PARALLEL
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+  [[hotteams_20260805/run_hotteams_full_validate.slurm]]
+    ln -s "$parent/oceanM" "$run_root/oceanM"
+    check_sha "$expected_bin" "$parent/oceanM"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel mpi/hpcx/2.7.4/intel-2017.5.239 mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+    export OMPI_MCA_coll_hcoll_enable=0 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_STACKSIZE=256M KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+      sha256sum "$parent/oceanM" "$full_input" "$rules" "$script";
+    { time mpirun -np 64 --rankfile "$rankfile" --report-bindings -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL --mca coll_hcoll_enable 0 --mca coll_tuned_use_dynamic_rules 1 --mca coll_tuned_dynamic_rules_filename "$rules" ./oceanM metadata/ocean_SCS_Dongsha60_bio15.in; } > logs/model.log 2>&1
+  [[hotteams_20260805/run_hotteams_perf.slurm]]
+    # as the A-B-B-A winner 118610383): 4n/64x2, 144/720, KMP_HOT_TEAMS=1.
+    a_bin=$parent/oceanM.O33_final
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+      time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+        -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+        -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== s2dfuse
+  [[s2dfuse_20260806/build_s2dfuse.sh]]
+    cp -p "$root/oceanM.O33_final" "$root/oceanM.O33_parent"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_s2dfuse
+    [[ "$(hash_of oceanM.O33_s2dfuse)" != "$expected_parent_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_s2dfuse | grep -q 'not found'; then
+      ldd oceanM.O33_s2dfuse
+    echo "S2DFUSE_BUILD_OK hash=$(hash_of oceanM.O33_s2dfuse)"
+  [[s2dfuse_20260806/build_s2dfuse.slurm]]
+  [[s2dfuse_20260806/run_s2dfuse_abba.slurm]]
+    # fused into two j-passes, NESTING branch), both legs with KMP_HOT_TEAMS=1.
+    a_bin=$parent/oceanM.O33_final
+    b_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_s2dfuse_20260806/ROMS_CoSiNE15/oceanM.O33_s2dfuse
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+==== r3
+  [[r3_20260806/build_r3.sh]]
+    sed -i -e 's|^$(SCRATCH_DIR)/biology\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast|' \
+           -e 's|^$(SCRATCH_DIR)/gls_corstep\.o: private FFLAGS += -qopenmp -no-heap-arrays$|$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -no-prec-div -fp-speculation=fast|' \
+    grep -nE '^\$\(SCRATCH_DIR\)/(biology|gls_corstep)\.o: private FFLAGS' "$root/Compilers/Linux-ifort.mk"
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    [[ -x oceanM ]] || fail "missing linked oceanM"
+    cp -p oceanM oceanM.O33_r3
+    [[ "$(hash_of oceanM.O33_r3)" != "$champion_bin" ]] || fail "candidate binary unchanged"
+    if ldd oceanM.O33_r3 | grep -q 'not found'; then
+      ldd oceanM.O33_r3
+    echo "R3_BUILD_OK hash=$(hash_of oceanM.O33_r3)"
+  [[r3_20260806/build_r3.slurm]]
+  [[r3_20260806/run_r3_abba.slurm]]
+    a_bin=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/oceanM.O33_ifort2021
+    b_bin=$root/oceanM.O33_r3
+    module purge
+    module load mathlib/netcdf/4.4.1/intel
+    module load mpi/hpcx/2.7.4/intel-2017.5.239
+    module load mathlib/hdf5/1.8.20/intel
+    module load compiler/intel/2017.5.239
+    export OMP_NUM_THREADS=2
+    export OMP_PROC_BIND=close
+    export OMP_PLACES=cores
+    export OMP_STACKSIZE=256M
+    export KMP_BLOCKTIME=0
+    export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+        time mpirun -np 64 --rankfile "$rankfile" --report-bindings \
+          -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES -x OMP_STACKSIZE -x KMP_BLOCKTIME \
+          -x KMP_HOT_TEAMS -x KMP_HOT_TEAMS_MAX_PARALLEL \
+
+############ candidate tree existence (which are still on disk)
+  ON_DISK  o33_ifort2021_20260805
+  DELETED  o33_fast2_2021_20260806
+  DELETED  o33_biofast_2021_20260806
+  DELETED  o33_gcc731_20260805
+  ON_DISK  o33_ifort2022_20260807
+  ON_DISK  o33_ifort2023_20260807
+  ON_DISK  o33_ifx_20260807
+  ON_DISK  o33_align_20260807
+  DELETED  o33_hotteams_20260805
+  DELETED  o33_s2dfuse_20260806
+
+############ FFLAGS actually used, from candidate mk files still on disk
+==== o33_ifort2021_20260805
+  26:               FC := ifort
+  29:           FFLAGS := -heap-arrays -fp-model precise
+  31:#          FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -align array64byte -qopt-prefetch=3
+  64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+  65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+  66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+  67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+  68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+  82:               FC := mpif90
+  90:           FFLAGS += -openmp -fpp
+  94:#          FFLAGS += -g -check bounds -traceback
+  95:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+  96:#          FFLAGS += -g -check uninit -ftrapuv -traceback
+  98:# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+==== o33_ifort2022_20260807
+  26:               FC := ifort
+  29:           FFLAGS := -heap-arrays -fp-model precise
+  31:#          FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -align array64byte -qopt-prefetch=3
+  64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+  65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+  66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+  67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+  68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+  82:               FC := mpif90
+  90:           FFLAGS += -openmp -fpp
+  94:#          FFLAGS += -g -check bounds -traceback
+  95:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+  96:#          FFLAGS += -g -check uninit -ftrapuv -traceback
+  98:# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+==== o33_ifort2023_20260807
+  26:               FC := ifort
+  29:           FFLAGS := -heap-arrays -fp-model precise
+  31:#          FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -align array64byte -qopt-prefetch=3
+  64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+  65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+  66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+  67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+  68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+  82:               FC := mpif90
+  90:           FFLAGS += -openmp -fpp
+  94:#          FFLAGS += -g -check bounds -traceback
+  95:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+  96:#          FFLAGS += -g -check uninit -ftrapuv -traceback
+  98:# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+==== o33_ifx_20260807
+  26:               FC := ifort
+  29:           FFLAGS := -heap-arrays -fp-model precise
+  31:#          FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -align array64byte -qopt-prefetch=3
+  64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+  65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+  66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+  67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+  68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+  82:               FC := mpif90
+  90:           FFLAGS += -openmp -fpp
+  94:#          FFLAGS += -g -check bounds -traceback
+  95:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+  96:#          FFLAGS += -g -check uninit -ftrapuv -traceback
+  98:# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+==== o33_align_20260807
+  26:               FC := ifort
+  29:           FFLAGS := -heap-arrays -fp-model precise
+  31:#          FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -align array64byte -qopt-prefetch=3
+  64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+  65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+  66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+  67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+  68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+  82:               FC := mpif90
+  90:           FFLAGS += -openmp -fpp
+  94:#          FFLAGS += -g -check bounds -traceback
+  95:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+  96:#          FFLAGS += -g -check uninit -ftrapuv -traceback
+  98:# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+
+############ ifort versions available on the cluster
+2017.5.239.pub
+composer_xe_2015.2.164
+intel-2020
+intel-compiler-2017.5.239
+intel-compiler-2018.5.274
+oneapi
+onepai
+onepai-2021.3
+onepai-2021.3-beforeupgrade
+onepai-2021.3-new1
+apps/abinit/8.10.3/hpcx-2.4.1-intel2017
+apps/amber/2018/hpcx-2.4.1-gcc-7.3.1
+apps/amber/2018/hpcx-2.4.1-intel2017
+apps/AutoDock-DCU2/4.2.6/gcc-7.3.1
+apps/AutoDock-DCU/4.2.6/gcc-7.3.1
+apps/barracuda-DCU/0.6.2_beta/hpcx-2.4.1-gcc-7.3.1
+apps/bedtools/2.29.1/gcc-7.3.1
+apps/bigDFT/1.8.3/hpcx-2.4.1-intel2017
+apps/blastn-DCU/2.2.28/gcc-7.3.1
+apps/blastp-DCU/2.2.28/gcc-7.3.1
+apps/boost/intel/1.67.0
+apps/bwa/0.7.17/gcc-7.3.1
+apps/Calculix/2.16/hpcx-2.4.1-gcc-7.3.1
+apps/canu/1.8/gcc-7.3.1
+apps/CMAQ/5.3/hpcx-2.4.1-intel2017
+apps/Code_Aster/13.8/hpcx-2.4.1-gcc-7.3.1
+apps/cp2k/2023.1/intel2021+plumed
+apps/cp2k/2023.2/gcc-930
+apps/cp2k/2024.1/intel2021
+apps/cp2k/22.1/intel2020+plumed
+apps/cp2k/6.1.0/hpcx-2.4.1-intel2017
+apps/cp2k/6.1.0/hpcx-2.7.4-intel2017
+apps/cp2k/6.1.0/intelmpi-2017.4.239
+apps/cp2k/8.2/intel2020
+apps/cp2k/9.1/gcc-930
+apps/cp2k/9.1/intel2020+plumed
+apps/cp2k/9.1/intel2021
+apps/cp2k-plumed/6.1.0/intelmpi-2017.4.239
+apps/curl/7.58.0/intel
+apps/DUNE/2.8/hpcx-2.4.1-gcc-7.3.1
+ssh : bash:琛?1: $'\r': 鏈壘鍒板懡浠?
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-66a37965-8a8b-4e23-bdd5-e431d26dffa2.ps1:111 字符: 196
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash:琛?1: $'\r': 鏈壘鍒板懡浠?:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

@@ -1,0 +1,132 @@
+﻿############ A. validation status of fast2_2021 and gcc731 full runs
+==== 118716467_o33_fast2_2021_full_64x2
+  -- validation dir --
+    鎬荤敤閲?12
+    drwxr-xr-x 2 fujiake mcc2026_final 4096 8鏈?  7 13:24 .
+    drwxr-xr-x 5 fujiake mcc2026_final 4096 8鏈?  7 16:43 ..
+    -rw-r--r-- 1 fujiake mcc2026_final 2811 8鏈?  7 13:24 vali_result.txt
+    -rw-r--r-- 1 fujiake mcc2026_final   30 8鏈?  7 13:24 vali_time.txt
+  -- full run_metadata.txt --
+    stage=o33_fast2_2021_full_reproduce
+    job=118716467 nodes=j01r2n[12-15]
+    free_kb=32101976
+    ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+    label=fast2_2021 kmp_hot_teams=1 kmp_hot_teams_max_parallel=2
+    a1e19c4c40b443dfd429becd43d8c2559d5b931c0e7abd2664dc9d481ccacd7c  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_fast2_2021_20260806/ROMS_CoSiNE15/oceanM.O33_fast2_2021
+    a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+    0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+    02fd7767c11b2a783a9702f993432413b66a2f8e4f93fbd437c33e12e981973f  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/cand_20260806/full_validate_fast2_2021.slurm
+  -- vali_result.txt last 8 lines (raw bytes -> iconv) --
+    oxygen               RMSE = 0.002149   闃堝€尖墹0.008000   鉁呮甯?    TIC                  RMSE = 0.001241   闃堝€尖墹0.008000   鉁呮甯?    
+    ================================================================================
+    銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?    SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+    Dongsha60鏂囦欢鏁翠綋鐘舵€? 瀛樺湪瓒呴檺鍙橀噺
+    鏈€缁堝垽瀹氾細鑷冲皯涓€缁勬枃浠跺瓨鍦ㄥ彉閲廟MSE瓒呴檺锛屼紭鍖栫粨鏋滃瓨鍦ㄥ紓甯?  -- RMSE line count / any exceed marker --
+    rmse_lines=29
+  -- vali_time.txt --
+    real 10.54
+    user 1.72
+    sys 0.87
+  -- slurm/harness tail --
+==== 118663696_o33_gcc731_full_64x2
+  -- validation dir --
+    鎬荤敤閲?12
+    drwxr-xr-x 2 fujiake mcc2026_final 4096 8鏈?  6 14:43 .
+    drwxr-xr-x 5 fujiake mcc2026_final 4096 8鏈?  7 16:43 ..
+    -rw-r--r-- 1 fujiake mcc2026_final 2799 8鏈?  6 14:44 vali_result.txt
+    -rw-r--r-- 1 fujiake mcc2026_final   30 8鏈?  6 14:44 vali_time.txt
+  -- full run_metadata.txt --
+    stage=o33_gcc731_full_reproduce
+    job=118663696 nodes=i17r1n[00-03]
+    free_kb=50518728
+    ntimes=2592,12960 ntile=8x8 ranks=64 threads=2
+    compiler=gcc731 kmp_hot_teams_max_parallel=2
+    5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+    a3e8a5dbee769ced1e097cd22d9e0424eb326b0a7b1006451fe6609dd14779a8  /public/home/fujiake/fjk/ROMS_CoSiNE15_codex_20260727/experiments/inputs/ocean_full_64_8x8.in
+    0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+    e1af0ab93e21868ea600114fa646c5be34b9caaf75e20d16992b632140a83d9a  /public/home/fujiake/fjk/agent_tmp/isolated/scripts/gcc731_20260805/run_gcc731_full_validate.slurm
+  -- vali_result.txt last 8 lines (raw bytes -> iconv) --
+    oxygen               RMSE = 0.002125   闃堝€尖墹0.008000   鉁呮甯?    TIC                  RMSE = 0.001232   闃堝€尖墹0.008000   鉁呮甯?    
+    ================================================================================
+    銆愬叏灞€姹囨€绘牎楠岀粨璁恒€?    SCS鏂囦欢鏁翠綋鐘舵€? 鍏ㄩ儴姝ｅ父
+    Dongsha60鏂囦欢鏁翠綋鐘舵€? 瀛樺湪瓒呴檺鍙橀噺
+    鏈€缁堝垽瀹氾細鑷冲皯涓€缁勬枃浠跺瓨鍦ㄥ彉閲廟MSE瓒呴檺锛屼紭鍖栫粨鏋滃瓨鍦ㄥ紓甯?  -- RMSE line count / any exceed marker --
+    rmse_lines=29
+  -- vali_time.txt --
+    real 25.41
+    user 1.77
+    sys 1.00
+  -- slurm/harness tail --
+
+############ B. compiler and flag deltas
+==== immutable O33 Linux-ifort.mk (FFLAGS lines)
+  13:# FFLAGS         Flags to the fortran compiler
+  26:               FC := ifort
+  29:           FFLAGS := -heap-arrays -fp-model precise
+  31:#          FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -align array64byte -qopt-prefetch=3
+  63:# arrays land on the stack (global FFLAGS still -heap-arrays for vali-safe default).
+  64:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+  65:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+  66:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+  67:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+  68:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+  82:               FC := mpif90
+  90:           FFLAGS += -openmp -fpp
+  94:#          FFLAGS += -g -check bounds -traceback
+  95:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+  96:#          FFLAGS += -g -check uninit -ftrapuv -traceback
+  98:# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+  100:           FFLAGS += -ip -O3
+  106:           FFLAGS += -I$(MCT_INCDIR)
+  114:           FFLAGS += $(ESMF_F90COMPILEPATHS)
+  123:               FC := $(shell which ${FC})
+  131:$(SCRATCH_DIR)/mod_ncparam.o: FFLAGS += -free
+  132:$(SCRATCH_DIR)/mod_strings.o: FFLAGS += -free
+  133:$(SCRATCH_DIR)/analytical.o: FFLAGS += -free
+  134:$(SCRATCH_DIR)/biology.o: FFLAGS += -free
+  136:$(SCRATCH_DIR)/ad_biology.o: FFLAGS += -free
+==== o33_ifort2021_20260805
+  sha256=081b267b491f6ddf
+  -- build_env / notes files --
+==== o33_fast2_2021_20260806
+  no Linux-ifort.mk; listing Compilers dir
+  -- build_env / notes files --
+==== o33_biofast_2021_20260806
+  no Linux-ifort.mk; listing Compilers dir
+  -- build_env / notes files --
+==== o33_ifort2022_20260807
+  sha256=081b267b491f6ddf
+  -- build_env / notes files --
+==== o33_ifort2023_20260807
+  sha256=081b267b491f6ddf
+  -- build_env / notes files --
+==== o33_ifx_20260807
+  sha256=081b267b491f6ddf
+  -- build_env / notes files --
+==== o33_align_20260807
+  sha256=f387aadc5b740c08
+    6,10c6,10
+    < $(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+    < $(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+    < $(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+    < $(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+    < $(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+    ---
+    > $(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+    > $(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+    > $(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+    > $(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+    > $(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -align array64byte
+  -- build_env / notes files --
+
+############ C. module/toolchain used in the winning runs
+==== 118662236_o33_ifort2021_full_64x2
+==== 118714595_o33_hpcx211_full_64x2
+==== 118716467_o33_fast2_2021_full_64x2
+ssh : bash:琛?6: $'\r': 鏈壘鍒板懡浠?
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-8730b354-cf53-4190-a9ac-4cc455ed63de.ps1:111 字符: 207
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash:琛?6: $'\r': 鏈壘鍒板懡浠?:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

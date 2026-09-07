@@ -1,0 +1,21 @@
+HARNESS_START=2026-08-02 09:31:24 +0800
+JOB=118394983 NODES=j05r2n[04-07] NNODES=4 NTASKS=128 CPUS_PER_TASK=1
+HASH_OK|5a609c88aaa51f7b5cee52459712b406feb3477f24bfda0af05c9037538dd83b|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/o33_128mpi_scaling_20260801/run_64v128_abba.slurm
+HASH_OK|5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM.O33_final
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+RANKFILES_OK
+8ded3d44b2de3e8aa87620aef7ef9fa1ae0c50f3c19539148fdbad4ccda11418  /public/home/fujiake/fjk/mcc_runs/118394983_o33_64v128mpi_sample/rankfile.64x2
+a4d4e4d60432ed098909b983a0a55a449f7fb5cd0354ff071cac3ccdac28c185  /public/home/fujiake/fjk/mcc_runs/118394983_o33_64v128mpi_sample/rankfile.128x1
+RUN_START|A1|MPI64_OMP2|2026-08-02 09:31:25 +0800
+RUN_DONE|A1|MPI64_OMP2|real=128.412|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|B1|MPI128_OMP1|2026-08-02 09:33:33 +0800
+RUN_DONE|B1|MPI128_OMP1|real=168.451|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|B2|MPI128_OMP1|2026-08-02 09:36:22 +0800
+RUN_DONE|B2|MPI128_OMP1|real=167.936|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+RUN_START|A2|MPI64_OMP2|2026-08-02 09:39:10 +0800
+RUN_DONE|A2|MPI64_OMP2|real=126.234|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+  File "<stdin>", line 4
+    open(sys.argv[2],'w').write(f'mean_A_seconds={ma:.3f}\nmean_B_seconds={mb:.3f}\ngain_percent={g:.4f}\nboth_B_faster={max(b)<min(a)}\ntrajectory_consistent={len({x["trajectory_sha"] for x in r})==1}\nverdict='+('REVIEW_FOR_DAY_VALIDATION' if g>=3 and max(b)<min(a) else 'STOP_BRANCH' if g<2 else 'REVIEW_PROFILE')+'\n')
+                                                                                                                                                                                                                   ^
+SyntaxError: invalid syntax

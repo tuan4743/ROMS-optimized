@@ -1,0 +1,12 @@
+HARNESS_START=2026-08-02 09:28:46 +0800
+JOB=118394943 NODES=j05r2n[11-14] NNODES=4 NTASKS=128 CPUS_PER_TASK=1
+HASH_OK|905f7eac4af218b2ec231a7da36dc84d4d3975f339f23c5d4059ff068795a049|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/o33_128mpi_scaling_20260801/run_64v128_abba.slurm
+HASH_OK|5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM.O33_final
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+RANKFILES_OK
+3852c3b99f24384a44a85df9ce59434739b2c7e1f2ef0ed2edd61ed9012aac4b  /public/home/fujiake/fjk/mcc_runs/118394943_o33_64v128mpi_sample/rankfile.64x2
+6888039320e429804177d33cef6e9413e8d59dfae1b4e9c393f7494ea058e5f8  /public/home/fujiake/fjk/mcc_runs/118394943_o33_64v128mpi_sample/rankfile.128x1
+Traceback (most recent call last):
+  File "<stdin>", line 11, in <module>
+AssertionError

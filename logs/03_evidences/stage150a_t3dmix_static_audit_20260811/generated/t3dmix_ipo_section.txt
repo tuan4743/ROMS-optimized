@@ -1,0 +1,752 @@
+﻿Begin optimization report for: T3DMIX_MOD::T3DMIX4_TILE
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (T3DMIX_MOD::T3DMIX4_TILE) [139/490=28.4%] t3dmix.f90(88,18)
+  -> EXTERN: (88,18) _alloca
+  -> EXTERN: (88,18) _alloca
+  -> EXTERN: (88,18) _alloca
+  -> EXTERN: (88,18) __getsp_inlined
+  -> EXTERN: (352,7) __resetsp_inlined
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at t3dmix.f90(216,7)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at t3dmix.f90(218,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at t3dmix.f90(219,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at t3dmix.f90(220,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(221,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(221,13)
+            remark #15389: vectorization support: reference diff3d_u(i,j,k) has unaligned access   [ t3dmix.f90(222,26) ]
+            remark #15389: vectorization support: reference pmon_u(i,j) has unaligned access   [ t3dmix.f90(222,42) ]
+            remark #15389: vectorization support: reference umask(i,j) has unaligned access   [ t3dmix.f90(223,23) ]
+            remark #15389: vectorization support: reference umask_wet(i,j) has unaligned access   [ t3dmix.f90(224,23) ]
+            remark #15389: vectorization support: reference at (225:15) has unaligned access   [ t3dmix.f90(225,15) ]
+            remark #15389: vectorization support: reference hz(i,j,k) has unaligned access   [ t3dmix.f90(226,24) ]
+            remark #15389: vectorization support: reference hz(i-1,j,k) has unaligned access   [ t3dmix.f90(226,34) ]
+            remark #15389: vectorization support: reference t(i,j,k,nrhs,itrc) has unaligned access   [ t3dmix.f90(227,24) ]
+            remark #15389: vectorization support: reference t(i-1,j,k,nrhs,itrc) has unaligned access   [ t3dmix.f90(228,24) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 1.028
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 8 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 30 
+            remark #15477: vector cost: 9.000 
+            remark #15478: estimated potential speedup: 3.190 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(221,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(220,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(221,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(221,13)
+            remark #15389: vectorization support: reference at (225:15) has unaligned access   [ t3dmix.f90(225,15) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <diff3d_u(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(222,26) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pmon_u(i,j)>, stride is unknown to compiler   [ t3dmix.f90(222,42) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <umask(i,j)>, stride is unknown to compiler   [ t3dmix.f90(223,23) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <umask_wet(i,j)>, stride is unknown to compiler   [ t3dmix.f90(224,23) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(226,24) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i-1,j,k)>, stride is unknown to compiler   [ t3dmix.f90(226,34) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nrhs,itrc)>, stride is unknown to compiler   [ t3dmix.f90(227,24) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i-1,j,k,nrhs,itrc)>, stride is unknown to compiler   [ t3dmix.f90(228,24) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.295
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15452: unmasked strided loads: 8 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 30 
+            remark #15477: vector cost: 22.000 
+            remark #15478: estimated potential speedup: 1.350 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(221,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(231,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(232,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(232,13)
+            remark #15389: vectorization support: reference diff3d_v(i,j,k) has unaligned access   [ t3dmix.f90(233,26) ]
+            remark #15389: vectorization support: reference pnom_v(i,j) has unaligned access   [ t3dmix.f90(233,42) ]
+            remark #15389: vectorization support: reference vmask(i,j) has unaligned access   [ t3dmix.f90(234,23) ]
+            remark #15389: vectorization support: reference vmask_wet(i,j) has unaligned access   [ t3dmix.f90(235,23) ]
+            remark #15389: vectorization support: reference at (236:15) has unaligned access   [ t3dmix.f90(236,15) ]
+            remark #15389: vectorization support: reference hz(i,j,k) has unaligned access   [ t3dmix.f90(237,24) ]
+            remark #15389: vectorization support: reference hz(i,j-1,k) has unaligned access   [ t3dmix.f90(237,34) ]
+            remark #15389: vectorization support: reference t(i,j,k,nrhs,itrc) has unaligned access   [ t3dmix.f90(238,24) ]
+            remark #15389: vectorization support: reference t(i,j-1,k,nrhs,itrc) has unaligned access   [ t3dmix.f90(239,24) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 1.028
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 8 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 30 
+            remark #15477: vector cost: 9.000 
+            remark #15478: estimated potential speedup: 3.190 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(232,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(231,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(232,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(232,13)
+            remark #15389: vectorization support: reference at (236:15) has unaligned access   [ t3dmix.f90(236,15) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <diff3d_v(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(233,26) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pnom_v(i,j)>, stride is unknown to compiler   [ t3dmix.f90(233,42) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <vmask(i,j)>, stride is unknown to compiler   [ t3dmix.f90(234,23) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <vmask_wet(i,j)>, stride is unknown to compiler   [ t3dmix.f90(235,23) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(237,24) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j-1,k)>, stride is unknown to compiler   [ t3dmix.f90(237,34) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nrhs,itrc)>, stride is unknown to compiler   [ t3dmix.f90(238,24) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j-1,k,nrhs,itrc)>, stride is unknown to compiler   [ t3dmix.f90(239,24) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.295
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15452: unmasked strided loads: 8 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 30 
+            remark #15477: vector cost: 22.000 
+            remark #15478: estimated potential speedup: 1.350 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(232,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(246,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+            remark #15389: vectorization support: reference hz(i,j,k) has unaligned access   [ t3dmix.f90(248,26) ]
+            remark #15388: vectorization support: reference at (249:15) has aligned access   [ t3dmix.f90(249,15) ]
+            remark #15389: vectorization support: reference pm(i,j) has unaligned access   [ t3dmix.f90(249,25) ]
+            remark #15389: vectorization support: reference pn(i,j) has unaligned access   [ t3dmix.f90(249,33) ]
+            remark #15389: vectorization support: reference at (250:26) has unaligned access   [ t3dmix.f90(250,26) ]
+            remark #15389: vectorization support: reference at (250:36) has unaligned access   [ t3dmix.f90(250,36) ]
+            remark #15389: vectorization support: reference at (251:26) has unaligned access   [ t3dmix.f90(251,26) ]
+            remark #15389: vectorization support: reference at (251:36) has unaligned access   [ t3dmix.f90(251,36) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.140
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15450: unmasked unaligned unit stride loads: 7 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 47 
+            remark #15477: vector cost: 14.250 
+            remark #15478: estimated potential speedup: 2.990 
+            remark #15486: divides: 1 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+         <Remainder loop for vectorization>
+            remark #15389: vectorization support: reference hz(i,j,k) has unaligned access   [ t3dmix.f90(248,26) ]
+            remark #15389: vectorization support: reference at (249:15) has unaligned access   [ t3dmix.f90(249,15) ]
+            remark #15389: vectorization support: reference pm(i,j) has unaligned access   [ t3dmix.f90(249,25) ]
+            remark #15389: vectorization support: reference pn(i,j) has unaligned access   [ t3dmix.f90(249,33) ]
+            remark #15389: vectorization support: reference at (250:26) has unaligned access   [ t3dmix.f90(250,26) ]
+            remark #15389: vectorization support: reference at (250:36) has unaligned access   [ t3dmix.f90(250,36) ]
+            remark #15389: vectorization support: reference at (251:26) has unaligned access   [ t3dmix.f90(251,26) ]
+            remark #15389: vectorization support: reference at (251:36) has unaligned access   [ t3dmix.f90(251,36) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.593
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 4 
+            remark #15452: unmasked strided loads: 3 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 32 
+            remark #15477: vector cost: 23.000 
+            remark #15478: estimated potential speedup: 1.380 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(246,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+            remark #15388: vectorization support: reference at (249:15) has aligned access   [ t3dmix.f90(249,15) ]
+            remark #15389: vectorization support: reference at (250:26) has unaligned access   [ t3dmix.f90(250,26) ]
+            remark #15389: vectorization support: reference at (250:36) has unaligned access   [ t3dmix.f90(250,36) ]
+            remark #15389: vectorization support: reference at (251:26) has unaligned access   [ t3dmix.f90(251,26) ]
+            remark #15389: vectorization support: reference at (251:36) has unaligned access   [ t3dmix.f90(251,36) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(248,26) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pm(i,j)>, stride is unknown to compiler   [ t3dmix.f90(249,25) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pn(i,j)>, stride is unknown to compiler   [ t3dmix.f90(249,33) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.074
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15450: unmasked unaligned unit stride loads: 4 
+            remark #15452: unmasked strided loads: 3 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 47 
+            remark #15477: vector cost: 19.500 
+            remark #15478: estimated potential speedup: 2.270 
+            remark #15486: divides: 1 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+         <Remainder loop for vectorization>
+            remark #15389: vectorization support: reference at (249:15) has unaligned access   [ t3dmix.f90(249,15) ]
+            remark #15389: vectorization support: reference at (250:26) has unaligned access   [ t3dmix.f90(250,26) ]
+            remark #15389: vectorization support: reference at (250:36) has unaligned access   [ t3dmix.f90(250,36) ]
+            remark #15389: vectorization support: reference at (251:26) has unaligned access   [ t3dmix.f90(251,26) ]
+            remark #15389: vectorization support: reference at (251:36) has unaligned access   [ t3dmix.f90(251,36) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.325
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 4 
+            remark #15452: unmasked strided loads: 3 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 32 
+            remark #15477: vector cost: 23.000 
+            remark #15478: estimated potential speedup: 1.380 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(247,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(261,17)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (262:19)>, stride is unknown to compiler   [ t3dmix.f90(262,19) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 3 
+         remark #15477: vector cost: 3.000 
+         remark #15478: estimated potential speedup: 1.000 
+         remark #15488: --- end vector cost summary ---
+         remark #25439: unrolled with remainder by 2  
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(261,17)
+      <Remainder>
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(265,17)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (266:19)>, stride is unknown to compiler   [ t3dmix.f90(266,19) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (266:19)>, stride is unknown to compiler   [ t3dmix.f90(266,19) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15452: unmasked strided loads: 1 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 4 
+         remark #15477: vector cost: 4.000 
+         remark #15478: estimated potential speedup: 1.000 
+         remark #15488: --- end vector cost summary ---
+         remark #25439: unrolled with remainder by 2  
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(265,17)
+      <Remainder>
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(275,17)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (276:19)>, stride is unknown to compiler   [ t3dmix.f90(276,19) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 3 
+         remark #15477: vector cost: 3.000 
+         remark #15478: estimated potential speedup: 1.000 
+         remark #15488: --- end vector cost summary ---
+         remark #25439: unrolled with remainder by 2  
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(275,17)
+      <Remainder>
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(279,17)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (280:19)>, stride is unknown to compiler   [ t3dmix.f90(280,19) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (280:19)>, stride is unknown to compiler   [ t3dmix.f90(280,19) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15452: unmasked strided loads: 1 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 4 
+         remark #15477: vector cost: 4.000 
+         remark #15478: estimated potential speedup: 1.000 
+         remark #15488: --- end vector cost summary ---
+         remark #25439: unrolled with remainder by 2  
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(279,17)
+      <Remainder>
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(289,17)
+         remark #25408: memset generated
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(289,17)
+            remark #15389: vectorization support: reference at (290:19) has unaligned access   [ t3dmix.f90(290,19) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15399: vectorization support: unroll factor set to 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.300
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 3 
+            remark #15477: vector cost: 1.250 
+            remark #15478: estimated potential speedup: 1.440 
+            remark #15488: --- end vector cost summary ---
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(289,17)
+         <Remainder loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=12
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(293,17)
+         remark #25401: memcopy(with guard) generated
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(293,17)
+         <Peeled loop for vectorization, Multiversioned v2>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(293,17)
+         <Multiversioned v2>
+            remark #15389: vectorization support: reference at (294:19) has unaligned access   [ t3dmix.f90(294,19) ]
+            remark #15389: vectorization support: reference at (294:19) has unaligned access   [ t3dmix.f90(294,19) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 3.250
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 4 
+            remark #15477: vector cost: 1.000 
+            remark #15478: estimated potential speedup: 3.690 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(293,17)
+         <Remainder loop for vectorization, Multiversioned v2>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(303,17)
+         remark #25408: memset generated
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(303,17)
+            remark #15389: vectorization support: reference at (304:19) has unaligned access   [ t3dmix.f90(304,19) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15399: vectorization support: unroll factor set to 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.300
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 3 
+            remark #15477: vector cost: 1.250 
+            remark #15478: estimated potential speedup: 1.440 
+            remark #15488: --- end vector cost summary ---
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(303,17)
+         <Remainder loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=12
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(307,17)
+         remark #25401: memcopy(with guard) generated
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(307,17)
+         <Peeled loop for vectorization, Multiversioned v2>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(307,17)
+         <Multiversioned v2>
+            remark #15389: vectorization support: reference at (308:19) has unaligned access   [ t3dmix.f90(308,19) ]
+            remark #15389: vectorization support: reference at (308:19) has unaligned access   [ t3dmix.f90(308,19) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 3.250
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 4 
+            remark #15477: vector cost: 1.000 
+            remark #15478: estimated potential speedup: 3.690 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(307,17)
+         <Remainder loop for vectorization, Multiversioned v2>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(316,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(317,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(317,13)
+            remark #15389: vectorization support: reference diff3d_u(i,j,k) has unaligned access   [ t3dmix.f90(318,26) ]
+            remark #15389: vectorization support: reference pmon_u(i,j) has unaligned access   [ t3dmix.f90(318,42) ]
+            remark #15389: vectorization support: reference at (319:15) has unaligned access   [ t3dmix.f90(319,15) ]
+            remark #15389: vectorization support: reference hz(i,j,k) has unaligned access   [ t3dmix.f90(320,24) ]
+            remark #15389: vectorization support: reference hz(i-1,j,k) has unaligned access   [ t3dmix.f90(320,34) ]
+            remark #15389: vectorization support: reference at (321:24) has unaligned access   [ t3dmix.f90(321,24) ]
+            remark #15389: vectorization support: reference at (321:34) has unaligned access   [ t3dmix.f90(321,34) ]
+            remark #15389: vectorization support: reference at (322:15) has unaligned access   [ t3dmix.f90(322,15) ]
+            remark #15389: vectorization support: reference at (322:23) has unaligned access   [ t3dmix.f90(322,23) ]
+            remark #15389: vectorization support: reference umask(i,j) has unaligned access   [ t3dmix.f90(322,31) ]
+            remark #15389: vectorization support: reference at (323:15) has unaligned access   [ t3dmix.f90(323,15) ]
+            remark #15389: vectorization support: reference at (323:23) has unaligned access   [ t3dmix.f90(323,23) ]
+            remark #15389: vectorization support: reference umask_wet(i,j) has unaligned access   [ t3dmix.f90(323,31) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.972
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 9 
+            remark #15451: unmasked unaligned unit stride stores: 3 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 33 
+            remark #15477: vector cost: 9.000 
+            remark #15478: estimated potential speedup: 3.490 
+            remark #15488: --- end vector cost summary ---
+            remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(317,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(316,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(317,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(317,13)
+            remark #15389: vectorization support: reference at (319:15) has unaligned access   [ t3dmix.f90(319,15) ]
+            remark #15389: vectorization support: reference at (321:24) has unaligned access   [ t3dmix.f90(321,24) ]
+            remark #15389: vectorization support: reference at (321:34) has unaligned access   [ t3dmix.f90(321,34) ]
+            remark #15389: vectorization support: reference at (322:15) has unaligned access   [ t3dmix.f90(322,15) ]
+            remark #15389: vectorization support: reference at (322:23) has unaligned access   [ t3dmix.f90(322,23) ]
+            remark #15389: vectorization support: reference at (323:15) has unaligned access   [ t3dmix.f90(323,15) ]
+            remark #15389: vectorization support: reference at (323:23) has unaligned access   [ t3dmix.f90(323,23) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <diff3d_u(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(318,26) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pmon_u(i,j)>, stride is unknown to compiler   [ t3dmix.f90(318,42) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(320,24) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i-1,j,k)>, stride is unknown to compiler   [ t3dmix.f90(320,34) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <umask(i,j)>, stride is unknown to compiler   [ t3dmix.f90(322,31) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <umask_wet(i,j)>, stride is unknown to compiler   [ t3dmix.f90(323,31) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.386
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 3 
+            remark #15451: unmasked unaligned unit stride stores: 3 
+            remark #15452: unmasked strided loads: 6 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 33 
+            remark #15477: vector cost: 22.000 
+            remark #15478: estimated potential speedup: 1.490 
+            remark #15488: --- end vector cost summary ---
+            remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(317,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(326,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(327,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(327,13)
+            remark #15389: vectorization support: reference diff3d_v(i,j,k) has unaligned access   [ t3dmix.f90(328,26) ]
+            remark #15389: vectorization support: reference pnom_v(i,j) has unaligned access   [ t3dmix.f90(328,42) ]
+            remark #15389: vectorization support: reference at (329:15) has unaligned access   [ t3dmix.f90(329,15) ]
+            remark #15389: vectorization support: reference hz(i,j,k) has unaligned access   [ t3dmix.f90(330,24) ]
+            remark #15389: vectorization support: reference hz(i,j-1,k) has unaligned access   [ t3dmix.f90(330,34) ]
+            remark #15389: vectorization support: reference at (331:24) has unaligned access   [ t3dmix.f90(331,24) ]
+            remark #15389: vectorization support: reference at (331:34) has unaligned access   [ t3dmix.f90(331,34) ]
+            remark #15389: vectorization support: reference at (332:15) has unaligned access   [ t3dmix.f90(332,15) ]
+            remark #15389: vectorization support: reference at (332:23) has unaligned access   [ t3dmix.f90(332,23) ]
+            remark #15389: vectorization support: reference vmask(i,j) has unaligned access   [ t3dmix.f90(332,31) ]
+            remark #15389: vectorization support: reference at (333:15) has unaligned access   [ t3dmix.f90(333,15) ]
+            remark #15389: vectorization support: reference at (333:23) has unaligned access   [ t3dmix.f90(333,23) ]
+            remark #15389: vectorization support: reference vmask_wet(i,j) has unaligned access   [ t3dmix.f90(333,31) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.972
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 9 
+            remark #15451: unmasked unaligned unit stride stores: 3 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 33 
+            remark #15477: vector cost: 9.000 
+            remark #15478: estimated potential speedup: 3.490 
+            remark #15488: --- end vector cost summary ---
+            remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(327,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(326,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(327,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(327,13)
+            remark #15389: vectorization support: reference at (329:15) has unaligned access   [ t3dmix.f90(329,15) ]
+            remark #15389: vectorization support: reference at (331:24) has unaligned access   [ t3dmix.f90(331,24) ]
+            remark #15389: vectorization support: reference at (331:34) has unaligned access   [ t3dmix.f90(331,34) ]
+            remark #15389: vectorization support: reference at (332:15) has unaligned access   [ t3dmix.f90(332,15) ]
+            remark #15389: vectorization support: reference at (332:23) has unaligned access   [ t3dmix.f90(332,23) ]
+            remark #15389: vectorization support: reference at (333:15) has unaligned access   [ t3dmix.f90(333,15) ]
+            remark #15389: vectorization support: reference at (333:23) has unaligned access   [ t3dmix.f90(333,23) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <diff3d_v(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(328,26) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pnom_v(i,j)>, stride is unknown to compiler   [ t3dmix.f90(328,42) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ t3dmix.f90(330,24) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j-1,k)>, stride is unknown to compiler   [ t3dmix.f90(330,34) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <vmask(i,j)>, stride is unknown to compiler   [ t3dmix.f90(332,31) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <vmask_wet(i,j)>, stride is unknown to compiler   [ t3dmix.f90(333,31) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.386
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 3 
+            remark #15451: unmasked unaligned unit stride stores: 3 
+            remark #15452: unmasked strided loads: 6 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 33 
+            remark #15477: vector cost: 22.000 
+            remark #15478: estimated potential speedup: 1.490 
+            remark #15488: --- end vector cost summary ---
+            remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(327,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(339,11)
+      <Multiversioned v1>
+         remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(340,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=3
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(340,13)
+            remark #15389: vectorization support: reference pm(i,j) has unaligned access   [ t3dmix.f90(341,26) ]
+            remark #15389: vectorization support: reference pn(i,j) has unaligned access   [ t3dmix.f90(341,34) ]
+            remark #15389: vectorization support: reference at (342:25) has unaligned access   [ t3dmix.f90(342,25) ]
+            remark #15389: vectorization support: reference at (342:37) has unaligned access   [ t3dmix.f90(342,37) ]
+            remark #15389: vectorization support: reference at (343:25) has unaligned access   [ t3dmix.f90(343,25) ]
+            remark #15389: vectorization support: reference at (343:37) has unaligned access   [ t3dmix.f90(343,37) ]
+            remark #15389: vectorization support: reference t(i,j,k,nnew,itrc) has unaligned access   [ t3dmix.f90(345,15) ]
+            remark #15389: vectorization support: reference t(i,j,k,nnew,itrc) has unaligned access   [ t3dmix.f90(345,34) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.919
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 7 
+            remark #15451: unmasked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 32 
+            remark #15477: vector cost: 9.250 
+            remark #15478: estimated potential speedup: 3.310 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(340,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at t3dmix.f90(339,11)
+      <Multiversioned v2>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at t3dmix.f90(340,13)
+         <Peeled loop for vectorization>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(340,13)
+            remark #15389: vectorization support: reference at (342:25) has unaligned access   [ t3dmix.f90(342,25) ]
+            remark #15389: vectorization support: reference at (342:37) has unaligned access   [ t3dmix.f90(342,37) ]
+            remark #15389: vectorization support: reference at (343:25) has unaligned access   [ t3dmix.f90(343,25) ]
+            remark #15389: vectorization support: reference at (343:37) has unaligned access   [ t3dmix.f90(343,37) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pm(i,j)>, stride is unknown to compiler   [ t3dmix.f90(341,26) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <pn(i,j)>, stride is unknown to compiler   [ t3dmix.f90(341,34) ]
+            remark #15329: vectorization support: non-unit strided store was emulated for the variable <t(i,j,k,nnew,itrc)>, stride is unknown to compiler   [ t3dmix.f90(345,15) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <t(i,j,k,nnew,itrc)>, stride is unknown to compiler   [ t3dmix.f90(345,34) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.630
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 4 
+            remark #15452: unmasked strided loads: 3 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 32 
+            remark #15477: vector cost: 23.000 
+            remark #15478: estimated potential speedup: 1.380 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at t3dmix.f90(340,13)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+

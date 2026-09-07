@@ -1,0 +1,135 @@
+############ Linux-ifort.mk around FFLAGS branches (lines 110-160)
+ ifdef USE_MPI
+   PARPACK_LIBDIR ?= /public/home/mengqicheng/romstrunk/Lib/ARPACK/PARPACK
+             LIBS += -L$(PARPACK_LIBDIR) -lparpack
+ endif
+    ARPACK_LIBDIR ?= /public/home/mengqicheng/romstrunk/Lib/ARPACK/PARPACK
+             LIBS += -L$(ARPACK_LIBDIR) -larpack
+endif
+
+ifdef USE_MPI
+         CPPFLAGS += -DMPI
+ ifdef USE_MPIF90
+               FC := mpif90
+ else
+             LIBS += -lfmpi-pgi -lmpi-pgi
+ endif
+endif
+
+ifdef USE_OpenMP
+         CPPFLAGS += -D_OPENMP
+           FFLAGS += -openmp -fpp
+endif
+
+ifdef USE_DEBUG
+#          FFLAGS += -g -check bounds -traceback
+           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+#          FFLAGS += -g -check uninit -ftrapuv -traceback
+else
+# [OPTIMIZATION O1] baseline: FFLAGS += -ip -O3 -g
+# 正式计时去掉 -g，减小指令体积、避免调试符号开销
+           FFLAGS += -ip -O3
+endif
+
+ifdef USE_MCT
+       MCT_INCDIR ?= /opt/intelsoft/mct/include
+       MCT_LIBDIR ?= /opt/intelsoft/mct/lib
+           FFLAGS += -I$(MCT_INCDIR)
+             LIBS += -L$(MCT_LIBDIR) -lmct -lmpeu
+endif
+
+ifdef USE_ESMF
+      ESMF_SUBDIR := $(ESMF_OS).$(ESMF_COMPILER).$(ESMF_ABI).$(ESMF_COMM).$(ESMF_SITE)
+      ESMF_MK_DIR ?= $(ESMF_DIR)/lib/lib$(ESMF_BOPT)/$(ESMF_SUBDIR)
+                     include $(ESMF_MK_DIR)/esmf.mk
+           FFLAGS += $(ESMF_F90COMPILEPATHS)
+             LIBS += $(ESMF_F90LINKPATHS) -lesmf -lC
+endif
+
+       clean_list += ifc* work.pc*
+
+#
+# Use full path of compiler.
+#
+               FC := $(shell which ${FC})
+               LD := $(FC)
+
+#
+# Set free form format in source files to allow long string for
+# local directory and compilation flags inside the code.
+#
+
+$(SCRATCH_DIR)/mod_ncparam.o: FFLAGS += -free
+$(SCRATCH_DIR)/mod_strings.o: FFLAGS += -free
+$(SCRATCH_DIR)/analytical.o: FFLAGS += -free
+$(SCRATCH_DIR)/biology.o: FFLAGS += -free
+ifdef USE_ADJOINT
+$(SCRATCH_DIR)/ad_biology.o: FFLAGS += -free
+
+############ actual compile lines from a recent S32 build log if any
+############ does oceanM.s32 contain debug sections?
+  [31] .symtab           SYMTAB           0000000000000000  005fffa0
+size=6783248
+
+############ ifort versions available
+2017.5.239.pub
+composer_xe_2015.2.164
+intel-2020
+intel-compiler-2017.5.239
+intel-compiler-2018.5.274
+oneapi
+onepai
+onepai-2021.3
+onepai-2021.3-beforeupgrade
+onepai-2021.3-new1
+compiler/intel/2015.2.164
+compiler/intel/2018.5.274
+compiler/intel/2020.1.217
+compiler/intel/2021.3.0
+compiler/intel/intel-compiler-2015.2.164
+compiler/intel/intel-compiler-2020.1.217
+compiler/intel/oneapi/2021.3.0
+compiler/intel/oneapi/oneapi-2021.3.0
+compiler/intel/2017.5.239
+
+############ teammate open items / next from README tail (ASCII-safe)
+  可完整重编 S26）。二进制 oceanM.s26_fast2_tracer.bak。
+- 采样 J118736717 运行中。
+### S27：S26 + pre_step3d fast=2（路径2 继续，直接碰 u 计算）
+- 改动：Linux-ifort.mk pre_step3d.o 追加 fast=2 组合（u 预测器直接受影响，vali 风险最高）。
+- 二进制 oceanM.s27_fast2_pres3d.bak（1afa...）；源码 backup_s27_src_20260807.tar.gz。
+- 采样待队列（S25 3day 后）。S26 1day J118736903 待跑。
+### S25 正式 3day：1941.5s（32m21s）—— 新父本锁定，vali 全过
+- job 118736476：real = 32m21.456s = 1941.5s（S21 1979.6s → 1.019×，快 38s）
+- 相对：S19 2006.5s 1.033×；S15 2012.7s 1.037×；O84基线 2188s 1.127×；组委会 6606s 3.40×
+### S26/S27 判定：tracer/pre_step3d fast=2 全部拒绝（u 超限）
+- S26（step3d_t+t3dmix fast=2）：1day 658.7s（与 S25 658.4s 持平，采样 3% 是噪声），
+  vali 失败：Dongsha u=0.000071 > 0.000060。tracer→密度→u 传导，混沌饱和实证。
+- S27（+pre_step3d fast=2）：构建完成未跑（S26 已判死整条线）。
+- 已回滚全部 fast=2（仅保留 biology 已验证的 fast=2）；S25 仍为父本。
+- 结论：u 阈值对任何算术级扰动都是硬墙；只有位级中性改动（AVX2 no-fma、-ipo）能过。
+### 二分定位 S26 精度损失：肇事文件 = step3d_t（S26a 单独验证）
+- S26a（仅 step3d_t fast=2）1day J118737872：real=659.5s（与 S25 持平），
+  vali 失败 Dongsha u=0.000072 > 0.000060 → step3d_t 单独即超限，与 S26 组合（7.1e-5）同量级。
+- 结论：fast=2 对 step3d_t 的算术扰动经 tracer→密度→u 传导，是 S26 失败的唯一肇事文件。
+- S26b（仅 t3dmix fast=2）J118738381 待结果：判断 t3dmix 是否也超限。
+### 二分完成 + S28 采纳：S25 + t3dmix fast=2（用户拍板保留）
+- S26a（仅 step3d_t fast=2）vali 失败（u=7.2e-5）→ 肇事文件 = step3d_t，整条线中该文件禁用。
+- S26b（仅 t3dmix fast=2）vali 通过：Dongsha u=0.000024（比 S25 的 5.2e-5 余量更大）、
+  SCS u=0.000082（阈值 4e-4 内）；1day 658.7s（与 S25 658.4s 持平，无提速）。
+- 用户决策：精度余量改善也算优化，采纳 t3dmix fast=2 → S28 = S25 + t3dmix fast=2。
+- 二进制 oceanM.s28_t3dmix_fast2.bak（0da2...）；源码 backup_s28_src_20260807.tar.gz。
+- 3day J118739074 运行中（自带 vali 最终确认）。
+### 关键发现：s22b 分支缺失全局 AVX2，S22/S23 对比基线不公平
+- s21 全局 FFLAGS 带 -march=core-avx2 -no-fma；s22/s22b 的 FFLAGS 只有
+  -no-heap-arrays -fp-model precise（仅 step2d 单文件 AVX2）。
+- 因此 S22/S23 的 1day 对比（672.5/676.1 vs S21 664.6）把缺失 AVX2 混入结论，
+  重叠/非阻塞的真实效果需在 S29 基座上重测。
+- S25（-ipo、无全局 AVX2）= 1941.5s 已快于 S21（全局 AVX2、无 -ipo）= 1979.6s，
+  说明 -ipo 单独收益 > 全局 AVX2。
+### S28 判定：t3dmix fast=2 3day 更慢，暂回退
+- S28 3day J118739074 = 1964.0s（慢于 S25 1941.5s +1.2%），vali 过（Dongsha u=2.4e-5 余量好）。
+- 结论：t3dmix fast=2 无提速且 3day 更慢（或为 -ipo 链接非确定性），速度目标下暂不保留；
+  作为精度余量备选记录（backup_s28_src 已存）。
+### S29：S25 + 全局 -march=core-avx2 -no-fma（叠加实验）
+- 改动：全局 FFLAGS 加 -march=core-avx2 -no-fma（位级中性，S21 已验证）。

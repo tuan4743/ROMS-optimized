@@ -1,0 +1,148 @@
+﻿############ gls_corstep.o
+==== PARENT_2017 : /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/gls_corstep.o
+   size=104752
+   -- undefined libm/svml symbols --
+                      U pow
+                      U __powr8i4
+   -- instruction mix --
+     packed_fp=0  scalar_fp=627  ratio=0.000  vsqrtpd=0 sqrtsd=9  calls=73
+   -- call targets containing pow/exp/log --
+==== CHAMPION_2021 : /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/gls_corstep.o
+   size=103536
+   -- undefined libm/svml symbols --
+                      U pow
+                      U __powr8i4
+   -- instruction mix --
+     packed_fp=0  scalar_fp=628  ratio=0.000  vsqrtpd=0 sqrtsd=9  calls=74
+   -- call targets containing pow/exp/log --
+
+############ control objects (should show the opposite trend)
+---- t3dmix.o
+==== PARENT_2017 : /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/t3dmix.o
+   size=36216
+   -- undefined libm/svml symbols --
+   -- instruction mix --
+     packed_fp=0  scalar_fp=188  ratio=0.000  vsqrtpd=0 sqrtsd=0  calls=18
+   -- call targets containing pow/exp/log --
+==== CHAMPION_2021 : /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/t3dmix.o
+   size=37128
+   -- undefined libm/svml symbols --
+   -- instruction mix --
+     packed_fp=0  scalar_fp=188  ratio=0.000  vsqrtpd=0 sqrtsd=0  calls=18
+   -- call targets containing pow/exp/log --
+---- biology.o
+==== PARENT_2017 : /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/biology.o
+   size=117416
+   -- undefined libm/svml symbols --
+                      U exp
+                      U log
+                      U log10
+                      U mod_biology_mp_ak1_
+                      U mod_biology_mp_ak2_
+                      U mod_biology_mp_akco2s2_
+                      U mod_biology_mp_aknh4s1_
+                      U mod_biology_mp_aknh4s2_
+                      U mod_biology_mp_akno3s1_
+                      U mod_biology_mp_akno3s2_
+                      U mod_biology_mp_akox_
+                      U mod_biology_mp_akpo4s1_
+                      U mod_biology_mp_akpo4s2_
+                      U mod_biology_mp_aksio4s2_
+                      U mod_biology_mp_akz1_
+                      U mod_biology_mp_akz2_
+                      U mod_biology_mp_beta1_
+                      U mod_biology_mp_beta2_
+                      U mod_biology_mp_bgamma0_
+                      U mod_biology_mp_bgamma1_
+   -- instruction mix --
+     packed_fp=0  scalar_fp=1908  ratio=0.000  vsqrtpd=0 sqrtsd=8  calls=140
+   -- call targets containing pow/exp/log --
+           1 biology_mod_mp_ta_iter_1_+0x375
+           1 biology_mod_mp_ta_iter_1_+0x30f
+           1 biology_mod_mp_o2_flux_+0x36e
+           1 biology_mod_mp_o2_flux_+0x32b
+           1 biology_mod_mp_o2_flux_+0x26d
+           1 biology_mod_mp_o2_flux_+0x24f
+           1 biology_mod_mp_o2_flux_+0x235
+           1 biology_mod_mp_o2_flux_+0x20d
+           1 biology_mod_mp_drtsafe_+0xb7b
+           1 biology_mod_mp_drtsafe_+0xb30
+           1 biology_mod_mp_drtsafe_+0x65b
+           1 biology_mod_mp_drtsafe_+0x613
+==== CHAMPION_2021 : /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/biology.o
+   size=100984
+   -- undefined libm/svml symbols --
+                      U exp
+                      U log
+                      U log10
+                      U mod_biology_mp_ak1_
+                      U mod_biology_mp_ak2_
+                      U mod_biology_mp_akco2s2_
+                      U mod_biology_mp_aknh4s1_
+                      U mod_biology_mp_aknh4s2_
+                      U mod_biology_mp_akno3s1_
+                      U mod_biology_mp_akno3s2_
+                      U mod_biology_mp_akox_
+                      U mod_biology_mp_akpo4s1_
+                      U mod_biology_mp_akpo4s2_
+                      U mod_biology_mp_aksio4s2_
+                      U mod_biology_mp_akz1_
+                      U mod_biology_mp_akz2_
+                      U mod_biology_mp_beta1_
+                      U mod_biology_mp_beta2_
+                      U mod_biology_mp_bgamma0_
+                      U mod_biology_mp_bgamma1_
+   -- instruction mix --
+     packed_fp=0  scalar_fp=1932  ratio=0.000  vsqrtpd=0 sqrtsd=8  calls=152
+   -- call targets containing pow/exp/log --
+           1 biology_mod_mp_ta_iter_1_+0x375
+           1 biology_mod_mp_ta_iter_1_+0x30f
+           1 biology_mod_mp_o2_flux_+0x36e
+           1 biology_mod_mp_o2_flux_+0x32b
+           1 biology_mod_mp_o2_flux_+0x26d
+           1 biology_mod_mp_o2_flux_+0x24f
+           1 biology_mod_mp_o2_flux_+0x235
+           1 biology_mod_mp_o2_flux_+0x20d
+           1 biology_mod_mp_drtsafe_+0xb7e
+           1 biology_mod_mp_drtsafe_+0xb33
+           1 biology_mod_mp_drtsafe_+0x65e
+           1 biology_mod_mp_drtsafe_+0x616
+---- step3d_t.o
+==== PARENT_2017 : /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/step3d_t.o
+   size=75328
+   -- undefined libm/svml symbols --
+   -- instruction mix --
+     packed_fp=0  scalar_fp=253  ratio=0.000  vsqrtpd=0 sqrtsd=0  calls=36
+   -- call targets containing pow/exp/log --
+==== CHAMPION_2021 : /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/step3d_t.o
+   size=75136
+   -- undefined libm/svml symbols --
+   -- instruction mix --
+     packed_fp=0  scalar_fp=253  ratio=0.000  vsqrtpd=0 sqrtsd=0  calls=36
+   -- call targets containing pow/exp/log --
+---- rhs3d.o
+==== PARENT_2017 : /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/rhs3d.o
+   size=94472
+   -- undefined libm/svml symbols --
+   -- instruction mix --
+     packed_fp=0  scalar_fp=404  ratio=0.000  vsqrtpd=0 sqrtsd=0  calls=45
+   -- call targets containing pow/exp/log --
+==== CHAMPION_2021 : /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/rhs3d.o
+   size=75920
+   -- undefined libm/svml symbols --
+   -- instruction mix --
+     packed_fp=0  scalar_fp=404  ratio=0.000  vsqrtpd=0 sqrtsd=0  calls=45
+   -- call targets containing pow/exp/log --
+
+############ which source file backs the GLS timer
+-rw-r--r-- 1 fujiake mcc2026_final 104752 Aug  1 10:24 /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/gls_corstep.o
+-rw-r--r-- 1 fujiake mcc2026_final  53112 Aug  1 10:03 /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/Build/gls_prestep.o
+-rw-r--r-- 1 fujiake mcc2026_final 103536 Aug  6 13:06 /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/gls_corstep.o
+-rw-r--r-- 1 fujiake mcc2026_final  53200 Aug  6 13:06 /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805/ROMS_CoSiNE15/Build/gls_prestep.o
+ssh : bash: line 48: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-57430d55-a6b8-4e67-a75b-216d8f35ea99.ps1:111 字符: 212
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 48: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

@@ -1,0 +1,7 @@
+label,symbol,instructions,fma,vmulpd,vaddpd,vsubpd,ymm,xmm,calls,bytes
+aprime,pre_step3d_mod_mp_pre_step3d_tile_,13794,0,186,81,88,273,1250,46,770349
+aprime,step3d_t_mod_mp_step3d_t_tile_,8720,0,72,18,45,161,560,38,481345
+aprime,t3dmix_mod_mp_t3dmix4_tile_,4069,0,62,12,18,98,302,15,226931
+candidate,pre_step3d_mod_mp_pre_step3d_tile_,13747,88,141,62,62,259,1195,46,767500
+candidate,step3d_t_mod_mp_step3d_t_tile_,8660,49,49,14,26,149,523,38,478202
+candidate,t3dmix_mod_mp_t3dmix4_tile_,4068,4,60,10,18,97,299,15,226820

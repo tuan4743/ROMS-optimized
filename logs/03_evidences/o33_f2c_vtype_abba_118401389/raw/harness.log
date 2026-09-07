@@ -1,0 +1,29 @@
+HARNESS_START=2026-08-02 13:19:39 +0800
+JOB=118401389 NODES=j05r2n[00-03] NNODES=4 NTASKS=64 CPUS_PER_TASK=2
+HASH_OK|d28cd857dc31e8c5200651a2002b11353f4ed2ccac5655445518b5f649247786|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/o33_f2c_vtype_20260802/run_f2c_vtype_abba.slurm
+HASH_OK|d3858c56d2a2c0ddf1f315257e85c2e822cc50b02ba0ae4f6aaf55c81533423e|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/o33_f2c_vtype_20260802/o33_f2c_vtype.patch
+HASH_OK|5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+HASH_OK|9d8434c7c7291309d4dd281b4c8531dff7ee988bfc038590301484516b53795c|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/nesting.F
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_f2c_vtype_r1_20260802/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_f2c_vtype_r1_20260802/ROMS_CoSiNE15/coll_rules.conf
+CANDIDATE_BINARY_SHA=14e55b8adbc58528508fca1e9b27aa2eda4594277d3b442d6e03ee600dfebe8d
+CANDIDATE_SOURCE_SHA=5716d0fe80c86b0469449b8ec8e6571bf2fdd658f14ec5315c13732265af722c
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118401389_o33_f2c_vtype_abba_sample/A1/input.in
+RUN_START|A1|O33|2026-08-02 13:19:40 +0800|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+RUN_DONE|A1|O33|real=128.353|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118401389_o33_f2c_vtype_abba_sample/B1/input.in
+RUN_START|B1|O33_F2C_VTYPE|2026-08-02 13:21:49 +0800|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_f2c_vtype_r1_20260802/ROMS_CoSiNE15/oceanM.O33_f2c_vtype
+RUN_DONE|B1|O33_F2C_VTYPE|real=131.535|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118401389_o33_f2c_vtype_abba_sample/B2/input.in
+RUN_START|B2|O33_F2C_VTYPE|2026-08-02 13:24:00 +0800|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_f2c_vtype_r1_20260802/ROMS_CoSiNE15/oceanM.O33_f2c_vtype
+RUN_DONE|B2|O33_F2C_VTYPE|real=130.354|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+INPUT_ASSERT_OK replacements=18 path=/public/home/fujiake/fjk/mcc_runs/118401389_o33_f2c_vtype_abba_sample/A2/input.in
+RUN_START|A2|O33|2026-08-02 13:26:11 +0800|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM
+RUN_DONE|A2|O33|real=126.562|trajectory=fa498694109f9a578ca07133f55d8e58961dde55666ca5347707d86eb40e44b0|nc=0
+mean_A_seconds=127.458
+mean_B_seconds=130.945
+gain_percent=-2.7358
+both_B_faster=False
+trajectory_consistent=True
+verdict=STOP_BRANCH
+HARNESS_DONE=2026-08-02 13:28:18 +0800

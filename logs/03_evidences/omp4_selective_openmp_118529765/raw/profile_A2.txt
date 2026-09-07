@@ -1,0 +1,31 @@
+ TS_DIF4             Biharmonic mixing of tracers.
+ Nonlinear model elapsed time profile, Grid: 01
+  Model 2D kernel ..................................       305.542  ( 3.0138 %)
+  Equation of state for seawater ...................        32.996  ( 0.3255 %)
+  Biological module, source/sink terms .............       197.622  ( 1.9493 %)
+  GLS vertical mixing parameterization .............       381.338  ( 3.7615 %)
+  3D equations right-side terms ....................        52.272  ( 0.5156 %)
+  3D equations predictor step ......................       450.720  ( 4.4458 %)
+  Biharmonic mixing of tracers, S-surfaces .........       133.831  ( 1.3201 %)
+  Biharmonic mixing of tracers, geopotentials ......        34.369  ( 0.3390 %)
+  Corrector time-step for tracers ..................       371.661  ( 3.6660 %)
+ Nonlinear model message Passage profile, Grid: 01
+  Message Passage: 2D halo exchanges ...............       114.398  ( 1.1284 %)
+  Message Passage: 4D halo exchanges ...............       175.313  ( 1.7293 %)
+  Message Passage: point data gathering ............       130.407  ( 1.2863 %)
+ All percentages are with respect to total time =        10138.025
+ Nonlinear model elapsed time profile, Grid: 02
+  Model 2D kernel ..................................      1030.016  (10.1597 %)
+  Equation of state for seawater ...................        89.728  ( 0.8850 %)
+  Biological module, source/sink terms .............       552.730  ( 5.4520 %)
+  GLS vertical mixing parameterization .............       974.689  ( 9.6140 %)
+  3D equations right-side terms ....................       134.304  ( 1.3247 %)
+  3D equations predictor step ......................      1336.497  (13.1828 %)
+  Biharmonic mixing of tracers, S-surfaces .........       355.760  ( 3.5091 %)
+  Biharmonic mixing of tracers, geopotentials ......        90.408  ( 0.8918 %)
+  Corrector time-step for tracers ..................      1046.020  (10.3176 %)
+ Nonlinear model message Passage profile, Grid: 02
+  Message Passage: 2D halo exchanges ...............       513.978  ( 5.0697 %)
+  Message Passage: 4D halo exchanges ...............       699.708  ( 6.9017 %)
+  Message Passage: point data gathering ............        38.187  ( 0.3767 %)
+ All percentages are with respect to total time =        10138.203

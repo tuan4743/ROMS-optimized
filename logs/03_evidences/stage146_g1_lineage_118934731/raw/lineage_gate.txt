@@ -1,0 +1,5 @@
+mean_A_seconds=106.838
+mean_AP_seconds=103.674
+ap_delta_percent=-2.9610
+trajectory_same=True
+lineage_pass=False

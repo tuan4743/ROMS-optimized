@@ -1,0 +1,18 @@
+ Nonlinear model elapsed time profile, Grid: 01
+  Model 2D kernel ..................................       316.957  ( 3.0606 %)
+  3D equations predictor step ......................       447.484  ( 4.3210 %)
+ Nonlinear model message Passage profile, Grid: 01
+  Message Passage: 2D halo exchanges ...............       124.812  ( 1.2052 %)
+  Message Passage: 3D halo exchanges ...............        78.370  ( 0.7567 %)
+  Message Passage: 4D halo exchanges ...............       177.151  ( 1.7106 %)
+  Message Passage: point data gathering ............       162.064  ( 1.5649 %)
+ All percentages are with respect to total time =        10356.119
+ Nonlinear model elapsed time profile, Grid: 02
+  Model 2D kernel ..................................      1038.350  (10.0279 %)
+  3D equations predictor step ......................      1337.108  (12.9131 %)
+ Nonlinear model message Passage profile, Grid: 02
+  Message Passage: 2D halo exchanges ...............       527.844  ( 5.0977 %)
+  Message Passage: 3D halo exchanges ...............       250.341  ( 2.4177 %)
+  Message Passage: 4D halo exchanges ...............       706.588  ( 6.8239 %)
+  Message Passage: point data gathering ............        45.216  ( 0.4367 %)
+ All percentages are with respect to total time =        10354.641

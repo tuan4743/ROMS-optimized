@@ -1,0 +1,15 @@
+--- /public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/aprime/Compilers/Linux-ifort.mk	2026-08-10 10:16:45.000000000 +0800
++++ /public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/candidate/Compilers/Linux-ifort.mk	2026-08-13 00:13:38.000000000 +0800
+@@ -75,9 +75,9 @@
+ #     旧版本（保留作回滚）：
+ # $(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+ $(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+-$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+-$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+-$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
++$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays -fma
++$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays -fma
++$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays -fma
+ # [S7] GLS -heap-arrays 回退：REJECTED (SIGILL on 1-day even with 1G stack)
+ # S5 PROFILE showed GLS +6.2% with -no-heap, but reverting causes SIGILL
+ # Kept as -no-heap-arrays (S5 state) for stability

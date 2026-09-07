@@ -1,0 +1,6 @@
+﻿"Variant","NonScratchDoubles","ScratchDoubles","TotalBytes","SavedBytes","LocalReductionPct","WholeCpuPct","StaticFeasibility"
+"original","35","17","416","0","0","0","reference"
+"scratch_free_fantasy","35","0","280","136","32.6923","1.6346","infeasible upper bound: stencil needs retained rows"
+"rolling_rows_reload_coeff","35","8","344","72","17.3077","0.8654","feasible-order lower model"
+"rolling_rows_buffer_coeff","23","12","280","136","32.6923","1.6346","O(I) coefficient buffers; store/load cost retained"
+"register_microtile_fantasy","23","4","216","200","48.0769","2.4038","requires cross-row coefficient retention beyond practical AVX2 register budget"

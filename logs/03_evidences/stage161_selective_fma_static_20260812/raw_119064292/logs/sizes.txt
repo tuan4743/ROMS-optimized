@@ -1,0 +1,8 @@
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/aprime/oceanM.s47_aprime|6162344
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/candidate/oceanM.s47_candidate|6162344
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/aprime/Build/pre_step3d.o|951888
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/candidate/Build/pre_step3d.o|951888
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/aprime/Build/step3d_t.o|969232
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/candidate/Build/step3d_t.o|969232
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/aprime/Build/t3dmix.o|618088
+/public/home/fujiake/fjk/stage161_selective_fma_20260812_r2/candidate/Build/t3dmix.o|618088

@@ -1,0 +1,42 @@
+﻿############ RUN-TIME module set used by the champion runs (from the run script)
+52:module purge
+53:module load mathlib/netcdf/4.4.1/intel "mpi/hpcx/$MOD_HPCX/intel-2017.5.239" mathlib/hdf5/1.8.20/intel compiler/intel/2017.5.239
+57:export OMPI_MCA_coll_hcoll_enable=0 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_STACKSIZE=256M KMP_BLOCKTIME=0
+58:export KMP_HOT_TEAMS=1 KMP_HOT_TEAMS_MAX_PARALLEL=2
+
+############ ldd under the RUN environment (2017 compiler module)
+-- champion --
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002abe3cb8d000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002abe3e625000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002abe3eb12000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002abe3fda3000)
+-- parent 2017 binary (control) --
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b77c2741000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b77c41d9000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b77c46c6000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b77c5957000)
+
+############ ldd with the 2021 compiler libs prepended (the proposed B leg)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b62b74a8000)
+	libimf.so => /public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin/libimf.so (0x00002b62b8fb1000)
+	libsvml.so => /public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00002b62b9639000)
+	libintlc.so.5 => /public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b62bb4a8000)
+
+############ do the two libimf differ?
+  a589e0979c4ab833  3338733  /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so
+  f03b551671a7024f  5084192  /public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin/libimf.so
+
+############ does the champion actually need pow at run time?
+                 U log
+000000000094cf30 T __powr8i4
+-- which lib provides pow --
+  /usr//lib64/libm.so.6 : 1 pow-ish symbols
+  /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so : 2 pow-ish symbols
+ssh : bash: 
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-1b471ca3-2729-4079-8588-4a3a87929faa.ps1:111 字符: 207
++ ... ch-Object { $_ -replace "`r","" } | ssh MCC "bash -l -s" 2>&1 | Out-F ...
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+: command not found

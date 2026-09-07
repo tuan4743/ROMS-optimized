@@ -1,0 +1,52 @@
+BUILD_END=2026-08-01 22:13:23 +0800
+HOST=login07
+PARENT=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15
+CHANGE=profile-only counters, fixed two-slot storage for the frozen two-grid diagnostic
+5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  oceanM.O33_parent
+ca88a5e00272d452a862ed187d08967c6be96ad9dc5aaf4ef532990545adda4d  oceanM.O33_step2d_siteprof
+8a46eb11f4f60f1dcdde4b9912f319dbb431af0685a1dbf2921582a11269f87f  ROMS/Nonlinear/step2d_LF_AM3.h
+d728988c2101e9f2782b66d3516e1cad61c53bf9e4d5769240da4f0449996f7c  Build/step2d.f90
+3ff79c3ba811b92f1ddb9a6bf57ce3625738061c152191b7869d9548022a79eb  Build/step2d.o
+8e971e76b20097f17f76a4cd78c2993ff6eca3187dd1e71ecb28d7b2381eff01  Build/libNLM.a
+081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced  Compilers/Linux-ifort.mk
+05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21  ROMS/External/ocean_SCS_Dongsha60_bio15.in
+0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  coll_rules.conf
+	linux-vdso.so.1 =>  (0x00007ffee35bf000)
+	libnetcdf.so.11 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdf.so.11 (0x00002b89215a0000)
+	libnetcdff.so.6 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdff.so.6 (0x00002b8921916000)
+	libmpi_usempif08.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempif08.so.40 (0x00002b8921de9000)
+	libmpi_usempi_ignore_tkr.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempi_ignore_tkr.so.40 (0x00002b8922021000)
+	libmpi_mpifh.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_mpifh.so.40 (0x00002b892222d000)
+	libmpi.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi.so.40 (0x00002b8922497000)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b89227b7000)
+	libiomp5.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so (0x00002b8922ab9000)
+	libpthread.so.0 => /usr//lib64/libpthread.so.0 (0x00002b8922e5d000)
+	libc.so.6 => /usr//lib64/libc.so.6 (0x00002b8923079000)
+	libgcc_s.so.1 => /usr//lib64/libgcc_s.so.1 (0x00002b8923447000)
+	libdl.so.2 => /usr//lib64/libdl.so.2 (0x00002b892365d000)
+	libhdf5_hl.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5_hl.so.10 (0x00002b8923861000)
+	libhdf5.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5.so.10 (0x00002b8923a88000)
+	libz.so.1 => /usr/lib64/libz.so.1 (0x00002b8924039000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b892424f000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b892473c000)
+	libirng.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libirng.so (0x00002b892565a000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b89259cd000)
+	libifport.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifport.so.5 (0x00002b8925c38000)
+	libifcoremt.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifcoremt.so.5 (0x00002b8925e67000)
+	libopen-rte.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-rte.so.40 (0x00002b89261f7000)
+	libopen-pal.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-pal.so.40 (0x00002b89264be000)
+	librt.so.1 => /usr/lib64/librt.so.1 (0x00002b8926788000)
+	libutil.so.1 => /usr/lib64/libutil.so.1 (0x00002b8926990000)
+	libhwloc.so.15 => /opt/hpc/software/mpi/hwloc/lib/libhwloc.so.15 (0x00002b8926b93000)
+	libudev.so.1 => /usr/lib64/libudev.so.1 (0x00002b8926ddd000)
+	libxml2.so.2 => /usr/lib64/libxml2.so.2 (0x00002b8926ff3000)
+	libevent_core-2.0.so.5 => /usr/lib64/libevent_core-2.0.so.5 (0x00002b892735d000)
+	libevent_pthreads-2.0.so.5 => /usr/lib64/libevent_pthreads-2.0.so.5 (0x00002b8927588000)
+	/lib64/ld-linux-x86-64.so.2 (0x00002b892137c000)
+	libcap.so.2 => /usr/lib64/libcap.so.2 (0x00002b892778b000)
+	libdw.so.1 => /usr/lib64/libdw.so.1 (0x00002b8927990000)
+	liblzma.so.5 => /usr/lib64/liblzma.so.5 (0x00002b8927bdf000)
+	libattr.so.1 => /usr/lib64/libattr.so.1 (0x00002b8927e05000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00002b892800a000)
+	libbz2.so.1 => /usr/lib64/libbz2.so.1 (0x00002b8928222000)

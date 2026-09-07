@@ -1,0 +1,61 @@
+﻿########## BASELINE_O33_118405320
+--- shell timing ---
+real	35m36.310s
+user	710m38.955s
+sys	32m52.130s
+--- aggregate ---
+ All percentages are with respect to total time =       178516.604
+ All percentages are with respect to total time =       178516.326
+--- profile block ---
+--- elapsed CPU totals ---
+ Elapsed CPU time (seconds):
+
+ Node   #  0 CPU:    2749.146
+ Node   # 24 CPU:    2786.908
+ Node   # 32 CPU:    2781.243
+ Node   # 25 CPU:    2810.759
+ Node   # 33 CPU:    2802.778
+
+########## CHAMPION_IFORT2021_118714595
+--- shell timing ---
+real	33m39.174s
+user	679m39.460s
+sys	31m52.494s
+--- aggregate ---
+ All percentages are with respect to total time =       170719.759
+ All percentages are with respect to total time =       170717.666
+--- profile block ---
+--- elapsed CPU totals ---
+ Elapsed CPU time (seconds):
+
+ Node   #  0 CPU:    2631.327
+ Node   # 33 CPU:    2671.529
+ Node   # 24 CPU:    2652.359
+ Node   # 48 CPU:    2659.143
+ Node   # 32 CPU:    2658.333
+
+########## TWIN_IFORT2021_HPCX274_118662236
+--- shell timing ---
+real	33m39.809s
+user	681m45.444s
+sys	31m0.747s
+--- aggregate ---
+ All percentages are with respect to total time =       171051.352
+ All percentages are with respect to total time =       171051.873
+--- profile block ---
+--- elapsed CPU totals ---
+ Elapsed CPU time (seconds):
+
+ Node   #  0 CPU:    2634.699
+ Node   # 51 CPU:    2684.306
+ Node   # 33 CPU:    2677.873
+ Node   # 17 CPU:    2684.562
+ Node   # 50 CPU:    2683.483
+
+ssh : bash:琛?4: $'\r': 鏈壘鍒板懡浠?
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-520854bf-c63f-4789-8dd4-b7bd01079683.ps1:111 字符: 205
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash:琛?4: $'\r': 鏈壘鍒板懡浠?:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

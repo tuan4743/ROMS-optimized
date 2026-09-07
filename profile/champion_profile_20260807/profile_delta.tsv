@@ -1,0 +1,75 @@
+﻿grid	block	region	o33_cpu	champ_cpu	delta	pct	champ_share
+01	compute	Allocation and array initialization	26.417	10.518	-15.899	-60.18%	0.0062%
+01	compute	Ocean state initialization	8.078	8.113	+0.035	+0.43%	0.0048%
+01	compute	Reading of input data	306.647	260.034	-46.613	-15.20%	0.1523%
+01	compute	Processing of input data	659.825	630.532	-29.293	-4.44%	0.3693%
+01	compute	Processing of output time averaged data	823.430	815.573	-7.857	-0.95%	0.4777%
+01	compute	Computation of vertical boundary conditions	23.772	20.478	-3.294	-13.86%	0.0120%
+01	compute	Computation of global information integrals	17.534	17.169	-0.365	-2.08%	0.0101%
+01	compute	Writing of output data	1703.609	1789.211	+85.602	+5.02%	1.0480%
+01	compute	Model 2D kernel	5592.478	4445.272	-1147.206	-20.51%	2.6038%
+01	compute	Tidal forcing	526.843	521.447	-5.396	-1.02%	0.3054%
+01	compute	2D/3D coupling, vertical metrics	623.104	659.082	+35.978	+5.77%	0.3861%
+01	compute	Omega vertical velocity	283.383	285.464	+2.081	+0.73%	0.1672%
+01	compute	Equation of state for seawater	575.322	477.627	-97.695	-16.98%	0.2798%
+01	compute	Biological module, source/sink terms	3571.831	3758.616	+186.785	+5.23%	2.2016%
+01	compute	GLS vertical mixing parameterization	6859.367	8161.642	+1302.275	+18.99%	4.7807%
+01	compute	3D equations right-side terms	935.196	526.301	-408.895	-43.72%	0.3083%
+01	compute	3D equations predictor step	8152.856	6932.654	-1220.202	-14.97%	4.0608%
+01	compute	Pressure gradient	397.671	440.303	+42.632	+10.72%	0.2579%
+01	compute	Biharmonic mixing of tracers, S-surfaces	2397.588	2401.838	+4.250	+0.18%	1.4069%
+01	compute	Biharmonic mixing of tracers, geopotentials	613.585	625.563	+11.978	+1.95%	0.3664%
+01	compute	Harmonic stress tensor, S-surfaces	252.425	251.915	-0.510	-0.20%	0.1476%
+01	compute	Corrector time-step for 3D momentum	949.516	700.614	-248.902	-26.21%	0.4104%
+01	compute	Corrector time-step for tracers	6814.731	6654.798	-159.933	-2.35%	3.8981%
+01	message	Message Passage: 2D halo exchanges	2102.988	1873.095	-229.893	-10.93%	1.0972%
+01	message	Message Passage: 3D halo exchanges	1265.616	1438.703	+173.087	+13.68%	0.8427%
+01	message	Message Passage: 4D halo exchanges	3182.253	3423.322	+241.069	+7.58%	2.0052%
+01	message	Message Passage: data broadcast	1038.945	1062.782	+23.837	+2.29%	0.6225%
+01	message	Message Passage: data reduction	3.963	3.340	-0.623	-15.72%	0.0020%
+01	message	Message Passage: data gathering	888.737	850.048	-38.689	-4.35%	0.4979%
+01	message	Message Passage: data scattering	270.135	106.436	-163.699	-60.60%	0.0623%
+01	message	Message Passage: boundary data gathering	105.307	103.975	-1.332	-1.26%	0.0609%
+01	message	Message Passage: point data gathering	2900.985	2199.507	-701.478	-24.18%	1.2884%
+02	compute	Allocation and array initialization	26.417	10.518	-15.899	-60.18%	0.0062%
+02	compute	Ocean state initialization	7.537	7.451	-0.086	-1.14%	0.0044%
+02	compute	Reading of input data	90.935	273.481	+182.546	+200.74%	0.1602%
+02	compute	Processing of input data	2224.761	2233.427	+8.666	+0.39%	1.3082%
+02	compute	Processing of output time averaged data	2332.788	2328.535	-4.253	-0.18%	1.3640%
+02	compute	Computation of vertical boundary conditions	67.088	63.041	-4.047	-6.03%	0.0369%
+02	compute	Computation of global information integrals	18.240	18.496	+0.256	+1.40%	0.0108%
+02	compute	Writing of output data	914.040	1023.869	+109.829	+12.02%	0.5997%
+02	compute	Model 2D kernel	19019.713	15454.918	-3564.795	-18.74%	9.0528%
+02	compute	Tidal forcing	3.846	4.098	+0.252	+6.55%	0.0024%
+02	compute	2D/3D coupling, vertical metrics	1106.965	1172.795	+65.830	+5.95%	0.6870%
+02	compute	Omega vertical velocity	790.230	822.794	+32.564	+4.12%	0.4820%
+02	compute	Equation of state for seawater	1610.282	1340.022	-270.260	-16.78%	0.7849%
+02	compute	Biological module, source/sink terms	10008.652	10421.688	+413.036	+4.13%	6.1046%
+02	compute	GLS vertical mixing parameterization	17780.611	20992.469	+3211.858	+18.06%	12.2964%
+02	compute	3D equations right-side terms	2422.509	1331.442	-1091.067	-45.04%	0.7799%
+02	compute	3D equations predictor step	24378.657	20300.260	-4078.397	-16.73%	11.8910%
+02	compute	Pressure gradient	1084.913	1124.800	+39.887	+3.68%	0.6589%
+02	compute	Biharmonic mixing of tracers, S-surfaces	6408.981	6414.690	+5.709	+0.09%	3.7574%
+02	compute	Biharmonic mixing of tracers, geopotentials	1630.196	1666.298	+36.102	+2.21%	0.9760%
+02	compute	Harmonic stress tensor, S-surfaces	652.144	649.034	-3.110	-0.48%	0.3802%
+02	compute	Corrector time-step for 3D momentum	2553.569	1834.114	-719.455	-28.17%	1.0743%
+02	compute	Corrector time-step for tracers	19629.030	19168.844	-460.186	-2.34%	11.2283%
+02	message	Message Passage: 2D halo exchanges	9876.529	9140.790	-735.739	-7.45%	5.3543%
+02	message	Message Passage: 3D halo exchanges	4596.855	5121.708	+524.853	+11.42%	3.0001%
+02	message	Message Passage: 4D halo exchanges	12869.225	13332.692	+463.467	+3.60%	7.8097%
+02	message	Message Passage: data broadcast	453.660	747.981	+294.321	+64.88%	0.4381%
+02	message	Message Passage: data reduction	2210.854	2126.668	-84.186	-3.81%	1.2457%
+02	message	Message Passage: data gathering	506.047	476.626	-29.421	-5.81%	0.2792%
+02	message	Message Passage: data scattering	93.463	50.775	-42.688	-45.67%	0.0297%
+02	message	Message Passage: point data gathering	734.698	610.891	-123.807	-16.85%	0.3578%
+
+### totals
+o33 sum of regions   = 199977.572
+champ sum of regions = 191721.187
+ssh : bash:琛?5: $'\r': 鏈壘鍒板懡浠?
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-fd894daa-77c1-4fb3-b915-7132c78d497f.ps1:111 字符: 205
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash:琛?5: $'\r': 鏈壘鍒板懡浠?:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

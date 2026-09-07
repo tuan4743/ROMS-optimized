@@ -1,0 +1,1 @@
+59:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source -fimf-use-svml=true:pow

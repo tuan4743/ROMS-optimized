@@ -1,0 +1,7 @@
+# started on Sun Aug  9 13:02:05 2026
+
+0.857810,,task-clock:u,857810,100.00,0.613,CPUs utilized
+178900,,cycles:u,863000,100.00,0.209,GHz
+125462,,instructions:u,863000,100.00,0.70,insn per cycle,,,,
+26678,,branches:u,863000,100.00,31.100,M/sec
+2448,,branch-misses:u,863000,100.00,9.18,of all branches

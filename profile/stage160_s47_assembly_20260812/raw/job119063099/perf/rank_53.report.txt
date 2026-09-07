@@ -1,0 +1,67 @@
+Failed to open /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so, continuing without symbols
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 25K of event 'cpu-clock:u'
+# Event count (approx.): 126100486750
+#
+# Overhead  Symbol                                                                           Shared Object                        
+# ........  ...............................................................................  .....................................
+#
+    14.37%  [.] pre_step3d_mod_mp_pre_step3d_tile_                                           oceanM.s47_SELQUANT_best_20260810.bak
+    10.40%  [.] step3d_t_mod_mp_step3d_t_tile_                                               oceanM.s47_SELQUANT_best_20260810.bak
+     8.60%  [.] uct_dc_mlx5_iface_progress                                                   libuct_ib.so.0.0.0                   
+     7.45%  [.] __libm_pow_e7                                                                oceanM.s47_SELQUANT_best_20260810.bak
+     6.40%  [.] mp_exchange_mod_mp_mp_exchange4d_                                            oceanM.s47_SELQUANT_best_20260810.bak
+     6.10%  [.] biology_mod_mp_biology_tile_                                                 oceanM.s47_SELQUANT_best_20260810.bak
+     5.16%  [.] t3dmix_mod_mp_t3dmix4_tile_                                                  oceanM.s47_SELQUANT_best_20260810.bak
+     5.15%  [.] gls_corstep_mod_mp_gls_corstep_tile_                                         oceanM.s47_SELQUANT_best_20260810.bak
+     4.43%  [.] step2d_mod_mp_step2d_tile_                                                   oceanM.s47_SELQUANT_best_20260810.bak
+     2.19%  [.] set_avg_mod_mp_set_avg_tile_                                                 oceanM.s47_SELQUANT_best_20260810.bak
+     1.99%  [.] __libm_exp_e7                                                                oceanM.s47_SELQUANT_best_20260810.bak
+     1.96%  [.] nesting_mod_mp_get_contact3d_                                                oceanM.s47_SELQUANT_best_20260810.bak
+     1.54%  [.] ucp_worker_progress                                                          libucp.so.0.0.0                      
+     1.30%  [.] uct_mm_iface_progress                                                        libuct.so.0.0.0                      
+     1.26%  [.] __memcpy_sse2                                                                libc-2.17.so                         
+     1.16%  [.] rhs3d_mod_mp_rhs3d_tile_                                                     oceanM.s47_SELQUANT_best_20260810.bak
+     1.12%  [.] rho_eos_mod_mp_rho_eos_tile_                                                 oceanM.s47_SELQUANT_best_20260810.bak
+     1.07%  [.] mp_exchange_mod_mp_mp_exchange3d_                                            oceanM.s47_SELQUANT_best_20260810.bak
+     1.04%  [.] prsgrd_mod_mp_prsgrd_tile_                                                   oceanM.s47_SELQUANT_best_20260810.bak
+     1.00%  [.] step3d_uv_mod_mp_step3d_uv_tile_                                             oceanM.s47_SELQUANT_best_20260810.bak
+     0.89%  [.] nesting_mod_mp_bry_fluxes_                                                   oceanM.s47_SELQUANT_best_20260810.bak
+     0.87%  [.] opal_progress                                                                libopen-pal.so.40.20.4               
+     0.86%  [.] nesting_mod_mp_collect_bry_fluxes_                                           oceanM.s47_SELQUANT_best_20260810.bak
+     0.81%  [.] mp_exchange_mod_mp_mp_exchange4d_q_                                          oceanM.s47_SELQUANT_best_20260810.bak
+     0.80%  [.] __powr8i4                                                                    oceanM.s47_SELQUANT_best_20260810.bak
+     0.78%  [.] mca_pml_ucx_send                                                             mca_pml_ucx.so                       
+     0.69%  [.] biology_mod_mp_ta_iter_1_                                                    oceanM.s47_SELQUANT_best_20260810.bak
+     0.65%  [.] gls_prestep_mod_mp_gls_prestep_tile_                                         oceanM.s47_SELQUANT_best_20260810.bak
+     0.65%  [.] hmixing_mod_mp_hmixing_tile_                                                 oceanM.s47_SELQUANT_best_20260810.bak
+     0.63%  [.] ompi_coll_libnbc_progress                                                    mca_coll_libnbc.so                   
+     0.61%  [.] nesting_mod_mp_fine2coarse3d_                                                oceanM.s47_SELQUANT_best_20260810.bak
+     0.60%  [.] opal_timer_linux_get_cycles_sys_timer                                        libopen-pal.so.40.20.4               
+     0.57%  [.] __memset_x86_64                                                              libc-2.17.so                         
+     0.51%  [.] uv3dmix_mod_mp_uv3dmix2_tile_                                                oceanM.s47_SELQUANT_best_20260810.bak
+     0.47%  [.] mp_exchange_mod_mp_mp_exchange2d_                                            oceanM.s47_SELQUANT_best_20260810.bak
+     0.47%  [.] wetdry_mod_mp_wetdry_mask_tile_                                              oceanM.s47_SELQUANT_best_20260810.bak
+     0.42%  [.] omega_mod_mp_omega_tile_                                                     oceanM.s47_SELQUANT_best_20260810.bak
+     0.27%  [.] set_massflux_mod_mp_set_massflux_tile_                                       oceanM.s47_SELQUANT_best_20260810.bak
+     0.26%  [.] set_ngfld_                                                                   oceanM.s47_SELQUANT_best_20260810.bak
+     0.26%  [.] uct_mm_ep_am_bcopy                                                           libuct.so.0.0.0                      
+     0.25%  [.] lmd_swfrac_tile_                                                             oceanM.s47_SELQUANT_best_20260810.bak
+     0.25%  [.] set_depth_mod_mp_set_depth_tile_                                             oceanM.s47_SELQUANT_best_20260810.bak
+     0.25%  [.] wvelocity_mod_mp_wvelocity_tile_                                             oceanM.s47_SELQUANT_best_20260810.bak
+     0.22%  [.] ompi_op_base_2buff_sum_fortran_double_precision                              libmpi.so.40.20.4                    
+     0.22%  [.] pow                                                                          oceanM.s47_SELQUANT_best_20260810.bak
+     0.19%  [.] ucp_eager_only_handler                                                       libucp.so.0.0.0                      
+     0.16%  [.] exp                                                                          oceanM.s47_SELQUANT_best_20260810.bak
+     0.15%  [.] mca_pml_ucx_progress                                                         mca_pml_ucx.so                       
+     0.14%  [.] biology_mod_mp_drtsafe_                                                      oceanM.s47_SELQUANT_best_20260810.bak
+     0.13%  [.] __libm_cos_y8                                                                oceanM.s47_SELQUANT_best_20260810.bak
+
+
+#
+# (Tip: For hierarchical output, try: perf report --hierarchy)
+#

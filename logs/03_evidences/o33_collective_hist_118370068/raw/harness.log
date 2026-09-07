@@ -1,0 +1,93 @@
+HARNESS_START=2026-08-01 21:23:50 +0800
+JOB=118370068 NODES=j04r2n[16-19] NNODES=4 NTASKS=64 CPUS_PER_TASK=2
+DISK_AVAILABLE_KB=80617212
+HASH_OK|89f7fe7dc790635130405f4df520ccdbbbd53781f0dab460efb7298c22a9e132|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/pmpi_collective_hist_20260801/pmpi_collective_hist.c
+HASH_OK|ca7da9c883d0a26df010439eb55a0257e3f024ad050156d0dd1f7dae7348dda3|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/pmpi_collective_hist_20260801/analyze_collective_hist.py
+HASH_OK|8ca3136fe5ccf0e3b74a643a81c53364c9294cfab30595cf4d6e1dc3e7c96584|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/pmpi_collective_hist_20260801/run_collective_hist.slurm
+HASH_OK|5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM.O33_final
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+	linux-vdso.so.1 =>  (0x00007ffe06125000)
+	libmpi.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi.so.40 (0x00002b4191743000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b4191a63000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b4191f50000)
+	libirng.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libirng.so (0x00002b4192e6e000)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b41931e1000)
+	libgcc_s.so.1 => /usr//lib64/libgcc_s.so.1 (0x00002b41934e3000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b41936f9000)
+	libpthread.so.0 => /usr//lib64/libpthread.so.0 (0x00002b4193964000)
+	libc.so.6 => /usr//lib64/libc.so.6 (0x00002b4193b80000)
+	libdl.so.2 => /usr//lib64/libdl.so.2 (0x00002b4193f4e000)
+	libopen-rte.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-rte.so.40 (0x00002b4194152000)
+	libopen-pal.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-pal.so.40 (0x00002b4194419000)
+	librt.so.1 => /lib64/librt.so.1 (0x00002b41946e3000)
+	libutil.so.1 => /lib64/libutil.so.1 (0x00002b41948eb000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b4194aee000)
+	libhwloc.so.15 => /opt/hpc/software/mpi/hwloc/lib/libhwloc.so.15 (0x00002b4194d04000)
+	libudev.so.1 => /lib64/libudev.so.1 (0x00002b4194f4e000)
+	libxml2.so.2 => /lib64/libxml2.so.2 (0x00002b4195164000)
+	libevent_core-2.0.so.5 => /lib64/libevent_core-2.0.so.5 (0x00002b41954ce000)
+	libevent_pthreads-2.0.so.5 => /lib64/libevent_pthreads-2.0.so.5 (0x00002b41956f9000)
+	/lib64/ld-linux-x86-64.so.2 (0x00002b41912eb000)
+	libcap.so.2 => /lib64/libcap.so.2 (0x00002b41958fc000)
+	libdw.so.1 => /lib64/libdw.so.1 (0x00002b4195b01000)
+	liblzma.so.5 => /lib64/liblzma.so.5 (0x00002b4195d50000)
+	libattr.so.1 => /lib64/libattr.so.1 (0x00002b4195f76000)
+	libelf.so.1 => /lib64/libelf.so.1 (0x00002b419617b000)
+	libbz2.so.1 => /lib64/libbz2.so.1 (0x00002b4196393000)
+96d9de9c222d40cca56e0430d1a3f9d198d9cd37e30a8007213ca59f2ac00099  /public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_collective_hist_118370068/libmcc_pmpi_collective_hist.so
+INPUT_OK replacements=18
+460959e63a9639eecf10e07618b47dec48430c3ae5ace89c0950930665801ec0  /public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_collective_hist_118370068/work/input.in
+MODEL_RC=0 HIST_FILES=64 NC_FILES=0
+ranks=64 elapsed_mean=126.240984 elapsed_min=126.226437 elapsed_max=126.254287
+timed_collectives_seconds_mean=15.217087 timed_collectives_pct_elapsed_mean=12.053999
+MPI_Bcast_seconds_mean=9.820224 MPI_Bcast_pct_elapsed_mean=7.778950
+MPI_Allreduce_seconds_mean=5.396863 MPI_Allreduce_pct_elapsed_mean=4.275049
+top_buckets_by_mean_seconds:
+MPI_Bcast comm=64 bytes=4 calls_mean=672.000 seconds_mean=2.301878 pct=1.823400
+MPI_Allreduce comm=64 bytes=134368 calls_mean=720.000 seconds_mean=2.248578 pct=1.781183
+MPI_Allreduce comm=64 bytes=626416 calls_mean=2448.000 seconds_mean=1.475183 pct=1.168546
+MPI_Bcast comm=64 bytes=12 calls_mean=1200.000 seconds_mean=1.436706 pct=1.138065
+MPI_Bcast comm=16 bytes=33154256 calls_mean=3.000 seconds_mean=1.372874 pct=1.087501
+MPI_Bcast comm=16 bytes=32108800 calls_mean=1.000 seconds_mean=1.104669 pct=0.875047
+MPI_Bcast comm=16 bytes=32206992 calls_mean=17.000 seconds_mean=0.748534 pct=0.592939
+MPI_Bcast comm=64 bytes=8 calls_mean=427.000 seconds_mean=0.681131 pct=0.539548
+MPI_Allreduce comm=64 bytes=187680 calls_mean=145.000 seconds_mean=0.612012 pct=0.484799
+MPI_Bcast comm=16 bytes=16390936 calls_mean=3.000 seconds_mean=0.501067 pct=0.396912
+MPI_Bcast comm=16 bytes=14208976 calls_mean=6.000 seconds_mean=0.424002 pct=0.335866
+MPI_Bcast comm=16 bytes=15922624 calls_mean=17.000 seconds_mean=0.388720 pct=0.307918
+MPI_Bcast comm=16 bytes=15858160 calls_mean=1.000 seconds_mean=0.328486 pct=0.260205
+MPI_Allreduce comm=64 bytes=109088 calls_mean=292.000 seconds_mean=0.259269 pct=0.205376
+MPI_Allreduce comm=64 bytes=18424 calls_mean=144.000 seconds_mean=0.224343 pct=0.177711
+MPI_Allreduce comm=64 bytes=108864 calls_mean=876.000 seconds_mean=0.156827 pct=0.124228
+MPI_Bcast comm=16 bytes=32117776 calls_mean=1.000 seconds_mean=0.103186 pct=0.081737
+MPI_Allreduce comm=64 bytes=613088 calls_mean=144.000 seconds_mean=0.088751 pct=0.070303
+MPI_Allreduce comm=64 bytes=613632 calls_mean=144.000 seconds_mean=0.086246 pct=0.068319
+MPI_Allreduce comm=64 bytes=2632 calls_mean=580.000 seconds_mean=0.065303 pct=0.051729
+collective	comm_size	message_bytes	datatype_size	operation	calls_total	calls_mean	calls_min	calls_max	seconds_mean	seconds_max	pct_elapsed_mean
+MPI_Bcast	64	4	4	-1	43008	672.000	672	672	2.301877535	2.926331646	1.823400
+MPI_Allreduce	64	134368	8	3	46080	720.000	720	720	2.248578451	3.371789807	1.781183
+MPI_Allreduce	64	626416	8	3	156672	2448.000	2448	2448	1.475183429	1.597351085	1.168546
+MPI_Bcast	64	12	4	-1	76800	1200.000	1200	1200	1.436706158	1.496470185	1.138065
+MPI_Bcast	16	33154256	8	-1	192	3.000	3	3	1.372874277	1.481680047	1.087501
+MPI_Bcast	16	32108800	8	-1	64	1.000	1	1	1.104669500	1.178991824	0.875047
+MPI_Bcast	16	32206992	8	-1	1088	17.000	17	17	0.748533985	0.997564121	0.592939
+MPI_Bcast	64	8	4	-1	27328	427.000	427	427	0.681131015	0.709075988	0.539548
+MPI_Allreduce	64	187680	8	3	9280	145.000	145	145	0.612012373	0.938148356	0.484799
+MPI_Bcast	16	16390936	8	-1	192	3.000	3	3	0.501066720	0.539264807	0.396912
+MPI_Bcast	16	14208976	8	-1	384	6.000	6	6	0.424001539	0.491289108	0.335866
+MPI_Bcast	16	15922624	8	-1	1088	17.000	17	17	0.388720331	0.510810958	0.307918
+MPI_Bcast	16	15858160	8	-1	64	1.000	1	1	0.328485540	0.354432389	0.260205
+MPI_Allreduce	64	109088	8	3	18688	292.000	292	292	0.259268554	0.440510832	0.205376
+MPI_Allreduce	64	18424	8	3	9216	144.000	144	144	0.224343285	0.438544513	0.177711
+MPI_Allreduce	64	108864	8	3	56064	876.000	876	876	0.156826620	0.159101591	0.124228
+MPI_Bcast	16	32117776	8	-1	64	1.000	1	1	0.103186150	0.108746541	0.081737
+MPI_Allreduce	64	613088	8	3	9216	144.000	144	144	0.088751065	0.093678397	0.070303
+MPI_Allreduce	64	613632	8	3	9216	144.000	144	144	0.086246002	0.092088257	0.068319
+MPI_Allreduce	64	2632	8	3	37120	580.000	580	580	0.065302612	0.094552973	0.051729
+MPI_Bcast	4	33154256	8	-1	12	0.188	0	3	0.057926800	0.932078768	0.045888
+MPI_Bcast	4	32108800	8	-1	4	0.062	0	1	0.049596742	0.796006399	0.039289
+MPI_Bcast	16	15855440	8	-1	64	1.000	1	1	0.047995348	0.051488695	0.038019
+MPI_Bcast	64	3600	4	-1	72960	1140.000	1140	1140	0.033874319	0.131244585	0.026833
+AUDIT_ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_collective_hist_118370068
+HARNESS_DONE=2026-08-01 21:26:06 +0800

@@ -1,0 +1,84 @@
+############ S32 / related trees
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22
+
+==== ROMS_CoSiNE15_s22b
+-rwxr-xr-x 1 fujiake mcc2026_final 6783248 8月   8 02:04 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM
+-rwxr-xr-x 1 fujiake mcc2026_final 6783248 8月   8 02:04 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s32_ifort2021_ipo.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7298736 8月   8 01:30 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s31_ifort2021.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7504312 8月   8 00:38 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s25_ipo_FINAL.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 6852528 8月   7 23:45 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s30_ipo_inline.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 8102744 8月   7 23:06 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s29_ipo_avx2.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7516600 8月   7 21:58 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s28_t3dmix_fast2.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7516600 8月   7 21:28 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s26b_t3dmix_fast2.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7504312 8月   7 21:09 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s26a_step3dt_fast2.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7524792 8月   7 20:39 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s27_fast2_pres3d.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7516600 8月   7 20:23 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s26_fast2_tracer.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7504360 8月   7 20:07 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s25_ipo_final.bak
+==== ROMS_CoSiNE15_s21
+-rwxr-xr-x 1 fujiake mcc2026_final 7088408 8月   7 01:29 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/oceanM.s21_global_avx2.bak
+-rwxr-xr-x 1 fujiake mcc2026_final 7088408 8月   7 00:45 /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s21/oceanM
+
+############ S32 binary / mk
+/public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s22b/oceanM.s32_ifort2021_ipo.bak
+/public/home/fujiake/nan/sprint/backup_S32_src_20260808.tar.gz
+
+############ current FFLAGS on s22b (likely S32 working tree)
+sha16=38824c70b2e15fef
+26:               FC := ifort
+37:           FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -no-fma -ipo
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays -march=core-avx2 -no-fma
+93:$(SCRATCH_DIR)/step3d_uv.o: private FFLAGS += -no-heap-arrays
+94:$(SCRATCH_DIR)/rho_eos.o: private FFLAGS += -no-heap-arrays
+95:$(SCRATCH_DIR)/rhs3d.o: private FFLAGS += -no-heap-arrays
+96:$(SCRATCH_DIR)/omega.o: private FFLAGS += -no-heap-arrays
+97:$(SCRATCH_DIR)/prsgrd.o: private FFLAGS += -no-heap-arrays
+98:$(SCRATCH_DIR)/conv_3d.o: private FFLAGS += -no-heap-arrays
+99:$(SCRATCH_DIR)/conv_2d.o: private FFLAGS += -no-heap-arrays
+100:$(SCRATCH_DIR)/lmd_skpp.o: private FFLAGS += -no-heap-arrays
+101:$(SCRATCH_DIR)/lmd_bkpp.o: private FFLAGS += -no-heap-arrays
+102:$(SCRATCH_DIR)/gls_prestep.o: private FFLAGS += -no-heap-arrays
+103:$(SCRATCH_DIR)/my25_corstep.o: private FFLAGS += -no-heap-arrays
+104:$(SCRATCH_DIR)/my25_prestep.o: private FFLAGS += -no-heap-arrays
+105:$(SCRATCH_DIR)/set_depth.o: private FFLAGS += -no-heap-arrays
+106:$(SCRATCH_DIR)/metrics.o: private FFLAGS += -no-heap-arrays
+107:$(SCRATCH_DIR)/nesting.o: private FFLAGS += -no-heap-arrays
+121:               FC := mpif90
+129:           FFLAGS += -openmp -fpp
+134:           FFLAGS += -g -check bounds -traceback -check uninit -warn interfaces,nouncalled -gen-interfaces
+139:           FFLAGS += -ip -O3
+145:           FFLAGS += -I$(MCT_INCDIR)
+153:           FFLAGS += $(ESMF_F90COMPILEPATHS)
+162:               FC := $(shell which ${FC})
+170:$(SCRATCH_DIR)/mod_ncparam.o: FFLAGS += -free
+171:$(SCRATCH_DIR)/mod_strings.o: FFLAGS += -free
+172:$(SCRATCH_DIR)/analytical.o: FFLAGS += -free
+173:$(SCRATCH_DIR)/biology.o: FFLAGS += -free
+175:$(SCRATCH_DIR)/ad_biology.o: FFLAGS += -free
+
+############ S32 3day timing files
+TIMING_sprint_3day_118755216.txt   real	29m13.876s user	603m42.249s sys	17m7.435s 
+TIMING_sprint_3day_118750169.txt   real	38m7.993s user	773m10.045s sys	20m17.101s 
+TIMING_sprint_3day_118754089.txt   real	37m51.082s user	769m37.011s sys	20m24.420s 
+TIMING_sprint_3day_118755059.txt   real	0m9.784s user	1m48.628s sys	0m14.759s 
+TIMING_sprint_3day_118755216.txt   real	29m13.876s user	603m42.249s sys	17m7.435s 
+
+############ queue / free nodes
+             JOBID PARTITION      NAME           USER           ST       TIME  NODES NODELIST(REASON)
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+kshcexclu06    up 333-08:00:      1    mix j01r2n04
+kshcexclu06    up 333-08:00:     18  alloc j01r2n[00-03,05-08],j05r2n[01-06,10-13]
+kshcexclu06    up 333-08:00:     77   idle i17r1n[00-19],i17r2n[00-19],j01r2n[09-19],j04r2n[00-19],j05r2n[00,07,14-17]
+
+############ our disk
+ks_p300s_public  380G  264G  117G   70% /public
+19K	/public/home/fujiake/fjk/agent_tmp/isolated/work/libimf_bench_20260807
+185M	/public/home/fujiake/fjk/agent_tmp/isolated/work/s21_ifort2021_20260807
+518M	/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_ifort2021_20260805
+665M	/public/home/fujiake/fjk/agent_tmp/isolated/work/current

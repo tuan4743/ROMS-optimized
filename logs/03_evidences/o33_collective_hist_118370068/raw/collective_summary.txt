@@ -1,0 +1,25 @@
+ranks=64 elapsed_mean=126.240984 elapsed_min=126.226437 elapsed_max=126.254287
+timed_collectives_seconds_mean=15.217087 timed_collectives_pct_elapsed_mean=12.053999
+MPI_Bcast_seconds_mean=9.820224 MPI_Bcast_pct_elapsed_mean=7.778950
+MPI_Allreduce_seconds_mean=5.396863 MPI_Allreduce_pct_elapsed_mean=4.275049
+top_buckets_by_mean_seconds:
+MPI_Bcast comm=64 bytes=4 calls_mean=672.000 seconds_mean=2.301878 pct=1.823400
+MPI_Allreduce comm=64 bytes=134368 calls_mean=720.000 seconds_mean=2.248578 pct=1.781183
+MPI_Allreduce comm=64 bytes=626416 calls_mean=2448.000 seconds_mean=1.475183 pct=1.168546
+MPI_Bcast comm=64 bytes=12 calls_mean=1200.000 seconds_mean=1.436706 pct=1.138065
+MPI_Bcast comm=16 bytes=33154256 calls_mean=3.000 seconds_mean=1.372874 pct=1.087501
+MPI_Bcast comm=16 bytes=32108800 calls_mean=1.000 seconds_mean=1.104669 pct=0.875047
+MPI_Bcast comm=16 bytes=32206992 calls_mean=17.000 seconds_mean=0.748534 pct=0.592939
+MPI_Bcast comm=64 bytes=8 calls_mean=427.000 seconds_mean=0.681131 pct=0.539548
+MPI_Allreduce comm=64 bytes=187680 calls_mean=145.000 seconds_mean=0.612012 pct=0.484799
+MPI_Bcast comm=16 bytes=16390936 calls_mean=3.000 seconds_mean=0.501067 pct=0.396912
+MPI_Bcast comm=16 bytes=14208976 calls_mean=6.000 seconds_mean=0.424002 pct=0.335866
+MPI_Bcast comm=16 bytes=15922624 calls_mean=17.000 seconds_mean=0.388720 pct=0.307918
+MPI_Bcast comm=16 bytes=15858160 calls_mean=1.000 seconds_mean=0.328486 pct=0.260205
+MPI_Allreduce comm=64 bytes=109088 calls_mean=292.000 seconds_mean=0.259269 pct=0.205376
+MPI_Allreduce comm=64 bytes=18424 calls_mean=144.000 seconds_mean=0.224343 pct=0.177711
+MPI_Allreduce comm=64 bytes=108864 calls_mean=876.000 seconds_mean=0.156827 pct=0.124228
+MPI_Bcast comm=16 bytes=32117776 calls_mean=1.000 seconds_mean=0.103186 pct=0.081737
+MPI_Allreduce comm=64 bytes=613088 calls_mean=144.000 seconds_mean=0.088751 pct=0.070303
+MPI_Allreduce comm=64 bytes=613632 calls_mean=144.000 seconds_mean=0.086246 pct=0.068319
+MPI_Allreduce comm=64 bytes=2632 calls_mean=580.000 seconds_mean=0.065303 pct=0.051729

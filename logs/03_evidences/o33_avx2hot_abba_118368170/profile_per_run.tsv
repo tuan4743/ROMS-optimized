@@ -1,0 +1,73 @@
+label	variant	grid	metric	rank_seconds
+A1	O33	1	3D equations predictor step	458.892
+A1	O33	1	Biological module, source/sink terms	200.195
+A1	O33	1	Corrector time-step for tracers	393.304
+A1	O33	1	GLS vertical mixing parameterization	388.518
+A1	O33	1	Message Passage: 2D halo exchanges	122.696
+A1	O33	1	Message Passage: 4D halo exchanges	181.896
+A1	O33	1	Message Passage: point data gathering	164.946
+A1	O33	1	Model 2D kernel	314.818
+A1	O33	1	TOTAL	10478.263
+A1	O33	2	3D equations predictor step	1361.506
+A1	O33	2	Biological module, source/sink terms	558.028
+A1	O33	2	Corrector time-step for tracers	1092.799
+A1	O33	2	GLS vertical mixing parameterization	989.666
+A1	O33	2	Message Passage: 2D halo exchanges	539.497
+A1	O33	2	Message Passage: 4D halo exchanges	716.789
+A1	O33	2	Message Passage: point data gathering	54.982
+A1	O33	2	Model 2D kernel	1055.904
+A1	O33	2	TOTAL	10478.451
+B1	O33_AVX2HOT	1	3D equations predictor step	453.843
+B1	O33_AVX2HOT	1	Biological module, source/sink terms	200.276
+B1	O33_AVX2HOT	1	Corrector time-step for tracers	375.184
+B1	O33_AVX2HOT	1	GLS vertical mixing parameterization	471.644
+B1	O33_AVX2HOT	1	Message Passage: 2D halo exchanges	118.347
+B1	O33_AVX2HOT	1	Message Passage: 4D halo exchanges	196.979
+B1	O33_AVX2HOT	1	Message Passage: point data gathering	149.790
+B1	O33_AVX2HOT	1	Model 2D kernel	312.909
+B1	O33_AVX2HOT	1	TOTAL	10707.814
+B1	O33_AVX2HOT	2	3D equations predictor step	1377.301
+B1	O33_AVX2HOT	2	Biological module, source/sink terms	561.318
+B1	O33_AVX2HOT	2	Corrector time-step for tracers	1069.453
+B1	O33_AVX2HOT	2	GLS vertical mixing parameterization	1211.735
+B1	O33_AVX2HOT	2	Message Passage: 2D halo exchanges	513.519
+B1	O33_AVX2HOT	2	Message Passage: 4D halo exchanges	747.266
+B1	O33_AVX2HOT	2	Message Passage: point data gathering	45.150
+B1	O33_AVX2HOT	2	Model 2D kernel	1038.096
+B1	O33_AVX2HOT	2	TOTAL	10708.068
+B2	O33_AVX2HOT	1	3D equations predictor step	452.925
+B2	O33_AVX2HOT	1	Biological module, source/sink terms	200.001
+B2	O33_AVX2HOT	1	Corrector time-step for tracers	375.666
+B2	O33_AVX2HOT	1	GLS vertical mixing parameterization	470.566
+B2	O33_AVX2HOT	1	Message Passage: 2D halo exchanges	117.087
+B2	O33_AVX2HOT	1	Message Passage: 4D halo exchanges	196.410
+B2	O33_AVX2HOT	1	Message Passage: point data gathering	147.637
+B2	O33_AVX2HOT	1	Model 2D kernel	312.171
+B2	O33_AVX2HOT	1	TOTAL	10775.887
+B2	O33_AVX2HOT	2	3D equations predictor step	1376.806
+B2	O33_AVX2HOT	2	Biological module, source/sink terms	562.238
+B2	O33_AVX2HOT	2	Corrector time-step for tracers	1070.489
+B2	O33_AVX2HOT	2	GLS vertical mixing parameterization	1215.414
+B2	O33_AVX2HOT	2	Message Passage: 2D halo exchanges	557.852
+B2	O33_AVX2HOT	2	Message Passage: 4D halo exchanges	750.511
+B2	O33_AVX2HOT	2	Message Passage: point data gathering	45.102
+B2	O33_AVX2HOT	2	Model 2D kernel	1035.485
+B2	O33_AVX2HOT	2	TOTAL	10776.086
+A2	O33	1	3D equations predictor step	457.692
+A2	O33	1	Biological module, source/sink terms	199.575
+A2	O33	1	Corrector time-step for tracers	382.227
+A2	O33	1	GLS vertical mixing parameterization	386.609
+A2	O33	1	Message Passage: 2D halo exchanges	122.437
+A2	O33	1	Message Passage: 4D halo exchanges	179.240
+A2	O33	1	Message Passage: point data gathering	147.721
+A2	O33	1	Model 2D kernel	315.199
+A2	O33	1	TOTAL	10235.044
+A2	O33	2	3D equations predictor step	1354.434
+A2	O33	2	Biological module, source/sink terms	556.494
+A2	O33	2	Corrector time-step for tracers	1076.427
+A2	O33	2	GLS vertical mixing parameterization	985.885
+A2	O33	2	Message Passage: 2D halo exchanges	547.672
+A2	O33	2	Message Passage: 4D halo exchanges	711.964
+A2	O33	2	Message Passage: point data gathering	44.837
+A2	O33	2	Model 2D kernel	1055.185
+A2	O33	2	TOTAL	10235.152

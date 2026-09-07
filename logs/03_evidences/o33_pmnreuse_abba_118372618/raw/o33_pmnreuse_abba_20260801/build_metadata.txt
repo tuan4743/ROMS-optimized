@@ -1,0 +1,54 @@
+BUILD_END=2026-08-01 22:56:40 +0800
+HOST=login07
+PARENT=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15
+EXPR_LINE=503 LOOP_LINE=500
+CANDIDATE=one private r8 pmn_dt vector in pre_step3d vertical tracer update
+5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/oceanM.O33_parent
+eabad62df0006a2d937093e8a78fc19cf7d0f84c0f168bde39cde9f8b18f4f72  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/oceanM.O33_pmnreuse
+8dfdddc916b0a9e4a6c06720312f7b9d6056bc2976a3874b94820a73a83b3463  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.o
+b1cf273b3d9b5d5b4b96d312e5914268504aab157b502737aab0122ad5d638ef  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Build/pre_step3d.f90
+93472d108061604d3f5e764301190b81b909c12f41792931a9059fcfb7e15dfd  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/pre_step3d.F
+081b267b491f6ddf48cd03243a5fa466f9f277439ceb4eec5332a5355a9faced  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/Compilers/Linux-ifort.mk
+05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_pmnreuse_abba_20260801/ROMS_CoSiNE15/coll_rules.conf
+ade259828944c40274505466ff50b79385d03e7e1424aedce653a9f9369523c6  /public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_pmnreuse_build_report_20260801/pre_step3d.optrpt
+8dfdddc916b0a9e4a6c06720312f7b9d6056bc2976a3874b94820a73a83b3463  /public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_pmnreuse_build_report_20260801/pre_step3d.report.o
+	linux-vdso.so.1 =>  (0x00007ffe30bfa000)
+	libnetcdf.so.11 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdf.so.11 (0x00002b0d41632000)
+	libnetcdff.so.6 => /public/software/mathlib/netcdf/4.4.1/intel/lib/libnetcdff.so.6 (0x00002b0d419a8000)
+	libmpi_usempif08.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempif08.so.40 (0x00002b0d41e7b000)
+	libmpi_usempi_ignore_tkr.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_usempi_ignore_tkr.so.40 (0x00002b0d420b3000)
+	libmpi_mpifh.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi_mpifh.so.40 (0x00002b0d422bf000)
+	libmpi.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libmpi.so.40 (0x00002b0d42529000)
+	libm.so.6 => /usr//lib64/libm.so.6 (0x00002b0d42849000)
+	libiomp5.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libiomp5.so (0x00002b0d42b4b000)
+	libpthread.so.0 => /usr//lib64/libpthread.so.0 (0x00002b0d42eef000)
+	libc.so.6 => /usr//lib64/libc.so.6 (0x00002b0d4310b000)
+	libgcc_s.so.1 => /usr//lib64/libgcc_s.so.1 (0x00002b0d434d9000)
+	libdl.so.2 => /usr//lib64/libdl.so.2 (0x00002b0d436ef000)
+	libhdf5_hl.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5_hl.so.10 (0x00002b0d438f3000)
+	libhdf5.so.10 => /public/software/mathlib/hdf5/1.8.20/intel/lib/libhdf5.so.10 (0x00002b0d43b1a000)
+	libz.so.1 => /usr/lib64/libz.so.1 (0x00002b0d440cb000)
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b0d442e1000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b0d447ce000)
+	libirng.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libirng.so (0x00002b0d456ec000)
+	libintlc.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libintlc.so.5 (0x00002b0d45a5f000)
+	libifport.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifport.so.5 (0x00002b0d45cca000)
+	libifcoremt.so.5 => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libifcoremt.so.5 (0x00002b0d45ef9000)
+	libopen-rte.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-rte.so.40 (0x00002b0d46289000)
+	libopen-pal.so.40 => /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/lib/libopen-pal.so.40 (0x00002b0d46550000)
+	librt.so.1 => /usr/lib64/librt.so.1 (0x00002b0d4681a000)
+	libutil.so.1 => /usr/lib64/libutil.so.1 (0x00002b0d46a22000)
+	libhwloc.so.15 => /opt/hpc/software/mpi/hwloc/lib/libhwloc.so.15 (0x00002b0d46c25000)
+	libudev.so.1 => /usr/lib64/libudev.so.1 (0x00002b0d46e6f000)
+	libxml2.so.2 => /usr/lib64/libxml2.so.2 (0x00002b0d47085000)
+	libevent_core-2.0.so.5 => /usr/lib64/libevent_core-2.0.so.5 (0x00002b0d473ef000)
+	libevent_pthreads-2.0.so.5 => /usr/lib64/libevent_pthreads-2.0.so.5 (0x00002b0d4761a000)
+	/lib64/ld-linux-x86-64.so.2 (0x00002b0d4140e000)
+	libcap.so.2 => /usr/lib64/libcap.so.2 (0x00002b0d4781d000)
+	libdw.so.1 => /usr/lib64/libdw.so.1 (0x00002b0d47a22000)
+	liblzma.so.5 => /usr/lib64/liblzma.so.5 (0x00002b0d47c71000)
+	libattr.so.1 => /usr/lib64/libattr.so.1 (0x00002b0d47e97000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00002b0d4809c000)
+	libbz2.so.1 => /usr/lib64/libbz2.so.1 (0x00002b0d482b4000)

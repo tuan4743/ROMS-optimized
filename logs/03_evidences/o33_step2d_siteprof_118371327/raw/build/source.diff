@@ -1,0 +1,105 @@
+--- /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/step2d_LF_AM3.h	2026-06-16 10:05:32.000000000 +0800
++++ ROMS/Nonlinear/step2d_LF_AM3.h	2026-08-01 22:09:14.000000000 +0800
+@@ -188,6 +188,7 @@
+       USE mod_param
+       USE mod_clima
+       USE mod_ncparam
++      USE mod_parallel, ONLY : MyRank
+       USE mod_scalars
+ # if defined SEDIMENT && defined SED_MORPH
+       USE mod_sediment
+@@ -427,6 +428,14 @@
+       logical :: CORRECTOR_2D_STEP
+ 
+       integer :: i, is, j, ptsk
++      integer(kind=8) :: mcc_clock0, mcc_clock1, mcc_clock_rate
++      integer :: mcc_env_status, mcc_iostat, mcc_unit
++      integer, save :: mcc_flux_calls(Ngrids) = 0
++      integer, save :: mcc_uv_calls(Ngrids) = 0
++      logical, save :: mcc_site_printed(Ngrids) = .FALSE.
++      real(r8), save :: mcc_flux_seconds(Ngrids) = 0.0_r8
++      real(r8), save :: mcc_uv_seconds(Ngrids) = 0.0_r8
++      character(len=512) :: mcc_outdir, mcc_outfile
+ # ifdef DIAGNOSTICS_UV
+       integer :: idiag
+ # endif
+@@ -560,11 +569,19 @@
+      &                          IminS, ImaxS, JminS, JmaxS,             &
+      &                          DVom)
+       END IF
++      CALL SYSTEM_CLOCK (mcc_clock0, mcc_clock_rate)
+       CALL mp_exchange2d (ng, tile, iNLM, 2,                            &
+      &                    IminS, ImaxS, JminS, JmaxS,                   &
+      &                    NghostPoints,                                 &
+      &                    EWperiodic(ng), NSperiodic(ng),               &
+      &                    DUon, DVom)
++      CALL SYSTEM_CLOCK (mcc_clock1)
++!$OMP ATOMIC
++      mcc_flux_seconds(ng)=mcc_flux_seconds(ng)+                        &
++     &                     REAL(mcc_clock1-mcc_clock0,r8)/              &
++     &                     REAL(mcc_clock_rate,r8)
++!$OMP ATOMIC
++      mcc_flux_calls(ng)=mcc_flux_calls(ng)+1
+ # endif
+ !
+ !  Set vertically integrated mass fluxes DUon and DVom along the open
+@@ -729,6 +746,38 @@
+ !  Do not perform the actual time stepping during the auxiliary
+ !  (nfast(ng)+1) time step.
+ !
++      IF ((iif(ng).gt.nfast(ng)).and.                                  &
++     &    (iic(ng).eq.ntimes(ng)).and.                                 &
++     &    (.not.mcc_site_printed(ng))) THEN
++        mcc_site_printed(ng)=.TRUE.
++        mcc_outdir=' '
++        CALL GET_ENVIRONMENT_VARIABLE ('MCC_STEP2D_SITE_OUTDIR',       &
++     &                                 mcc_outdir,                     &
++     &                                 STATUS=mcc_env_status)
++        IF ((mcc_env_status.eq.0).and.                                 &
++     &      (LEN_TRIM(mcc_outdir).gt.0)) THEN
++          WRITE (mcc_outfile,10) TRIM(mcc_outdir), MyRank, ng
++ 10       FORMAT (A,'/rank.',I0,'.grid.',I0,'.tsv')
++          mcc_unit=700+ng
++          OPEN (UNIT=mcc_unit, FILE=TRIM(mcc_outfile),                 &
++     &          STATUS='REPLACE', ACTION='WRITE', IOSTAT=mcc_iostat)
++          IF (mcc_iostat.eq.0) THEN
++            WRITE (mcc_unit,'(A)')                                    &
++     &        'rank grid flux_calls flux_seconds uv_calls uv_seconds'
++            WRITE (mcc_unit,20) MyRank, ng, mcc_flux_calls(ng),        &
++     &                           mcc_flux_seconds(ng),                  &
++     &                           mcc_uv_calls(ng), mcc_uv_seconds(ng)
++ 20         FORMAT (I0,1X,I0,1X,I0,1X,ES24.16,1X,I0,1X,ES24.16)
++            CLOSE (mcc_unit)
++          END IF
++        END IF
++        WRITE (*,30) MyRank, ng, mcc_flux_calls(ng),                   &
++     &               mcc_flux_seconds(ng),                            &
++     &               mcc_uv_calls(ng), mcc_uv_seconds(ng)
++ 30     FORMAT ('MCC_STEP2D_SITE|rank=',I0,'|grid=',I0,                &
++     &          '|flux_calls=',I0,'|flux_seconds=',ES24.16,            &
++     &          '|uv_calls=',I0,'|uv_seconds=',ES24.16)
++      END IF
+       IF (iif(ng).gt.nfast(ng)) RETURN
+ !
+ !=======================================================================
+@@ -2470,12 +2519,20 @@
+       END IF
+ 
+ # ifdef DISTRIBUTE
++      CALL SYSTEM_CLOCK (mcc_clock0, mcc_clock_rate)
+       CALL mp_exchange2d (ng, tile, iNLM, 2,                            &
+      &                    LBi, UBi, LBj, UBj,                           &
+      &                    NghostPoints,                                 &
+      &                    EWperiodic(ng), NSperiodic(ng),               &
+      &                    ubar(:,:,knew),                               &
+      &                    vbar(:,:,knew))
++      CALL SYSTEM_CLOCK (mcc_clock1)
++!$OMP ATOMIC
++      mcc_uv_seconds(ng)=mcc_uv_seconds(ng)+                           &
++     &                   REAL(mcc_clock1-mcc_clock0,r8)/                &
++     &                   REAL(mcc_clock_rate,r8)
++!$OMP ATOMIC
++      mcc_uv_calls(ng)=mcc_uv_calls(ng)+1
+ # endif
+ 
+       RETURN

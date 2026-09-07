@@ -1,0 +1,98 @@
+﻿############ queue now
+             JOBID PARTITION      NAME           USER           ST       TIME  NODES NODELIST(REASON)
+         118735123 kshcexclu06    sprint_O84     fujiake         R       6:08      4 j01r2n[12-15]
+-- all users on our project dirs --
+         118735123 kshcexclu06    sprint_O84     fujiake         R       6:08      4 j01r2n[12-15]
+
+############ teammate nopow / pow-related runs anywhere visible
+/public/home/fujiake/zya/pre_step3d_mod.mod
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118724230.out
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118724230.err
+/public/home/fujiake/zya/Build
+/public/home/fujiake/zya/logs
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118718063.out
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118718063.err
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118717082.out
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118717082.err
+/public/home/fujiake/zya/slurm-fast2-kmphot-abba-118714740.out
+/public/home/fujiake/zya/slurm-fast2-kmphot-abba-118714740.err
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118713074.out
+/public/home/fujiake/zya/slurm-fast2-2021-abba-118713074.err
+/public/home/fujiake/zya/slurm-fast2-vs-fjk-abba-118707742.out
+/public/home/fujiake/zya/slurm-fast2-vs-fjk-abba-118707742.err
+/public/home/fujiake/zya/slurm-fast2-vs-fjk-abba-118707371.err
+/public/home/fujiake/zya/slurm-fast2-vs-fjk-abba-118707371.out
+/public/home/fujiake/zya/slurm-smt-test-118681444.err
+/public/home/fujiake/zya/slurm-smt-test-118681444.out
+/public/home/fujiake/zya/slurm-smt-test-118680859.err
+/public/home/fujiake/fjk/agent_tmp/logs/gls_pow_kkl_20260803
+/public/home/fujiake/fjk/agent_tmp/isolated/scripts/gls_pow_kkl_20260803
+
+############ pow call sites in the preprocessed champion source
+-- Lmy25 detection block --
+13:      Lmy25=.FALSE.
+14:      IF ((gls_p(ng).eq.0.0_r8).and.                                    &
+15:     &    (gls_n(ng).eq.1.0_r8).and.                                    &
+16:     &    (gls_m(ng).eq.1.0_r8)) THEN
+17:        Lmy25=.TRUE.
+21:      IF (Lmy25) THEN
+30:     &            (gls_n(ng)**2-                                        &
+31:     &             cff1*gls_n(ng)/3.0_r8*(4.0_r8*gls_m(ng)+1.0_r8)+     &
+32:     &             cff1**2*gls_m(ng)/9.0_r8*(2.0_r8+4.0_r8*gls_m(ng)))
+40:      cmu_fac1=gls_cmu0(ng)**(-gls_p(ng)/gls_n(ng))
+-- all ** occurrences in gls_corstep.F with line numbers --
+30:!***********************************************************************
+32:!***********************************************************************
+95:!***********************************************************************
+115:!***********************************************************************
+283:      gls_sigp_cb=L_sft**2/(gls_cmu0(ng)**2*gls_c2(ng)*cb_wallE)*       &
+284:     &            (gls_n(ng)**2-                                        &
+286:     &             cff1**2*gls_m(ng)/9.0_r8*(2.0_r8+4.0_r8*gls_m(ng)))
+294:      cmu_fac1=gls_cmu0(ng)**(-gls_p(ng)/gls_n(ng))
+295:      cmu_fac2=gls_cmu0(ng)**(3.0_r8+gls_p(ng)/gls_n(ng))
+296:      cmu_fac3=1.0_r8/gls_cmu0(ng)**2.0_r8
+297:      cmu_fac4=(1.5_r8*gls_sigk(ng))**(1.0_r8/3.0_r8)/                  &
+298:     &         (gls_cmu0(ng)**(4.0_r8/3.0_r8))
+299:      gls_fac1=gls_n(ng)*gls_cmu0(ng)**(gls_p(ng)+1.0_r8)
+300:      gls_fac2=gls_cmu0(ng)**(gls_p(ng))*gls_n(ng)*                     &
+301:     &         vonKar**(gls_n(ng))
+302:      gls_fac3=gls_cmu0(ng)**(gls_p(ng))*gls_n(ng)
+303:      gls_fac4=gls_cmu0(ng)**(gls_p(ng))
+304:      gls_fac5=0.56_r8**(0.5_r8*gls_n(ng))*gls_cmu0(ng)**gls_p(ng)
+305:      gls_fac6=8.0_r8/gls_cmu0(ng)**6.0_r8
+359:     &                          u(i+1,j,k+1,nstp)-u(i+1,j,k,nstp)))**2+ &
+361:     &                          v(i,j+1,k+1,nstp)-v(i,j+1,k,nstp)))**2
+758:!!   &                 (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*          &
+759:!!   &                  tke(i,j,k,nstp)**(-tke_exp1)*                   &
+761:!!   &                   1.0_r8/(z_w(i,j,k)-z_w(i,j,0))))**2
+766:!!   &                 (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*          &
+767:!!   &                  tke(i,j,k,nstp)**(-tke_exp1)*                   &
+769:!!   &                              (z_w(i,j,k)-z_w(i,j,0)))))**2
+774:!!   &                 (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*          &
+775:!!   &                  tke(i,j,k,nstp)**(-tke_exp1)*                   &
+776:!!   &                 (1.0_r8/ (z_w(i,j,N(ng))-z_w(i,j,k))))**2
+781:     &                (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*           &
+782:     &                 tke(i,j,k,nstp)**(-tke_exp1)*                    &
+783:     &                 (1.0_r8/ (z_w(i,j,k)-z_w(i,j,0))))**2+           &
+785:     &                (gls(i,j,k,nstp)**( gls_exp1)*cmu_fac1*           &
+786:     &                 tke(i,j,k,nstp)**(-tke_exp1)*                    &
+787:     &                 (1.0_r8/ (z_w(i,j,N(ng))-z_w(i,j,k))))**2
+791:     &                    gls(i,j,k,nstp)**(-gls_exp1)*cmu_fac2*        &
+792:     &                    tke(i,j,k,nstp)**( tke_exp2)+                 &
+798:     &                    gls(i,j,k,nstp)**(-gls_exp1)*cmu_fac2*        &
+799:     &                    tke(i,j,k,nstp)**( tke_exp2)+                 &
+
+-- count of ** in the preprocessed file --
+57
+
+############ is pow still called at run time in the champion object?
+                 U pow
+                 U __powr8i4
+0
+ssh : bash: line 31: $'\r': command not found
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-98cfc3cb-b6b7-4747-b7c7-b47e93055b00.ps1:111 字符: 206
++ ... rEach-Object { $_ -replace "`r","" } | ssh MCC "bash -s" 2>&1 | Out-F ...
++                                            ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: line 31: $'\r': command not found:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

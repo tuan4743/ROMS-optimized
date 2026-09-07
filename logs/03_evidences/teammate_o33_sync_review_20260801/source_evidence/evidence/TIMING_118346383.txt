@@ -1,0 +1,9 @@
+job: 118346383
+real: 35m42.793s
+real_seconds: 2142.793
+sacct_Elapsed: 00:36:14 (includes vali + setup)
+speedup_vs_baseline_6606s: 3.083x
+vali: PASS
+log: /public/home/fujiake/nan/backup/results/logs/run_O33_final3day_20260801_110155_J118346383.txt
+note: bash 'time' real is at end of the run log (after ROMS/TOMS: DONE),
+      not in slurm-*.out (that file only got stdout from tee around vali).

@@ -1,0 +1,68 @@
+############ which source files back the PROFILE timers
+
+############ key Nonlinear sources present + sizes
+-rw-r--r-- 1 fujiake mcc2026_final  7640 8月   7 02:21 /public/home/fujiake/fjk/agent_tmp/isolated/work/s32_profile_diag_20260808/ROMS_CoSiNE15/ROMS/Nonlinear/Biology/biology.F
+-rw-r--r-- 1 fujiake mcc2026_final 46520 8月   7 02:21 /public/home/fujiake/fjk/agent_tmp/isolated/work/s32_profile_diag_20260808/ROMS_CoSiNE15/ROMS/Nonlinear/gls_corstep.F
+-rw-r--r-- 1 fujiake mcc2026_final 42984 8月   7 12:59 /public/home/fujiake/fjk/agent_tmp/isolated/work/s32_profile_diag_20260808/ROMS_CoSiNE15/ROMS/Nonlinear/pre_step3d.F
+-rw-r--r-- 1 fujiake mcc2026_final 96777 8月   7 02:21 /public/home/fujiake/fjk/agent_tmp/isolated/work/s32_profile_diag_20260808/ROMS_CoSiNE15/ROMS/Nonlinear/step2d_LF_AM3.h
+-rw-r--r-- 1 fujiake mcc2026_final 47095 8月   7 12:59 /public/home/fujiake/fjk/agent_tmp/isolated/work/s32_profile_diag_20260808/ROMS_CoSiNE15/ROMS/Nonlinear/step3d_t.F
+
+############ OMP / PARALLEL DO counts in hot files
+---- pre_step3d.F
+4
+33:      PRIVATE
+343:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+344:!$OMP& PRIVATE(itrc,k,i,j,cff,cff1,cff2,cff3,cff4,is,Isrc,Jsrc,      &
+596:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+597:!$OMP& PRIVATE(j,i,k,itrc,is,Isrc,Jsrc,cff,cff1,cff2,cff3,CF,DC,FC)
+833:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+834:!$OMP& PRIVATE(j,i,k,itrc,ltrc,cff,cff1,cff2,cff3,FC)
+916:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+917:!$OMP& PRIVATE(j,i,k,indx,cff,cff1,cff2,cff3,cff4,DC,FC)
+---- step3d_t.F
+3
+30:      PRIVATE
+311:!$OMP PARALLEL DO DEFAULT(SHARED) COLLAPSE(2) SCHEDULE(STATIC)         &
+312:!$OMP& PRIVATE(k,j,i)
+349:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+350:!$OMP& PRIVATE(itrc,k,i,j,is,Isrc,Jsrc,cr,dg,rg,                      &
+680:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+681:!$OMP& PRIVATE(j,itrc,i,k,is,Isrc,Jsrc,ltrc,cff,cff1,cff2,cff3,      &
+---- step2d_LF_AM3.h
+0
+0
+---- gls_corstep.F
+1
+25:      PRIVATE
+622:!$OMP PARALLEL DO DEFAULT(SHARED) SCHEDULE(STATIC)                    &
+623:!$OMP& PRIVATE(j,i,k,itrc,cff,cff1,cff2,cff3,Gh,Gm,Kprod,Pprod,      &
+
+############ teammate closed notes mentioning predictor/step3d_t/pre_step
+  - 3D predictor step **24574 s (13.4%)**
+## O50 汇编分析要点（继承自父目录）
+- 三核 pre/step3d_t/step2d **几乎无 `pow/exp`**：math CSE 打不中
+- `pre`/`step3d_t` 已无 `for_allocate`（`-no-heap-arrays` 生效）
+- **`step2d` 仍有 21× `for_allocate`/次**（全局 `-heap-arrays`），但 O51 试过 `-no-heap-arrays` 拒（0.997×）
+- **step2d/pre_step3d/step3d_uv 直接是 u 计算**→ 保持 `-fp-model precise`
+4. **A4**：step3d_t i-loop 2-4× 展开（register tiling）— 低风险
+- 改了什么：biology/step3d_t/t3dmix/gls_corstep 追加 `-march=core-avx2 -no-fma`
+- 汇编验证：step3d_t 有 63 处 movnt 流式存储指令（S5=0），汇编行数减少 20%
+| S9 | step3d_t -fp-model source | 711.1s (0.989× vs S8) | 回滚（变慢，vali 通过但无收益）|
+6. **-fp-model source 对无 libm 调用的文件无效**（step3d_t 变慢 1.1%），只对有 pow/exp 的文件有效
+### S9：step3d_t per-file `-fp-model source` — vali 待确认
+- 改动：step3d_t 追加 `-fp-model source`
+- 风险：S8 u RMSE=0.000052 余量仅 0.000008；step3d_t 间接耦合 u
+- G02 热点：predictor 11.8% / step3d_t 12.4% / GLS 11.9% / step2d 8.4% / bio 4.7%
+复现历史 O55 信号（O55 当时在 O33 一天vali 超限）；S15 基座下待 1day vali 确认
+采样 116.7s（+5.2%）但 1day 673.0s vali 失败：Dongsha u=7.4e-5 超 6e-5 阈值，与 O55 历史一致；step2d AVX2 线关闭
+3day job 已提交；S20 将加 biology AVX2 -no-fma
+下一步：S22 = 4D 交换计算-通信重叠（pre_step3d begin → step3d_t end）
+### S21：全局 -march=core-avx2 -no-fma —— 1day 664.5s，vali 过
+S20（biology AVX2 单独）1day 失败缺输出（被 S21 全局覆盖，不追查）
+### S22：4D 交换计算-通信重叠 pre_step3d begin 到 step3d_t end
+改动文件2：ROMS/Nonlinear/pre_step3d.F 末尾把 CALL mp_exchange4d 改为 CALL mp_exchange4d_begin，仅打包加非阻塞 Irecv/Isend
+改动文件3：ROMS/Nonlinear/step3d_t.F 的 step3d_t_tile 开头新增 CALL mp_exchange4d_end：Waitall 加解包
+原理：tracer 4D halo 在 step3d_t 才被消费，中间 step2d/step3d_uv/omega/GLS/biology 提供 MPI 进度，传输与计算重叠
+
+############ our earlier closed analyses related to these regions
+/public/home/fujiake/fjk/agent_tmp/isolated/work/s32_ifort2022_20260808/ROMS_CoSiNE15/ROMS/Nonlinear/pre_step3d.F

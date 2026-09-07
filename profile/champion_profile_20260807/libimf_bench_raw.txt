@@ -1,0 +1,62 @@
+﻿=== compiler used to BUILD the benchmark (2017, same as O33) ===
+ifort (IFORT) 17.0.5 20170817
+
+=== resolution check ===
+-- A: 2017 module only (current production runtime) --
+	libimf.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libimf.so (0x00002b0ddfa2d000)
+	libsvml.so => /opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64_lin/libsvml.so (0x00002b0ddff1a000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x00002b0de0e38000)
+-- B: 2021 compiler libs prepended --
+	libimf.so => /public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin/libimf.so (0x00002b91db7d0000)
+	libsvml.so => /public/software/compiler/intel/oneapi/oneapi-2021.3.0/compiler/2021.3.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00002b91dbed3000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x00002b91dd9d8000)
+
+--- A_2017_libimf ---
+  rep1:
+     exp=  1.00  time=   1.1901 s  sink= 2.02000E+07
+     exp= -1.00  time=   1.0945 s  sink= 1.98026E+07
+     exp=  1.50  time=   1.1535 s  sink= 2.03010E+07
+     exp=  0.50  time=   1.0894 s  sink= 2.00997E+07
+     exp=  2.50  time=   1.1092 s  sink= 2.05050E+07
+  rep2:
+     exp=  1.00  time=   0.8776 s  sink= 2.02000E+07
+     exp= -1.00  time=   0.7714 s  sink= 1.98026E+07
+     exp=  1.50  time=   0.8275 s  sink= 2.03010E+07
+     exp=  0.50  time=   0.8582 s  sink= 2.00997E+07
+     exp=  2.50  time=   1.0275 s  sink= 2.05050E+07
+  rep3:
+     exp=  1.00  time=   1.0312 s  sink= 2.02000E+07
+     exp= -1.00  time=   1.0016 s  sink= 1.98026E+07
+     exp=  1.50  time=   0.9681 s  sink= 2.03010E+07
+     exp=  0.50  time=   1.0615 s  sink= 2.00997E+07
+     exp=  2.50  time=   1.0327 s  sink= 2.05050E+07
+
+--- B_2021_libimf ---
+  rep1:
+     exp=  1.00  time=   1.0946 s  sink= 2.02000E+07
+     exp= -1.00  time=   0.9847 s  sink= 1.98026E+07
+     exp=  1.50  time=   1.0771 s  sink= 2.03010E+07
+     exp=  0.50  time=   1.0956 s  sink= 2.00997E+07
+     exp=  2.50  time=   1.0882 s  sink= 2.05050E+07
+  rep2:
+     exp=  1.00  time=   1.1430 s  sink= 2.02000E+07
+     exp= -1.00  time=   1.1092 s  sink= 1.98026E+07
+     exp=  1.50  time=   1.3416 s  sink= 2.03010E+07
+     exp=  0.50  time=   1.1401 s  sink= 2.00997E+07
+     exp=  2.50  time=   1.1417 s  sink= 2.05050E+07
+  rep3:
+     exp=  1.00  time=   1.2183 s  sink= 2.02000E+07
+     exp= -1.00  time=   1.2863 s  sink= 1.98026E+07
+     exp=  1.50  time=   1.3676 s  sink= 2.03010E+07
+     exp=  0.50  time=   1.0961 s  sink= 2.00997E+07
+     exp=  2.50  time=   1.1321 s  sink= 2.05050E+07
+
+WORKDIR=/public/home/fujiake/fjk/agent_tmp/isolated/work/libimf_bench_20260807 (retained)
+ssh : bash: 
+所在位置 C:\Users\Fu Jiake\AppData\Local\Temp\ps-script-77668a9f-bc9e-4daa-9b88-38560f150e25.ps1:111 字符: 205
++ ... ch-Object { $_ -replace "`r","" } | ssh MCC "bash -l -s" 2>&1 | Out-F ...
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (bash: :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+: command not found

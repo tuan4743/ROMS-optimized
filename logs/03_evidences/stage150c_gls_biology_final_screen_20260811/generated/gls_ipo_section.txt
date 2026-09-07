@@ -1,0 +1,2096 @@
+﻿Begin optimization report for: GLS_CORSTEP_MOD::GLS_CORSTEP_TILE
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (GLS_CORSTEP_MOD::GLS_CORSTEP_TILE) [149/490=30.4%] gls_corstep.f90(100,18)
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) _alloca
+  -> EXTERN: (100,18) __getsp_inlined
+  -> EXTERN: (274,28) pow
+  -> EXTERN: (275,28) pow
+  -> EXTERN: (277,37) pow
+  -> EXTERN: (278,29) pow
+  -> EXTERN: (279,38) pow
+  -> EXTERN: (280,28) pow
+  -> EXTERN: (281,22) pow
+  -> EXTERN: (282,28) pow
+  -> EXTERN: (283,28) pow
+  -> EXTERN: (284,23) pow
+  -> EXTERN: (284,56) pow
+  -> EXTERN: (285,35) __powr8i4
+  -> EXTERN: (632,39) pow
+  -> EXTERN: (633,39) pow
+  -> EXTERN: (636,39) pow
+  -> EXTERN: (637,39) pow
+  -> EXTERN: (642,42) pow
+  -> EXTERN: (643,42) pow
+  -> EXTERN: (649,42) pow
+  -> EXTERN: (650,42) pow
+  -> EXTERN: (676,47) pow
+  -> EXTERN: (677,54) pow
+  -> EXTERN: (678,53) pow
+  -> EXTERN: (680,45) pow
+  -> EXTERN: (681,50) pow
+  -> EXTERN: (714,43) pow
+  -> EXTERN: (715,29) pow
+  -> EXTERN: (716,57) pow
+  -> EXTERN: (720,44) pow
+  -> EXTERN: (721,55) pow
+  -> EXTERN: (757,50) pow
+  -> EXTERN: (759,60) pow
+  -> EXTERN: (763,50) pow
+  -> EXTERN: (765,60) pow
+  -> EXTERN: (769,41) pow
+  -> EXTERN: (770,41) pow
+  -> EXTERN: (781,45) pow
+  -> EXTERN: (782,48) pow
+  -> EXTERN: (783,39) pow
+  -> EXTERN: (813,37) __powr8i4
+  -> EXTERN: (814,37) __powr8i4
+  -> (864,12) TKEBC_TILE (isz = 6204) (sz = 6237)
+     [[ Inlining would exceed -inline-max-total-size value (6204>2000) <2>]]
+  -> (870,14) EXCHANGE_W3D_TILE (isz = 2164) (sz = 2185)
+     [[ Inlining would exceed -inline-max-total-size value (2164>2000) <2>]]
+  -> (873,14) EXCHANGE_W3D_TILE (isz = 2164) (sz = 2185)
+     [[ Inlining would exceed -inline-max-total-size value (2164>2000) <2>]]
+  -> (876,14) EXCHANGE_W3D_TILE (isz = 2164) (sz = 2185)
+     [[ Inlining would exceed -inline-max-total-size value (2164>2000) <2>]]
+  -> (880,16) EXCHANGE_W3D_TILE (isz = 2164) (sz = 2185)
+     [[ Inlining would exceed -inline-max-total-size value (2164>2000) <2>]]
+  -> (885,12) MP_EXCHANGE3D (isz = 3636) (sz = 3673)
+     [[ Inlining would exceed -inline-max-size value (3673>230) <1>]]
+  -> (892,12) MP_EXCHANGE4D (isz = 3617) (sz = 3656)
+     [[ Inlining would exceed -inline-max-total-size value (3617>2000) <2>]]
+  -> EXTERN: (898,7) __resetsp_inlined
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at gls_corstep.f90(505,7)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at gls_corstep.f90(257,7)
+<Multiversioned v1>
+   remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+      remark #15388: vectorization support: reference zob_min(i,j) has aligned access   [ gls_corstep.f90(259,11) ]
+      remark #15389: vectorization support: reference zobot(i,j) has unaligned access   [ gls_corstep.f90(259,28) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.542
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 9 
+      remark #15477: vector cost: 1.500 
+      remark #15478: estimated potential speedup: 4.880 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+   <Remainder loop for vectorization>
+      remark #15389: vectorization support: reference zob_min(i,j) has unaligned access   [ gls_corstep.f90(259,11) ]
+      remark #15389: vectorization support: reference zobot(i,j) has unaligned access   [ gls_corstep.f90(259,28) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 2.000
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15452: unmasked strided loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 9 
+      remark #15477: vector cost: 3.500 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(257,7)
+<Multiversioned v2>
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+      remark #15388: vectorization support: reference zob_min(i,j) has aligned access   [ gls_corstep.f90(259,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <zobot(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(259,28) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.357
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15452: unmasked strided loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 9 
+      remark #15477: vector cost: 3.500 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+   <Remainder loop for vectorization>
+      remark #15389: vectorization support: reference zob_min(i,j) has unaligned access   [ gls_corstep.f90(259,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 1.300
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15452: unmasked strided loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 9 
+      remark #15477: vector cost: 3.500 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(258,9)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(297,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(298,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(299,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(299,11)
+         remark #15389: vectorization support: reference shear2(i,j,k) has unaligned access   [ gls_corstep.f90(301,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <z_r(i,j,k+1)>, stride is unknown to compiler   [ gls_corstep.f90(300,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <z_r(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(300,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <u(i,j,k+1,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(301,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <u(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(301,51) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <u(i+1,j,k+1,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(302,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <u(i+1,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(302,51) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <v(i,j,k+1,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(303,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <v(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(303,51) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <v(i,j+1,k+1,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(304,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <v(i,j+1,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(304,51) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.182
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 10 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 65 
+         remark #15477: vector cost: 44.000 
+         remark #15478: estimated potential speedup: 1.470 
+         remark #15486: divides: 1 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(299,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(311,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(312,9)
+   <Multiversioned v1>
+      remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(313,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(313,11)
+         remark #15389: vectorization support: reference buoy2(i,j,k) has unaligned access   [ gls_corstep.f90(314,13) ]
+         remark #15389: vectorization support: reference bvf(i,j,k) has unaligned access   [ gls_corstep.f90(314,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 3.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 4 
+         remark #15477: vector cost: 1.000 
+         remark #15478: estimated potential speedup: 3.690 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(313,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(312,9)
+   <Multiversioned v2>
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(313,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(313,11)
+         remark #15389: vectorization support: reference buoy2(i,j,k) has unaligned access   [ gls_corstep.f90(314,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <bvf(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(314,13) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 2.000
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15452: unmasked strided loads: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 4 
+         remark #15477: vector cost: 2.500 
+         remark #15478: estimated potential speedup: 1.570 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(313,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(324,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(326,11)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <shear2(istr-1,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(327,13) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <shear2(istr,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(327,13) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15452: unmasked strided loads: 1 
+      remark #15453: unmasked strided stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 4 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 1.000 
+      remark #15488: --- end vector cost summary ---
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(326,11)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(331,11)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <shear2(iend+1,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(332,13) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <shear2(iend,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(332,13) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15452: unmasked strided loads: 1 
+      remark #15453: unmasked strided stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 4 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 1.000 
+      remark #15488: --- end vector cost summary ---
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(331,11)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(336,11)
+      remark #25401: memcopy(with guard) generated
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(336,11)
+      <Peeled loop for vectorization, Multiversioned v2>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(336,11)
+      <Multiversioned v2>
+         remark #15389: vectorization support: reference shear2(i,jstr-1,k) has unaligned access   [ gls_corstep.f90(337,13) ]
+         remark #15389: vectorization support: reference shear2(i,jstr,k) has unaligned access   [ gls_corstep.f90(337,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 3.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 4 
+         remark #15477: vector cost: 1.000 
+         remark #15478: estimated potential speedup: 3.690 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(336,11)
+      <Remainder loop for vectorization, Multiversioned v2>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(341,11)
+      remark #25401: memcopy(with guard) generated
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(341,11)
+      <Peeled loop for vectorization, Multiversioned v2>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(341,11)
+      <Multiversioned v2>
+         remark #15389: vectorization support: reference shear2(i,jend+1,k) has unaligned access   [ gls_corstep.f90(342,13) ]
+         remark #15389: vectorization support: reference shear2(i,jend,k) has unaligned access   [ gls_corstep.f90(342,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 3.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 4 
+         remark #15477: vector cost: 1.000 
+         remark #15478: estimated potential speedup: 3.690 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(341,11)
+      <Remainder loop for vectorization, Multiversioned v2>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(360,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(361,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(361,11)
+         remark #15389: vectorization support: reference buoy2(i,j,0) has unaligned access   [ gls_corstep.f90(362,13) ]
+         remark #15389: vectorization support: reference buoy2(i,j,k) has unaligned access   [ gls_corstep.f90(362,35) ]
+         remark #15389: vectorization support: reference buoy2(i+1,j,k) has unaligned access   [ gls_corstep.f90(362,50) ]
+         remark #15389: vectorization support: reference buoy2(i,j+1,k) has unaligned access   [ gls_corstep.f90(363,35) ]
+         remark #15389: vectorization support: reference buoy2(i+1,j+1,k) has unaligned access   [ gls_corstep.f90(363,50) ]
+         remark #15389: vectorization support: reference shear2(i,j,0) has unaligned access   [ gls_corstep.f90(364,13) ]
+         remark #15389: vectorization support: reference shear2(i,j,k) has unaligned access   [ gls_corstep.f90(364,36) ]
+         remark #15389: vectorization support: reference shear2(i+1,j,k) has unaligned access   [ gls_corstep.f90(364,52) ]
+         remark #15389: vectorization support: reference shear2(i,j+1,k) has unaligned access   [ gls_corstep.f90(365,36) ]
+         remark #15389: vectorization support: reference shear2(i+1,j+1,k) has unaligned access   [ gls_corstep.f90(365,52) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.156
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 27 
+         remark #15477: vector cost: 8.000 
+         remark #15478: estimated potential speedup: 3.220 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(361,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(368,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(369,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(369,11)
+         remark #15389: vectorization support: reference buoy2(i,j,k) has unaligned access   [ gls_corstep.f90(370,13) ]
+         remark #15389: vectorization support: reference buoy2(i,j,0) has unaligned access   [ gls_corstep.f90(370,35) ]
+         remark #15389: vectorization support: reference buoy2(i-1,j,0) has unaligned access   [ gls_corstep.f90(370,50) ]
+         remark #15389: vectorization support: reference buoy2(i,j-1,0) has unaligned access   [ gls_corstep.f90(371,35) ]
+         remark #15389: vectorization support: reference buoy2(i-1,j-1,0) has unaligned access   [ gls_corstep.f90(371,50) ]
+         remark #15389: vectorization support: reference shear2(i,j,k) has unaligned access   [ gls_corstep.f90(372,13) ]
+         remark #15389: vectorization support: reference shear2(i,j,0) has unaligned access   [ gls_corstep.f90(372,36) ]
+         remark #15389: vectorization support: reference shear2(i-1,j,0) has unaligned access   [ gls_corstep.f90(372,52) ]
+         remark #15389: vectorization support: reference shear2(i,j-1,0) has unaligned access   [ gls_corstep.f90(373,36) ]
+         remark #15389: vectorization support: reference shear2(i-1,j-1,0) has unaligned access   [ gls_corstep.f90(373,52) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.156
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 27 
+         remark #15477: vector cost: 8.000 
+         remark #15478: estimated potential speedup: 3.220 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(369,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(387,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(388,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(389,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(389,11)
+         remark #25427: Loop Statements Reordered
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(392,13) ]
+         remark #15388: vectorization support: reference gradk(i,j) has aligned access   [ gls_corstep.f90(390,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(393,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(393,24) ]
+         remark #15388: vectorization support: reference gradk(i,j) has aligned access   [ gls_corstep.f90(391,13) ]
+         remark #15388: vectorization support: reference gradk(i,j) has aligned access   [ gls_corstep.f90(391,24) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(392,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i-1,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(392,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(390,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i-1,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(390,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <umask(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(393,35) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <umask(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(391,35) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.119
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 2 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15452: unmasked strided loads: 6 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 25 
+         remark #15477: vector cost: 20.000 
+         remark #15478: estimated potential speedup: 1.240 
+         remark #15488: --- end vector cost summary ---
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 8
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(389,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(392,13) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(390,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(393,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(393,24) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(391,13) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(391,24) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.583
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 57 
+         remark #15477: vector cost: 42.500 
+         remark #15478: estimated potential speedup: 1.330 
+         remark #15488: --- end vector cost summary ---
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 2
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(398,13)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gradk(istr-1,j)>, stride is unknown to compiler   [ gls_corstep.f90(399,15) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gradk(istr,j)>, stride is unknown to compiler   [ gls_corstep.f90(399,15) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gradp(istr-1,j)>, stride is unknown to compiler   [ gls_corstep.f90(400,15) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gradp(istr,j)>, stride is unknown to compiler   [ gls_corstep.f90(400,15) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15452: unmasked strided loads: 2 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 7 
+      remark #15477: vector cost: 8.000 
+      remark #15478: estimated potential speedup: 0.870 
+      remark #15488: --- end vector cost summary ---
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(398,13)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(406,13)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gradk(iend+2,j)>, stride is unknown to compiler   [ gls_corstep.f90(407,15) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gradk(iend+1,j)>, stride is unknown to compiler   [ gls_corstep.f90(407,15) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gradp(iend+2,j)>, stride is unknown to compiler   [ gls_corstep.f90(408,15) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gradp(iend+1,j)>, stride is unknown to compiler   [ gls_corstep.f90(408,15) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15452: unmasked strided loads: 2 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 7 
+      remark #15477: vector cost: 8.000 
+      remark #15478: estimated potential speedup: 0.870 
+      remark #15488: --- end vector cost summary ---
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(406,13)
+   <Remainder>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(416,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(417,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(417,11)
+         remark #15389: vectorization support: reference curvk(i,j) has unaligned access   [ gls_corstep.f90(418,13) ]
+         remark #15389: vectorization support: reference gradk(i+1,j) has unaligned access   [ gls_corstep.f90(418,24) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(418,37) ]
+         remark #15388: vectorization support: reference curvp(i,j) has aligned access   [ gls_corstep.f90(419,13) ]
+         remark #15389: vectorization support: reference gradp(i+1,j) has unaligned access   [ gls_corstep.f90(419,24) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(419,37) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.391
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 4 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 13 
+         remark #15477: vector cost: 4.000 
+         remark #15478: estimated potential speedup: 2.920 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(417,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference curvk(i,j) has unaligned access   [ gls_corstep.f90(418,13) ]
+         remark #15389: vectorization support: reference gradk(i+1,j) has unaligned access   [ gls_corstep.f90(418,24) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(418,37) ]
+         remark #15389: vectorization support: reference curvp(i,j) has unaligned access   [ gls_corstep.f90(419,13) ]
+         remark #15389: vectorization support: reference gradp(i+1,j) has unaligned access   [ gls_corstep.f90(419,24) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(419,37) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.556
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 57 
+         remark #15477: vector cost: 42.500 
+         remark #15478: estimated potential speedup: 1.330 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(417,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(422,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(423,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(423,11)
+         remark #15389: vectorization support: reference curvk(i-1,j) has unaligned access   [ gls_corstep.f90(426,15) ]
+         remark #15389: vectorization support: reference curvp(i-1,j) has unaligned access   [ gls_corstep.f90(427,15) ]
+         remark #15389: vectorization support: reference curvk(i,j) has unaligned access   [ gls_corstep.f90(429,15) ]
+         remark #15389: vectorization support: reference curvp(i,j) has unaligned access   [ gls_corstep.f90(430,15) ]
+         remark #15389: vectorization support: reference fxk(i,j) has unaligned access   [ gls_corstep.f90(432,13) ]
+         remark #15389: vectorization support: reference fxp(i,j) has unaligned access   [ gls_corstep.f90(434,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <huon(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(424,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <huon(i,j,k+1)>, stride is unknown to compiler   [ gls_corstep.f90(424,37) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i-1,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(432,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(432,49) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i-1,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(434,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(434,49) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.357
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15452: unmasked strided loads: 6 
+         remark #15456: masked unaligned unit stride loads: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 52 
+         remark #15477: vector cost: 42.000 
+         remark #15478: estimated potential speedup: 1.230 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(423,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(438,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(439,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(439,11)
+         remark #25427: Loop Statements Reordered
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(442,13) ]
+         remark #15388: vectorization support: reference gradk(i,j) has aligned access   [ gls_corstep.f90(440,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(443,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(443,24) ]
+         remark #15388: vectorization support: reference gradk(i,j) has aligned access   [ gls_corstep.f90(441,13) ]
+         remark #15388: vectorization support: reference gradk(i,j) has aligned access   [ gls_corstep.f90(441,24) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(442,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j-1,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(442,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(440,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j-1,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(440,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <vmask(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(443,35) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <vmask(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(441,35) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.119
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 2 
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15452: unmasked strided loads: 6 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 25 
+         remark #15477: vector cost: 20.000 
+         remark #15478: estimated potential speedup: 1.240 
+         remark #15488: --- end vector cost summary ---
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 8
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(439,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(442,13) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(440,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(443,13) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(443,24) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(441,13) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(441,24) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.583
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 57 
+         remark #15477: vector cost: 42.500 
+         remark #15478: estimated potential speedup: 1.330 
+         remark #15488: --- end vector cost summary ---
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 2
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(448,13)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(448,13)
+      remark #15389: vectorization support: reference gradk(i,jstr-1) has unaligned access   [ gls_corstep.f90(449,15) ]
+      remark #15389: vectorization support: reference gradk(i,jstr) has unaligned access   [ gls_corstep.f90(449,15) ]
+      remark #15389: vectorization support: reference gradp(i,jstr-1) has unaligned access   [ gls_corstep.f90(450,15) ]
+      remark #15389: vectorization support: reference gradp(i,jstr) has unaligned access   [ gls_corstep.f90(450,15) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 1.900
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 2 
+      remark #15451: unmasked unaligned unit stride stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 7 
+      remark #15477: vector cost: 2.500 
+      remark #15478: estimated potential speedup: 2.660 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(448,13)
+   <Remainder loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(456,13)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(456,13)
+      remark #15389: vectorization support: reference gradk(i,jend+2) has unaligned access   [ gls_corstep.f90(457,15) ]
+      remark #15389: vectorization support: reference gradk(i,jend+1) has unaligned access   [ gls_corstep.f90(457,15) ]
+      remark #15389: vectorization support: reference gradp(i,jend+2) has unaligned access   [ gls_corstep.f90(458,15) ]
+      remark #15389: vectorization support: reference gradp(i,jend+1) has unaligned access   [ gls_corstep.f90(458,15) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 1.900
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 2 
+      remark #15451: unmasked unaligned unit stride stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 7 
+      remark #15477: vector cost: 2.500 
+      remark #15478: estimated potential speedup: 2.660 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(456,13)
+   <Remainder loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(462,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(463,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(463,11)
+         remark #15389: vectorization support: reference curvk(i,j) has unaligned access   [ gls_corstep.f90(464,13) ]
+         remark #15389: vectorization support: reference gradk(i,j+1) has unaligned access   [ gls_corstep.f90(464,24) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(464,37) ]
+         remark #15388: vectorization support: reference curvp(i,j) has aligned access   [ gls_corstep.f90(465,13) ]
+         remark #15389: vectorization support: reference gradp(i,j+1) has unaligned access   [ gls_corstep.f90(465,24) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(465,37) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.391
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 4 
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 13 
+         remark #15477: vector cost: 4.000 
+         remark #15478: estimated potential speedup: 2.920 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(463,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference curvk(i,j) has unaligned access   [ gls_corstep.f90(464,13) ]
+         remark #15389: vectorization support: reference gradk(i,j+1) has unaligned access   [ gls_corstep.f90(464,24) ]
+         remark #15389: vectorization support: reference gradk(i,j) has unaligned access   [ gls_corstep.f90(464,37) ]
+         remark #15389: vectorization support: reference curvp(i,j) has unaligned access   [ gls_corstep.f90(465,13) ]
+         remark #15389: vectorization support: reference gradp(i,j+1) has unaligned access   [ gls_corstep.f90(465,24) ]
+         remark #15389: vectorization support: reference gradp(i,j) has unaligned access   [ gls_corstep.f90(465,37) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.556
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 57 
+         remark #15477: vector cost: 42.500 
+         remark #15478: estimated potential speedup: 1.330 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(463,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(468,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(469,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(469,11)
+         remark #15389: vectorization support: reference curvk(i,j-1) has unaligned access   [ gls_corstep.f90(472,15) ]
+         remark #15389: vectorization support: reference curvp(i,j-1) has unaligned access   [ gls_corstep.f90(473,15) ]
+         remark #15389: vectorization support: reference curvk(i,j) has unaligned access   [ gls_corstep.f90(475,15) ]
+         remark #15389: vectorization support: reference curvp(i,j) has unaligned access   [ gls_corstep.f90(476,15) ]
+         remark #15389: vectorization support: reference fek(i,j) has unaligned access   [ gls_corstep.f90(478,13) ]
+         remark #15389: vectorization support: reference fep(i,j) has unaligned access   [ gls_corstep.f90(480,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hvom(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(470,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hvom(i,j,k+1)>, stride is unknown to compiler   [ gls_corstep.f90(470,37) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j-1,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(478,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(478,49) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j-1,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(480,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(480,49) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.357
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15452: unmasked strided loads: 6 
+         remark #15456: masked unaligned unit stride loads: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 52 
+         remark #15477: vector cost: 42.000 
+         remark #15478: estimated potential speedup: 1.230 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(469,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(487,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(488,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(488,11)
+         remark #25427: Loop Statements Reordered
+         remark #15389: vectorization support: reference fxk(i+1,j) has unaligned access   [ gls_corstep.f90(491,34) ]
+         remark #15389: vectorization support: reference fxk(i,j) has unaligned access   [ gls_corstep.f90(491,45) ]
+         remark #15389: vectorization support: reference fek(i,j+1) has unaligned access   [ gls_corstep.f90(492,34) ]
+         remark #15389: vectorization support: reference fek(i,j) has unaligned access   [ gls_corstep.f90(492,45) ]
+         remark #15389: vectorization support: reference fxp(i+1,j) has unaligned access   [ gls_corstep.f90(495,34) ]
+         remark #15389: vectorization support: reference fxp(i,j) has unaligned access   [ gls_corstep.f90(495,45) ]
+         remark #15389: vectorization support: reference fep(i,j+1) has unaligned access   [ gls_corstep.f90(496,34) ]
+         remark #15389: vectorization support: reference fep(i,j) has unaligned access   [ gls_corstep.f90(496,45) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pm(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(489,24) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pn(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(489,32) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(490,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(490,29) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(494,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(494,29) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(493,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(493,33) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(497,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(497,33) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.518
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 8 
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 57 
+         remark #15477: vector cost: 42.500 
+         remark #15478: estimated potential speedup: 1.330 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(488,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(879,9)
+   remark #15382: vectorization support: call to function EXCHANGE_W3D_TILE cannot be vectorized   [ gls_corstep.f90(880,16) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between at (880:16) and akt (880:16)
+   remark #15346: vector dependence: assumed OUTPUT dependence between akt (880:16) and at (880:16)
+LOOP END
+
+LOOP BEGIN at gls_corstep.f90(510,7)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at gls_corstep.f90(513,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(514,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(514,11)
+         remark #15389: vectorization support: reference at (516:13) has unaligned access   [ gls_corstep.f90(516,13) ]
+         remark #15389: vectorization support: reference at (520:13) has unaligned access   [ gls_corstep.f90(520,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <w(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(515,22) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <w(i,j,k-1)>, stride is unknown to compiler   [ gls_corstep.f90(515,31) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k-1,3)>, stride is unknown to compiler   [ gls_corstep.f90(516,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(517,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k-2,3)>, stride is unknown to compiler   [ gls_corstep.f90(518,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k+1,3)>, stride is unknown to compiler   [ gls_corstep.f90(519,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k-1,3)>, stride is unknown to compiler   [ gls_corstep.f90(520,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,3)>, stride is unknown to compiler   [ gls_corstep.f90(521,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k-2,3)>, stride is unknown to compiler   [ gls_corstep.f90(522,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k+1,3)>, stride is unknown to compiler   [ gls_corstep.f90(523,33) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15452: unmasked strided loads: 10 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 42 
+         remark #15477: vector cost: 30.000 
+         remark #15478: estimated potential speedup: 1.390 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(514,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(529,10)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(529,10)
+      remark #15389: vectorization support: reference at (531:11) has unaligned access   [ gls_corstep.f90(531,11) ]
+      remark #15389: vectorization support: reference at (534:11) has unaligned access   [ gls_corstep.f90(534,11) ]
+      remark #15389: vectorization support: reference at (538:11) has unaligned access   [ gls_corstep.f90(538,11) ]
+      remark #15388: vectorization support: reference at (541:11) has aligned access   [ gls_corstep.f90(541,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <w(i,j,0)>, stride is unknown to compiler   [ gls_corstep.f90(530,23) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <w(i,j,1)>, stride is unknown to compiler   [ gls_corstep.f90(530,32) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,0,3)>, stride is unknown to compiler   [ gls_corstep.f90(531,30) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,1,3)>, stride is unknown to compiler   [ gls_corstep.f90(532,30) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,2,3)>, stride is unknown to compiler   [ gls_corstep.f90(533,30) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,0,3)>, stride is unknown to compiler   [ gls_corstep.f90(534,30) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,1,3)>, stride is unknown to compiler   [ gls_corstep.f90(535,30) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,2,3)>, stride is unknown to compiler   [ gls_corstep.f90(536,30) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <w(i,j,n_(ng))>, stride is unknown to compiler   [ gls_corstep.f90(537,23) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <w(i,j,n_(ng)-1)>, stride is unknown to compiler   [ gls_corstep.f90(537,36) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng),3)>, stride is unknown to compiler   [ gls_corstep.f90(538,34) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng)-1,3)>, stride is unknown to compiler   [ gls_corstep.f90(539,34) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng)-2,3)>, stride is unknown to compiler   [ gls_corstep.f90(540,34) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,n_(ng),3)>, stride is unknown to compiler   [ gls_corstep.f90(541,34) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,n_(ng)-1,3)>, stride is unknown to compiler   [ gls_corstep.f90(542,34) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,n_(ng)-2,3)>, stride is unknown to compiler   [ gls_corstep.f90(543,34) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.112
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15451: unmasked unaligned unit stride stores: 3 
+      remark #15452: unmasked strided loads: 16 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 118 
+      remark #15477: vector cost: 102.500 
+      remark #15478: estimated potential speedup: 1.140 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(529,10)
+   <Remainder loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(548,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(549,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(549,11)
+         remark #25427: Loop Statements Reordered
+         remark #15389: vectorization support: reference at (552:34) has unaligned access   [ gls_corstep.f90(552,34) ]
+         remark #15389: vectorization support: reference at (552:45) has unaligned access   [ gls_corstep.f90(552,45) ]
+         remark #15389: vectorization support: reference at (555:34) has unaligned access   [ gls_corstep.f90(555,34) ]
+         remark #15389: vectorization support: reference at (555:45) has unaligned access   [ gls_corstep.f90(555,45) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pm(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(550,24) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pn(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(550,32) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(551,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(551,29) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(554,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(554,29) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(553,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(553,33) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(556,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(556,33) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.464
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 4 
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 47 
+         remark #15477: vector cost: 34.500 
+         remark #15478: estimated potential speedup: 1.350 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(549,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Distributed chunk1>
+      remark #25426: Loop Distributed (5 way) 
+      remark #25408: memset generated
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(568,9)
+      <Distributed chunk1>
+         remark #15389: vectorization support: reference at (576:11) has unaligned access   [ gls_corstep.f90(576,11) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.300
+         remark #15301: PARTIAL LOOP WAS VECTORIZED
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 3 
+         remark #15477: vector cost: 1.250 
+         remark #15478: estimated potential speedup: 1.440 
+         remark #15488: --- end vector cost summary ---
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(568,9)
+      <Remainder loop for vectorization, Distributed chunk1>
+         remark #25015: Estimate of max trip count of loop=12
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Distributed chunk2>
+      remark #25408: memset generated
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(568,9)
+      <Distributed chunk2>
+         remark #15389: vectorization support: reference at (574:11) has unaligned access   [ gls_corstep.f90(574,11) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.300
+         remark #15301: PARTIAL LOOP WAS VECTORIZED
+         remark #15451: unmasked unaligned unit stride stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 3 
+         remark #15477: vector cost: 1.250 
+         remark #15478: estimated potential speedup: 1.440 
+         remark #15488: --- end vector cost summary ---
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(568,9)
+      <Remainder loop for vectorization, Distributed chunk2>
+         remark #25015: Estimate of max trip count of loop=12
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Distributed chunk3>
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(569,11)
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (570:13)>, stride is unknown to compiler   [ gls_corstep.f90(570,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akk(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(570,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akk(i,j,k-1)>, stride is unknown to compiler   [ gls_corstep.f90(570,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(570,52) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (571:13)>, stride is unknown to compiler   [ gls_corstep.f90(571,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akp(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(571,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akp(i,j,k-1)>, stride is unknown to compiler   [ gls_corstep.f90(571,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(571,52) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (572:13)>, stride is unknown to compiler   [ gls_corstep.f90(572,13) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.005
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15452: unmasked strided loads: 6 
+         remark #15453: unmasked strided stores: 3 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 73 
+         remark #15477: vector cost: 51.000 
+         remark #15478: estimated potential speedup: 1.420 
+         remark #15486: divides: 2 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(569,11)
+      <Remainder loop for vectorization>
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.118
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15453: unmasked strided stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.090 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(569,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Peeled loop for vectorization, Distributed chunk4>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Distributed chunk4>
+      remark #15388: vectorization support: reference at (575:11) has aligned access   [ gls_corstep.f90(575,11) ]
+      remark #15305: vectorization support: vector length 4
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.833
+      remark #15301: PARTIAL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 6 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 6.040 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Remainder loop for vectorization, Distributed chunk4>
+      remark #15389: vectorization support: reference at (575:11) has unaligned access   [ gls_corstep.f90(575,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 2.600
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 10.000 
+      remark #15478: estimated potential speedup: 1.090 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Remainder loop for vectorization, Distributed chunk4>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Peeled loop for vectorization, Distributed chunk5>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Distributed chunk5>
+      remark #15388: vectorization support: reference at (577:11) has aligned access   [ gls_corstep.f90(577,11) ]
+      remark #15305: vectorization support: vector length 4
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.833
+      remark #15301: PARTIAL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 6 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 6.040 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Remainder loop for vectorization, Distributed chunk5>
+      remark #15389: vectorization support: reference at (577:11) has unaligned access   [ gls_corstep.f90(577,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 2.600
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 10.000 
+      remark #15478: estimated potential speedup: 1.090 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(568,9)
+   <Remainder loop for vectorization, Distributed chunk5>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(582,9)
+      remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ gls_corstep.f90(583,11) ]
+
+      LOOP BEGIN at gls_corstep.f90(583,11)
+      <Peeled>
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (588:13)>, stride is unknown to compiler   [ gls_corstep.f90(588,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (594:19)>, stride is unknown to compiler   [ gls_corstep.f90(594,19) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akv(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(594,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akt(i,j,k,itemp)>, stride is unknown to compiler   [ gls_corstep.f90(595,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (596:30)>, stride is unknown to compiler   [ gls_corstep.f90(596,30) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akv(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(596,45) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akt(i,j,k,itemp)>, stride is unknown to compiler   [ gls_corstep.f90(597,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akt(i,j,k,itemp)>, stride is unknown to compiler   [ gls_corstep.f90(604,35) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akt(i,j,k,itemp)>, stride is unknown to compiler   [ gls_corstep.f90(609,42) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(616,25) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,k+1)>, stride is unknown to compiler   [ gls_corstep.f90(616,35) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(617,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(617,29) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(619,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(619,29) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(620,46) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(621,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(632,24) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(633,24) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <z_w(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(634,34) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(636,24) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(637,24) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <z_w(i,j,k)>, stride is unknown to compiler   [ gls_corstep.f90(638,49) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(642,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(643,27) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (641:13)>, stride is unknown to compiler   [ gls_corstep.f90(641,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akt(i,j,k,itemp)>, stride is unknown to compiler   [ gls_corstep.f90(645,28) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(646,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (647:27)>, stride is unknown to compiler   [ gls_corstep.f90(647,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (647:36)>, stride is unknown to compiler   [ gls_corstep.f90(647,36) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(649,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(650,27) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <at (648:13)>, stride is unknown to compiler   [ gls_corstep.f90(648,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <akt(i,j,k,itemp)>, stride is unknown to compiler   [ gls_corstep.f90(652,28) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nstp)>, stride is unknown to compiler   [ gls_corstep.f90(653,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (654:27)>, stride is unknown to compiler   [ gls_corstep.f90(654,27) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (654:36)>, stride is unknown to compiler   [ gls_corstep.f90(654,36) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.037
+         remark #15452: unmasked strided loads: 33 
+         remark #15453: unmasked strided stores: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 802 
+         remark #15477: vector cost: 1231.500 
+         remark #15478: estimated potential speedup: 0.650 
+         remark #15485: serialized function calls: 8
+         remark #15486: divides: 5 
+         remark #15488: --- end vector cost summary ---
+         remark #15489: --- begin vector function matching report ---
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(632,39) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(632,39) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(633,39) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(633,39) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(636,39) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(636,39) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(637,39) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(637,39) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(642,42) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(642,42) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(643,42) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(643,42) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(649,42) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(649,42) ]
+         remark #15490: Function call: pow with simdlen=2, actual parameter types: (vector,uniform)   [ gls_corstep.f90(650,42) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(650,42) ]
+         remark #15493: --- end vector function matching report ---
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(666,9)
+   <Peeled loop for vectorization, Distributed chunk1>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(666,9)
+   <Distributed chunk1>
+      remark #25426: Loop Distributed (2 way) 
+      remark #15388: vectorization support: reference at (675:11) has aligned access   [ gls_corstep.f90(675,11) ]
+      remark #15305: vectorization support: vector length 4
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.917
+      remark #15301: PARTIAL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 3 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 3.420 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(666,9)
+   <Remainder loop for vectorization, Distributed chunk1>
+      remark #15389: vectorization support: reference at (675:11) has unaligned access   [ gls_corstep.f90(675,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 2.333
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 10.000 
+      remark #15478: estimated potential speedup: 1.090 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(666,9)
+   <Peeled loop for vectorization, Distributed chunk2>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(666,9)
+   <Distributed chunk2>
+      remark #15389: vectorization support: reference at (678:42) has unaligned access   [ gls_corstep.f90(678,42) ]
+      remark #15389: vectorization support: reference at (680:32) has unaligned access   [ gls_corstep.f90(680,32) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <sustr(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(668,41) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <sustr(i+1,j)>, stride is unknown to compiler   [ gls_corstep.f90(668,52) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <svstr(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(669,41) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <svstr(i,j+1)>, stride is unknown to compiler   [ gls_corstep.f90(669,52) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,n_(ng),nnew)>, stride is unknown to compiler   [ gls_corstep.f90(667,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <bustr(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(672,37) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <bustr(i+1,j)>, stride is unknown to compiler   [ gls_corstep.f90(672,48) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <bvstr(i,j)>, stride is unknown to compiler   [ gls_corstep.f90(673,37) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <bvstr(i,j+1)>, stride is unknown to compiler   [ gls_corstep.f90(673,48) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,0,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(671,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng),nnew)>, stride is unknown to compiler   [ gls_corstep.f90(677,35) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,n_(ng),nnew)>, stride is unknown to compiler   [ gls_corstep.f90(676,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,0,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(681,35) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,0,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(681,11) ]
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.023
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(677,54) ]
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(678,53) ]
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(680,45) ]
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(681,50) ]
+      remark #15301: PARTIAL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 2 
+      remark #15452: unmasked strided loads: 10 
+      remark #15453: unmasked strided stores: 4 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 706 
+      remark #15477: vector cost: 577.000 
+      remark #15478: estimated potential speedup: 1.210 
+      remark #15485: serialized function calls: 4
+      remark #15488: --- end vector cost summary ---
+      remark #15489: --- begin vector function matching report ---
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(677,54) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(677,54) ]
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(678,53) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(678,53) ]
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(680,45) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(680,45) ]
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(681,50) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(681,50) ]
+      remark #15493: --- end vector function matching report ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(666,9)
+   <Remainder loop for vectorization, Distributed chunk2>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Peeled loop for vectorization, Distributed chunk1>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Distributed chunk1>
+      remark #25426: Loop Distributed (2 way) 
+      remark #15389: vectorization support: reference at (688:11) has unaligned access   [ gls_corstep.f90(688,11) ]
+      remark #15388: vectorization support: reference at (689:11) has aligned access   [ gls_corstep.f90(689,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.406
+      remark #15301: PARTIAL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 6 
+      remark #15477: vector cost: 2.000 
+      remark #15478: estimated potential speedup: 2.720 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Remainder loop for vectorization, Distributed chunk1>
+      remark #15389: vectorization support: reference at (688:11) has unaligned access   [ gls_corstep.f90(688,11) ]
+      remark #15389: vectorization support: reference at (689:11) has unaligned access   [ gls_corstep.f90(689,11) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 1.600
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 10.000 
+      remark #15478: estimated potential speedup: 1.090 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Remainder loop for vectorization, Distributed chunk1>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Peeled loop for vectorization, Distributed chunk2>
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Distributed chunk2>
+      remark #15389: vectorization support: reference at (691:22) has unaligned access   [ gls_corstep.f90(691,22) ]
+      remark #15388: vectorization support: reference at (692:11) has aligned access   [ gls_corstep.f90(692,11) ]
+      remark #15389: vectorization support: reference at (692:29) has unaligned access   [ gls_corstep.f90(692,29) ]
+      remark #15389: vectorization support: reference at (693:60) has unaligned access   [ gls_corstep.f90(693,60) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,n_(ng)-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(693,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng)-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(693,38) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.087
+      remark #15301: PARTIAL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 3 
+      remark #15452: unmasked strided loads: 1 
+      remark #15453: unmasked strided stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 63 
+      remark #15477: vector cost: 39.000 
+      remark #15478: estimated potential speedup: 1.590 
+      remark #15486: divides: 1 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Remainder loop for vectorization, Distributed chunk2>
+      remark #15389: vectorization support: reference at (691:22) has unaligned access   [ gls_corstep.f90(691,22) ]
+      remark #15389: vectorization support: reference at (692:11) has unaligned access   [ gls_corstep.f90(692,11) ]
+      remark #15389: vectorization support: reference at (692:29) has unaligned access   [ gls_corstep.f90(692,29) ]
+      remark #15389: vectorization support: reference at (693:60) has unaligned access   [ gls_corstep.f90(693,60) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.370
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 10.000 
+      remark #15478: estimated potential speedup: 1.090 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(687,9)
+   <Remainder loop for vectorization, Distributed chunk2>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(695,9)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed FLOW dependence between cff (697:13) and cff (702:11)
+      remark #15346: vector dependence: assumed ANTI dependence between cff (702:11) and cff (697:13)
+      remark #15346: vector dependence: assumed ANTI dependence between cff (702:11) and cff (697:13)
+      remark #15346: vector dependence: assumed FLOW dependence between cff (697:13) and cff (702:11)
+
+      LOOP BEGIN at gls_corstep.f90(696,11)
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization
+         remark #15346: vector dependence: assumed FLOW dependence between at (698:13) and at (697:13)
+         remark #15346: vector dependence: assumed ANTI dependence between at (697:13) and at (698:13)
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(704,9)
+   <Multiversioned v1>
+      remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+         remark #15388: vectorization support: reference tke(i,j,k,nnew) has aligned access   [ gls_corstep.f90(706,13) ]
+         remark #15388: vectorization support: reference tke(i,j,k,nnew) has aligned access   [ gls_corstep.f90(706,29) ]
+         remark #15389: vectorization support: reference at (706:45) has unaligned access   [ gls_corstep.f90(706,45) ]
+         remark #15389: vectorization support: reference tke(i,j,k-1,nnew) has unaligned access   [ gls_corstep.f90(706,53) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.444
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 9 
+         remark #15477: vector cost: 2.250 
+         remark #15478: estimated potential speedup: 3.490 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference tke(i,j,k,nnew) has unaligned access   [ gls_corstep.f90(706,13) ]
+         remark #15389: vectorization support: reference tke(i,j,k,nnew) has unaligned access   [ gls_corstep.f90(706,29) ]
+         remark #15389: vectorization support: reference at (706:45) has unaligned access   [ gls_corstep.f90(706,45) ]
+         remark #15389: vectorization support: reference tke(i,j,k-1,nnew) has unaligned access   [ gls_corstep.f90(706,53) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.833
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15453: unmasked strided stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.090 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(704,9)
+   <Multiversioned v2>
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+         remark #15388: vectorization support: reference at (706:45) has aligned access   [ gls_corstep.f90(706,45) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(706,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(706,29) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(706,53) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 9 
+         remark #15477: vector cost: 7.000 
+         remark #15478: estimated potential speedup: 1.270 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(705,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(712,9)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(712,9)
+      remark #25427: Loop Statements Reordered
+      remark #15389: vectorization support: reference at (721:42) has unaligned access   [ gls_corstep.f90(721,42) ]
+      remark #15389: vectorization support: reference at (720:11) has unaligned access   [ gls_corstep.f90(720,11) ]
+      remark #15389: vectorization support: reference at (716:25) has unaligned access   [ gls_corstep.f90(716,25) ]
+      remark #15389: vectorization support: reference at (714:11) has unaligned access   [ gls_corstep.f90(714,11) ]
+      remark #15389: vectorization support: reference at (725:22) has unaligned access   [ gls_corstep.f90(725,22) ]
+      remark #15389: vectorization support: reference at (726:11) has unaligned access   [ gls_corstep.f90(726,11) ]
+      remark #15389: vectorization support: reference at (726:29) has unaligned access   [ gls_corstep.f90(726,29) ]
+      remark #15389: vectorization support: reference at (727:60) has unaligned access   [ gls_corstep.f90(727,60) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,0,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(719,23) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(719,39) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,1)>, stride is unknown to compiler   [ gls_corstep.f90(721,32) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <akp(i,j,0)>, stride is unknown to compiler   [ gls_corstep.f90(723,32) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <akp(i,j,1)>, stride is unknown to compiler   [ gls_corstep.f90(723,43) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng),nnew)>, stride is unknown to compiler   [ gls_corstep.f90(713,23) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,n_(ng)-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(713,43) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <hz(i,j,n_(ng))>, stride is unknown to compiler   [ gls_corstep.f90(716,43) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <akp(i,j,n_(ng))>, stride is unknown to compiler   [ gls_corstep.f90(718,32) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <akp(i,j,n_(ng)-1)>, stride is unknown to compiler   [ gls_corstep.f90(718,47) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,n_(ng)-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(727,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,n_(ng)-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(727,38) ]
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.021
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(720,44) ]
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(721,55) ]
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(714,43) ]
+      remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(716,57) ]
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 5 
+      remark #15451: unmasked unaligned unit stride stores: 3 
+      remark #15452: unmasked strided loads: 11 
+      remark #15453: unmasked strided stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 665 
+      remark #15477: vector cost: 582.750 
+      remark #15478: estimated potential speedup: 1.130 
+      remark #15485: serialized function calls: 4
+      remark #15486: divides: 1 
+      remark #15488: --- end vector cost summary ---
+      remark #15489: --- begin vector function matching report ---
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(714,43) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(714,43) ]
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(716,57) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(716,57) ]
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(720,44) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(720,44) ]
+      remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(721,55) ]
+      remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(721,55) ]
+      remark #15493: --- end vector function matching report ---
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(712,9)
+   <Remainder loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(729,9)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed FLOW dependence between cff (731:13) and cff (736:11)
+      remark #15346: vector dependence: assumed ANTI dependence between cff (736:11) and cff (731:13)
+      remark #15346: vector dependence: assumed ANTI dependence between cff (736:11) and cff (731:13)
+      remark #15346: vector dependence: assumed FLOW dependence between cff (731:13) and cff (736:11)
+
+      LOOP BEGIN at gls_corstep.f90(730,11)
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization
+         remark #15346: vector dependence: assumed FLOW dependence between at (732:13) and at (731:13)
+         remark #15346: vector dependence: assumed ANTI dependence between at (731:13) and at (732:13)
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(738,9)
+   <Multiversioned v1>
+      remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=3
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+         remark #15388: vectorization support: reference gls(i,j,k,nnew) has aligned access   [ gls_corstep.f90(740,13) ]
+         remark #15388: vectorization support: reference gls(i,j,k,nnew) has aligned access   [ gls_corstep.f90(740,29) ]
+         remark #15389: vectorization support: reference at (740:45) has unaligned access   [ gls_corstep.f90(740,45) ]
+         remark #15389: vectorization support: reference gls(i,j,k-1,nnew) has unaligned access   [ gls_corstep.f90(740,53) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.444
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15449: unmasked aligned unit stride stores: 1 
+         remark #15450: unmasked unaligned unit stride loads: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 9 
+         remark #15477: vector cost: 2.250 
+         remark #15478: estimated potential speedup: 3.490 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+      <Remainder loop for vectorization>
+         remark #15389: vectorization support: reference gls(i,j,k,nnew) has unaligned access   [ gls_corstep.f90(740,13) ]
+         remark #15389: vectorization support: reference gls(i,j,k,nnew) has unaligned access   [ gls_corstep.f90(740,29) ]
+         remark #15389: vectorization support: reference at (740:45) has unaligned access   [ gls_corstep.f90(740,45) ]
+         remark #15389: vectorization support: reference gls(i,j,k-1,nnew) has unaligned access   [ gls_corstep.f90(740,53) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 1.833
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15453: unmasked strided stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.090 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(738,9)
+   <Multiversioned v2>
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+         remark #15388: vectorization support: reference at (740:45) has aligned access   [ gls_corstep.f90(740,45) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(740,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(740,29) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k-1,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(740,53) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.250
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15448: unmasked aligned unit stride loads: 1 
+         remark #15452: unmasked strided loads: 2 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 9 
+         remark #15477: vector cost: 7.000 
+         remark #15478: estimated potential speedup: 1.270 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(739,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at gls_corstep.f90(748,9)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Distributed chunk1>
+         remark #25426: Loop Distributed (4 way) 
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(754,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(754,33) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.125
+         remark #15301: PARTIAL LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15452: unmasked strided loads: 1 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 9 
+         remark #15477: vector cost: 5.000 
+         remark #15478: estimated potential speedup: 1.770 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Remainder loop for vectorization, Distributed chunk1>
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 1.500
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15453: unmasked strided stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.090 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Remainder loop for vectorization, Distributed chunk1>
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Distributed chunk2>
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(753,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(753,33) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15399: vectorization support: unroll factor set to 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.125
+         remark #15301: PARTIAL LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15452: unmasked strided loads: 1 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 9 
+         remark #15477: vector cost: 5.000 
+         remark #15478: estimated potential speedup: 1.770 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Remainder loop for vectorization, Distributed chunk2>
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 1.500
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15453: unmasked strided stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.090 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Remainder loop for vectorization, Distributed chunk2>
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Distributed chunk3, Predicate Optimized v1>
+         remark #25422: Invariant Condition at line 755 hoisted out of this loop
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(757,35) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (759:41)>, stride is unknown to compiler   [ gls_corstep.f90(759,41) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(756,15) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(756,35) ]
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.010
+         remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(757,50) ]
+         remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(759,60) ]
+         remark #15301: PARTIAL LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15452: unmasked strided loads: 3 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 272 
+         remark #15477: vector cost: 250.250 
+         remark #15478: estimated potential speedup: 1.080 
+         remark #15485: serialized function calls: 2
+         remark #15488: --- end vector cost summary ---
+         remark #15489: --- begin vector function matching report ---
+         remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(757,50) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(757,50) ]
+         remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(759,60) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(759,60) ]
+         remark #15493: --- end vector function matching report ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Remainder loop for vectorization, Distributed chunk3, Predicate Optimized v1>
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Distributed chunk3, Predicate Optimized v2>
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <tke(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(763,35) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <at (765:41)>, stride is unknown to compiler   [ gls_corstep.f90(765,41) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(762,15) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <gls(i,j,k,nnew)>, stride is unknown to compiler   [ gls_corstep.f90(762,35) ]
+         remark #15305: vectorization support: vector length 4
+         remark #15309: vectorization support: normalized vectorization overhead 0.010
+         remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(763,50) ]
+         remark #15525: call to function 'pow' is serialized   [ gls_corstep.f90(765,60) ]
+         remark #15301: PARTIAL LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15452: unmasked strided loads: 3 
+         remark #15453: unmasked strided stores: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 272 
+         remark #15477: vector cost: 250.250 
+         remark #15478: estimated potential speedup: 1.080 
+         remark #15485: serialized function calls: 2
+         remark #15488: --- end vector cost summary ---
+         remark #15489: --- begin vector function matching report ---
+         remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(763,50) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(763,50) ]
+         remark #15490: Function call: pow with simdlen=4, actual parameter types: (vector,uniform)   [ gls_corstep.f90(765,60) ]
+         remark #26039: Math library function call, SVML library was not used with given fp model. Consider changing compiler flags.   [ gls_corstep.f90(765,60) ]
+         remark #15493: --- end vector function matching report ---
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Remainder loop for vectorization, Distributed chunk3, Predicate Optimized v2>
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(749,11)
+      <Distributed chunk4>
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Peeled loop for vectorization, Multiversioned v1>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Multiversioned v1>
+            remark #25233: Loop multiversioned for stride tests on Assumed shape arrays
+            remark #15388: vectorization support: reference akt_bak_(itrc,ng) has aligned access   [ gls_corstep.f90(824,31) ]
+            remark #15329: vectorization support: non-unit strided store was emulated for the variable <akt(i,j,k,itrc)>, stride is unknown to compiler   [ gls_corstep.f90(824,15) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.344
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 1 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 8 
+            remark #15477: vector cost: 4.000 
+            remark #15478: estimated potential speedup: 1.950 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Remainder loop for vectorization, Multiversioned v1>
+            remark #15389: vectorization support: reference akt_bak_(itrc,ng) has unaligned access   [ gls_corstep.f90(824,31) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 1.400
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15450: unmasked unaligned unit stride loads: 1 
+            remark #15453: unmasked strided stores: 2 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 11 
+            remark #15477: vector cost: 10.000 
+            remark #15478: estimated potential speedup: 1.090 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Remainder loop for vectorization, Multiversioned v1>
+         LOOP END
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Peeled loop for vectorization, Multiversioned v2>
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Multiversioned v2>
+            remark #15388: vectorization support: reference akt_bak_(itrc,ng) has aligned access   [ gls_corstep.f90(824,31) ]
+            remark #15329: vectorization support: non-unit strided store was emulated for the variable <akt(i,j,k,itrc)>, stride is unknown to compiler   [ gls_corstep.f90(824,15) ]
+            remark #15305: vectorization support: vector length 2
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.344
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15448: unmasked aligned unit stride loads: 1 
+            remark #15453: unmasked strided stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 8 
+            remark #15477: vector cost: 4.000 
+            remark #15478: estimated potential speedup: 1.950 
+            remark #15488: --- end vector cost summary ---
+         LOOP END
+
+         LOOP BEGIN at gls_corstep.f90(823,13)
+         <Remainder loop for vectorization, Multiversioned v2>
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(852,11)
+      <Peeled loop for vectorization>
+         remark #25015: Estimate of max trip count of loop=1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(852,11)
+         remark #15389: vectorization support: reference akt_bak_(itrc,ng) has unaligned access   [ gls_corstep.f90(853,13) ]
+         remark #15389: vectorization support: reference akt_bak_(itrc,ng) has unaligned access   [ gls_corstep.f90(854,13) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <akt(i,j,n_(ng),itrc)>, stride is unknown to compiler   [ gls_corstep.f90(853,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <akt(i,j,0,itrc)>, stride is unknown to compiler   [ gls_corstep.f90(854,13) ]
+         remark #15305: vectorization support: vector length 2
+         remark #15309: vectorization support: normalized vectorization overhead 0.700
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15442: entire loop may be executed in remainder
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15453: unmasked strided stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 10.000 
+         remark #15478: estimated potential speedup: 1.090 
+         remark #15488: --- end vector cost summary ---
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      LOOP END
+
+      LOOP BEGIN at gls_corstep.f90(852,11)
+      <Remainder loop for vectorization>
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+

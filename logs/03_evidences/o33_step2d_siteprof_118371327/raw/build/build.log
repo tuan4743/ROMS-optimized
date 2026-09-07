@@ -1,0 +1,41 @@
+makefile:235: INCLUDING FILE Build/make_macros.mk WHICH CONTAINS APPLICATION-DEPENDENT MAKE DEFINITIONS
+/usr/bin/cpp -P -traditional -DMPI -DLINUX -DX86_64 -DIFORT -D'ROOT_DIR="/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15"' -DBYE24BIO15 -D'HEADER="bye24bio15.h"' -D'ROMS_HEADER="bye24bio15.h"' -DNestedGrids= -D'ANALYTICAL_DIR="/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15/ROMS/Functionals"' -D'SVN_REV="Unversioned directory"' -IROMS/Include -IROMS/Nonlinear -IROMS/Nonlinear/Biology -IROMS/Nonlinear/Sediment -IROMS/Utility -IROMS/Drivers -IROMS/Functionals -IMaster -ICompilers -D'HEADER_DIR="/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15/ROMS/Include"'  ROMS/Nonlinear/step2d.F > Build/step2d.f90
+rm -f -r /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15/make_macros.mk
+ROMS/Bin/cpp_clean Build/step2d.f90
+cd Build; /opt/hpc/software/mpi/hpcx/v2.7.4/intel-2017.5.239/bin/mpif90 -c -heap-arrays -fp-model precise -ip -O3 step2d.f90
+step2d.f90(216): error #6562: A data initialization-expr is not valid for this object.   [MCC_FLUX_CALLS]
+      integer, save :: mcc_flux_calls(Ngrids) = 0
+-----------------------^
+step2d.f90(217): error #6562: A data initialization-expr is not valid for this object.   [MCC_UV_CALLS]
+      integer, save :: mcc_uv_calls(Ngrids) = 0
+-----------------------^
+step2d.f90(218): error #6562: A data initialization-expr is not valid for this object.   [MCC_SITE_PRINTED]
+      logical, save :: mcc_site_printed(Ngrids) = .FALSE.
+-----------------------^
+step2d.f90(219): error #6562: A data initialization-expr is not valid for this object.   [MCC_FLUX_SECONDS]
+      real(r8), save :: mcc_flux_seconds(Ngrids) = 0.0_r8
+------------------------^
+step2d.f90(220): error #6562: A data initialization-expr is not valid for this object.   [MCC_UV_SECONDS]
+      real(r8), save :: mcc_uv_seconds(Ngrids) = 0.0_r8
+------------------------^
+step2d.f90(216): error #6754: An automatic object must not appear in a SAVE statement or be declared with the SAVE attribute.   [MCC_FLUX_CALLS]
+      integer, save :: mcc_flux_calls(Ngrids) = 0
+-----------------------^
+step2d.f90(217): error #6754: An automatic object must not appear in a SAVE statement or be declared with the SAVE attribute.   [MCC_UV_CALLS]
+      integer, save :: mcc_uv_calls(Ngrids) = 0
+-----------------------^
+step2d.f90(218): error #6754: An automatic object must not appear in a SAVE statement or be declared with the SAVE attribute.   [MCC_SITE_PRINTED]
+      logical, save :: mcc_site_printed(Ngrids) = .FALSE.
+-----------------------^
+step2d.f90(219): error #6754: An automatic object must not appear in a SAVE statement or be declared with the SAVE attribute.   [MCC_FLUX_SECONDS]
+      real(r8), save :: mcc_flux_seconds(Ngrids) = 0.0_r8
+------------------------^
+step2d.f90(220): error #6754: An automatic object must not appear in a SAVE statement or be declared with the SAVE attribute.   [MCC_UV_SECONDS]
+      real(r8), save :: mcc_uv_seconds(Ngrids) = 0.0_r8
+------------------------^
+compilation aborted for step2d.f90 (code 1)
+make: *** [Build/step2d.o] Error 1
+
+real	0m2.768s
+user	0m0.168s
+sys	0m0.666s

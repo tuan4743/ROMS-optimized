@@ -1,0 +1,72 @@
+HARNESS_START=2026-08-01 22:14:33 +0800
+JOB=118371327 NODES=j05r2n[14-17] NNODES=4 NTASKS=64 CPUS_PER_TASK=2
+DISK_AVAILABLE_KB=80541112
+HASH_OK|ca88a5e00272d452a862ed187d08967c6be96ad9dc5aaf4ef532990545adda4d|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15/oceanM.O33_step2d_siteprof
+HASH_OK|8a46eb11f4f60f1dcdde4b9912f319dbb431af0685a1dbf2921582a11269f87f|/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_step2d_siteprof_20260801/ROMS_CoSiNE15/ROMS/Nonlinear/step2d_LF_AM3.h
+HASH_OK|1f6ba71423d3100b19abd0997b679b9c07f73a8d8d233dabd2abaf812033e567|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/step2d_siteprof_20260801/analyze_step2d_siteprof.py
+HASH_OK|8bb346e0a61609de8e7066ef36218bd92390201d53a0c15f7d73545c06115da9|/public/home/fujiake/fjk/agent_tmp/isolated/scripts/step2d_siteprof_20260801/run_step2d_siteprof.slurm
+HASH_OK|05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+HASH_OK|0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473|/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+INPUT_OK replacements=18
+e31b692487be4aeae4a7bc8c94574c4626bebdd14551e68fe3ff839422a1d61b  /public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_step2d_siteprof_118371327/work/input.in
+MODEL_RC=0 SITE_FILES=128 NC_FILES=0
+STEP2D_SITE_PROFILE_OK
+files=128
+full_wall_seconds=2142.793000
+diagnostic_to_full_scale=18.0
+grid1_flux_calls_min=12240
+grid1_flux_calls_max=12240
+grid1_uv_calls_min=12096
+grid1_uv_calls_max=12096
+grid1_flux_seconds_mean=0.362203328
+grid1_flux_seconds_max=0.633074000
+grid1_uv_seconds_mean=0.275789250
+grid1_uv_seconds_max=0.321879000
+grid2_flux_calls_min=61200
+grid2_flux_calls_max=61200
+grid2_uv_calls_min=60480
+grid2_uv_calls_max=60480
+grid2_flux_seconds_mean=1.498618016
+grid2_flux_seconds_max=2.151103000
+grid2_uv_seconds_mean=1.386586469
+grid2_uv_seconds_max=1.935634000
+uv_both_grids_seconds_mean_per_rank=1.662375719
+uv_both_grids_seconds_max_rank=2.256610000
+uv_full_projected_mean_seconds=29.922762938
+uv_full_projected_max_seconds=40.618980000
+uv_full_projected_mean_pct=1.396437404
+uv_full_projected_max_pct=1.895609142
+gate_2pct_seconds=42.855860000
+gate_3pct_seconds=64.283790000
+decision=REJECT_BEFORE_SCHEDULE_BUILD
+STEP2D_SITE_PROFILE_OK
+files=128
+full_wall_seconds=2142.793000
+diagnostic_to_full_scale=18.0
+grid1_flux_calls_min=12240
+grid1_flux_calls_max=12240
+grid1_uv_calls_min=12096
+grid1_uv_calls_max=12096
+grid1_flux_seconds_mean=0.362203328
+grid1_flux_seconds_max=0.633074000
+grid1_uv_seconds_mean=0.275789250
+grid1_uv_seconds_max=0.321879000
+grid2_flux_calls_min=61200
+grid2_flux_calls_max=61200
+grid2_uv_calls_min=60480
+grid2_uv_calls_max=60480
+grid2_flux_seconds_mean=1.498618016
+grid2_flux_seconds_max=2.151103000
+grid2_uv_seconds_mean=1.386586469
+grid2_uv_seconds_max=1.935634000
+uv_both_grids_seconds_mean_per_rank=1.662375719
+uv_both_grids_seconds_max_rank=2.256610000
+uv_full_projected_mean_seconds=29.922762938
+uv_full_projected_max_seconds=40.618980000
+uv_full_projected_mean_pct=1.396437404
+uv_full_projected_max_pct=1.895609142
+gate_2pct_seconds=42.855860000
+gate_3pct_seconds=64.283790000
+decision=REJECT_BEFORE_SCHEDULE_BUILD
+AUDIT_ROOT=/public/home/fujiake/fjk/agent_tmp/isolated/audits/o33_step2d_siteprof_118371327
+HARNESS_DONE=2026-08-01 22:16:49 +0800

@@ -1,0 +1,18 @@
+--- a/ROMS/Utility/distribute.F
++++ b/ROMS/Utility/distribute.F
+@@ -5765,7 +5765,6 @@
+ !  This also avoid denormalized values, which facilitates debugging.
+ !
+       Asend=0.0_r8
+-      Arecv=0.0_r8
+ !
+ !-----------------------------------------------------------------------
+ !  Pack tile data.
+@@ -5972,7 +5971,6 @@
+ !  This also avoid denormalized values, which facilitates debugging.
+ !
+       Asend=0.0_r8
+-      Arecv=0.0_r8
+ !
+ !-----------------------------------------------------------------------
+ !  Pack tile data.

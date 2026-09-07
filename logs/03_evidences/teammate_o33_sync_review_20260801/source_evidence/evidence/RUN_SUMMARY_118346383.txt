@@ -1,0 +1,10 @@
+job_id=118346383
+rc=0
+outdir=/public/home/fujiake/nan/backup/results/3day_118346383
+log=/public/home/fujiake/nan/backup/results/logs/run_O33_final3day_20260801_110155_J118346383.txt
+vali_log=/public/home/fujiake/nan/backup/results/vali/vali_final3day_118346383.log
+2026年 08月 01日 星期六 11:38:07 CST
+real=35m42.793s
+real_seconds=2142.793
+speedup_vs_baseline_6606=3.083
+vali=PASS (SCS+Dongsha all vars within threshold; Dongsha u=0.000052)

@@ -1,0 +1,10 @@
+PREPARED=2026-08-01 23:27:20 +0800
+PARENT=/public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15
+RUNTIME=/public/home/fujiake/fjk/agent_tmp/isolated/work/o33_rankmap_abba_20260801/runtime
+5f1a137e42252c9b978ad50ab344b9d6493f5e5afeeb71ed2d83f0a4228cfcb9  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/oceanM.O33_final
+05ceb746d36522ccdb960ab082b70401d294fd0cc8a393c25bcb9e25365e7b21  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/External/ocean_SCS_Dongsha60_bio15.in
+0ef5b45a357d06e27f3e5e6865010fdacf24ba0fc9ebd95aae8a5dd6dc4ce473  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+c66ab7bb6a855ab319a886f6ace110429b204efb26aa1aaf0785ff28a38e577a  /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS/Utility/mp_exchange.F
+lrwxr-xr-x 1 fujiake mcc2026_final 104 Aug  1 23:26 /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_rankmap_abba_20260801/runtime/coll_rules.conf -> /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/coll_rules.conf
+lrwxr-xr-x 1 fujiake mcc2026_final  31 Aug  1 23:26 /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_rankmap_abba_20260801/runtime/Inputfiles -> /public/home/fujiake/Inputfiles
+lrwxr-xr-x 1 fujiake mcc2026_final  93 Aug  1 23:26 /public/home/fujiake/fjk/agent_tmp/isolated/work/o33_rankmap_abba_20260801/runtime/ROMS -> /public/home/fujiake/fjk/agent_tmp/isolated/imports/nan_O33_final_20260801/ROMS_CoSiNE15/ROMS

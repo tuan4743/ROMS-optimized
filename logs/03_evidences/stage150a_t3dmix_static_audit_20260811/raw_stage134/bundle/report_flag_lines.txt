@@ -1,0 +1,12 @@
+37:           FFLAGS := -no-heap-arrays -fp-model precise -march=core-avx2 -no-fma -ipo -qopt-report=5 -qopt-report-phase=vec,loop,openmp,ipo
+76:# $(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays
+77:$(SCRATCH_DIR)/biology.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model fast=2 -no-prec-div -fp-speculation=fast
+78:$(SCRATCH_DIR)/pre_step3d.o: private FFLAGS += -qopenmp -no-heap-arrays
+79:$(SCRATCH_DIR)/step3d_t.o: private FFLAGS += -qopenmp -no-heap-arrays
+80:$(SCRATCH_DIR)/t3dmix.o: private FFLAGS += -qopenmp -no-heap-arrays
+87:$(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays -fp-model source
+92:$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays -march=core-avx2 -no-fma
+173:$(SCRATCH_DIR)/biology.o: FFLAGS += -free
+175:$(SCRATCH_DIR)/ad_biology.o: FFLAGS += -free
+178:$(SCRATCH_DIR)/rp_biology.o: FFLAGS += -free
+181:$(SCRATCH_DIR)/tl_biology.o: FFLAGS += -free

@@ -1,0 +1,6 @@
+--- a/Compilers/Linux-ifort.mk
++++ b/Compilers/Linux-ifort.mk
+@@ -68,2 +68,3 @@
+ $(SCRATCH_DIR)/gls_corstep.o: private FFLAGS += -qopenmp -no-heap-arrays
+ 
++$(SCRATCH_DIR)/step2d.o: private FFLAGS += -no-heap-arrays

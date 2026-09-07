@@ -1,0 +1,1050 @@
+# ROMS-CoSiNE 优化日志（nan）
+
+## 上下文恢复顺序（强制）
+
+1. `Prompt/Prompt.txt` + `Prompt/mcc.md`
+2. `Prompt/STANDING_ORDERS.md`（对话补充 + 文献入口）
+3. 本 README（实验记录）+ 需要时 `report_his/literature_notes_20260730.md`、`check/README.md`
+
+## 约定
+
+- 工作目录：仅 `/public/home/fujiake/nan/` 可写
+- 计时口径：`time` 的 **real**；最终成绩用 `2592 12960`（3 天）
+- **运行档位（2026-07-30 用户确认）**：
+  - **日常采样筛**：`NTIMES == 144 720`（约 1/3 半天，~6–7 min）——判断正/负优化
+  - **半天确认**：`432 2160`——采样明显加速后再跑
+  - **一天 vali**：`864 4320`
+  - **正式成绩**：`2592 12960`
+- 编译：登录节点 `make -j64`；优化依据以 `check/` 计算节点探测为准
+- 加速比必须同档对比；有效优化记：
+  - 相对上一步加速比 = `T_prev / T_curr`
+  - 相对 baseline 累计加速比 = `T_baseline / T_curr`
+- 精度：`vali.py` 全通过即可，不额外抠误差
+- **当前正确性/性能父（2026-07-31）**：**O33** + **O29** KMP=0；拓扑 **64×2 / 8×8**；二进制 `oceanM.O33_noheap.bak`
+  - 半天 **364.34 s**（相对 baseline 1200 s → **3.29×**）
+  - 一天 **725.47 s**，vali 全通过
+  - **正式 3 天** `118307015`：**2129.85 s（35m29.9s）**，相对 baseline 6606 s → **3.10×**；vali **全部通过**（Dongsha **u=0.000052**）
+- **O34–O42 均拒**；tracer 几何/通量缓存线关闭
+- **O43–O46 均拒**；复盘：`report_his/retrospective_O43_O46_and_plan.md`
+- **O47 拒墙钟 0.966×**（vali 过）：见 `report_his/O47_owner_packed_ortho.md`
+- **O48 融合冲刺**：O33 + biology CSE（feng/lsd/zya）；一天 `118368357` **739.18 s（0.981×）**，vali **全过** u=0.000052；**墙钟不晋升**，父本仍 O33。见 `report_his/O48_fusion_sprint.md`
+- **O49 拒**：CountM hoist + t3dmix CSE；采样 ABBA `118459962` 均值 **0.989×**（129.7→131.2 s）；源码已回滚，父本仍 O33。见 `report_his/O49_compute_side.md`
+- **访存优化文献（2026-08-03）**：Roofline / ROMS「内存暴政」/ stencil fusion / 海洋混合精度 → 结论盯 **减 DRAM 往返**；优先 B4/B5 零拷贝融合。见 `report_his/literature_membound_20260803.md`
+- **O50 计时基建**：`pre_step3d`/`step3d_t`/`step2d` 独立墙钟 → `kernel_timing*.out`；二进制 `oceanM.O50_kernel_timer.bak`（非性能晋升）。见 `report_his/O50_kernel_timer.md`
+- **O50 采样+汇编（2026-08-03）**：job `118472939` real 135 s；G02 MAX 以 **step2d** 最大；asm 显示 step2d 仍 `for_allocate`×21/次而三核无 libm。下一刀优先 **step2d `-no-heap-arrays`**。见 `report_his/asm_hotspots_O50_20260803.md`
+- **O51 拒**：`step2d -no-heap-arrays`；采样 `118473431` real **135.43 s（0.997× vs O50）**；G02 step2d MAX 1.038× 但墙钟无过门；makefile 已回滚。见 `report_his/O51_step2d_noheap.md`
+- **O52 拒**：`pre_step3d` T_LOOP1 j-strip（B4）；采样 `118474523` real **135.71 s（0.995× vs O50）**；G02 pre MAX **0.897×（变慢）**；源码已回滚。见 `report_his/O52_pre_jstrip.md`
+- **O53 拒**：`step3d_t` `dpmn` 2D 提升（B5）；采样 `118475196` real **138.88 s（0.972× vs O50）**；step3d_t MAX 仅 1.018×；源码已回滚。见 `report_his/O53_dpmn.md`
+- **O55**：采样 ABBA **1.043× vs O50**；一天 `118477718` real **733.7 s**，Dongsha **u=0.000074 ❌** → **不晋升**。见 `report_his/O55_step2d_combo.md`
+- **O56**：再叠 AVX/bio CSE，采样 **0.995× vs O55** → 拒；已回滚。见 `report_his/O56_combo.md`
+- **O57 拒**：删死代码 oHz；采样 0.57×（Build 混入 O50 timer，不可信）；已从 `backup/` 回对齐源码 + `oceanM`←O33。见 `report_his/O57_skip_ohz.md`
+- **O57b 拒**：干净重做 oHz 守卫（`make clean` 全量重编）；ABBA `118480564/568/570/574` 均值 **0.970×**（127.7→131.6 s）；源码+`oceanM` 已回滚 O33。见 `report_his/O57b_skip_ohz.md`
+- **O58 拒**：`get_persisted2d` 只组装 Ac(1)（4→1）；ABBA `118483130/136/141/146` 均值 **1.012×**（131.9→130.3 s）；未过门，已回滚。见 `report_his/O58_persist1.md`
+- **O59 拒**：DU+DV persisted 打包一次 Allreduce + Ac(1)；ABBA `118484947/948/951/955` 均值 **0.985×**（128.7→130.6 s）；已回滚。见 `report_his/O59_duv_pack.md`
+- **O60 拒（吹飞）**：开放项大融合（A1+O58+B4/B5/B6+C7）；ABBA `118485930/931` 均 `Blows up`；已从 `.mcc_opt/staging/O60/` 整包回滚。见 `report_his/O60_fusion.md`
+- **O61 拒**：get_refine tracer `contact3d` 批量化（NT→1 次 sparse）；ABBA `118486932/934/937/938` 均值 **0.956×**（126.8→132.7 s，未吹飞）；已回滚。见 `report_his/O61_tbatch.md`
+- **O62 拒**：get_refine tracer `contact3d` NBC 流水线（extract∥post）；ABBA `118492473/475/478/480` 均值 **0.983×**（127.3→129.4 s，DONE）；已回滚。见 `report_his/O62_nbc.md` —— **nesting contact tracer 线关闭**
+- **O63 拒**：B3 nesting donor/receiver 亲和 rankfile（无源码）；ABBA `118493759/772/780/791` 均值 **0.990×**（127.1→128.4 s）；默认绑核不变。见 `report_his/O63_b3.md` —— **B3 亲和 rankfile 线关闭**
+- **O64 拒**：C1 step2d zeta `mp_exchange2d` begin/end 重叠；ABBA `118495763/766/771/773` 均值 **0.971×**（127.2→131.0 s，DONE）；已回滚。见 `report_his/O64_c1.md` —— **C1 zeta 重叠线关闭**
+- **O65 拒**：B2 `COLLECT_ALLGATHER`；相对 O33 采样 **0.970×**（128.9→132.9 s）；已回滚。见 `report_his/O65_b2.md` —— **B2 宏扫关闭**
+- **O66 拒**：B4 `pre_step3d` Huh/Hvh；采样 `118497339/341` → **0.996×**（130.5→131.0 s）；已回滚。见 `report_his/O66_b4.md`
+- **O67 拒**：NEMO 式 `rzeta` 扩圈+跳过 MPI；`118498029/030` → **0.978×**（127.8→130.7 s）；已回滚。见 `report_his/O67_xhalo.md` —— **step2d/rzeta 单场跳过线关闭**
+- **O68 拒**：对标 NEMO 正压通信大包（砍中段 rzeta+zeta，步末 flush）；`118498374/378` → **0.977×**（128.1→131.1 s）；G02 2D halo 约 −10% 但墙钟慢；已回滚。见 `report_his/O68_nemo_fs.md` —— **step2d 正压 mid-step 2D 挪砍线关闭**
+- **O69 拒（方向一）**：全局 `-march=core-avx2 -no-fma`；`118522472/468` → **0.974×**（128.1→131.5 s）；ymm 进、vfmadd=0；已回滚。见 `report_his/O69_march_nofma.md` —— **全局 AVX2 线关闭**
+- **O70/O70b 拒（方向六）**：`put_zcopy` 0.978×；强制 `THRESH=1M/inf`（`118522704/706`）→ **0.978×/0.977×**；已关闭 UCX_RNDV 线。见 `report_his/O70_ucx_rndv.md`
+- **O71 拒（方向三 b）**：合并 `step2d` 相邻 3+2 `mp_exchange2d`；`118522932/930` → **1.012×**（132.9→131.4 s）；G02 2D halo −13% 但墙钟未过门；已回滚。见 `report_his/O71_merge2d.md`
+- **O72 诊断完成（方向四）**：barrier-before-comm；2D/3D/4D AVG 等待合计 **~13% 墙钟**（2D MAX 10.2 s）；assemble≈0；**负载倾斜实锤** → 通信协议刀降优先，转查慢 rank。见 `report_his/O72_ibar.md`
+- **O73 诊断完成**：G02 全湿、五核 spread 仅 **2.3%**；G01 陆地极不均 + contact 高度集中；O72 倾斜主因更像 **nesting/五核外路径**，非 G02 算核。见 `report_his/O73_rank_census.md`
+- **拓扑备忘**：`kshcexclu06` 4 NUMA×8 核、4×mlx5@200（每 NUMA 一卡）；见 `report_his/topology_kshcexclu06.md`
+- **O74 诊断完成**：nesting per-rank 计时；**G02 nestSUM spread 仅 3.3%**，contact 重 rank 36/54 非 nesting 瓶颈；G01 ngetD spread 64% 但仅占墙钟 ~3%。O72 wait 需另拆 halo/到达。见 `report_his/O74_nest_timer.md`
+- **O75 诊断完成**：halo **local AVG 21.7 s** vs **wait 8.0 s**；4D local≈14 s 最大；WAIT spread 128%。见 `report_his/O75_halo_timer.md`
+- **O76 拒**：`mp_exchange -no-heap-arrays`；local 仅 −5%，墙钟 **1.025×** vs O75 diag（未过门）；已回滚。见 `report_his/O76_mpx_noheap.md` —— **halo no-heap 线关闭**；4D local 主因是 pack 访存
+- **O77 拒**：GLS `3d+4d`→单次 5 场 `mp_exchange3d`；同批 O33 **127.7 s** vs O77 **129.5 s（0.986×）**；4D PROFILE 几乎不动。见 `report_his/O77_gls_bundle.md` —— **GLS halo 合并线关闭**；下一刀须动 tracer `mp_exchange4d(NT)`
+- **O78 拒**：`mp_exchange4d` 持久缓冲 + NS 连续段 pack；同窗 O33 **130.4 s** vs O78 **135.0 s（0.966×）**，4D PROFILE +8%。见 `report_his/O78_mpx4d_persist.md` —— **4D 缓冲/段 pack 线关闭**
+- **O79 拒**：`mp_exchange4d` NS pack 与 EW 飞行重叠 + 角点刷新；同窗 O33 **129.0 s** vs O79 **131.8 s（0.979×）**，4D +11%。见 `report_his/O79_mpx4d_overlap.md` —— **4D 阶段重叠线关闭**
+- **O80 拒**：tracer `mp_exchange4d` `Nghost=2`（全局仍 3）；同窗 O33 **126.2 s** vs O80 **129.3 s（0.976×）**，4D ≈不变。见 `report_his/O80_nghost2.md` —— **降 Nghost 线关闭**
+- **O81 拒**：`mp_exchange4d` A-pack OpenMP；同窗 O33 **124.3 s** vs O81 **129.8 s（0.958×）**，4D +9%。见 `report_his/O81_mpx4d_omp.md` —— **4D pack OMP 线关闭**；halo pack 微结构线暂关，下一刀转算核/同步税
+- **采样纪律（2026-08-03）**：**不再 ABBA**；日常 `144/720` 相对父本 real 须**明显**加速再进半天/一天
+- **「核快墙慢」**：`report_his/kernel_vs_wall_O51_O54.md`
+- feng 方向课：`report_his/feng_experiments_lessons_20260801.md`
+
+
+
+- **O26** `db2d_v2_nb34` 采样 **162.84 s**（vs O25 150.01 → **0.92×**）已回滚；**O26b** 仅 nb34 采样进行中
+- Baseline（无插桩口径，Prompt 给定）：
+  - 4N×64，半天 ≈ **20 min**（1200 s）→ 采样档粗算按比例 ≈ **400 s**（1200×144/432），仅作参考，以实测为准
+  - 4N×64，完整 3 天 ≈ **1h50min**（6600 s）
+- 等待作业时并行：改下一项源码 / 读热点 / 编译 / 写 README，**且无关作业可同时 sbatch**（独立输出目录），不空等、不串行空转
+
+## 优化候选清单（待逐项尝试）
+
+1. 编译旗标：`-no-heap-arrays` + `-march=core-avx2` + align/prefetch，去掉 release `-g`
+2. 通信：`MPI_IN_PLACE`（distribute.F）——历史 O1 思路，独立重测
+3. 嵌套 Allreduce 批量化（换位点/换实现，避免与队友整段重叠）
+4. NtileI/J × 节点核数扫描（≤4 节点、≤128 核）
+5. MPI 绑定 / UCX / coll 规则（源码不动）
+6. 计算核预计算 / 向量化友好改写（biology / pre_step3d / gls 等，不关生态）
+
+## 实验记录
+
+### Baseline 参考
+
+| 字段 | 值 |
+|------|-----|
+| 日期 | 2026-07-25（日志 `log_..._20260725_205123.txt`，含 PMPI 偏慢；官方口径 1h50min） |
+| 配置 | 4N×64，Ntile 8×8，完整 3 天 |
+| real | ~6600 s（3 天）/ ~1200 s（半天，Prompt） |
+| 结论 | 起点，无源码优化 |
+
+---
+
+（后续每条有效优化按下列模板追加；无效也记，加速比可写 N/A）
+
+```
+### Ox：标题
+- 日期：
+- 改动文件:行号：
+- 改了什么：
+- 预期收益：
+- 短跑配置与 real 耗时：
+- 相对上一步加速比：
+- 相对 baseline 累计加速比：
+- vali 是否通过：
+- 结论：保留/回滚
+```
+
+### O1：编译旗标
+
+- 日期：2026-07-30
+- 改动文件:行号：`Compilers/Linux-ifort.mk` ~27–28、~83–86
+- 改了什么：
+  - `FFLAGS`: `-heap-arrays` → `-no-heap-arrays -march=core-avx2 -align array64byte -qopt-prefetch=3`（保留 `-fp-model precise`）
+  - Release：`-ip -O3 -g` → `-ip -O3`（去掉 `-g`）
+  - 旧行已注释保留
+- 预期收益：AVX2 向量化 + 减少 heap 临时数组开销；二进制由 ~10.6MB 降至 ~6.9MB
+- 短跑配置与 real 耗时：4N×64，Ntile 8×8，NTIMES=432/2160，作业 `118197589` / `nan_O1_half`，**real = 18m2.350s（1082.35 s）**
+- 相对上一步加速比：`1200/1082.35 = 1.109×`（相对 Prompt baseline 半天 20min）
+- 相对 baseline 累计加速比：`1.109×`
+- vali 是否通过：短跑未跑 vali（半天无完整输出）；保留待一天/三天验
+- 结论：**保留**
+
+策略更新（用户 2026-07-30）：不回避与队友重合；取其精华去其糟粕，自研+队友高收益项有机融合，冲 &lt;2min/&lt;10min 标杆。
+
+### O2–O5 联测包（作业 `118199215` / `nan_O2O5_half`）
+
+相对上一步分母取 O1 半天 **1082.35 s**；累计分母取 baseline **1200 s**。
+
+#### O2：MPI_IN_PLACE
+- 改动：`distribute.F` `mp_assemblef_1d/2d/3d` → `MPI_IN_PLACE`（旧代码注释保留）
+- 来源：自研历史 + 队友共识精华
+
+#### O3：fine2coarse mask Allgather 缓存 + REDUCE_ALLREDUCE
+- 改动：`nesting.F` fine2coarse2d/3d 缓存静态 mask；`distribute.F` 宏改 Allreduce
+- 来源：自研（针对 Allgather~11% 热点）
+
+#### O4：批 Allreduce（lsd/report 精华融合）
+- 改动：新增 `mp_assemble4` / `mp_assemble2`；接入 `bry_fluxes`、`check_massflux`、`put_refine2d`、`get_metrics`、`mask_hweights`（LW+QW）
+- 来源：lsd `mp_assemble4f_1d` + report_his 2dir 思想，自写接入
+
+#### O5：CCX/NUMA spread 绑定（feng/lsd 精华）
+- 改动：`sub.sh` 动态生成 `spread_numa16_ccx` rankfile，`mpirun --rankfile --report-bindings`
+- 来源：feng E013b/E036，纯绑定约 1.36× 证据；无数值风险
+
+- 短跑配置与 real：**4N×64，半天 NTIMES=432，real = 14m8.218s（848.22 s）**
+- 相对上一步加速比：`1082.35/848.22 = 1.276×`
+- 相对 baseline 累计加速比：`1200/848.22 = 1.415×`
+- vali：短跑未验；保留待一天/三天
+- 结论：**保留**
+
+### O6：tracer 批量 Allreduce + 采样档
+
+- 日期：2026-07-30
+- 改动：`nesting.F` `get_refine`/`get_composite` tracer 批 Allreduce；输入 `NTIMES==144 720`
+- 作业：`118199857` / `nan_O6_samp144`
+- 短跑配置与 real：**采样档 real = 4m59.912s（299.91 s）**
+- 相对上一步（O2–O5 半天外推采样 ≈848.22×144/432=282.74 s）：`282.74/299.91 = 0.943×`（略慢或节点噪声）
+- 相对 baseline 采样粗算 400 s：`400/299.91 = 1.334×`（仅参考）
+- 相对 baseline 半天累计（仍用 O2–O5 半天 848 s）：`1.415×`（O6 未单独半天确认）
+- 结论：**暂保留**（批归约语义正确；配对采样后再定是否回滚单独测）
+
+### O7：跳过 refinement 每步 z_weights（文献 #861）
+
+- 假设：Dongsha coincident refinement，Vweight 每步重算浪费
+- 改动：`mod_nesting.F` / `set_contact.F` / `main3d.F`（见上）
+- 作业：`118200498`；日志确认 `GET_VWEIGHTS (O7): dynamic vertical weights = F`
+- 短跑配置与 real：**采样档 real = 4m34.438s（274.44 s）**
+- 相对上一步（O6 采样 299.91 s）：`299.91/274.44 = 1.093×`
+- 相对 baseline 采样粗算 400 s：`400/274.44 = 1.458×`（参考）
+- 相对 baseline 半天外推：O2–O5 半天 848 s ×(144/432)=282.7 → 若 O7 同比例，半天估 ~777 s；待半天确认
+- **一天 vali（随 O10 联测）**：Dongsha `u` 超限；**判定 O7 为高嫌疑并已回滚**（`get_Vweights=.TRUE.`）
+- 结论：**回滚**（性能暂让位于精度）
+
+### 文献《基于神威·太湖之光的区域海洋模式并行优化》(JSJYJYFZ 2019)
+
+来源：https://crad.ict.ac.cn/fileJSJYJYFZ/journal/article/jsjyjyfz/HTML/2019-7-1556.shtml  
+对象：POM→swPOM；神威众核/DCU 本赛 **禁用**，下列为可迁移项。
+
+| 章节 | 方法 | 本赛落地 | 状态 |
+|------|------|----------|------|
+| §2.2 式(1) | 局部分辨率↓→通信占比↑，勿盲目加核 | `NtileI/J`×核数扫描（`sub_o8_ntile.sh`） | **O8** |
+| §5.1 | Halo：Isend/Irecv → 算 inner → Wait → 边界 | `mp_exchange` 内 isend（调用侧重叠空间小） | 候选 |
+| §4.2 | stencil 高低维调整、连续访存 | biology/step3d/gls 循环布局 | P1 |
+| §4.3 | 双缓冲重叠 | 非阻塞 pack / Iallgather 与本地平均 | P1 |
+| §5.2 | 计算/IO 进程分离（CFIO） | 慎触输出；可试缓冲写 | P2 |
+
+细节见 `report_his/literature_notes_20260730.md`。
+
+### O8：Ntile / 核数扫描（论文 §2.2）
+
+- 日期：2026-07-30
+- 改动：`sub_o8_ntile.sh`（作业内私有 `.in` 副本改 Ntile，不碰共享基准）；保持 O1–O7 二进制
+- 原理：通信占比随 tile 变小而上升；方块分解与 I/J 不对称、以及 32/64/128 核均需实测
+- 对照分母：O7 采样 **274.44 s**（8×8/8×8）
+
+#### O8a：`4×16 / 4×16` @64
+- 作业：`118200869` / `nan_O8_4x16`；日志确认 tiling `004x016` / `004x016`
+- 短跑配置与 real：**采样档 real = 4m28.728s（268.73 s）**
+- 相对上一步（O7 8×8）：`274.44/268.73 = 1.021×`（约快 2.1%，接近噪声）
+- 相对 baseline 采样粗算 400 s：`400/268.73 = 1.488×`（参考）
+- 结论：**暂记为正、幅度小**；默认仍用 8×8
+
+#### O8b：`16×4 / 16×4` @64
+- 作业：`118203732` / `nan_O8_16x4`；tiling `016x004` / `016x004`
+- 短跑配置与 real：**采样档 real = 5m14.872s（314.87 s）**
+- 相对 O7：`274.44/314.87 = 0.872×`（**变慢**，与 feng E008 狭长 tile 结论一致）
+- 结论：**拒绝**；默认保持 **8×8/8×8**
+
+#### O8 总结
+- 仅 O8a 微正、O8b 负；Ntile 扫描告一段落，**不改默认分解**
+- 半天确认与 128 核暂不做（feng E008 已淘汰 128）
+
+### O9：mp_scatter3d 分层 Bcast（feng E046 精华，论文 §5 通信优化精神）
+
+- 日期：2026-07-30
+- 改动：`distribute.F` `mp_scatter3d`：节点 leader 间 Bcast + 节点内 shared-comm Bcast；失败回退全局 Bcast
+- 来源：feng E046（V046 一天 vali 已过）；对齐论文「大规模时通信成瓶颈」
+- 预期：强迫/边界散射路径提速；相对 nesting Allreduce 热点为次级
+- 短跑：二进制 `oceanM.O9_hierbcast.bak`；已并入 O10 栈
+- 结论：**保留（随 O10）**
+
+### O10：E046 nesting 融合（packed fine2coarse + sparse get_contact3d）★冲标杆主刀
+
+- 日期：2026-07-30
+- 改动：
+  - `nesting.F` ← feng E046（V046 过 vali）：`.not.AreaAvg` 时 contact 点 `mp_sum`，避免 full Allgather；`get_contact3d` 稀疏 P2P + 一次性 owner 检查；含 fluxsum/`mp_assemble4`
+  - `distribute.F` 新增 `mp_sum`/`mp_sum_1d`（IN_PLACE）；保留 O2/O4/O9
+  - 保留 O7 `get_Vweights`；pre-O10 nesting 备份在 `.mcc_opt/backups/` / `.mcc_opt/staging/nesting.pre_O10.F`
+- 二进制：`oceanM.O10_sparse_packed.bak`（已设为当前 `oceanM`）；脚本 `sub_o10_sample.sh` / `sub_o10_half.sh`
+- 作业采样：`118204335` / `nan_O10_samp`；Ntile 8×8；`GET_VWEIGHTS=F`；正常 DONE
+- 短跑配置与 real：**采样档 real = 2m44.772s（164.77 s）**
+- 相对上一步（O7 采样 274.44 s）：`274.44/164.77 = 1.666×`
+- 相对 O8a（268.73 s）：`268.73/164.77 = 1.631×`
+- 相对 baseline 采样粗算 400 s：`400/164.77 = 2.428×`（参考）
+- **半天确认**：作业 `118205388` / `nan_O10_half`；**real = 7m43.113s（463.11 s）**
+  - 相对 O2–O5 半天 848.22 s：`848.22/463.11 = 1.832×`
+  - 相对 O1 半天 1082.35 s：`1082.35/463.11 = 2.337×`
+  - 相对 baseline 半天 1200 s：`1200/463.11 = 2.591×`
+  - 相对 feng E046 半天 574.75 s：`574.75/463.11 = 1.241×`（本栈含 O1/O7 等叠加）
+  - 3 天粗估 `463×6 ≈ 2779 s（~46 min）`，相对 baseline 6600 s ≈ **2.38×**（非成绩）
+- **一天 vali**：作业 `118205826`；**real = 15m32.677s（932.68 s）**；HCOLL=0；DONE
+  - SCS：全部 ✅
+  - Dongsha60：**u RMSE=0.000077 > 0.000060 ❌**（其余 ✅）
+  - 日志：`vali_O10_1day.log`
+  - **结论：O10 整包暂不可作为正确性父版本**；疑 O7 跳过 Vweights（feng V046 无 O7 且 u=0.000052 过线）
+- **O10b**：回滚 O7（`get_Vweights=.TRUE.`），保留 E046 nesting + 其余；一天 `118206632`
+  - 日志确认 `GET_VWEIGHTS (O7-rollback)=T`；**real ≈ 17m54s（sacct）**
+  - vali：Dongsha **u RMSE 仍 0.000077（精确 7.661e-5）**，热点坐标与 feng 旧失败案相同 `(t,s,eta,xi)≈(0,19,238,101)`
+  - **结论：O7 不是 Dongsha u 超限根因**（与 O10+O7 打印值相同）
+- **O10c（已结案）**：在 O10b 上再回滚 O1 编译旗标 → 官方参考 `-heap-arrays -fp-model precise -ip -O3`；保留 E046 nesting（**仍缺** O11 的 `collect_bry_fluxes` 接线）
+  - 作业 `118209807` / `nan_O10c_1day`；**real = 18m35.774s（1115.77 s）**；DONE
+  - vali（`vali_O10_1day.log`）：SCS 全 ✅；Dongsha **u RMSE=0.000079 > 0.000060 ❌**（其余 ✅）
+  - **结论：回滚 O1 旗标不能修复 Dongsha u**（甚至略差于 O10/O10b 的 0.000077）→ 根因不在 O7、也不在 O1 旗标
+  - **下一刀精度**：补齐 `step3d_t`→`collect_bry_fluxes`（O11）；若仍败则 bisect nesting vs distribute extras / 对照 feng E046 二进制
+
+---
+
+## O10 后下一刀（探查结论 2026-07-30）
+
+来源：[探 O10 后下一刀热点](3be42aef-dcc6-49c0-811a-75cb650e287a)；半天 463 s 相对 &lt;120 s 仍差 ~3.9×。
+
+| 排序 | 刀 | 预期 | 风险 | 状态 |
+|------|----|------|------|------|
+| 1 | **O11** 补 `step3d_t` → `collect_bry_fluxes`（feng E007 deferred；E046 nesting 已有例程但未接线） | ~1.02–1.04× + **可能修精度** | 中（feng V035 参考旗标下过 vali） | 采样完；**一天 vali 进行中** |
+| 2 | contactbatch / plan-cache（lsd；接到 O11 sparse） | ~1.02–1.03× | 低–中 | **O15b 拒绝 0.970×** |
+| 3 | GLS/bio mathreuse（纯 ifort，不开 OMP） | ~1.01–1.03× | 低 | **O14 拒绝** |
+| — | **O17 sparse get_contact2d** | ~1.03–1.08×？ | 中 | **拒绝 0.966×** |
+| — | **O18 batch 2D contact Allreduce** | ~1.02–1.05×？ | 低–中 | **拒绝 0.957×** |
+
+
+**明确不做（feng/lsd 已拒）**：HCOLL（一天 HIS 死锁）、`mp_sum` 分层 Allreduce、lsd halo-overlap/persist 等。
+
+### O11：补齐 deferred tracer boundary-flux collect
+
+- 日期：2026-07-30
+- 假设：O10 移植 E046 nesting 时 `bry_fluxes` 已改为仅本地提取，但 `step3d_t.F` 未调用 `collect_bry_fluxes` → 缺批量归约且两路 tracer 通量错误（可解释 Dongsha 反馈）
+- 改动文件:行号：`ROMS/Nonlinear/step3d_t.F` USE 段 + T_LOOP 结束后
+- 改了什么：`USE ... collect_bry_fluxes`；水平平流双循环后 `CALL collect_bry_fluxes (ng, iNLM)`
+- 二进制：`oceanM.O11_deferred.bak`（参考旗标，与 O10c 同编译选项）
+- 短跑配置与 real：**采样档** 作业 `118211704` / `nan_O11_samp`，**real = 3m14.359s（194.36 s）**
+  - 对照 O10c 一天外推采样≈1115.77×144/864≈**185.96 s** → 约 **0.957×**（略慢/噪声）；正确性优先
+- **一天 vali**：作业 `118212176` / `nan_O11_1day`；**real = 18m48.236s（1128.24 s）**
+  - SCS 全 ✅；Dongsha **u RMSE=0.000052 ≤ 0.000060 ✅**；全部变量通过（`vali_O11_1day.log`）
+  - 相对 O10c（缺 collect、u=0.000079 失败）：**精度根因定位为漏接 collect_bry_fluxes**
+- **半天确认**：作业 `118213687` / `nan_O11_half`；**real = 9m26.726s（566.73 s）**
+  - 相对 baseline 半天 1200 s：`1200/566.73 = 2.117×`
+  - 相对 O10 不正确栈半天 463 s：更慢（因回滚 O1 旗标）
+  - 3 天粗估 `566.73×6 ≈ 3400 s（~56.7 min）`，距 &lt;10 min 仍约 **5.7×** 缺口
+- 结论：**保留为正确性基线**；已被 **O20**（O11 + O7 重开）接替为当前正确性父版本
+
+### O12：在 O11 上复开 O1 编译旗标
+
+- 日期：2026-07-30
+- 假设：漏 collect 才是超精主因；复开 O1 可收回墙钟
+- 改动：`Compilers/Linux-ifort.mk` FFLAGS → `-no-heap-arrays -march=core-avx2 ...`
+- 二进制：`oceanM.O12_O11plusO1flags.bak`
+- **采样** `118215032`：**190.91 s**（vs O11 194.36 → **1.018×**）
+- **半天** `118215035`：**536.36 s**（vs O11 566.73 → **1.057×**；vs baseline 1200 → **2.24×**）
+- **一天** `118215034`：**1081.28 s**（vs O11 1128 → **1.043×**）
+  - vali（`vali_O12_1day.log`）：Dongsha **u RMSE=0.000063 > 0.000060 ❌**
+- 结论：**回滚**（精度不过；且加速有限）。`Linux-ifort.mk` / `oceanM` 已恢复 O11 参考旗标父版本
+
+### O13：GCC 7.3.1 `-march=znver1 -fstack-arrays`（编译链）
+
+- 日期：2026-07-30
+- 二进制：`oceanM.O13_gcc731_znver1.bak`
+- **采样** `118215921`：**176.13 s**（vs O11 194.36 → **1.103×**）
+- **半天** `118216388`：**505.39 s**（vs O11 566.73 → **1.121×**；vs baseline 1200 → **2.37×**）
+- **一天** `118216392`：**1028.70 s**（vs O11 1128 → **1.097×**）
+  - vali（`vali_O13_1day.log`）：Dongsha **u RMSE=0.000067 > 0.000060 ❌**
+- 结论：**速度正、精度不过 → 不作为父版本**；O13b（`-ffp-contract=off`）登录节点编译 OOM，暂搁置
+
+### O14：GLS `**` mathreuse（等价计算核，无 OMP）
+
+- 日期：2026-07-30
+- 改动：`ROMS/Nonlinear/gls_corstep.F`（已回滚源码；备份 `gls_corstep.F.O14.bak`）
+- 二进制：`oceanM.O14_gls_mathreuse.bak`
+- **采样** `118223624`：**197.31 s**（vs O11 194.36 → **0.985×**，略慢）
+- **半天** `118223626`：**556.49 s**（vs O11 566.73 → **1.018×**）
+- **一天** `118223630`：**1095.68 s**；vali **全通过**（Dongsha u=0.000052）
+- 结论：**拒绝（加速不足/不稳定）**；源码与 `oceanM` 已回退 O11 父版本
+
+### O15a：coll_tuned Allreduce=recursive_doubling（仅环境）
+
+- 日期：2026-07-30
+- 改动：无源码；`--mca coll_tuned_allreduce_algorithm 3`；HCOLL=0；O11 二进制
+- **采样** `118231474`：**253.89 s**（vs O11 194.36 → **0.766×**，明显变慢）
+- 结论：**拒绝**；不要强制 recursive_doubling
+
+### O15b：get_contact3d 全计划缓存（不含 z_weights/zbatch）
+
+- 日期：2026-07-30
+- 假设：缓存 send/recv_index + 持久 buffer 可减每次重建 scount 开销
+- 改动：`nesting.F` `get_contact3d`（已回滚）；备份仍在 `.mcc_opt/staging/nesting.pre_O15_contactbatch.F`；二进制 `oceanM.O15b_plancache.bak` 保留备查
+- **采样** `118233565`：**200.33 s**（vs O11 194.36 → **0.970×**，略慢）
+- 结论：**拒绝并回滚**；`nesting.F`/`oceanM` 已恢复 O11。feng E042 sparse z_weights 亦负优化 → **暂不追 zbatch**
+
+### O16：O11 上复测 Ntile `4×16`
+
+- 日期：2026-07-30
+- 假设：O8a 在不正确栈上曾 +2.1%；在 O11 正确父上可能仍有微收益
+- 改动：仅作业私有 `.in`；tiling 日志确认 `004x016`/`004x016`；二进制 O11
+- **采样** `118234132`：**194.89 s**（vs O11 194.36 → **0.997×**，噪声级）
+- 结论：**拒绝**；默认保持 **8×8/8×8**
+
+### O17：sparse `get_contact2d`（对齐 3d）
+
+- 日期：2026-07-30
+- 假设：E053m 的 11040 B Allreduce（4×345）来自仍全量 `mp_assemble` 的 `get_contact2d`；稀疏 P2P 可砍热点
+- 改动：曾改 `nesting.F` `get_contact2d`→donor/receiver P2P；已回滚；备份 `.mcc_opt/staging/nesting.pre_O17_sparse2d.F`；二进制 `oceanM.O17_sparse2d.bak` 备查
+- **采样** `118235247`：**201.21 s**（vs O11 194.36 → **0.966×**，变慢）
+- 结论：**拒绝并回滚**。小载荷（~11 KB）上全域 Allreduce 延迟优于多 peer P2P；3d 稀疏有效因载荷大，2d 不能照搬。下一步应 **减少调用次数（批量 Allreduce）** 而非改成 P2P
+
+### O18：`get_refine` 批量 2D contact Allreduce
+
+- 日期：2026-07-30
+- 假设：zeta/ubar/vbar 三次小 Allreduce → 一次打包可降启动开销
+- 改动：曾改 `get_refine`；已回滚；备份 `.mcc_opt/staging/nesting.pre_O18_batch2d.F`；`oceanM.O18_batch2d.bak` 备查
+- **采样** `118235581`：**203.02 s**（vs O11 194.36 → **0.957×**，变慢）
+- 结论：**拒绝并回滚**。打包后消息变大（~3×）在本互联上未赢过三次小 Allreduce；`get_refine` 路径也非 11040 B 调用的主来源（更多在 `get_composite` 高频 section）
+
+### O19：补回 O4 `mp_assemble2` + `z_weights` Kdg∥Vweight mixed
+
+- 日期：2026-07-30
+- 来源：[探大位点优化候选](3788a1f5-bb76-4fd7-902e-a1b7018eb97d)
+- 改动：曾改 `distribute.F`/`nesting.F`；已回滚；备份 `.mcc_opt/staging/*pre_O19*`；`oceanM.O19_assemble2.bak` 备查
+- **采样** `118237532`：**208.23 s**（vs O11 194.36 → **0.933×**，变慢）
+- 结论：**拒绝并回滚**。`get_metrics`/LW 多为初始化；运行时 `Kdg∥Vweight` mixed 打包（RESHAPE+NINT+更大消息）净负收益
+
+### O20：在 O11 上重开 O7（`get_Vweights=.FALSE.`）
+
+- 日期：2026-07-31
+- 假设：O10b 已证 O7 非 Dongsha `u` 根因（根因是漏接 `collect_bry_fluxes`，O11 已修）；跳过每步 `z_weights` 可省墙钟
+- 改动：`set_contact.F` 恢复 `get_Vweights=.FALSE.`（composite 非 coincident 时再开）；`main3d.F` O7 守卫已在；备份 `.mcc_opt/staging/set_contact.pre_O20_vweights.F`
+- 二进制：`oceanM.O20_vweights.bak`（当前 `oceanM`）；脚本 `sub_o20_vweights_{sample,half,1day}.sh`
+- 日志串：`GET_VWEIGHTS (O20=O7-on-O11): dynamic vertical weights = F`
+- **采样** `118272223` / `nan_O20_vw`：**real = 2m54.209s（174.21 s）**（vs O11 194.36 → **1.116×**）
+- **半天确认** `118272320` / `nan_O20_half`：**real = 8m10.966s（490.97 s）**（vs O11 566.73 → **1.154×**；vs baseline 1200 → **2.44×**）
+- **一天 vali** `118272321` / `nan_O20_1day`：**real = 16m27.741s（987.74 s）**（vs O11 1128.24 → **1.142×**）；输出 `output_O20_1day_118272321/`；`vali_O20_1day.log`：**全通过**；Dongsha **u=0.000052**（与 O11 相同打印）
+- **结论：接受；晋升为正确性父版本**（O11 + O7 重开）。精度风险在一天 vali 上未显现
+
+### O21：coll_tuned 动态规则（`coll_rules.conf`）
+
+- 日期：2026-07-31
+- 假设：O15a 强制 `algorithm=3` 拖垮大包 Allreduce；按消息大小分流（小→3 / 中→rabenseifner / 大→ring）可吃剩余集合通信
+- 改动：仅运行时 MCA（`coll_tuned_use_dynamic_rules=1` + `coll_rules.conf`）；二进制仍为 O20；**不加** `allreduce_algorithm=3`
+- 脚本：`sub_o21_collrules_{sample,half}.sh`
+- **采样** `118273229`：**real = 2m47.571s（167.57 s）**（vs O20 174.21 → **1.040×**）
+- **半天确认** `118273266`：**real = 7m52.827s（472.83 s）**（vs O20 490.97 → **1.038×**；vs baseline 1200 → **2.54×**）
+- **一天 vali** `118274886`：**real = 15m47.469s（947.47 s）**（vs O20 987.74 → **1.043×**）；`vali_O21_1day.log`：**全通过**；Dongsha **u=0.000052**
+- **结论：接受；晋升为正确性父版本**（O20 二进制 + 动态 coll 规则；后续提交须带 `coll_rules.conf`）
+
+### O22：每 rank 绑 2 核（`ppr:16:node:PE=2`）
+
+- 日期：2026-07-31
+- 假设：占满节点 32 物理核可改善带宽/噪声（仍 OMP=1、64 rank）
+- **采样** `118273235`：**real = 2m53.329s（173.33 s）**（vs O20 174.21 → **1.005×**，噪声）
+- 结论：**拒绝**；保持 CCX rankfile
+
+### O24：UCX_TLS=rc_x,sm,self + mlx5_0:1
+
+- 日期：2026-07-31
+- 假设：裁剪 UCX 传输路径可降轮询开销（与 O21 coll 分开归因，未叠 coll_rules）
+- **采样** `118274891`：**real = 2m56.824s（176.82 s）**（vs O20 174.21 → **0.986×**）
+- 结论：**拒绝**；保持默认 UCX
+
+### O23a：`-xCORE-AVX2`（拒绝）
+
+- 日期：2026-07-31
+- 改动：`FFLAGS += -xCORE-AVX2 -align array64byte -qopt-prefetch=3`（保留 heap-arrays）
+- **采样** `118274574`：启动即失败（Intel CPUID：`Please verify ... AVX2`）——Hygon 节点拒绝 `-x` 路径
+- 结论：**拒绝**；`oceanM.O23a_xCOREAVX2_fail.bak` 备查
+
+### O23b：`-march=core-avx2` + align（保留 `heap-arrays`）
+
+- 日期：2026-07-31
+- 假设：O12 能跑靠的是 `-march=core-avx2`；vali 失败疑主因 `-no-heap-arrays`；本刀去掉后者只留 arch/align
+- 改动：`Compilers/Linux-ifort.mk`；脚本 `sub_o23b_march_sample.sh`；二进制 `oceanM.O23b_march.bak`
+- **采样** `118275720`：**real = 2m51.985s（171.99 s）**（vs O20 174.21 → **1.013×**，噪声；且未叠 O21 coll_rules，相对 O21 采样 167.57 更慢）
+- 结论：**拒绝（加速不足）**；`Linux-ifort.mk` / 默认 `oceanM` 恢复 O20 参考旗标；父版本仍为 **O21**
+
+### O25：zya 式选择性 OpenMP + 循环交换 + 64×2（在 O21 父上）
+
+- 日期：2026-07-31
+- 动机：先前「效果不好」的是 **O23b 编译旗标**（`-march=core-avx2`），**不是** OpenMP；feng E044/E045 负优化可能因栈不同。本刀在 O21 正确父上独立验证 zya 一二类优化。
+- 改动：
+  - `step3d_t.F`：`K_LOOP` 外置 + `!$OMP`；保留 O11 `collect_bry_fluxes`
+  - `pre_step3d.F`：同维交换 + OMP（对齐 zya）
+  - `gls_corstep.F`：仅 OMP（**无** mathreuse）
+  - `bio_UMAINE15.h`、`t3dmix4_s.h`：选择性 OMP
+  - `Linux-ifort.mk`：五热点 `private FFLAGS += -qopenmp`，`LDFLAGS=-qopenmp`
+- 运行：64 MPI × **OMP=2**，CCX `*_2t` rankfile，`OMP_PROC_BIND=close`，**叠 O21 `coll_rules`**
+- 备份：`.mcc_opt/staging/*.pre_O25_omp*`；二进制 `oceanM.O25_omp.bak`
+- 脚本：`sub_o25_omp_{sample,half,1day}.sh`
+- **采样** `118288825`：**real = 2m30.006s（150.01 s）**（vs O21 167.57 → **1.117×**；vs O20 174.21 → **1.161×**）
+  - user≈71.5 min（相对纯 MPI 采样显著升高）→ OpenMP 确在跑
+- **半天确认** `118289387`：**real = 7m3.103s（423.10 s）**（vs O21 472.83 → **1.118×**；vs baseline 1200 → **2.84×**）
+- **一天 vali** `118289388`：**real = 14m5.189s（845.19 s）**（vs O21 947.47 → **1.121×**）；`vali_O25_1day.log`：**全通过**；Dongsha **u=0.000052**（与 O21 相同；优于 zya 整包超限）
+- **结论：接受；晋升为正确性父版本**。后续提交：OMP=2 + CCX `*_2t` + `coll_rules`；下一刀 **O26** halo 双缓冲/非阻塞
+
+### O26：mp_exchange db2d_v2 + nb34（zya 组合）— 回滚
+
+- 日期：2026-07-31
+- 改动：`ROMS/Utility/mp_exchange.F` ← zya `mp_exchange_db2d_v2_nb34.F`（2D 双缓冲 pack 重叠 + 3D/4D 非阻塞）
+- 备份：`.mcc_opt/staging/mp_exchange.pre_O26_halo.F`；二进制 `oceanM.O26_halo.bak`
+- 运行：同 O25（64×2 + CCX 2t + coll_rules）
+- **采样** `118291712`：**real = 2m42.843s（162.84 s）**（vs O25 150.01 → **0.921×**）
+  - G02 halo：2D **变差**（1673 vs O25 1530）；3D/4D 略降但仍不抵 2D 损失
+- 结论：**回滚**；源码已恢复 `pre_O26_halo.F`；父仍为 O25
+
+### O26b：仅 nonblocking 3D/4D — 回滚
+
+- 日期：2026-07-31
+- 动机：O26 中 3D/4D 略降、2D 变差 → 拆因只留 nb34
+- 改动：`mp_exchange.F` ← zya `mp_exchange_nonblocking_3d4d.F`
+- 备份：`.mcc_opt/staging/mp_exchange.pre_O26b_nb34.F`；二进制 `oceanM.O26b_nb34.bak`
+- **采样** `118292232`：**real = 2m31.896s（151.90 s）**（vs O25 150.01 → **0.988×**）
+- 结论：**回滚**；`oceanM`/`mp_exchange.F` 已恢复 O25；停 halo 组合线
+
+### O27：biology 湿点 i 压缩 — 回滚（SEGV）
+
+- 日期：2026-07-31
+- 改动：`J_LOOP` 建 `iwet` + 压缩内层 i（j 外层一次，非 k 内层判 mask）
+- 采样 `118293194`：**real ≈ 21 s 后 SIGSEGV**
+- 结论：**回滚**；压缩实现有误，不保留
+
+### O27b：biology 全陆地 j 行早退 — 回滚（无墙钟收益）
+
+- 日期：2026-07-31
+- 改动：`J_LOOP` 入口 `MAXVAL(rmask(Istr:Iend,j))≤0 → CYCLE`（j 外层一次判断）
+- 备份：`bio_UMAINE15.pre_O27_wet.h`；二进制 `oceanM.O27b_landrow.bak`
+- **采样** `118293531`：**real = 2m30.368s（150.37 s）**（vs O25 150.01 → **0.998×**）
+  - G01 bio 计时 207.7→174.6（约 1.19× 该项）；G02 bio 不变（Dongsha 100% 湿）
+  - 墙钟瓶颈在 G02，陆地早退不改总 real
+- 结论：**回滚**；`bio_UMAINE15.h`/`oceanM` 已恢复 O25
+
+### O28：Ntile 补扫（O25+64×2）— 全部拒绝
+
+- 日期：2026-07-31；对照 O25 采样 **150.01 s**
+- | 配置 | 作业 | real | vs O25 |
+  |---|---|---|---|
+  | `4×16/4×16` | `118293196` | 152.46 s | 0.984× |
+  | `2×32/2×32` | `118293199` | >7 min 取消 | 明显负 |
+  | 父`4×16` 子`8×8` | `118293201` | 154.30 s | 0.972× |
+  | 父`8×8` 子`4×16` | `118293204` | 154.36 s | 0.972× |
+- 结论：**拒绝**；默认保持 **8×8/8×8**；Ntile 线告一段落
+
+### O29：`KMP_BLOCKTIME=0`（feng E063，纯运行时）— 接受
+
+- 日期：2026-07-31
+- 动机：feng E063；zya perf `kmp_hyper_barrier`；O25 未设该变量
+- 改动：仅 `export KMP_BLOCKTIME=0` + `mpirun -x KMP_BLOCKTIME`；二进制仍 `oceanM.O25_omp.bak`
+- 误提交 `118295084`：漏 export → 作废（152.34 s）
+- **采样** `118295409`：**real = 136.19 s**（vs O25 150.01 → **1.101×**）
+- **半天确认** `118295702`：**real = 6m28.371s（388.37 s）**（vs O25 423.10 → **1.089×**；vs baseline 1200 → **3.09×**）
+  - 日志确认 `ntimes=432/2160`；slurm 打印文案曾误写 144/720（脚本 print 残留，已修）
+- **结论：接受**；固化进 `sub_o25_omp_*.sh`；运行时父 = O25 二进制 + OMP=2 + CCX 2t + coll_rules + **KMP_BLOCKTIME=0**
+- **一天 vali** `118297039`：**real = 12m58.296s（778.30 s）**（vs O25 845.19 → **1.086×**）；`vali_O29_1day.log`：**全部通过**；Dongsha **u=0.000052**（与 O25 相同）
+
+### O30：feng E057 跳过 Kdg/Vweight `mp_assemble` — 回滚
+
+- 日期：2026-07-31；`nesting.F` 去掉 R/U/V `Kdg`/`Vweight` 的 `mp_assemble`
+- 备份：`nesting.pre_O30_zwlocal.F`；二进制 `oceanM.O30_zwlocal.bak`
+- **采样** `118295445`：**real = 2m37.841s（157.84 s）**（vs O25 150.01 → **0.950×**）
+- 结论：**回滚**（nan 已 `get_Vweights=F`，该路径冷）
+
+### O31：feng E058 跳过 NESTING_DEBUG 质量通量 — 接受
+
+- 日期：2026-07-31；父 = O25+O29（KMP=0）
+- 改动：`nesting.F` — `nmflx`/`Mflux` assemble 仅在 `NESTING_DEBUG` 下执行（位级相同）
+- 备份：`nesting.pre_O31_nomflx.F`；二进制 `oceanM.O31_nomflx.bak`（当前 `oceanM`）
+- **采样** `118297701`：**134.30 s**（vs O29 136.19 → **1.014×**）
+- **半天** `118297881`：**370.57 s**（vs O29 388.37 → **1.048×**；vs baseline 1200 → **3.24×**）
+- **一天 vali** `118298602`：**real = 12m25.064s（745.06 s）**（vs O29 778.30 → **1.045×**）；`vali_O31_1day.log`：**全部通过**；Dongsha **u=0.000052**
+- **结论：接受**；当前源码/性能父 = O31 + O29 运行时
+- 运行时仍叠加 **O29** `KMP_BLOCKTIME=0`
+
+### O32：feng E072 gls `**` CSE（叠 O31）— 回滚
+
+- 日期：2026-07-31；`gls_corstep.F` 位级相同缓存重复 `**`
+- 备份：`gls_corstep.pre_O32_cse.F`；二进制 `oceanM.O32_cse_on_O31.bak`（仅存档）
+- **采样** `118297890`：**131.79 s**（vs O31 134.30 → **1.019×**）
+- **半天** `118298605`：**369.95 s**（vs O31 370.57 → **1.002×**，噪声）
+- **结论：回滚**；已恢复 `gls_corstep.pre_O32_cse.F` → `ROMS/Nonlinear/gls_corstep.F`，`oceanM` ← `oceanM.O31_nomflx.bak`
+
+### O33：五热点对象 `-no-heap-arrays`（feng E059，针对 G02 OMP）— 接受
+
+- 日期：2026-07-31；动机：`G02_hotspot_O31.md` — G02 计算 ~64%，顶五核已 OMP，但 nan 全局仍 `-heap-arrays`，线程 PRIVATE 自动数组走堆（feng E059）
+- 改动：仅 `Compilers/Linux-ifort.mk` 五条 `private FFLAGS += -qopenmp -no-heap-arrays`；全局仍 `-heap-arrays`
+- 备份：`Linux-ifort.pre_O33_noheap.mk`；二进制 `oceanM.O33_noheap.bak`（当前 `oceanM`）
+- 单次采样 `118302398`：**139.05 s**（噪声负向）；**ABBA**：O31 `118302647` **132.73 s** / O33 `118302648` **127.57 s** → **1.040×**
+- **半天** `118302840`：**real = 6m4.335s（364.34 s）**（vs O31 370.57 → **1.017×**；vs baseline 1200 → **3.29×**）
+- **一天 vali** `118303170`：**real = 12m5.471s（725.47 s）**（vs O31 745.06 → **1.027×**；vs O29 778.30 → **1.073×**）；`vali_O33_1day.log`：**全部通过**；Dongsha **u=0.000052**
+- 画像：O31 perf `118302402` — `pre_step3d` 14.8%、`step3d_t` 9.3%、UCX 9.0%、`pow` 8.7%、`step2d` 6.8%
+- **结论：接受**；当前正确性/性能父 = O33 + O29 运行时
+
+### O34 / O34b：UCX 运行时（针对 perf UCX ~9%）— 回滚
+
+- 日期：2026-07-31；二进制仍 `oceanM.O33_noheap.bak`；无源码改动
+- **O34** `UCX_IB_MLX5_DEVX=no` `118303380`：**133.51 s**（vs O33 ABBA 127.57 → **0.956×**）
+- **O34b** `UCX_NUM_PPN=16` `118303381`：**135.29 s**（vs O33 → **0.943×**）
+- **结论：回滚/不采用**；本集群 UCX 默认选择已够好，勿强行 DEVX/PPN
+
+### O35：GLS O14 mathreuse 叠 O33（针对 pow ~8.7%）— 回滚
+
+- 日期：2026-07-31；`gls_corstep.F` 缓存重复 `**` + OMP PRIVATE
+- 备份：`gls_corstep.pre_O35_mathreuse.F`；二进制 `oceanM.O35_mathreuse.bak`（仅存档）
+- **采样** `118303452`：**136.39 s**（vs O33 ABBA 127.57 → **0.935×**）
+- **结论：回滚**；已恢复 `gls_corstep.pre_O35_mathreuse.F`，`oceanM` ← O33；与 O14/O32 一致——位级 CSE 在当前栈上无墙钟收益
+- 详细归因：`report_his/failure_analysis_O34_O35.md`
+
+### O36：32 MPI × 4 OMP + Ntile 4×8（换拓扑）— 回滚
+
+- 日期：2026-07-31；二进制 O33；`.in` 仅改 Ntile `4×8`；OMP=4；CCX 4t rankfile
+- **采样** `118304295`：**145.79 s**；同批 O33 `118304298`：**130.39 s** → **0.894×**
+- PROFILE：G02 MPI/r 略降（30.1→27.1），但计算/r 大增（100.7→156.9）— tile 变大，OMP4 补不回
+- **结论：回滚**；维持 64×2/8×8；详见 `failure_analysis_O34_O35.md` §5
+
+### O37：GCC 7.3.1 + znver1 + ffp-contract=off + 五热点 OMP — 回滚
+
+- 日期：2026-07-31；源码同 O33；`Linux-gfortran.mk` 选择性 OMP + `-ffp-contract=off`
+- 备份：`oceanM.O37_gcc_omp.bak`；`Build.ifort_O33/`
+- **采样** `118304756`：**131.44 s**；同批 O33 `118304777`：**132.66 s** → **1.009×**（噪声）
+- PROFILE（G02 rank-sum）：`step2d` **1.41×**、GLS **1.06×**、predictor **1.02×**；但 `step3d_t` **0.89×** 吃掉收益；计算合计≈持平，MPI 略好
+- **结论：回滚**；O33 ifort 栈上 GCC 无净墙钟优势（feng E060 是相对更弱 ifort 父）。不跑半天/vali；父仍 O33
+
+### O38：五热点 `-qopt-prefetch=3 -unroll-aggressive`（打 step3d_t/pre_step3d）— 回滚
+
+- 日期：2026-07-31；仅编译旗标；无源码/物理改动
+- 备份：`Linux-ifort.pre_O38_prefetch.mk`；`oceanM.O38_prefetch.bak`（存档）
+- **采样** `118305130`：**130.81 s**；同批 O33 `118305131`：**127.21 s** → **0.972×**
+- PROFILE：predictor/`step3d_t`/GLS **完全持平**（目标行未降）；MPI 略差属噪声
+- **结论：回滚**；已恢复 ifort.mk 与 `oceanM`←O33。prefetch/unroll 打不中本栈访存核
+- 详细归因：`report_his/prefetch_failure_O38.md`（L1 已命中；瓶颈是跨 itrc 重复流，不是漏预取）
+
+### O39：`step3d_t` 垂直扩散 FC/BC/CF 对 `itrc>NAT` 复用 — 回滚
+
+- 日期：2026-07-31；源码位级等价变换（求解公式不变）
+- 备份：`step3d_t.pre_O39_vdifreuse.F`；`oceanM.O39_vdifreuse.bak`（存档）
+- **ABBA 采样**：O33 132.47 / O39 129.99 / O39 131.41 / O33 128.17 → 均值 **0.997×**
+- PROFILE：G02 Corrector tracers **~1.055×**（目标行有收益）；但 GLS **~0.82×** 异常抬升；Compute Total 未降
+- **结论：回滚**；源码恢复，`oceanM`←O33。单点矩阵复用不够抬墙钟；下一步需更大粒度跨 tracer 融合
+- 详细归因：`report_his/failure_analysis_O39.md`
+
+### O40：`step3d_t` 垂直段 `Wj`/`oDz`/`Hzj` 一次装载 + O39 复用 — 回滚
+
+- 日期：2026-07-31；位级等价；备份 `step3d_t.pre_O40_geomcache.F`；`oceanM.O40_geomcache.bak`
+- **采样**：O40 131.80 / 132.22；同批 O33 133.77 / 128.24 → 均值 **0.992×**
+- PROFILE：Corrector **~1.07×**（略优于 O39）；GLS 再次 ~0.82×；墙钟无增益
+- **结论：回滚**；`step3d_t` 垂直缓存线关闭。下一刀改打 `pre_step3d` 或水平通量缓存
+- 详细归因：`report_his/failure_analysis_O40.md`
+
+### O41：`pre_step3d` pnpm 上提 + 显式扩散 oDz/GEOM 复用 — 回滚
+
+- 日期：2026-07-31；备份 `pre_step3d.pre_O41_predgeom.F`；`oceanM.O41_predgeom.bak`
+- **采样** `118306491/492`：130.37 / 128.97 s；vs 近日 O33 均值 129.97 → **1.002×**
+- **污染**：Build 中 `step3d_t` 仍为 O40 对象，二进制实为 O40+O41；叠加后墙钟仍≈1
+- **结论：回滚**；已重编干净对象；关闭 tracer 几何缓存线。纪律：回滚后必须删 `Build/*.f90/*.o` 再编
+- 详细归因：`report_his/failure_analysis_O41.md`
+
+### O33 正式 3 天 + vali（成绩口径）
+
+- 日期：2026-07-31；作业 `118307015` / `nan_O33_3day`；脚本 `sub_o33_noheap_3day.sh`
+- 配置：`oceanM.O33_noheap.bak`，NTIMES **2592/12960**，64×2，Ntile 8×8，KMP_BLOCKTIME=0，coll_rules
+- **real = 35m29.853s（2129.85 s）**
+  - 相对 baseline 01:50:06（6606 s）：`6606/2129.85 = 3.10×`
+  - 相对半天外推（364.34×6≈2186 s）略快（含 I/O 差异）
+- 输出：`output_O33_3day_118307015/`；日志 `vali_O33_3day_118307015.log`
+- **vali：SCS + Dongsha 全部通过**；Dongsha **u RMSE=0.000052**（≤0.000060）
+
+### O42：`step3d_t` 水平 `Huon/Hvom` 按层缓存 — 回滚
+
+- 日期：2026-07-31；备份 `step3d_t.pre_O42_huoncache.F`；`oceanM.O42_huoncache.bak`
+- **采样** `118306884/885`：129.94 / 130.31 s → vs O33 均值 **0.999×**
+- Corrector 与 O33 持平（无垂直缓存混入）；拷贝成本抵消 3D 重读
+- **结论：回滚**；tracer 几何/通量缓存线整体关闭
+- 详细归因：`report_his/failure_analysis_O42.md`
+
+### O43：`#undef PROFILE`（正式计时关 ROMS 计时插桩）— 无墙钟收益
+
+- 日期：2026-08-01；依据 Prompt §9 + `report_his/bottleneck_O33_3day.md`
+- 改动：`ROMS/Include/globaldefs.h`：`#define PROFILE` → `#undef PROFILE`
+- 备份：`.mcc_opt/staging/globaldefs.pre_O43_noprof.h`；二进制 `oceanM.O43_noprof.bak`
+- **采样** `118342307`：**131.234 s**；`118342321`：**130.737 s**；均值 **130.99 s**
+- vs 近日 O33 带均值 ~130.3 s → **~0.995×**（噪声内；门槛 1.02× 未达）
+- **结论：墙钟假设拒绝**；性能/正确性父仍 **O33+O29**；源码已恢复 `#define PROFILE`
+- 归因：区域计时开销相对 G02 算核/同步可忽略；见 `report_his/failure_analysis_O43.md`
+- **用户澄清（2026-08-01）**：当前阶段为便于每次跑完用 PROFILE 分析热点，**不关 PROFILE**；达理想目标后再关。O43 不得再被解读成「必须长期关 PROFILE」
+
+### O44：`pre_step3d` R2–R4 单 PARALLEL + `NOWAIT` — 回滚
+
+- 日期：2026-08-01；**采样** `118345096`：**135.302 s**；`118345097`：**132.489 s** → vs O33 **~0.973×**
+- G02：GLS % 升、predictor 无稳降；见 `report_his/failure_analysis_O44.md`
+- **结论：回滚**；源码←`pre_step3d.pre_O44_nowait.F`；OMP nowait/融合线关闭
+
+### O45：五热点 `-qoverride-limits`（E047a #25464）— 回滚
+
+- 日期：2026-08-01；**采样** `118345360`：**132.006 s**；`118345361`：**131.497 s** → vs O33 **~0.989×**
+- G02 算核无稳降（GLS/predictor 仍高）；编译器时限跳过的优化对本栈无墙钟收益
+- **结论：回滚**；`Linux-ifort.mk`←`pre_O45_override`；`oceanM`←O33
+
+### O46：`step3d_t` oHz + 水平 K_LOOP 单 PARALLEL + `NOWAIT` — 拒墙钟（源码已回滚至 O33）
+
+- 详见 `report_his/failure_analysis_O46.md` / 复盘文；`step3d_t.F` 与 `pre_O46` 一致，父本仍为 O33。
+
+### O48：三队融合（biology `exp` CSE + `cffik` hoist）— 精度过、墙钟不晋升
+
+- 日期：2026-08-01；job **`118368357`**
+- 融合：feng 光照 exp CSE + lsd/zya `cffik` 外提；O33 嵌套/OMP/KMP/coll 栈不变。lsd「提精度」= Intel `-fp-model precise`（已有）/ GCC fpstrict（不适用本栈）
+- **一天 real = 12m19.184s（739.18 s）**；vs O33 725.47 → **0.981×**
+- **vali 全通过**；Dongsha **u=0.000052**
+- 二进制：`oceanM.O48_fusion.bak`；默认 `oceanM` 仍为 O33；详档 `report_his/O48_fusion_sprint.md`
+
+### O47：owner-packed 审计 + `get_composite` 成对 `mp_assemble2`（正交）— 拒墙钟
+
+- 日期：2026-08-01
+- 分支：`nan/O47_owner_packed_ortho`
+- **审计**：feng owner-packed / sparse `get_contact3d` / fluxsum **已在 O10–O11–O33**；packed 仍用 `mp_sum`（Allreduce），真 P2P 在 contact3d。原样重移植为空操作。
+- **正交改动（已回滚）**：`get_contact2d_extract` + `get_composite` (u,v) → `mp_assemble2`；异于已拒 O17/O18
+- **一天** `118354585`：**real = 12m30.734s（750.73 s）**；vs O33 725.47 s → **0.966×**
+- **vali**（`vali_O47_1day_118354585.log`）：**全通过**；Dongsha **u=0.000052**
+- **结论：拒绝墙钟并回滚** `nesting.F`←`pre_O47`；`oceanM`←O33；备查 `oceanM.O47_composite_batch.bak`
+- 详档：`report_his/O47_owner_packed_ortho.md`；contact2d 打包/稀疏线 **关闭**
+
+### E046ctrl：纯 feng E046 二进制一天对照
+
+- 日期：2026-07-30
+- 目的：拆因——同一套 nan 提交脚本/绑核/HCOLL=0 下，纯 E046 是否过 vali
+- 二进制：`oceanM.feng_E046_refflags.bak`（自 feng `E046_ifort_scatter3d_hier_reference_flags` 拷入 nan）
+- 脚本：`sub_e046ctrl_1day.sh`；输出 `output_E046ctrl_118212518/`
+- 作业：`118212518` / `nan_E046ctrl_1d`；**real = 18m47.486s（1127.49 s）**
+- vali（`vali_E046ctrl_1day.log`）：**全通过**；Dongsha **u=0.000052**（与 O11 相同打印）
+- 相对 O11 一天 1128.24 s：基本持平（`1128.24/1127.49 ≈ 1.001×`）
+- 结论：O11 已过线后，**拆因使命结束**；仍有价值作对照——说明 (1) nan 脚本/环境与 feng E046 一致可过线；(2) O11 相对纯 E046 **几乎无额外墙钟代价**；(3) O10c 失败确属漏接 collect，非环境问题
+=====SPRINT_README=====
+# ROMS-CoSiNE 优化日志（sprint 轮 — 起点 O84）
+
+> ⚠️ 本文件于 2026-08-09 19:07 因脚本事故被清空，此版本由会话记录与 nan/README.md 重建。
+> S1~S20/O84 历史详见 `/public/home/fujiake/nan/README.md`（682 行，含编译期/通信/嵌套/OMP 全链路记录）。
+
+## 上下文恢复顺序（强制）
+
+1. `Prompt/Prompt.txt` + `Prompt/mcc.md`
+2. `Prompt/STANDING_ORDERS.md`
+3. 本 README（sprint 轮实验记录）
+
+## 约定
+
+- 工作目录：仅 `/public/home/fujiake/nan/sprint/` 可写，其余只读
+- 计时口径：`time` 的 **real**；正式成绩 `2592 12960`（3 天），vali 用官方 26 变量
+- 拓扑：64 MPI × 2 OMP = 128 线程，4 节点 × 32 核，8×8 tiles，CCX 双核绑定
+
+## S21 父本（2017 编译器基线）
+
+- 3day = 1979.6s（33m00s），vali 全过；相对组委会 6606s = 3.34×。
+- 关键配置：s21 全局 FFLAGS 带 -march=core-avx2 -no-fma（无 -ipo）。
+
+## S22/S23：交换重构（全部实测拒绝）
+
+- S22 延迟重叠：1day 672.5s（+1.2% vs S21）→ 拒绝。
+- S23 判定：4D 交换非阻塞化（同步版O级）也无收益 —— 交换重构线彻底关闭。
+  - 1day：S22b 同步版（全 8 非阻塞 + 立即 waitall）676.1s（+1.7%），vali 全过。
+  - 结论：原版两轮阻塞交换已是该硬件最优；等待税由到达失衡/同步主导。
+- 阶段计时（main3d PHASE，采样 122s）：
+  other/pre-rhs3d 44.7s(36%)、rhs3d 26.8s(22%)、step3d_t 24.9s(20%)、
+  omega+GLS+bio 19.0s(15%)、step2d 16.4s(13%)、step3d_uv 3.0s(2.5%)。
+- PROFILE 诊断（s22b 临时 #define PROFILE，采样 10286 rank-CPU s）：
+  - G02 内核：pre_step3d 1370(13.3%)、GLS 1193(11.6%)、step3d_t 1065(10.4%)、
+    step2d 915(8.9%)、biology 454(4.4%)、TS_DIF4 356(3.5%)、3D rhs 133(1.3%)。
+  - Message Passage 合计 1808(17.6%)：4D halo 734(7.1%)、2D halo 496(4.8%)、
+    3D halo 293(2.8%)、reduction 123(1.2%)、broadcast 103(1.0%)。
+  - CPU 利用率 10286/(128×122)≈66%，其余为同步等待。
+
+## S24：GLS -no-prec-div -fp-speculation=fast —— 拒绝
+
+- 1day 679.4s（慢 +2.2%），vali 失败：Dongsha u=0.000068 > 阈值 0.000060。
+- 教训：改 per-file 旗标后须删 Build/<mod>.o/.f90 再 make，否则跑的是旧二进制。
+
+## S25：全局 -ipo —— 新父本
+
+- 1day 658.4s（-0.9~1.1%），vali 双过；3day J118736476 = 1941.5s（32m21s）。
+- 叠加尝试均无益（回滚）：-qopt-prefetch=4（119.4s）、-fp-speculation=fast 全局、
+  step2d -parallel 自动并行化（121.7s 更慢，访问饱和）。
+- OMP=1 vs OMP=2：145.2s vs 120.7s（双线程省 17%）。
+
+## S26/S27：tracer/pre_step3d fast=2 —— 全部拒绝
+
+- S26（step3d_t+t3dmix fast=2）：1day 658.7s 持平，vali 失败 u=0.000071。
+- S27（+pre_step3d fast=2）：u 直接受影响，未跑即判死。
+- 二分定位：肇事文件 = step3d_t（S26a 单独验证即超限 u=0.000072）。
+
+## S28：t3dmix fast=2 —— vali 过但 3day 更慢，回退
+
+- 1day 658.7s 持平；vali 过（Dongsha u=2.4e-5 余量更大，SCS u=8.2e-5 在 4e-4 内）。
+- 3day J118739074 = 1964.0s（慢于 S25 +1.2%）→ 暂不保留（作精度余量备选）。
+
+## 关键发现：s22b 分支缺失全局 AVX2
+
+- s21 全局 FFLAGS 带 -march=core-avx2 -no-fma；s22/s22b 只有 -no-heap-arrays。
+- S22/S23 的 1day 对比因此不公平，真实效果需在 S29 基座上重测（结论仍为无收益）。
+
+## S29/S30：AVX2 与 -ipo 不叠加；inline 调参无益
+
+- S29（S25+全局 AVX2 no-fma）：1day 661.0s，vali 过（u=5.2e-5，位级一致）。
+  -ipo 已吸收 AVX2 收益，两者不叠加。
+- S30（-ipo inline-factor=20/max-size=4096）：1day 662.8s（+0.7%），回滚。
+
+## 最终状态（2026-08-08 上午）
+
+- 父本锁定 S25：3day 1941.5s（32m21s），vali 全过，二进制 oceanM.s25_ipo_FINAL.bak。
+
+
+## S31/S32：ifort 2021 基座 —— 达成 30min 目标
+
+- fjk 记录（118742729）：S21_parent 667.3s vs S21_ifort2021 617.6s（+7.46%），轨迹位级一致。
+- nan 此前 i21 失败原因：S8 时代旗标无 `-march=core-avx2 -no-fma`；**-no-fma 钉住 FP 行为是 2021 通过的关键**。
+- S32 = S31（ifort 2021.3.0 + -march=core-avx2 -no-fma）+ 全局 -ipo：
+  - 1day J118748760 = 596.5s（vs S25 658.4s -9.4%），vali 全过（u=5.2e-5，位级一致）。
+  - 3day J118755216 = **1753.9s（29m13.9s）< 30min**，vali 全过 —— 目标达成！
+  - 二进制 oceanM.s32_ifort2021_ipo.bak（md5 92ffbd...）；源码 backup_S32_src_20260808.tar.gz。
+
+## 正式提交记录 2026-08-08：S32 新二进制 4eee
+
+- 按提交流程 clean 重建，新二进制 oceanM.s32_SUBMIT_20260808.bak（md5 4eee6656...，旧备份未覆盖）。
+- 干净 3day J118769218：real=29m22.506s=1762.5s，vali 全过（u=5.2e-5）。
+- 波动归因：共享 /public 磁盘 I/O 争抢（被争抢时 sys=20m、墙钟 37-38m；干净时 sys=7m、29m22s）。
+
+## 建议审计收尾（2026-08-08）
+
+- 汇编级分析（objdump pre_step3d_tile）：热点循环已 AVX2 向量化（284 ymm），代码生成干净，无易得收益。
+- 手动函数调用削减：-ipo 已内联热点循环内调用，剩余调用在循环外，空间有限。
+- coll_rules 换算法：Allreduce 强制 basic_linear 108.75s vs 动态规则 108.97s，中性，关闭。
+- S33（S32 + t3dmix fast=2，ifort2021）：1day 604.1s 慢于 S32 596.5s（+1.3%），vali 过，拒绝。
+- 用户建议的 8 类方法全部执行/审计完毕；S32（29m22.5s）为锁定提交版。
+
+## 本会话补充（2026-08-09）
+
+### S35：ifort2024（classic 2021.11.1）—— 持平，拒绝
+- 1day J118789191 = 597.3s vs S32 596.5s（+0.13%，噪声内），vali 全过（u=5.2e-5 位级一致）。
+- 与 fjk 采样 +1.2% 不一致；1day 尺度无收益，不换基座。
+
+### S36/S37/S38：批量 1day 判定
+- S36（-align array64byte×5 热点文件）：596.2s 持平，拒绝。
+- S37（SCHEDULE(STATIC,1)×10 处）：1015.8s，**比 S32 慢 70%**（细粒度调度破坏缓存局部性），立即拒绝并回滚。
+- **S38（step3d_t 垂直扩散 FC/BC 系数对 itrc>=3 复用）**：592.5s，-0.67%，vali 全过 → 采纳。
+  - 修改点：ROMS/Nonlinear/step3d_t.F，ltrc=MIN(NAT,itrc) 使 itrc=2..15 的 Akt 相同，
+    原代码重复计算 FC/BC 14 次；现仅 itrc<=2 计算，itrc>=3 直接复用（DC 仍逐 tracer 装载）。
+- 教训：STATIC,1 类循环调度必须 1day 实测；位级中性 ≠ 性能中性。
+
+### S42：S38 + rho_eos 整 j 循环 OMP —— 最终最优
+- 1day 587.9s（-1.44% vs S32）；3day J118818711 = **1750.1s（29m10.1s）**，vali 全过（u=5.2e-5）。
+- rho_eos：整例程单区域 PARALLEL DO（j 循环），PRIVATE 含 C/bulk/den 等局部数组；
+  EOS_TDERIVATIVE/LMD 分支未编译，PRIVATE 列表按预处理 .f90 实声明裁剪。
+- 二进制 oceanM.s42_20260809.bak（md5 b2a17a27...）；完整源码 backup_S42_FULL_src_20260809.tar.gz。
+
+### S43/S44b/S45b：小内核 OMP 与 math 提升 —— 均无收益
+- S43（+omega OMP）：1016.9s，-73% 灾难（vali 过但 user CPU ~2x，机制未明）→ 拒绝。
+- S44b（+set_depth OMP）：589.9s，比 S42 慢 0.34% → 拒绝。
+- S45b（biology cffik exp 提出 K 循环，修正版）：590.0s，无收益 → 拒绝。
+  - 初版 else 分支语义错误（cffik=1.0 误写为 k/N*cff2）被 vali 抓到超限，已修正。
+
+### 队友调研
+- lsd Intel 路线（packed/sparse3d/hierbcast/IN_PLACE）：packed+sparse+in-place 已被本基座吸收（O33/O84 时代），
+  tfluxp2p/p2dbatch（嵌套集合→p2p）剩余增益小、移植量大，暂缓。
+
+## ★★★ 终稿总结（2026-08-09）
+
+- **最终最优 = S42**：S32（ifort2021+AVX2+ipo）+ step3d_t vdiff 系数复用 + rho_eos 整例程 OMP。
+  3day = 1750.1s（29m10.1s，J118818711，vali 全过，Dongsha u=5.2e-5）；1day = 587.9s（-1.44%）。
+  相对组委会 baseline 6606s = 3.77×。
+- 备份：二进制 oceanM.s42_20260809.bak（b2a17a27...）；完整源码 backup_S42_FULL_src_20260809.tar.gz；
+  设计文档：优化设计文档_S42_vs_原版.md。
+- 25min（1500s）目标分析：当前 29m10s，需再 -14%。剩余安全杠杆（step2d OMP ~1%、tfluxp2p 移植 1-3%）
+  合计难达 25min；结构级通信重构多轮实测失败；不等核分配数学证明 64 ranks 下无收益
+  （见 REFACTOR_unequal_allocation_feasibility.md）。结论：29m10s 为安全手段下的最优。
+- 纪律：全部操作限定在 sprint/ 内，临时文件一律 sprint/temp/，不使用 /tmp 等公共目录。
+=====S42_DESIGN=====
+# ROMS_CoSiNE15 优化设计文档（S42 最终版 vs 无改动原代码）
+
+> 生成时间：2026-08-09
+> 最优版本：S42（3day 1750.1s = 29m10.1s，vali 26/26 全过）
+> 对照基线：/public/home/fujiake/feng/mcc2026_final/ROMS_CoSiNE15（官方无改动源码）
+
+## 一、设计思路总述
+
+优化遵循三条铁律：
+1. **位级中性优先**：除 biology 单项（单向耦合、不碰物理 u）外，所有改动不得改变浮点计算次序与数值语义，确保官方 vali 全过（S42 的 Dongsha u RMSE=5.2e-5，与基线位级一致）。
+2. **热点驱动**：以 PROFILE 计时 + 采样为依据，只动真实热点（2D/3D/4D halo 交换、嵌套接触区、step3d_t/GLS/biology/2D 内核）。
+3. **只换实现、不换算法**：物理方案、网格、时间步长、输出全部不变；改动集中在“通信实现方式”与“编译代码生成”两个层面。
+
+总体收益链条：
+- 编译层（-no-heap-arrays、AVX2/-no-fma、ifort2021、-ipo、-qopenmp 选择性并行）：约 -30% 起步
+- 通信层（IN_PLACE 归约、批量打包、接触点稀疏、嵌套 p2p/单次 collect）：约 -15%
+- 内核层（vdiff 系数复用、rho_eos 整例程并行）：约 -2%
+- 综合：组委会 baseline 6606s → S42 1750.1s（3.77×）
+
+## 二、原代码主要代码块与调用流程
+
+### 2.1 程序骨架（ROMS 标准驱动）
+
+```
+ocean_control.F (op_ocean.h)
+ ├─ initialize_parallel / inp_par / allocate
+ ├─ main3d.F  STEP_LOOP（每个慢步）
+ │   ├─ 阶段A 表面强迫/耦合（单线程）
+ │   │   forcing → set_depth → set_massflux → rho_eos → bulk_flux
+ │   │   → set_vbc → set_tides → lmd_vmix → bvf_mix → hmixing
+ │   │   → omega → wvelocity → set_zeta → output
+ │   ├─ 阶段B 3D 预测/校正（热点，选择性 OpenMP）
+ │   │   rhs3d → my25_prestep → gls_prestep
+ │   │   → step2d（barotropic 快速子步 ×30，串行）
+ │   │   → set_depth → step3d_uv → omega → my25_corstep
+ │   │   → gls_corstep → biology → sediment → step3d_t（tracer 预测+校正）
+ │   └─ 阶段C 嵌套同步（每步多次）
+ │       nesting(isection)：get_refine / put_refine / fine2coarse / bry_fluxes
+ └─ 输出（def_*/wrt_*，master 进程写 NetCDF）
+```
+
+### 2.2 核心通信代码块（原版）
+
+1. **halo 交换链**：exchange_2d/3d（本 tile 内部 halo 拷贝）→ mp_exchange2d/3d/4d
+   （tile_neighbors 查邻居 rank → pack 到 sendW/E/S/N → MPI_IRECV+SEND+WAIT → unpack）。
+   原版对 2D/3D/4D 分别调用，多字段时一次调用打包 Nvar 个场。
+2. **嵌套接触区**：nesting.F 的 get_refine/put_refine/fine2coarse，
+   原版用 mp_aggregate2d/3d（全网格 allgather）或 mp_sum（世界 allreduce）传递接触点数据；
+   bry_fluxes 每层即时 mp_assemble（小消息世界归约，次数多）。
+3. **数据收集/归约**：distribute.F 的 mp_collect/mp_assemblef_*/mp_reduce，
+   原版用 Asend/Arecv 双临时数组 + RESHAPE 拷贝。
+
+### 2.3 调用流程图（原版）
+
+```mermaid
+flowchart TD
+  A[ocean_control] --> B[main3d STEP_LOOP]
+  B --> C[阶段A 强迫/耦合]
+  B --> D[rhs3d + gls_prestep]
+  D --> E[step2d 快速子步]
+  E --> F[set_depth]
+  F --> G[step3d_uv]
+  G --> H[omega + gls_corstep + biology]
+  H --> I[step3d_t tracer 预测+校正]
+  B --> J[nesting 同步]
+  J --> K[get_refine/put_refine/fine2coarse/bry_fluxes]
+  K --> L[mp_aggregate/mp_sum/mp_assemble 世界集合]
+  G --> M[mp_exchange3d halo]
+  I --> N[mp_exchange4d halo]
+  E --> O[mp_exchange2d halo]
+  B --> P[output NetCDF]
+```
+
+
+## 三、当前最优版本（S42）与原代码对比：全部优化点
+
+### 3.1 编译层（Compilers/Linux-ifort.mk，改 66 行）
+
+| 优化 | 原代码 | S42 | 说明/收益 |
+|---|---|---|---|
+| 堆→栈数组 | `-heap-arrays -fp-model precise` | `-no-heap-arrays -fp-model precise -march=core-avx2 -no-fma -ipo` | 消除 for_allocate 开销（不改数值） |
+| AVX2 指令集 | 无 | `-march=core-avx2` | 生成 256-bit SIMD（YMX），配合 -no-fma 保持位级一致 |
+| FMA 关闭 | 默认开 | `-no-fma` | 关键：钉住 FP 融合行为，ifort2021 才能位级一致 |
+| 跨文件 IPO | 无 | `-ipo`（FFLAGS+LDFLAGS） | 全程序内联，约 +2.3% |
+| 编译器版本 | ifort 17.0.5 | **ifort 2021.3.0 编译**（运行 2017 模块） | 2021+no-fma 位级一致，约 +7.5% |
+| OpenMP 运行时 | 无 | `-qopenmp`（LDFLAGS） | 支持热点选择性并行 |
+| 每文件 -qopenmp | 无 | biology/pre_step3d/step3d_t/t3dmix/gls_corstep/**rho_eos** | 仅热点文件启用，避免全局并行开销 |
+| biology 数学 | 精确 | `-fp-model fast=2 -no-prec-div -fp-speculation=fast` | 单向耦合（生态→不影响物理 u），O84 已验证 |
+| GLS | 精确 | `-fp-model source` | 允许代数化简合并 pow |
+| 每文件 -no-heap-arrays | 无 | step2d/rhs3d/omega/prsgrd/conv_3d/conv_2d/lmd_skpp/lmd_bkpp/gls_prestep/my25_corstep/my25_prestep/set_depth/metrics/nesting 等 | 消除自动数组堆分配 |
+| 调试符号 | `-g` | 去掉 | 减小指令体积 |
+| step2d 单独 | 无 | `-no-heap-arrays -march=core-avx2 -no-fma` | 2D 内核代码生成 |
+
+### 3.2 通信层（Utility/distribute.F，改 345 行）
+
+| 优化 | 原代码 | S42 | 说明 |
+|---|---|---|---|
+| O2 IN_PLACE 归约 | `Asend/Arecv + RESHAPE` 双临时数组 | `MPI_Allreduce(MPI_IN_PLACE, A, ...)` | 去掉 Npts 拷贝与两份临时数组 |
+| O3 归约算法 | Allgather | `Allreduce`（REDUCE_ALLREDUCE） | 小消息归约更轻 |
+| O4 批量打包归约 | 每边界/每向量一次归约 | mp_assemble4（四边界打包 1 次 allreduce）、mp_assemble2（双向量打包 1 次） | 4 倍/2 倍减少集合次数 |
+| O10 接触值打包 | 全网格聚合 | mp_sum 对接触点 Packed 数组 1 次 allreduce | 只归约接触点，不归约全网格 |
+
+### 3.3 嵌套层（Nonlinear/nesting.F，改 681 行 + Modules/mod_nesting.F）
+
+| 优化 | 原代码 | S42 | 说明 |
+|---|---|---|---|
+| O10 owner-packed fine2coarse | 全网格 allgather（AreaAvg 情形） | 各 rank 只算本地接触点均值→Packed→1 次 mp_sum | 通信量从全网格降为接触点数 |
+| O10 sparse get_contact3d | 按 tile 全量取接触数据 | 稀疏计划：仅取实际接触点的 donor 数据（OCN_COMM_WORLD rank 编号映射） | 减少嵌套 3D 数据量 |
+| O11 collect_bry_fluxes | 每层即时 mp_assemble | 水平平流后一次性打包垂直积分→1 次 collect | 去掉数千次小集合通信（需 step3d_t 补调用） |
+| O31 调试分支裁剪 | check_massflux 每步执行 | 仅 NESTING_DEBUG 下执行 | 去掉非必要质量通量组装 |
+| O7 get_Vweights | 每步重算垂直插值权重 | 仅 composite 非重合网格需要时动态更新 | 初始化算一次，稳态跳过 |
+
+### 3.4 内核层
+
+| 文件 | 优化 | 说明 |
+|---|---|---|
+| step3d_t.F | **vdiff 三对角系数 FC/BC 复用（itrc≤2 才计算）** | ltrc=MIN(NAT,itrc) 使 13 个生物示踪物共用同一 Akt；原代码重复计算 14 次，现 itrc≥3 直接复用（DC 仍逐 tracer 装载）。约 +0.7% |
+| step3d_t.F | O25 选择性 OpenMP（tracer 平流/校正） | K_LOOP 外层 + PARALLEL DO |
+| step3d_t.F | O11 补 collect_bry_fluxes 调用 | 与 nesting 批量 collect 配套 |
+| rho_eos.F | **整例程单区域 OpenMP（整 j 循环）** | 状态方程逐列独立，一次并行区覆盖全部计算，PRIVATE 含 C/bulk/den 等局部数组。约 +0.8% |
+| pre_step3d.F | O25 选择性 OpenMP | tracer 扩散系数相关大循环并行 |
+| t3dmix4_s.h | O25 选择性 OpenMP | 双调和混合（TS_DIF4）并行 |
+| gls_corstep.F | O25 选择性 OpenMP | GLS 湍流闭合主循环并行 |
+| bio_UMAINE15.h | O25 选择性 OpenMP（j 并行，大 PRIVATE 表） | biology 主循环并行，配合 fast=2 |
+| Include/globaldefs.h | PROFILE 开关调整 | 正式计分形态关闭计时宏（备注保留开关） |
+| set_contact.F | O20 get_Vweights 初始化逻辑 | 与 O7 配套 |
+
+### 3.5 输入/运行配置
+
+| 项 | 原代码 | S42 |
+|---|---|---|
+| 网格分块 | 由 .in 配置 | NtileI/J=8×8（每网格 64 tiles，64 ranks×2 线程） |
+| 运行规模 | 组委会默认 | 64 MPI × 2 OMP = 128 线程，4 节点 × 32 核，CCX 双核绑定 |
+| 任务形态 | 官方 sub.sh | sprint sub.sh（rankfile.spread_numa16_ccx_2t、KMP_HOT_TEAMS=1、OMP_PROC_BIND=close、hcoll 关闭、coll_tuned 规则文件） |
+
+
+## 四、性能对比与验证
+
+| 指标 | 组委会 baseline | 原代码（官方编译） | S32（上轮最优） | **S42（最终最优）** |
+|---|---|---|---|---|
+| 3day 墙钟 | 6606s | ~3300s+（含官方工具链） | 1762.5s（29m22s） | **1750.1s（29m10s）** |
+| 加速比 vs 组委会 | 1.00× | ~2.0× | 3.75× | **3.77×** |
+| vali | — | — | 26/26 全过 | **26/26 全过**（Dongsha u=5.2e-5） |
+| 1day 稳态 | — | — | 596.5s | **587.9s（-1.44%）** |
+
+### 验证口径
+- 官方 vali.py（26 变量 RMSE 阈值）全过，与组委会 6606s 基线同输入。
+- S42 相对 S32 仅增加两项位级中性改动（vdiff 复用、rho_eos OMP），Dongsha u 保持 5.2e-5 不变，确认无精度损失。
+- 3day 波动主要来自共享 /public 文件系统 I/O 争抢（实测干净 29m10s；争抢时可到 50min），与代码无关。
+
+## 五、附：本轮已尝试并拒绝的优化（避免重复踩坑）
+
+| 实验 | 内容 | 结果 |
+|---|---|---|
+| S36 | -align array64byte×5 文件 | 持平，拒绝 |
+| S37 | OMP SCHEDULE(STATIC,1) | -70% 灾难（缓存局部性破坏），拒绝 |
+| S43 | omega 小内核 OMP | -73% 灾难（机制未明，user CPU 翻倍），拒绝 |
+| S44b | set_depth OMP | 无收益，拒绝 |
+| S45 | biology cffik exp 提出 K 循环 | 初版 else 分支语义错误致 vali 超限（已修正），修正后无收益，拒绝 |
+| S35 | ifort2024 编译器 | 持平，拒绝 |
+| 不等核分配 | G01/G02 分核重构 | 数学证明 64 ranks 下无收益，关闭（见 REFACTOR_unequal_allocation_feasibility.md） |
+
+## 六、结论
+
+S42 以“位级中性 + 热点驱动 + 只换实现不换算法”为纲，通过
+**编译器代码生成（ifort2021/AVX2/-no-fma/-ipo）、通信实现重构（IN_PLACE/批量打包/接触点稀疏/单次 collect）、
+热点选择性 OpenMP、内核冗余消除（vdiff 系数复用、rho_eos 整例程并行）**四层手段，
+在完全保持数值语义（vali 26/26、u=5.2e-5 位级一致）的前提下，将 3day 从组委会 6606s 优化至 1750.1s，加速 3.77×。
+
+源码/二进制备份：
+- 二进制：ROMS_CoSiNE15_s42_rhoomp/oceanM.s42_20260809.bak（md5 b2a17a27...）
+- 完整源码：ROMS_CoSiNE15_s42_rhoomp/backup_S42_FULL_src_20260809.tar.gz
+- 本文档对照基线：/public/home/fujiake/feng/mcc2026_final/ROMS_CoSiNE15
+=====S46_TIMING_1D=====
+
+real	9m41.017s
+user	199m35.246s
+sys	5m48.470s
+=====S46_TIMING_3D=====
+
+real	28m34.554s
+user	592m48.279s
+sys	16m49.964s
+=====S46_VALI_3D=====
+当前工作目录: /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s46_pgo
+基准目录(ref): /public/share/mcc2026_final/output/
+测试目录(test): /public/home/fujiake/nan/sprint/ROMS_CoSiNE15_s46_pgo/output_sprint_3day_118860553/
+
+================================================================================
+【SCS_avg_0001.nc 所有变量全局RMSE校验】
+temp                 RMSE = 0.000200   阈值≤0.001500   ✅正常
+salt                 RMSE = 0.000017   阈值≤0.001000   ✅正常
+u                    RMSE = 0.000057   阈值≤0.000400   ✅正常
+v                    RMSE = 0.000041   阈值≤0.000400   ✅正常
+zeta                 RMSE = 0.000005   阈值≤0.000500   ✅正常
+NO3                  RMSE = 0.000104   阈值≤0.005000   ✅正常
+NH4                  RMSE = 0.000014   阈值≤0.002000   ✅正常
+PO4                  RMSE = 0.000022   阈值≤0.000800   ✅正常
+diatom               RMSE = 0.000009   阈值≤0.002000   ✅正常
+microzooplankton     RMSE = 0.000009   阈值≤0.001500   ✅正常
+detritus             RMSE = 0.000046   阈值≤0.002000   ✅正常
+oxygen               RMSE = 0.001128   阈值≤0.050000   ✅正常
+TIC                  RMSE = 0.066997   阈值≤0.500000   ✅正常
+
+================================================================================
+【Dongsha60_avg_0001.nc 所有变量全局RMSE校验】
+temp                 RMSE = 0.000067   阈值≤0.000200   ✅正常
+salt                 RMSE = 0.000003   阈值≤0.000150   ✅正常
+u                    RMSE = 0.000052   阈值≤0.000060   ✅正常
+v                    RMSE = 0.000020   阈值≤0.000060   ✅正常
+zeta                 RMSE = 0.000004   阈值≤0.000080   ✅正常
+NO3                  RMSE = 0.000184   阈值≤0.000800   ✅正常
+NH4                  RMSE = 0.000012   阈值≤0.000300   ✅正常
+PO4                  RMSE = 0.000013   阈值≤0.000120   ✅正常
+diatom               RMSE = 0.000035   阈值≤0.000300   ✅正常
+microzooplankton     RMSE = 0.000003   阈值≤0.000200   ✅正常
+detritus             RMSE = 0.000019   阈值≤0.000300   ✅正常
+oxygen               RMSE = 0.001974   阈值≤0.008000   ✅正常
+TIC                  RMSE = 0.001130   阈值≤0.008000   ✅正常
+
+================================================================================
+【全局汇总校验结论】
+SCS文件整体状态: 全部正常
+Dongsha60文件整体状态: 全部正常
+最终判定：两组文件所有变量RMSE均在阈值范围内，优化结果无异常
